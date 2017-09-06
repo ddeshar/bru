@@ -92,14 +92,15 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="pass">อีเมล</label>
 																<div class="col-md-3">
-																<input id="email" name="email" type="text" placeholder="E-MAIL" class="form-control"></div>
+																<input id="email" name="email" type="email" placeholder="E-MAIL" class="form-control"></div>
 																</div>
 
 																<div class="form-group">
 																            <label class="col-lg-3 control-label" for="select">สถานะ</label>
 																            <div class="col-lg-3">
 																              <select class="form-control" name="status" id="select">
-																                <option value="0" >ผู้บริหาร</option>
+																								 <option  >---เลือก---</option>
+																								<option value="0" >ผู้บริหาร</option>
 																                <option value="100" >สมาชิก</option>
 																                <option value="500" >ผู้ดูแลระบบ</option>
 																              </select>

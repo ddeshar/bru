@@ -32,9 +32,9 @@
                 </a>
             </li>
             <li <?php if($page == 'deleted_users') echo 'class="active" id="active"'; ?> >
-                <a href="list_admin.php">
+                <a href="user.php">
                     <i class="fa fa-angle-double-right"></i>
-                    ข้อมูลผู้ดูแลระบบ
+                    ข้อมูลผู้ใช้งานระบบ
                 </a>
             </li>
         </ul>

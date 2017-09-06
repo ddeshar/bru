@@ -9,38 +9,41 @@ EOT;
 require_once('include/_header.php');
 
 if (isset($_POST["btnEdit"])) {
-		$id_admin = $_POST["id_admin"];
-		$name_admin = $_POST["name_admin"];
+		$user_id = $_POST["user_id"];
 		$username = $_POST["username"];
 		$password = $_POST["password"];
+		$email = $_POST["email"];
+		$status = $_POST["status"];
 
-		$sql = "update admin set id_admin='$id_admin', name_admin='$name_admin', username='$username', password='$password' where id_admin='$id_admin'";
+		$sql = "UPDATE tbl_users SET user_id='$user_id', username='$username', password='$password', email='$email', status='$status' where user_id='$user_id'";
 		//echo $sql;exit;
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('แก้ไขข้อมูลสำเร็จ');";
-			echo "window.location='list_admin.php';";
+			echo "window.location='user.php';";
 			echo "</script>";
 			//header('location: admin_product.php');
 		}else{
 			echo "<font color='red'>SQL Error</font><hr>";
 		}
 	}else{
-		$id_admin = $_GET["id_admin"];
-		$sql = "select * from admin where id_admin='$id_admin'";
+		$user_id = $_GET["user_id"];
+		$sql = "SELECT * FROM tbl_users WHERE user_id='$user_id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
-			$id_admin = $row["id_admin"];
-			$name_admin = $row["name_admin"];
+			$user_id = $row["user_id"];
 			$username = $row["username"];
 			$password = $row["password"];
+			$email = $row["email"];
+			$status = $row["status"];
 		}else{
-			$id_admin = "";
-			$name_admin = "";
+			$user_id = "";
 			$username = "";
 			$password = "";
+			$email = "";
+			$status = "";
 		}
 	}
 ?>
@@ -50,7 +53,7 @@ if (isset($_POST["btnEdit"])) {
     <section class="content-header">
         <!--section starts-->
         <h1>
-          แก้ไขข้อมูลผู้ดูแลระบบ
+          แก้ไขข้อมูลผู้เข้าใช้งาน
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -59,10 +62,10 @@ if (isset($_POST["btnEdit"])) {
                 </a>
             </li>
             <li>
-                <a href="#">แก้ไขข้อมูลผู้ดูแลระบบ</a>
+                <a href="#">แก้ไขข้อมูลผู้เข้าใช้งาน</a>
             </li>
             <li class="active">
-                แก้ไขข้อมูลผู้ดูแลระบบ
+                แก้ไขข้อมูลผู้เข้าใช้งาน
             </li>
         </ol>
     </section>
@@ -78,36 +81,56 @@ if (isset($_POST["btnEdit"])) {
                 <div class="panel panel-primary" id="hidepanel1">
 									<div class="panel-heading">
 											<h3 class="panel-title"> <i class="livicon" data-name="pencil" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-													แก้ไขข้อมูลผู้ดูแลระบบ
+													แก้ไขข้อมูลผู้เข้าใช้งาน
 											</h3>
 										</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="admin_admin_edit.php" method="post">
+                        <form class="form-horizontal" action="user_edit.php" method="post">
                             <fieldset>
                                 <!-- Name input-->
                                 <div class="form-group">
-                                <label for="id" class="col-md-3 control-label">รหัสผู้ดูแลระบบ</label>
+                                <label for="id" class="col-md-3 control-label">รหัส</label>
                                 <div class="col-md-3">
-                                <input  name="id_admin" type="text" type="text" value="<?php echo "$id_admin"; ?>" class="form-control"></div>
+                                <input  name="user_id" type="text" type="text" value="<?php echo "$user_id"; ?>" class="form-control" readonly></div>
                                 </div>
                                 <!-- Email input-->
                                 <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">ชื่อผู้ดูแลระบบ</label>
+                                <label class="col-md-3 control-label" for="name">ชื่อผู้ใช้</label>
                                 <div class="col-md-3">
-                                <input  name="name_admin" type="text"  value="<?php echo "$name_admin"; ?>" class="form-control"></div>
+                                <input  name="username" type="text"  value="<?php echo "$username"; ?>" class="form-control"></div>
                                 </div>
                                 <!-- Message body -->
                                 <div class="form-group">
-                                <label class="col-md-3 control-label" for="detail">ชื่อผู้ใช้</label>
+                                <label class="col-md-3 control-label" for="detail">รหัสผ่าน</label>
 																<div class="col-md-3">
-                                <input  name="username" type="text"  value="<?php echo "$username"; ?>" class="form-control"></div>
+                                <input  name="password" type="text"  value="<?php echo "$password"; ?>" class="form-control"></div>
                                 </div>
 
                                 <div class="form-group">
-                                <label class="col-md-3 control-label" for="money">รหัสผ่าน</label>
+                                <label class="col-md-3 control-label" for="money">อีเมล</label>
                                 <div class="col-md-3">
-                                <input  name="password" type="text" value="<?php echo "$password"; ?>" class="form-control"></div>
+                                <input  name="email" type="text" value="<?php echo "$email"; ?>" class="form-control"></div>
                                 </div>
+
+																<div class="form-group">
+            											<label class="col-lg-3 control-label" for="select">สถานะ</label>
+            												<div class="col-lg-3">
+              												<select class="form-control" name="status" id="select">
+                												<option value="<?=$status?>" ><?php
+                  												if ($status == 500) {
+                    												echo "ผู้ดูแลระบบ";
+                  												}else if ($status == 100) {
+                    												echo "สมาชิก";
+                  												}else if ($status == 0) {
+                    												echo "ผู้บริหาร";
+                  												}
+                												?></option>
+                												<option value="0" >ผู้บริหาร</option>
+                												<option value="100" >สมาชิก</option>
+                												<option value="500" >ผู้ดูแลระบบ</option>
+              												</select>
+            												</div>
+          												</div>
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">

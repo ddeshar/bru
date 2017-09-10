@@ -1,4 +1,5 @@
 <?php
+$status_array = array('500' => 'ผู้ดูแลระบบ','100' => 'สมาชิก','0' => 'ผู้บริหาร' );
 $page = 'blank';
 $title = 'Blank Page';
 $css = <<<EOT
@@ -102,21 +103,11 @@ require_once('include/_header.php');
                   <td><?=$user_id?></td>
                   <td><?=$username?></td>
                   <td><?=$email?></td>
-                  <td>
-                    <?php
-                        if ($status == 500) {
-                          echo "ผู้ดูแลระบบ";
-                        }else if ($status == 100) {
-                          echo "สมาชิก";
-                        }else if ($status == 0) {
-                          echo "ผู้บริหาร";
-        }
-                    ?>
-                    </td>
-
-                    <td align='center'><a href='user_edit.php?user_id=$user_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='user_view.php?user_id=$user_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-                    <a href='user.php?user_id=$user_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+                  <!-- แสดงเป็น array จะได้ไม่ต้อง if else ให้ยาว -->
+                  <td><?=$status_array[$status]?></td>
+                    <td align='center'><a href='user_edit.php?user_id=<?=$user_id?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <a href='user_view.php?user_id=<?=$user_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                    <a href='user.php?user_id=<?=$user_id?>' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
                   </tr>
                   <?php
 							}

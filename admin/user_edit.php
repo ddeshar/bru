@@ -103,7 +103,8 @@ if (isset($_POST["btnEdit"])) {
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="detail">รหัสผ่าน</label>
 																<div class="col-md-3">
-                                <input  name="password" type="text"  value="<?php echo "$password"; ?>" class="form-control"></div>
+																	<!-- type ควรจะเป็น password -->
+                                <input  name="password" type="password"  value="<?php echo "$password"; ?>" class="form-control"></div>
                                 </div>
 
                                 <div class="form-group">

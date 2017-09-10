@@ -71,11 +71,12 @@ if (isset($_POST["btnsubmit"])) {
                         <form class="form-horizontal" action="#" method="post">
                             <fieldset>
                                 <!-- Name input-->
-                                <div class="form-group">
+																<!-- ไม่ต้องแสดงก็ได้ -->
+                                <!-- <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">รหัส</label>
                                 <div class="col-md-3">
                                 <input id="user_id" name="user_id" type="text" placeholder="AUTO_ID" class="form-control" readonly></div>
-                                </div>
+                                </div> -->
                                 <!-- Email input-->
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="name">ชื่อผู้ใช้</label>
@@ -86,7 +87,8 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
                                 <label class="col-md-3 control-label" for="user">รหัสผ่าน</label>
                                 <div class="col-md-3">
-                                <input id="password" name="password" type="text" placeholder="PASSWORD" class="form-control"></div>
+																	<!-- ควรจะเป็น password -->
+                                <input id="password" name="password" type="password" placeholder="PASSWORD" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">

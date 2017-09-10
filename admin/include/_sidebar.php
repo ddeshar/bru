@@ -1,6 +1,6 @@
 <ul id="menu" class="page-sidebar-menu">
-    <li  <?php if($page == 'index') echo 'class="active" id="active"'; ?> >
-        <a href="index.php">
+    <li  <?php if($page == 'admin') echo 'class="active" id="active"'; ?> >
+        <a href="admin.php">
             <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
             <span class="title">หน้าแรก</span>
         </a>

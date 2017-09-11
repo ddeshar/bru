@@ -7,14 +7,12 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
-
 if (isset($_POST["btnsubmit"])) {
 		$user_id = $_POST["user_id"];
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 		$email = $_POST["email"];
 		$status = $_POST["status"];
-
 		$sql = "INSERT INTO tbl_users (user_id,username,password,email,status)
 		VALUES('$user_id','$username','$password','$email','$status')";
 		$result = mysqli_query($link, $sql);
@@ -71,11 +69,12 @@ if (isset($_POST["btnsubmit"])) {
                         <form class="form-horizontal" action="#" method="post">
                             <fieldset>
                                 <!-- Name input-->
-                                <div class="form-group">
+																<!-- ไม่ต้องแสดงก็ได้ -->
+                                <!-- <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">รหัส</label>
                                 <div class="col-md-3">
                                 <input id="user_id" name="user_id" type="text" placeholder="AUTO_ID" class="form-control" readonly></div>
-                                </div>
+                                </div> -->
                                 <!-- Email input-->
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="name">ชื่อผู้ใช้</label>
@@ -86,7 +85,8 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
                                 <label class="col-md-3 control-label" for="user">รหัสผ่าน</label>
                                 <div class="col-md-3">
-                                <input id="password" name="password" type="text" placeholder="PASSWORD" class="form-control"></div>
+																	<!-- ควรจะเป็น password -->
+                                <input id="password" name="password" type="password" placeholder="PASSWORD" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">

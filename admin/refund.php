@@ -24,7 +24,7 @@ require_once('include/_header.php');
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                              <a href="admin_refund_add.php"   class=" btn btn-custom">
+                              <a href="admin_refunds_add.php"   class=" btn btn-custom">
                                   ชำระเงิน
                                     <i class="fa fa-plus"></i>
                                 </button> </a>

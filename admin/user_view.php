@@ -7,7 +7,6 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
-
 if (isset($_GET["user_id"])) {
 		$user_id = $_GET["user_id"];
 		$sql = "SELECT * FROM tbl_users WHERE user_id='$user_id'";
@@ -71,7 +70,8 @@ if (isset($_GET["user_id"])) {
 												</div>
 													<label class="col-md-5 control-label" for="id">รหัส</label><p><?=$user_id?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$username?></p>
-													<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$password?></p>
+													<!-- ไม่ควรแสดงรหัวผ่าน -->
+													<!-- <label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?//$password?></p> -->
 													<label class="col-md-5 control-label" for="id">อีเมล</label><p><?=$email?></p>
 													<label class="col-md-5 control-label" for="id">สถานะ</label><p><?=$status?></p>
 										</div>

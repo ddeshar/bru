@@ -2,38 +2,48 @@
 $page = 'Admin';
 $title = 'Hello admin';
 $css = <<<EOT
-<!--page level css -->
+
 <!--page level css -->
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/dataTables.bootstrap.css" />
 <link href="asset/css/pages/tables.css" rel="stylesheet" type="text/css" />
+
 <!--end of page level css--><!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+?>
+<link rel="stylesheet" type="text/css" href="asset/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="asset/js/jquery-ui.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<?php
 if (isset($_POST["btnsubmit"])) {
 
-		$ref_id = $_POST["ref_id"];
+		$fak_date = $_POST["fak_date"];
 		$mem_id = $_POST["mem_id"];
-		$pro_pice = $_POST["pro_pice"];
-		$ref_date = $_POST["ref_date"];
-		$ref_moneytree = $_POST["ref_moneytree"];
-		$ref_rate = $_POST["ref_rate"];
-		$ref_picetotal = $_POST["ref_picetotal"];
-		$ref_income = $_POST["ref_income"];
-		$ref_out = $_POST["ref_out"];
+		$mem_name = $_POST["mem_name"];
 		$id_commit = $_POST["id_commit"];
+		$fak_sum = $_POST["fak_sum"];
+		//$withdraw = $_POST["withdraw"];
+		$fak_total = $_POST["fak_total"];
 
 
-
-
-		$sql = "INSERT INTO refund (ref_id,mem_id,pro_pice,ref_date,ref_moneytree,ref_rate,ref_picetotal,ref_income,ref_out,id_commit)
-		VALUES('$ref_id','$mem_id','$pro_pice','$ref_date','$ref_moneytree','$ref_rate','$ref_picetotal','$ref_income','$ref_out','$id_commit')";
+		$sql = "INSERT INTO deposit (fak_date,mem_id,id_commit,fak_sum,withdraw,fak_total)
+		VALUES('$fak_date','$mem_id','$id_commit','$fak_sum','','$fak_total')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";
-			echo "window.location='admin_refund_add.php';";
+			echo "window.location='admin_refunds_add.php';";
 			echo "</script>";
 			//header('location: admin_product.php');
 		}else{
@@ -41,8 +51,8 @@ if (isset($_POST["btnsubmit"])) {
 			// echo "<font color='red'>SQL Error</font><hr>";
 		}
 	}
-?>
 
+?>
 
 
 <aside class="right-side">
@@ -50,7 +60,7 @@ if (isset($_POST["btnsubmit"])) {
     <section class="content-header">
         <!--section starts-->
         <h1>
-            ชำระเงินคืนและดอกเบี้ย
+            เพิ่มข้อมูลการชำระเงินกู้และดอกเบี้ย
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -59,10 +69,10 @@ if (isset($_POST["btnsubmit"])) {
                 </a>
             </li>
             <li>
-                <a href="#">ข้อมูลการชำระเงินคืนและดอกเบี้ย</a>
+                <a href="#">ข้อมูลการชำระเงินกู้และดอกเบี้ย</a>
             </li>
             <li class="active">
-                เพิ่มข้อมูลการชำระเงินคืนและดอกเบี้ย
+                เพิ่มข้อมูลการชำระเงินกู้และดอกเบี้ย
             </li>
         </ol>
     </section>
@@ -77,29 +87,34 @@ if (isset($_POST["btnsubmit"])) {
                 <div class="panel panel-primary" id="hidepanel1">
 									<div class="panel-heading">
 											<h3 class="panel-title"> <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-													ชำระเงินกู้
+													เพิ่มการชำระเงินกู้และดอกเบี้ย
 											</h3>
 										</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="#" method="post">
-                            <fieldset>
-                                <!-- Name input-->
 
+											<form class="form-horizontal" action="admin_refunds_add.php" method="post" name="fak" id="fak" >
+											    <fieldset>
+											        <!-- Name input-->
 
-																<div class="form-group">
-                                <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
-                                <div class="col-md-3">
-                                <input id="mem_id" name="mem_id" type="text" placeholder="MEM-ID" class="form-control"></div>
-                                </div>
+											        <div class="form-group">
+											        <label class="col-md-3 control-label" for="birth">วันที่ชำระ</label>
+											        <div class="col-md-3">
+											        <input type="date" id="datepicker" name="ref_date" class="form-control round-form"  placeholder="DATE"></div>
+											        </div>
 
-																<div class="form-group">
-                                <label class="col-md-3 control-label" for="id">ชื่อ - สกุล</label>
-                                <div class="col-md-3">
-                                <input id="mem_name" name="mem_name" type="text" placeholder="MEM-NAME" class="form-control" readonly></div>
-                                </div>
-
-
-																<div class="form-group">
+											        <div class="form-group">
+											        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
+											        <div class="col-md-3">
+											        <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
+											        </div>
+											        <!-- Email input-->
+											        <div class="form-group">
+											        <label class="col-md-3 control-label" for="name">ชื่อสมาชิก</label>
+											        <div class="col-md-3">
+											        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
+											        </div>
+											        <!-- Message body -->
+															<div class="form-group">
                                 <label class="col-md-3 control-label" for="id">จำนวนเงินกู้</label>
                                 <div class="col-md-3">
                                 <input id="pro_pice" name="pro_pice" type="text" placeholder="PRO-PICE" class="form-control" readonly></div>
@@ -107,8 +122,11 @@ if (isset($_POST["btnsubmit"])) {
 
 																<div class="form-group">
                                 <label class="col-md-3 control-label" for="id">อัตราดอกเบี้ย</label>
-                                <div class="col-md-3">
-                                <input id="rate" name="rate" type="text" placeholder="RATE" class="form-control" readonly></div>
+                                <div class="col-md-1">
+                                <input id="rate" name="rate" type="text" placeholder="RATE" class="form-control" value="0.06" readonly> </div>
+
+																<label class=" control-label" for="id">% ต่อปี</label>
+
                                 </div>
 
 																<div class="form-group">
@@ -168,20 +186,15 @@ if (isset($_POST["btnsubmit"])) {
 
 																			</div>
 																		</div>
+											                              <!-- Form actions -->
+											        <div class="form-group">
+											            <div class="col-md-12 text-right">
 
-
-																                      <!-- Form actions -->
-                                <div class="form-group">
-                                    <div class="col-md-12 text-right">
-
-                                         <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">บันทึก</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-
-
-
+											                 <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">ฝาก</button>
+											            </div>
+											        </div>
+											    </fieldset>
+											</form>
                     </div>
                 </div>
 
@@ -202,3 +215,45 @@ require_once('include/_footer.php');
 <!-- end of page level js -->
 </body>
 </html>
+<script type="text/javascript">
+	$('#countryname_1').autocomplete({
+		source: function( request, response ) {
+			$.ajax({
+				url : 'ajax.php',
+				dataType: "json",
+				method: 'post',
+			data: {
+				 name_startsWith: request.term,
+				 type: 'country_table',
+				 row_num : 1
+			},
+			success: function( data ) {
+				response( $.map( data, function( item ) {
+					var code = item.split("|");
+						return {
+							label: code[0],
+							value: code[0],
+							data : item
+						}
+				}));
+			}
+			});
+		},
+		autoFocus: true,
+		minLength: 0,
+		select: function( event, ui ) {
+		var names = ui.item.data.split("|");
+		$('#user_id_mem').val(names[1]);
+		$('#num2').val(names[2]);
+	}
+	});
+
+</script>
+<script type="text/javascript">
+$(function() {
+    $("#num1, #num2").on("keydown keyup", sum);
+	function sum() {
+	$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
+	}
+});
+</script>

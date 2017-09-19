@@ -1,0 +1,28 @@
+
+#pichead{
+border:solid 1px white;
+width:45px;
+height:45px;
+-webkit-border-radius:10px;
+-moz-border-radius:10px;
+border-radius:10px;
+background:white;
+}
+#picheads{
+border:solid 1px black;
+width:1001px;
+height:1700px;
+-webkit-border-radius:10px;
+-moz-border-radius:10px;
+border-radius:10px;
+background:#0000;
+}
+#knowledge{
+border:solid 1px black;
+width:1000px;
+height:400px;
+-webkit-border-radius:10px;
+-moz-border-radius:10px;
+border-radius:10px;
+background:white;
+}

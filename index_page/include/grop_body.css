@@ -1,0 +1,19 @@
+
+#pichead{
+border:solid 1px white;
+width:45px;
+height:45px;
+-webkit-border-radius:10px;
+-moz-border-radius:10px;
+border-radius:10px;
+background:white;
+}
+#picheads{
+border:solid 1px black;
+width:400px;
+height:1080px;
+-webkit-border-radius:10px;
+-moz-border-radius:10px;
+border-radius:10px;
+background:white;
+}

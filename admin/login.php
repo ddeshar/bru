@@ -25,7 +25,7 @@
 
         }elseif ($row_user['status'] == 100) {
           $_SESSION['is_member'] = 100;
-          header("Location: index_member.php");
+          header("Location: ../manager");
 
         }else{
           $_SESSION['is_user'] = 0;

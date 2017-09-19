@@ -78,7 +78,7 @@ require_once('include/_header.php');
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="id">รหัสการยื่นกู้</label>
                                     <div class="col-md-3">
-                                    <input id="sub_id" name="sub_id" type="text" placeholder="ID" class="form-control"></div>
+                                    <input id="sub_id" name="sub_id" type="text" placeholder="AUTO-ID" class="form-control" readonly></div>
                                 </div>
 
                                 <div class="form-group">

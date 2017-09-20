@@ -88,7 +88,7 @@
                 </a>
             </li>
             <li <?php if($page == 'editor') echo 'class="active" id="active"'; ?> >
-                <a href="editor.php">
+                <a href="approve.php">
                     <i class="fa fa-angle-double-right"></i>
                     อนุมัติเงินกู้
                 </a>

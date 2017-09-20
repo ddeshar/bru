@@ -18,14 +18,14 @@ if (isset($_POST["btnEdit"])) {
 		$sub_objective = $_POST["sub_objective"];
 		$sub_date = $_POST["sub_date"];
 		$sub_idcardBM1 = $_POST["sub_idcardBM1"];
-		$sub_status1 = $_POST["sub_status1"];
+		$name1 = $_POST["name1"];
 		$sub_idcardBM2 = $_POST["sub_idcardBM2"];
-		$sub_status2 = $_POST["sub_status2"];
+		$name2 = $_POST["name2"];
 		$id_commit = $_POST["id_commit"];
 
 		$sql = "UPDATE submitted SET sub_id='$sub_id', mem_id='$mem_id', mem_name='$mem_name', sub_moneyloan='$sub_moneyloan',
-		sub_objective='$sub_objective',sub_date='$sub_date',sub_idcardBM1='$sub_idcardBM1',sub_status1='$sub_status1',sub_idcardBM2='$sub_idcardBM2',
-		sub_status2='$sub_status2',id_commit='$id_commit'WHERE sub_id='$id'";
+		sub_objective='$sub_objective',sub_date='$sub_date',sub_idcardBM1='$sub_idcardBM1',name1='$name1',sub_idcardBM2='$sub_idcardBM2',
+		name2='$name2',id_commit='$id_commit'WHERE sub_id='$id'";
 		// echo $sql;exit;
 		$result = mysqli_query($link, $sql);
 
@@ -52,9 +52,9 @@ if (isset($_POST["btnEdit"])) {
 			$sub_objective = $row["sub_objective"];
 			$sub_date = $row["sub_date"];
 			$sub_idcardBM1 = $row["sub_idcardBM1"];
-			$sub_status1 = $row["sub_status1"];
+			$name1 = $row["name1"];
 			$sub_idcardBM2 = $row["sub_idcardBM2"];
-			$sub_status2 = $row["sub_status2"];
+			$name2 = $row["name2"];
 			$id_commit = $row["id_commit"];
 		}else{
 			$sub_id = "";
@@ -64,9 +64,9 @@ if (isset($_POST["btnEdit"])) {
 			$sub_objective = "";
 			$sub_date = "";
 			$sub_idcardBM1 = "";
-			$sub_status1 = "";
+			$name1 = "";
 			$sub_idcardBM2 = "";
-			$sub_status2 = "";
+			$name2 = "";
 			$id_commit = "";
 		}
 	}
@@ -109,7 +109,7 @@ if (isset($_POST["btnEdit"])) {
 											</h3>
 										</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="admin_fund_edit.php" method="post">
+                        <form class="form-horizontal" action="admin_submitted_edit.php" method="post">
                             <fieldset>
 
                                 <div class="form-group">
@@ -159,9 +159,9 @@ if (isset($_POST["btnEdit"])) {
 																	</div>
 
 																	<div class="form-group">
-																			<label class="col-md-3 control-label" for="name">สถานะผู้ค้ำประกันคนที่ 1</label>
+																			<label class="col-md-3 control-label" for="name">ชื่อผู้ค้ำประกันคนที่ 1</label>
 																			<div class="col-md-3">
-																					<input  name="sub_status1" type="text"  value="<?php echo "$sub_status1"; ?>" class="form-control">
+																					<input  name="name1" type="text"  value="<?php echo "$name1"; ?>" class="form-control">
 																			</div>
 																	</div>
 
@@ -173,9 +173,9 @@ if (isset($_POST["btnEdit"])) {
 																	</div>
 
 																	<div class="form-group">
-																			<label class="col-md-3 control-label" for="name">สถานะผู้ค้ำประกันคนที่ 2</label>
+																			<label class="col-md-3 control-label" for="name">ชื่อผู้ค้ำประกันคนที่ 2</label>
 																			<div class="col-md-3">
-																					<input  name="sub_status2" type="text"  value="<?php echo "$sub_status2"; ?>" class="form-control">
+																					<input  name="name2" type="text"  value="<?php echo "$name2"; ?>" class="form-control">
 																			</div>
 																	</div>
 

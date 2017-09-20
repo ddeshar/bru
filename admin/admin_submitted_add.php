@@ -15,14 +15,14 @@ require_once('include/_header.php');
 			$sub_objective = $_POST["sub_objective"];
 			$sub_date = $_POST["sub_date"];
 			$sub_idcardBM1 = $_POST["sub_idcardBM1"];
-			$sub_status1 = $_POST["sub_status1"];
+			$name1 = $_POST["name1"];
 			$sub_idcardBM2 = $_POST["sub_idcardBM2"];
-			$sub_status2 = $_POST["sub_status2"];
+			$name2 = $_POST["name2"];
 			$id_commit = $_POST["id_commit"];
 			//$com_name = $_POST["com_name"];
 
-			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,sub_status1,sub_idcardBM2,sub_status2,id_commit)
-							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$sub_status1','$sub_idcardBM2','$sub_status2','$id_commit')";
+			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,name1,sub_idcardBM2,name2,id_commit)
+							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$name1','$sub_idcardBM2','$name2','$id_commit')";
 			$result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";
@@ -43,7 +43,7 @@ require_once('include/_header.php');
         <h1>
             เพิ่มข้อมูลการยื่นกู้กองทุน
         </h1>
-        <ol class="breadcrumb">
+        	<ol class="breadcrumb">
             <li>
                 <a href="index.php"> <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
                     Home
@@ -119,9 +119,9 @@ require_once('include/_header.php');
                                 </div>
 
 																<div class="form-group">
-                                    <label class="col-md-3 control-label" for="money">สถานะผู้ค้ำคนที่ 1</label>
+                                    <label class="col-md-3 control-label" for="money">ชื่อผู้ค้ำคนที่ 1</label>
                                     <div class="col-md-3">
-                                    <input id="sub_status1" name="sub_status1" type="text" placeholder="STATUS1" class="form-control"></div>
+                                    <input id="name1" name="name1" type="text" placeholder="NAME1" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">
@@ -131,9 +131,9 @@ require_once('include/_header.php');
                                 </div>
 
 																<div class="form-group">
-                                    <label class="col-md-3 control-label" for="money">สถานะผู้ค้ำคนที่ 2</label>
+                                    <label class="col-md-3 control-label" for="money">ชื่อผู้ค้ำคนที่ 2</label>
                                     <div class="col-md-3">
-                                    <input id="sub_status2" name="sub_status2" type="text" placeholder="STATUS2" class="form-control"></div>
+                                    <input id="name2" name="name2" type="text" placeholder="NAME2" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">

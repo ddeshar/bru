@@ -14,7 +14,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          ข้อมูลการอนุมัติ
+          ข้อมูลการยื่นกู้
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -26,7 +26,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              ข้อมูลการอนุมัติ
+              ข้อมูลการยื่นกู้
             </li>
         </ol>
     </section>
@@ -39,13 +39,13 @@ require_once('include/_header.php');
                 <div class="portlet box success">
                     <div class="portlet-title">
                         <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางรายการอนุมัติเงินกู้
+                          ข้อมูลสมาชิก
                         </div>
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                              <a href="approve_add.php"   class=" btn btn-custom">
+                              <a href="admin_submitted_add.php"   class=" btn btn-custom">
                                     เพิ่ม
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
@@ -73,54 +73,59 @@ require_once('include/_header.php');
                             </div>
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
-                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
-                                <thead>
-                                    <tr role="row">
+                          <div id="sample_editable_1_wrapper" class="">
+                              <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
+                                  <thead>
+                                      <tr role="row">
 
-                                        <th>รหัสการอนุมัติ</th>
-                                        <th>รหัสสมาชิก</th>
-                                        <th>ชื่อ-สกุล</th>
-                                        <th>จำนวนเงินทีอนุมัติ</th>
-                                        <th>วันที่อนุมัติ</th>
-                                        <th>สถานะ</th>
-                                        <th><div align ='center'>จัดการข้อมูล</div></th>
+                                          <th>รหัสสมาชิก</th>
+                                          <th>ชื่อ-สกุล</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  <?php
-                      							if (isset($_GET["sub_id"])) {
-                      								$sub_id = $_GET["sub_id"];
-                      								$sql = "delete from submitted where sub_id='$sub_id'";
-                      								$result = mysqli_query($link, $sql);
-                      							}
+                                          <th>วัน/เดือน/ปีเกิด</th>
+                                          <th>เบอร์โทร</th>
+                                          <th>สถานะ</th>
 
-                      							$sql = "select * from submitted";
-                      							$result = mysqli_query($link, $sql);
-                      							while ($row = mysqli_fetch_array($result)){
-                      								$sub_id = $row["sub_id"];
-                      								$mem_id = $row["mem_id"];
-                      								$mem_name = $row["mem_name"];
-                      								$sub_moneyloan = $row["sub_moneyloan"];
-                                      $sub_date = $row["sub_date"];
-                                      $status = $row["sub_date"];
+                                          <th><div align ='center'>จัดการข้อมูล</div></th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                        						<?php
+                        							if (isset($_GET["mem_id"])) {
+                        								$mem_id = $_GET["mem_id"];
+                        								$sql = "delete from member where mem_id='$mem_id'";
+                        								$result = mysqli_query($link, $sql);
+                        							}
 
-                      								echo "<tr>
-                      										<td>$sub_id</td>
-                      										<td>$mem_id</td>
-                      										<td>$mem_name</td>
-                      										<td>$sub_moneyloan</td>
-                                          <td>$sub_date</td>
-                                          <td>$sub_date</td>
+                        							$sql = "SELECT * FROM member
+                        		                  LEFT JOIN gender
+                        		                  ON member.id_gender = gender.id_gender
+                        		                  LEFT JOIN title
+                        		                  ON member.id_title = title.id_title
+                        		                  LEFT JOIN status
+                        		                  ON member.id_status = status.id_status
+                        			                ORDER BY mem_id ASC	";
+                        							$result = mysqli_query($link, $sql);
+                        							while ($row = mysqli_fetch_array($result)){
+                        								$mem_id = $row["mem_id"];
+                        								$id_title = $row["title"];
+                        								$mem_name = $row["mem_name"];
+                        								$mem_birthday = $row["mem_birthday"];
+                                        $mem_tel = $row["mem_tel"];
+                                        $status_mem = $row["status_mem"];
 
-                                          <td align='center'><a href='admin_submitted_edit.php?sub_id=$sub_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                                          <a href='admin_submitted_view.php?sub_id=$sub_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-                      										<a href='submitted.php?sub_id=$sub_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+
+                        								echo "<tr>
+                        										<td>$mem_id</td>
+                        										<td>$id_title $mem_name</td>
+                        										<td>$mem_birthday</td>
+                                            <td>$mem_tel</td>
+                                            <td>$status_mem</td>
+                                            <td align='center'><a href='admin_submitted_add.php?loan=$mem_id' class='btn default btn-xs purple'><i class='fa fa-money'></i></a> </td>
                                           </tr>";
-                                    }
-                      						?>
-					</tbody>
-                            </table>
+                        							}
+                        						?>
+                        					</tbody>
+                              </table>
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET--> </div>
                 </div>

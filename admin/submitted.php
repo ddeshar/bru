@@ -44,12 +44,7 @@ require_once('include/_header.php');
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
-                            <div class="btn-group">
-                              <a href="admin_submitted_add.php"   class=" btn btn-custom">
-                                    เพิ่ม
-                                    <i class="fa fa-plus"></i>
-                                </button> </a>
-                            </div>
+                            
                             <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                     Tools
@@ -110,9 +105,10 @@ require_once('include/_header.php');
 										<td>$sub_moneyloan</td>
                     <td>$sub_date</td>
 
+
                     <td align='center'><a href='admin_submitted_edit.php?sub_id=$sub_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_submitted_view.php?sub_id=$sub_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='submitted.php?sub_id=$sub_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+                    <a href='admin_submitted_view.php?sub_id=$sub_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
+
                     </tr>";
               }
 						?>

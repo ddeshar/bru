@@ -88,46 +88,46 @@ require_once('include/_header.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-						<?php
-							if (isset($_GET["mem_id"])) {
-								$mem_id = $_GET["mem_id"];
-								$sql = "delete from member where mem_id='$mem_id'";
-								$result = mysqli_query($link, $sql);
-							}
+                      						<?php
+                      							if (isset($_GET["mem_id"])) {
+                      								$mem_id = $_GET["mem_id"];
+                      								$sql = "delete from member where mem_id='$mem_id'";
+                      								$result = mysqli_query($link, $sql);
+                      							}
 
-							$sql = "SELECT * FROM member
-		                  LEFT JOIN gender
-		                  ON member.id_gender = gender.id_gender
-		                  LEFT JOIN title
-		                  ON member.id_title = title.id_title
-		                  LEFT JOIN status
-		                  ON member.id_status = status.id_status
-			                ORDER BY mem_id ASC	";
-							$result = mysqli_query($link, $sql);
-							while ($row = mysqli_fetch_array($result)){
-								$mem_id = $row["mem_id"];
-								$id_title = $row["title"];
-								$mem_name = $row["mem_name"];
-								$mem_birthday = $row["mem_birthday"];
-                $mem_tel = $row["mem_tel"];
-                $status_mem = $row["status_mem"];
+                      							$sql = "SELECT * FROM member
+                      		                  LEFT JOIN gender
+                      		                  ON member.id_gender = gender.id_gender
+                      		                  LEFT JOIN title
+                      		                  ON member.id_title = title.id_title
+                      		                  LEFT JOIN status
+                      		                  ON member.id_status = status.id_status
+                      			                ORDER BY mem_id ASC	";
+                      							$result = mysqli_query($link, $sql);
+                      							while ($row = mysqli_fetch_array($result)){
+                      								$mem_id = $row["mem_id"];
+                      								$id_title = $row["title"];
+                      								$mem_name = $row["mem_name"];
+                      								$mem_birthday = $row["mem_birthday"];
+                                      $mem_tel = $row["mem_tel"];
+                                      $status_mem = $row["status_mem"];
 
 
-								echo "<tr>
-										<td>$mem_id</td>
-										<td>$id_title $mem_name</td>
+                      								echo "<tr>
+                      										<td>$mem_id</td>
+                      										<td>$id_title $mem_name</td>
 
-										<td>$mem_birthday</td>
-                    <td>$mem_tel</td>
-                    <td>$status_mem</td>
+                      										<td>$mem_birthday</td>
+                                          <td>$mem_tel</td>
+                                          <td>$status_mem</td>
 
-                    <td align='center'><a href='admin_member_edit.php?mem_id=$mem_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_member_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-                    <a href='member.php?mem_id=$mem_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-                  </tr>";
-							}
-						?>
-					</tbody>
+                                          <td align='center'><a href='admin_member_edit.php?mem_id=$mem_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                                          <a href='admin_member_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                                          <a href='member.php?mem_id=$mem_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+                                        </tr>";
+                      							}
+                      						?>
+                      					</tbody>
                             </table>
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET--> </div>

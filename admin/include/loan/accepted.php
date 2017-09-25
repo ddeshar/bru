@@ -1,45 +1,12 @@
-<h2>คุณพีสามารถกู้ได้เลยนะ เพราะคุณพีมีจำนวนเงิน</h2>
-<?=$budget?>
-<?php
-  if (isset($_GET["loan"])) {
-    $id = $_GET["loan"];
-		$sql = "SELECT * FROM submitted WHERE sub_id='$id'";
-		$result = mysqli_query($link, $sql);
-		if (mysqli_num_rows($result) > 0) {
-			$row = mysqli_fetch_array($result);
-			$sub_id = $row["sub_id"];
-			$mem_id = $row["mem_id"];
-			$mem_name = $row["mem_name"];
-			$sub_moneyloan = $row["sub_moneyloan"];
-			$sub_objective = $row["sub_objective"];
-			$sub_date = $row["sub_date"];
-			$sub_idcardBM1 = $row["sub_idcardBM1"];
-			$sub_status1 = $row["sub_status1"];
-			$sub_idcardBM2 = $row["sub_idcardBM2"];
-			$sub_status2 = $row["sub_status2"];
-			$id_commit = $row["id_commit"];
-		}else{
-			$sub_id = "";
-			$mem_id = "";
-			$mem_name = "";
-			$sub_moneyloan = "";
-			$sub_objective = "";
-			$sub_date = "";
-			$sub_idcardBM1 = "";
-			$sub_status1 = "";
-			$sub_idcardBM2 = "";
-			$sub_status2 = "";
-			$id_commit = "";
-		}
-  }
-?>
-<form class="form-horizontal" action="approve_add.php" method="post">
+<h2><center>สามารถกู้ได้ เพราะคุณมีจำนวนเงินคือ<?=$budget?> <center></h2>
+
+<form class="form-horizontal" action="approve.php" method="post">
     <fieldset>
         <!-- Name input-->
         <div class="form-group">
-            <label class="col-md-3 control-label" for="id">รหัสการอนุมัติ</label>
+            <label class="col-md-3 control-label" for="id">รหัสการยื่นกู้</label>
             <div class="col-md-3">
-            <input id="app_id" name="app_id" type="text" placeholder="AUTO-ID" class="form-control" readonly></div>
+            <input id="sub_id" name="sub_id" type="text" placeholder="AUTO-ID" class="form-control" readonly></div>
         </div>
 
         <div class="form-group">
@@ -55,42 +22,47 @@
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label" for="name">รหัสการยื่นกู้</label>
+            <label class="col-md-3 control-label" for="name">จำนวนเงินที่ขอกู้</label>
             <div class="col-md-3">
-            <input id="sub_id" name="sub_id" type="text" placeholder="SUB-ID" class="form-control" readonly></div>
+            <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"></div>
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label" for="detail">วันที่ยื่นกู้</label>
-              <div class="col-md-3">
-            <input type="date" id="datepicker" name="sub_date" class="form-control round-form"  placeholder="DATE"></div>
+            <label class="col-md-3 control-label" for="detail">วัตถุประสงค์ในการกู้</label>
+            <div class="col-md-4">
+            <textarea class="form-control" id="sub_objective" name="sub_objective" placeholder="OBJECTIVE" rows="5"></textarea>
+            </div>
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label" for="birth">จำนวนเงินที่ขอกู้</label>
-              <div class="col-md-3">
-        <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control" readonly></div>
-            <label class=" control-label" for="id">บาท</label>
-    </div>
-
-        <div class="form-group">
-            <label class="col-md-3 control-label" for="money">สถานะการอนุมัติ</label>
-            <div class="col-md-3">
-            <input id="app_status" name="app_status" type="text" placeholder="STATUS" class="form-control" readonly></div>
+        <label class="col-md-3 control-label" for="birth">วันที่ยื่นกู้</label>
+        <div class="col-md-3">
+        <input type="date" id="datepicker" name="sub_date" class="form-control round-form"  placeholder="DATE"></div>
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label" for="money">จำนวนเงินที่อนุมัติ</label>
+            <label class="col-md-3 control-label" for="money">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label>
             <div class="col-md-3">
-            <input id="app_number" name="app_number" type="text" placeholder="MONEY" class="form-control"></div>
-            <label class=" control-label" for="id">บาท</label>
+            <input id="sub_idcardBM1" name="sub_idcardBM1" type="text" placeholder="IDCARDBM1" class="form-control"></div>
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label" for="money">วันที่อนุมัติ</label>
+            <label class="col-md-3 control-label" for="money">ชื่อผู้ค้ำคนที่ 1</label>
             <div class="col-md-3">
-          <input type="date" id="datepicker" name="app_date" class="form-control round-form"  placeholder="DATE"></div>
-      </div>
+            <input id="name1" name="name1" type="text" placeholder="NAME1" class="form-control"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="money">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 2</label>
+            <div class="col-md-3">
+            <input id="sub_idcardBM2" name="sub_idcardBM2" type="text" placeholder="IDCARDBM2" class="form-control"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="money">ชื่อผู้ค้ำคนที่ 2</label>
+            <div class="col-md-3">
+            <input id="name2" name="name2" type="text" placeholder="NAME2" class="form-control"></div>
+        </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label" for="name">ชื่อกรรมการ</label>

@@ -82,15 +82,21 @@
         </a>
         <ul class="sub-menu">
             <li <?php if($page == 'form_examples') echo 'class="active" id="active"'; ?> >
+                <a href="all_member_loan.php">
+                    <i class="fa fa-angle-double-right"></i>
+                    ชื่อสมาชิกทั้งหมด
+                </a>
+            </li>
+            <li <?php if($page == 'form_examples') echo 'class="active" id="active"'; ?> >
                 <a href="submitted.php">
                     <i class="fa fa-angle-double-right"></i>
-                    ยื่นกู้
+                    รอการอนุมัติ
                 </a>
             </li>
             <li <?php if($page == 'editor') echo 'class="active" id="active"'; ?> >
                 <a href="approve.php">
                     <i class="fa fa-angle-double-right"></i>
-                    อนุมัติเงินกู้
+                    อนุมัติเงินกู้แล้ว
                 </a>
             </li>
             <li <?php if($page == 'promise') echo 'class="active" id="active"'; ?> >

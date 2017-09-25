@@ -11,11 +11,11 @@
                 <h1><?=$budget?></h1>
                 <h2>จำนวนเงินมึงคือ</h2>
                 <div class="error-details">
-                  ไม่ให้กู้นะมึง เงินฝากก็ไม่มีแล้วจะกูอีไอฟัสสสสสสส
+                  ไม่สามารถกู้ได้ เงินฝากก็ไม่มีแล้วจะกูอีไอฟัสสสสสสส
                 </div>
                 <div class="error-actions">
-                    <a href="#" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>Take Me Home </a>
-                    <a href="#" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+                    <a href="all_member_loan.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+                    <a href="all_member_loan.php" class="btn btn-primary btn-lg"><span class="#"></span> ตกลง </a>
                 </div>
             </div>
         </div>

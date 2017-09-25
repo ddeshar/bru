@@ -22,10 +22,11 @@ if (isset($_POST["btnEdit"])) {
 		$sub_idcardBM2 = $_POST["sub_idcardBM2"];
 		$name2 = $_POST["name2"];
 		$id_commit = $_POST["id_commit"];
+		$id_sapp = $_POST["id_sapp"];
 
 		$sql = "UPDATE submitted SET sub_id='$sub_id', mem_id='$mem_id', mem_name='$mem_name', sub_moneyloan='$sub_moneyloan',
 		sub_objective='$sub_objective',sub_date='$sub_date',sub_idcardBM1='$sub_idcardBM1',name1='$name1',sub_idcardBM2='$sub_idcardBM2',
-		name2='$name2',id_commit='$id_commit'WHERE sub_id='$id'";
+		name2='$name2',id_commit='$id_commit',id_sapp='$id_sapp' WHERE sub_id='$id'";
 		// echo $sql;exit;
 		$result = mysqli_query($link, $sql);
 
@@ -189,6 +190,40 @@ if (isset($_POST["btnEdit"])) {
 																						while ($row=mysqli_fetch_array($result)){
 																					?>
 																					<option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
+																					<?php
+																						}
+																					?>
+																					</select>
+																				</div>
+																	</div>
+
+																	<div class="form-group">
+																		<label class="col-md-3 control-label" for="commit">ชื่อกรรมการ</label>
+																		<div class="col-md-3">
+																	<select class="form-control" name="id_commit" id="id_commit">
+																					<?php
+																						$sql="SELECT * FROM commits";
+																						$result = mysqli_query($link, $sql);
+																						while ($row=mysqli_fetch_array($result)){
+																					?>
+																					<option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
+																					<?php
+																						}
+																					?>
+																					</select>
+																				</div>
+																	</div>
+
+																	<div class="form-group">
+																		<label class="col-md-3 control-label" for="commit">สถานะการอนุมัติ</label>
+																		<div class="col-md-3">
+																	<select class="form-control" name="id_sapp" id="id_sapp">
+																					<?php
+																						$sql="SELECT * FROM statusb_app";
+																						$result = mysqli_query($link, $sql);
+																						while ($row=mysqli_fetch_array($result)){
+																					?>
+																					<option value="<?=$row['id_sapp']?>"> <?=$row['status_app']?></option>
 																					<?php
 																						}
 																					?>

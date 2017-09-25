@@ -19,10 +19,11 @@ require_once('include/_header.php');
 			$sub_idcardBM2 = $_POST["sub_idcardBM2"];
 			$name2 = $_POST["name2"];
 			$id_commit = $_POST["id_commit"];
+			$id_sapp = $_POST["id_sapp"];
 			//$com_name = $_POST["com_name"];
 
-			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,name1,sub_idcardBM2,name2,id_commit)
-							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$name1','$sub_idcardBM2','$name2','$id_commit')";
+			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,name1,sub_idcardBM2,name2,id_commit,id_sapp)
+							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$name1','$sub_idcardBM2','$name2','$id_commit','$id_sapp')";
 			$result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";

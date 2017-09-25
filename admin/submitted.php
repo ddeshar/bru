@@ -44,7 +44,7 @@ require_once('include/_header.php');
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
-                            
+
                             <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                     Tools
@@ -77,42 +77,44 @@ require_once('include/_header.php');
                                         <th>ชื่อ-สกุล</th>
                                         <th>จำนวนเงินที่ขอกู้</th>
                                         <th>วันที่กู้ยืม</th>
+                                        <th>สถานะการอนุมัติ</th>
                                         <th><div align ='center'>จัดการข้อมูล</div></th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-						<?php
-							if (isset($_GET["sub_id"])) {
-								$sub_id = $_GET["sub_id"];
-								$sql = "delete from submitted where sub_id='$sub_id'";
-								$result = mysqli_query($link, $sql);
-							}
+                      						<?php
+                      							if (isset($_GET["sub_id"])) {
+                      								$sub_id = $_GET["sub_id"];
+                      								$sql = "delete from submitted where sub_id='$sub_id'";
+                      								$result = mysqli_query($link, $sql);
+                      							}
 
-							$sql = "select * from submitted";
-							$result = mysqli_query($link, $sql);
-							while ($row = mysqli_fetch_array($result)){
-								$sub_id = $row["sub_id"];
-								$mem_id = $row["mem_id"];
-								$mem_name = $row["mem_name"];
-								$sub_moneyloan = $row["sub_moneyloan"];
-                $sub_date = $row["sub_date"];
+                      							$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp ";
+                      							$result = mysqli_query($link, $sql);
+                      							while ($row = mysqli_fetch_array($result)){
+                      								$sub_id = $row["sub_id"];
+                      								$mem_id = $row["mem_id"];
+                      								$mem_name = $row["mem_name"];
+                      								$sub_moneyloan = $row["sub_moneyloan"];
+                                      $sub_date = $row["sub_date"];
+                                      $id_sapp = $row["status_app"];
 
-								echo "<tr>
-										<td>$sub_id</td>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-										<td>$sub_moneyloan</td>
-                    <td>$sub_date</td>
+                      								echo "<tr>
+                      										<td>$sub_id</td>
+                      										<td>$mem_id</td>
+                      										<td>$mem_name</td>
+                      										<td>$sub_moneyloan</td>
+                                          <td>$sub_date</td>
+                                          <td>$id_sapp</td>
+
+                                          <td align='center'><a href='admin_submitted_edit.php?sub_id=$sub_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a>
 
 
-                    <td align='center'><a href='admin_submitted_edit.php?sub_id=$sub_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_submitted_view.php?sub_id=$sub_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
-
-                    </tr>";
-              }
-						?>
-					</tbody>
+                                          </tr>";
+                                    }
+                      						?>
+                      					</tbody>
                             </table>
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET--> </div>

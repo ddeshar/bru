@@ -95,7 +95,7 @@ require_once('include/_header.php');
                       								$result = mysqli_query($link, $sql);
                       							}
 
-                      							$sql = "select * from submitted";
+                      							$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp WHERE status_app = 'อนุมัติ'";
                       							$result = mysqli_query($link, $sql);
                       							while ($row = mysqli_fetch_array($result)){
                       								$sub_id = $row["sub_id"];
@@ -103,7 +103,7 @@ require_once('include/_header.php');
                       								$mem_name = $row["mem_name"];
                       								$sub_moneyloan = $row["sub_moneyloan"];
                                       $sub_date = $row["sub_date"];
-                                      $status = $row["sub_date"];
+                                      $id_sapp = $row["status_app"];
 
                       								echo "<tr>
                       										<td>$sub_id</td>
@@ -111,7 +111,7 @@ require_once('include/_header.php');
                       										<td>$mem_name</td>
                       										<td>$sub_moneyloan</td>
                                           <td>$sub_date</td>
-                                          <td>$sub_date</td>
+                                          <td>$id_sapp</td>
 
                                           <td align='center'><a href='admin_submitted_edit.php?sub_id=$sub_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
                                           <a href='admin_submitted_view.php?sub_id=$sub_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |

@@ -122,12 +122,6 @@ require_once('include/_header.php');
 																</div>
 
 																<div class="form-group">
-																		<label class="col-md-3 control-label" for="number">เลขที่สัญญา</label>
-																		<div class="col-md-3">
-																		<input id="pro_number" name="pro_number" type="text" placeholder="PRO-NUMBER" class="form-control"></div>
-																</div>
-
-																<div class="form-group">
 																<label class="col-md-3 control-label" for="date">วันที่จ่ายเงินกู้</label>
 																<div class="col-md-3">
 																<input type="date" id="datepicker" name="pay_date" class="form-control round-form"  placeholder="DATE"></div>

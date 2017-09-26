@@ -27,7 +27,7 @@ if (isset($_POST["btnEdit"])) {
 		$id_commit = $_POST["id_commit"];
 		$id_sapp = $_POST["id_sapp"];
 
-		$sql = "UPDATE promise SET  mem_id='$mem_id',mem_name='$mem_name', mem_idcard='$mem_idcard',sub_id='$sub_id', app_pice='$app_pice',sub_date='$sub_date',pro_date='$pro_date', pro_date='$pro_date', pro_number='$pro_number',sub_moneyloan='$sub_moneyloan',sub_idcardBM1='$sub_idcardBM1',sub_idcardBM2='$sub_idcardBM2', name1='$name1',name2='$name2',pro_redate='$pro_redate', id_commit='$id_commit',id_sapp='$id_sapp' WHERE pro_id='$id'";
+		$sql = "UPDATE promise SET  mem_id='$mem_id',mem_name='$mem_name', mem_idcard='$mem_idcard',sub_id='$sub_id', app_pice='$app_pice',sub_date='$sub_date',pro_date='$pro_date', pro_date='$pro_date', pro_number='$pro_number',sub_moneyloan='$sub_moneyloan',sub_idcardBM1='$sub_idcardBM1',sub_idcardBM2='$sub_idcardBM2', name1='$name1',name2='$name2',pro_redate='$pro_redate',id_commit='$id_commit',id_sapp='$id_sapp' WHERE pro_id='$id'";
 
 		$result = mysqli_query($link, $sql);
 
@@ -103,7 +103,7 @@ if (isset($_POST["btnEdit"])) {
                 </a>
             </li>
             <li>
-                <a href="#">แก้ไขข้อมูลการอนุมัติเงินกูู้้</a>
+                <a href="#">แก้ไขข้อมูลการอนุมัติเงินกูู้</a>
             </li>
             <li class="active">
                 แก้ไขข้อมูลการอนุมัติเงินกู้
@@ -132,7 +132,7 @@ if (isset($_POST["btnEdit"])) {
                                 <div class="form-group">
                                     <label for="id" class="col-md-3 control-label">รหัสการการอนุมัติ</label>
                                     <div class="col-md-3">
-                                    <input  name="pro_id" type="text" type="text" value="<?php echo "$pro_id"; ?>" class="form-control"></div>
+                                    <input  name="pro_id"  type="text" value="<?php echo "$pro_id"; ?>" class="form-control"></div>
                                 </div>
 
                                 <div class="form-group">
@@ -275,7 +275,7 @@ if (isset($_POST["btnEdit"])) {
                                     <div class="col-md-12 text-right">
 
 																			<input type ="hidden" name="id" value="<?=$pro_id?>">
-                                      <button name="btnEdit" type="submit" value="แก้ไขข้อมูลการยื่นกู้" class="btn btn-primary">บันทึก</button>
+                                      <button name="btnEdit" type="submit" value="แก้ไขข้อมูลการทำสัญญา" class="btn btn-primary">บันทึก</button>
                                     </div>
                                 </div>
                             </fieldset>

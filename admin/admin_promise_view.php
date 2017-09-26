@@ -97,7 +97,7 @@ if (isset($_GET["pro_id"])) {
 												<div class="container">
 													<h2><?=$mem_name?><p></h2>
 												</div>
-													<label class="col-md-5 control-label" for="id">รหัสกการการทำสัญญา</label><p><?=$pro_id?></p>
+													<label class="col-md-5 control-label" for="id">รหัสการทำสัญญา</label><p><?=$pro_id?></p>
 													<label class="col-md-5 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลสมาชิก</label><p><?=$mem_name?></p>
 													<label class="col-md-5 control-label" for="id">เลขที่บัตรประจำตัวประชาชาชน</label><p><?=$mem_idcard?></p>

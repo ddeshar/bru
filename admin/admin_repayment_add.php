@@ -8,26 +8,26 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 	if (isset($_POST["btnsubmit"])) {
-			$pay_id = $POST["pay_id"];
-			$mem_id = $POST["mem_id"];
-			$mem_name = $POST["mem_name"];
-			$mem_idcard = $POST["mem_idcard"];
-			$pro_id = $POST["pro_id"];
-			$pro_number = $POST["pro_number"];
-			$pro_pice = $POST["pro_pice"];
-			$date_sent = $POST["date_sent"];
-			$pay_date = $POST["pay_date"];
-			$pay_pice = $POST["pay_pice"];
-			$id_committee = $POST["id_committee"];
-			$com_name = $POST["com_name"];
+			$pay_id = $_POST["pay_id"];
+			$mem_id = $_POST["mem_id"];
+			$mem_name = $_POST["mem_name"];
+			$mem_idcard = $_POST["mem_idcard"];
+			$pro_id = $_POST["pro_id"];
+			$pro_number = $_POST["pro_number"];
+			$pro_pice = $_POST["pro_pice"];
+			$date_sent = $_POST["date_sent"];
+			$pay_date = $_POST["pay_date"];
+			$pay_pice = $_POST["pay_pice"];
+			$id_commit = $_POST["id_commit"];
 
-			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,pro_number,pro_pice,date_sent,pay_date,pay_pice,id_committee,com_name)
-							VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$pro_number','$pro_pice','$date_sent','$pay_date','$pay_pice','$id_committee','$com_name')";
+
+			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,pro_number,pro_pice,date_sent,pay_date,pay_pice,id_commit)
+							VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$pro_number','$pro_pice','$date_sent','$pay_date','$pay_pice','$id_commit')";
 			$result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";
 				echo "alert('เพิมเสร็จแล้ว');";
-				echo "window.location='funds.php';";
+				echo "window.location='repayment.php';";
 				echo "</script>";
 			}else{
 				die("Query Failed" . mysqli_error($link));
@@ -70,7 +70,7 @@ require_once('include/_header.php');
 											</h3>
 										</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="admin_fund_add.php" method="post">
+                        <form class="form-horizontal" action="admin_repayment_add.php" method="post">
                             <fieldset>
                                 <!-- Name input-->
                                 <div class="form-group">

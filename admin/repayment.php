@@ -14,7 +14,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          ข้อมูลการจ่ายเงินกู้ให้ผู้กู้
+          ข้อมูลการจ่ายเงิน ให้ผู้กู้
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -26,7 +26,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              ข้อมูลการจ่ายเงินกู้ให้ผู้กู้
+              ข้อมูลการจ่ายเงิน ให้ผู้กู้
             </li>
         </ol>
     </section>
@@ -39,7 +39,7 @@ require_once('include/_header.php');
                 <div class="portlet box success">
                     <div class="portlet-title">
                         <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางข้อมูลการจ่ายเงินกู้ให้ผู้กู้
+                          ตารางข้อมูลการจ่ายเงิน ให้ผู้กู้
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -113,7 +113,7 @@ require_once('include/_header.php');
                     <td>$pay_pice</td>
                     <td>$pay_date</td>
                     <td align='center'><a href='admin_repayment_edit.php?pay_id=$pay_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_repament_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                    <a href='admin_repayment_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
 										<a href='repayment.php?pay_id=$pay_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
                     </tr>";
               }

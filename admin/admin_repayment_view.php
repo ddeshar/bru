@@ -8,38 +8,49 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-if (isset($_GET["sub_id"])) {
-		$sub_id = $_GET["sub_id"];
-		$sql = "SELECT * FROM submitted
-						LEFT JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp
-						LEFT JOIN commits ON submitted.id_commit = commits.id_commit
-						WHERE sub_id='$sub_id'";
+if (isset($_GET["pro_id"])) {
+		$pro_id = $_GET["pro_id"];
+		$sql = "SELECT * FROM promise
+						LEFT JOIN member ON promise.mem_id = member.mem_id
+						LEFT JOIN statusb_app ON promise.id_sapp = statusb_app.id_sapp
+						LEFT JOIN commits ON promise.id_commit = commits.id_commit
+						WHERE pro_id='$pro_id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
-			$sub_id = $row["sub_id"];
+			$pro_id = $row["pro_id"];
 			$mem_id = $row["mem_id"];
 			$mem_name = $row["mem_name"];
-			$sub_moneyloan = $row["sub_moneyloan"];
-			$sub_objective = $row["sub_objective"];
+			$mem_idcard = $row["mem_idcard"];
+			$sub_id = $row["sub_id"];
+			$app_pice = $row["app_pice"];
 			$sub_date = $row["sub_date"];
+			$pro_date = $row["pro_date"];
+			$pro_number = $row["pro_number"];
+			$sub_moneyloan = $row["sub_moneyloan"];
 			$sub_idcardBM1 = $row["sub_idcardBM1"];
-			$name1 = $row["name1"];
 			$sub_idcardBM2 = $row["sub_idcardBM2"];
+			$name1 = $row["name1"];
 			$name2 = $row["name2"];
+			$pro_redate = $row["pro_redate"];
 			$id_commit = $row["name_commit"];
-			$id_sapp = $row["status_app"];
+			$id_sapp = $row["id_sapp"];
 		}else{
-			$sub_id = "";
+			$pro_id = "";
 			$mem_id = "";
 			$mem_name = "";
-			$sub_moneyloan = "";
-			$sub_objective = "";
+			$mem_idcard = "";
+			$sub_id = "";
+			$app_pice = "";
 			$sub_date = "";
+			$pro_date = "";
+			$pro_number = "";
+			$sub_moneyloan = "";
 			$sub_idcardBM1 = "";
-			$sub_status1 = "";
 			$sub_idcardBM2 = "";
-			$sub_status2 = "";
+			$name1 = "";
+			$name2 = "";
+			$pro_redate = "";
 			$id_commit = "";
 			$id_sapp = "";
 		}
@@ -53,7 +64,7 @@ if (isset($_GET["sub_id"])) {
     <section class="content-header">
         <!--section starts-->
         <h1>
-          ข้อมูลการอนุมัติเงินกู้
+          ข้อมูลการการทำสัญญากู้เงิน
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -62,10 +73,10 @@ if (isset($_GET["sub_id"])) {
                 </a>
             </li>
             <li>
-                <a href="#">ข้อมูลการอนุมัติเงินกู้</a>
+                <a href="#">ข้อมูลการการทำสัญญากู้เงินกู้</a>
             </li>
             <li class="active">
-                ข้อมูลการอนุมัตเงินิกู้
+                ข้อมูลการการทำสัญญากู้เงิน
             </li>
         </ol>
     </section>
@@ -75,7 +86,7 @@ if (isset($_GET["sub_id"])) {
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title"> <i class="livicon" data-name="credit-card" data-size="20" data-loop="true" data-c="#fff" data-hc="#fff"></i>
-                      รายงานรายละเอียดข้อมูลการอนุมัติเงินกู้
+                      รายงานรายละเอียดข้อมูลการการทำสัญญากู้เงิน
                     </h3>
                 </div>
                 <div class="row">
@@ -86,18 +97,23 @@ if (isset($_GET["sub_id"])) {
 												<div class="container">
 													<h2><?=$mem_name?><p></h2>
 												</div>
-													<label class="col-md-5 control-label" for="id">รหัสกการยื่นกู้</label><p><?=$sub_id?></p>
+													<label class="col-md-5 control-label" for="id">รหัสกการการทำสัญญา</label><p><?=$pro_id?></p>
 													<label class="col-md-5 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลสมาชิก</label><p><?=$mem_name?></p>
-													<label class="col-md-5 control-label" for="id">จำนวนเงินที่ขอกู้</label><p><?=$sub_moneyloan?></p>
-													<label class="col-md-5 control-label" for="id">วัตถุประสงค์ในการขอกู้</label><p><?=$sub_objective?></p>
-													<label class="col-md-5 control-label" for="id">วันที่ยื่นกู้</label><p><?=$sub_date?></p>
-													<label class="col-md-5 control-label" for="id">เลขที่บัตรผู้ค้ำประกันคนที่ 1</label><p><?=$sub_idcardBM1?></p>
-													<label class="col-md-5 control-label" for="id">ชื่อผู้ค้ำประกันคนที่ 1</label><p><?=$name1?></p>
-													<label class="col-md-5 control-label" for="id">เลขที่บัตรผู้ค้ำประกันคนที่ 2้</label><p><?=$sub_idcardBM2?></p>
-													<label class="col-md-5 control-label" for="id">ชื่อผู้ค้ำประกันคนที่ 2</label><p><?=$name2?></p>
+													<label class="col-md-5 control-label" for="id">เลขที่บัตรประจำตัวประชาชาชน</label><p><?=$mem_idcard?></p>
+													<label class="col-md-5 control-label" for="id">รหัสการอนุมัติ</label><p><?=$sub_id?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินที่อนุมัติ</label><p><?=$app_pice?></p>
+													<label class="col-md-5 control-label" for="id">วันที่อนุมัติ</label><p><?=$sub_date?></p>
+													<label class="col-md-5 control-label" for="id">วันที่ทำสัญญา</label><p><?=$pro_date?></p>
+													<label class="col-md-5 control-label" for="id">เลขทีสัญญา</label><p><?=$pro_number?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?=$sub_moneyloan?></p>
+													<label class="col-md-5 control-label" for="id">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label><p><?=$sub_idcardBM1?></p>
+													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลผู้ค้ำคนที่ 1</label><p><?=$name1?></p>
+													<label class="col-md-5 control-label" for="id">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label><p><?=$sub_idcardBM2?></p>
+													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลผู้ค้ำคนที่ 2</label><p><?=$name2?></p>
+													<label class="col-md-5 control-label" for="id">วันครบกำหนดส่ง</label><p><?=$pro_redate?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อกรรมการ</label><p><?=$id_commit?></p>
-													<label class="col-md-5 control-label" for="id">สถานะการกู้เงิน</label><p><?=$id_sapp?></p>
+
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">

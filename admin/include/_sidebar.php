@@ -108,7 +108,7 @@
             <li <?php if($page == 'repayment') echo 'class="active" id="active"'; ?> >
                 <a href="repayment.php">
                     <i class="fa fa-angle-double-right"></i>
-                    จ่ายเงินกู้
+                    จ่ายเงิน ให้ผู้กู้
                 </a>
             </li>
             <li <?php if($page == 'refund') echo 'class="active" id="active"'; ?> >

@@ -123,7 +123,7 @@ require_once('include/_header.php');
 																	</div>
 
 																	<div class="form-group">
-	                                    <label class="col-md-3 control-label" for="money">จำนวนเงินที่อนุมัติ</label>
+	                                    <label class="col-md-3 control-label" for="money">จำนวนเงินที่ขอกู้</label>
 	                                    <div class="col-md-3">
 	                                    <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"></div>
 	                                </div>
@@ -146,7 +146,7 @@ require_once('include/_header.php');
 																			<input id="pro_number" name="pro_number" type="text" placeholder="PRO-NUMBER" class="form-control"></div>
 																	</div>
 																	<div class="form-group">
-																			<label class="col-md-3 control-label" for="money">จำนวนเงินกู้</label>
+																			<label class="col-md-3 control-label" for="money">จำนวนเงินที่อนุมัติ</label>
 																			<div class="col-md-3">
 																			<input id="app_pice" name="app_pice" type="text" placeholder="MONEY" class="form-control"></div>
 																	</div>

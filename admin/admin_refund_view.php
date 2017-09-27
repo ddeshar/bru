@@ -1,6 +1,6 @@
 <?php
 $page = 'Admin';
-$title = 'Hello admin';
+$title = 'refund';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
@@ -8,47 +8,39 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-if (isset($_GET["mem_id"])) {
-		$mem_id = $_GET["mem_id"];
-		$sql = "SELECT * FROM member
-						LEFT JOIN gender
-						ON member.id_gender = gender.id_gender
-						LEFT JOIN title
-						ON member.id_title = title.id_title
-						LEFT JOIN status
-						ON member.id_status = status.id_status
-						ORDER BY mem_id ASC
-		";
-		$result = mysqli_query($link, $sql);
-		if (mysqli_num_rows($result) > 0) {
+if (isset($_GET["ref_id"])) {
+		$ref_id = $_GET["ref_id"];
+		$sql = "SELECT * FROM refund
+						LEFT JOIN member ON refund.mem_id = member.mem_id
+						LEFT JOIN commits ON submitted.id_commit = commits.id_commit WHERE ref_id='$ref_id'";
+
+		 	$result = mysqli_query($link, $sql);
+		 			if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
+			$ref_id = $row["ref_id"];
 			$mem_id = $row["mem_id"];
-			$mem_idcard = $row["mem_idcard"];
-			$id_gender = $row["gender_name"];
-			$id_title = $row["title"];
 			$mem_name = $row["mem_name"];
-			$mem_birthday = $row["mem_birthday"];
-			$id_status = $row["status_name"];
-			$mem_occupation = $row["mem_occupation"];
-			$mem_address =$row["mem_address"];
-			$mem_tel = $row["mem_tel"];
-			$mem_email = $row["mem_email"];
-			$mem_username = $row["mem_username"];
-			$mem_password = $row["mem_password"];
+			$pro_pice = $row["pro_pice"];
+			$ref_date = $row["ref_date"];
+			$ref_moneytree = $row["ref_moneytree"];
+			$ref_rate = $row["ref_rate"];
+			$ref_picetotal = $row["ref_picetotal"];
+			$ref_income = $row["ref_income"];
+			$ref_out =$row["ref_out"];
+			$id_commit = $row["id_commit"];
+
 		}else{
+			$ref_id = "";
 			$mem_id = "";
-			$mem_idcard = "";
-			$id_gender = "";
-			$id_title = "";
 			$mem_name = "";
-			$mem_birthday = "";
-			$id_status = "";
-			$mem_occupation ="";
-			$mem_address = "";
-			$mem_tel = "";
-			$mem_email = "";
-			$mem_username = "";
-			$mem_password = "";
+			$pro_pice = "";
+			$ref_date = "";
+			$ref_moneytree = "";
+			$ref_rate = "";
+			$ref_picetotal ="";
+			$ref_income = "";
+			$ref_out = "";
+			$id_commit = "";
 
 		}
 	}
@@ -61,7 +53,7 @@ if (isset($_GET["mem_id"])) {
     <section class="content-header">
         <!--section starts-->
         <h1>
-          ข้อมูลสมาชิก
+          ข้อมูลการชำระเงินกู้และดอกเบี้ย
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -70,20 +62,20 @@ if (isset($_GET["mem_id"])) {
                 </a>
             </li>
             <li>
-                <a href="#">ข้อมูลสมาชิก</a>
+                <a href="#">ข้อมูลการชำระเงินกู้และดอกเบี้ย</a>
             </li>
             <li class="active">
-                ข้อมูลสมาชิก
+                ข้อมูลการชำระเงินกู้และดอกเบี้ย
             </li>
         </ol>
     </section>
     <!--section ends-->
 		<section class="content paddingleft_right15">
         <div class="row col-md-12">
-            <div class="panel panel-success">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"> <i class="livicon" data-name="credit-card" data-size="20" data-loop="true" data-c="#fff" data-hc="#fff"></i>
-                      รายงานรายละเอียดข้อมูลสมาชิก
+                      รายงานรายละเอียดข้อมูลการชำระเงินกู้และดอกเบี้ย
                     </h3>
                 </div>
                 <div class="row">
@@ -92,21 +84,20 @@ if (isset($_GET["mem_id"])) {
 										</div> -->
 										<div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
 												<div class="container">
-													<h2><?=$id_title?> <?=$mem_name?><p></h2>
+													<h2><?=$mem_name?><p></h2>
 												</div>
+													<label class="col-md-5 control-label" for="id">รหัสการชำระ</label><p><?=$ref_id?></p>
 													<label class="col-md-5 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
-													<label class="col-md-5 control-label" for="id">เลขที่บัตรประชาชน</label><p><?=$mem_idcard?></p>
-													<label class="col-md-5 control-label" for="id">เพศ</label><p><?=$id_gender?></p>
-													<label class="col-md-5 control-label" for="id">คำนำหน้าชื่อ</label><p><?=$id_title?></p>
-													<label class="col-md-5 control-label" for="id">ชื่อ-สกุล</label><p><?=$mem_name?></p>
-													<label class="col-md-5 control-label" for="id">วันเกิด</label><p><?=$mem_birthday?></p>
-													<label class="col-md-5 control-label" for="id">สถานภาพ</label><p><?=$id_status?></p>
-													<label class="col-md-5 control-label" for="id">อาชีพ</label><p><?=$mem_occupation?></p>
-													<label class="col-md-5 control-label" for="id">ที่อยู่</label><p><?=$mem_address?></p>
-													<label class="col-md-5 control-label" for="id">เบอร์โทร</label><p><?=$mem_tel?></p>
-													<label class="col-md-5 control-label" for="id">อีเมล</label><p><?=$mem_email?></p>
-													<label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$mem_username?></p>
-													<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$mem_password?></p>
+													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลสมาชิก</label><p><?=$mem_name?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?=$pro_pice?></p>
+													<label class="col-md-5 control-label" for="id">วันที่ชำระ</label><p><?=$ref_date?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินต้น</label><p><?=$ref_moneytree?></p>
+													<label class="col-md-5 control-label" for="id">ดอกเบี้ยที่ชำระ</label><p><?=$ref_rate?></p>
+													<label class="col-md-5 control-label" for="id">รวมเงินต้นและดอกเบี้ยที่ชำระ</label><p><?=$ref_picetotal?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินที่รับมา</label><p><?=$ref_income?></p>
+													<label class="col-md-5 control-label" for="id">เงินทอน</label><p><?=$ref_out?></p>
+													<label class="col-md-5 control-label" for="id">ผู้รับชำระ</label><p><?=$id_commit?></p>
+
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">

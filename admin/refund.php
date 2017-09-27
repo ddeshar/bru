@@ -97,7 +97,7 @@ require_once('include/_header.php');
                     <td>$ref_picetotal</td>
                     <td>$ref_date</td>
 
-                    <td align='center'><a href='admin_refund_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
+                    <td align='center'><a href='admin_refund_view.php?ref_id=$ref_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
 									</tr>";
 							}
 						?>

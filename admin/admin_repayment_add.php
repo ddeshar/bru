@@ -80,19 +80,19 @@ require_once('include/_header.php');
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
+                                    <label class="col-md-3 control-label" for="mem_id">รหัสสมาชิก</label>
                                     <div class="col-md-3">
                                     <input id="mem_id" name="mem_id" type="text" placeholder="MEM-ID" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">
-                                    <label class="col-md-3 control-label" for="name">ชื่อ-สกุลสมาชิก</label>
+                                    <label class="col-md-3 control-label" for="mem_name">ชื่อ-สกุลสมาชิก</label>
                                     <div class="col-md-3">
                                     <input id="mem_name" name="mem_name" type="text" placeholder="MEM-NAME" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">
-                                    <label class="col-md-3 control-label" for="idcard">เลขที่บัตรประชาชนสมาชิก</label>
+                                    <label class="col-md-3 control-label" for="mem_idcard">เลขที่บัตรประชาชนสมาชิก</label>
                                     <div class="col-md-3">
                                     <input id="mem_idcard" name="mem_idcard" type="text" placeholder="MEM-IDCARD" class="form-control"></div>
                                 </div>

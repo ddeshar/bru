@@ -61,7 +61,7 @@ require_once('include/_header.php');
                                         <th>ชื่อ-สกุล</th>
                                         <th>รวมเงินที่คืนทั้งหมด</th>
                                         <th>วันที่รับชำระ</th>
-                                        <th>ดูข้อมูล</th>
+                                        <th><center>ดูข้อมูล</center></th>
 
                                     </tr>
                                 </thead>
@@ -97,7 +97,7 @@ require_once('include/_header.php');
                     <td>$ref_picetotal</td>
                     <td>$ref_date</td>
 
-                    <td><a href='admin_refund_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
+                    <td align='center'><a href='admin_refund_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
 									</tr>";
 							}
 						?>

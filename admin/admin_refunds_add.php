@@ -28,17 +28,22 @@ require_once('include/_header.php');
 <?php
 if (isset($_POST["btnsubmit"])) {
 
-		$fak_date = $_POST["fak_date"];
+		$ref_id = $_POST["ref_id"];
 		$mem_id = $_POST["mem_id"];
 		$mem_name = $_POST["mem_name"];
+		$pro_pice = $_POST["pro_pice"];
+		$ref_date = $_POST["ref_date"];
+		$ref_moneytree = $_POST["ref_moneytree"];
+		$ref_rate = $_POST["ref_rate"];
+		$ref_picetotal = $_POST["ref_picetotal"];
+		$ref_income = $_POST["ref_income"];
+		$ref_out = $_POST["ref_out"];
 		$id_commit = $_POST["id_commit"];
-		$fak_sum = $_POST["fak_sum"];
-		//$withdraw = $_POST["withdraw"];
-		$fak_total = $_POST["fak_total"];
 
 
-		$sql = "INSERT INTO deposit (fak_date,mem_id,id_commit,fak_sum,withdraw,fak_total)
-		VALUES('$fak_date','$mem_id','$id_commit','$fak_sum','','$fak_total')";
+
+		$sql = "INSERT INTO refund (ref_id,mem_id,mem_name,pro_pice,ref_date,ref_moneytree,ref_rate,ref_picetotal,ref_income,ref_out,id_commit)
+		VALUES('$ref_id','$mem_id','$mem_name','$pro_pice','$ref_date','$ref_moneytree','$ref_rate','$ref_picetotal','$ref_income','$ref_out','$id_commit')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
@@ -124,46 +129,45 @@ if (isset($_POST["btnsubmit"])) {
                                 <label class="col-md-3 control-label" for="id">อัตราดอกเบี้ย</label>
                                 <div class="col-md-1">
                                 <input id="rate" name="rate" type="text" placeholder="RATE" class="form-control" value="0.06" readonly> </div>
-
 																<label class=" control-label" for="id">% ต่อปี</label>
-
                                 </div>
 
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="birth">วันที่รับชำระ</label>
-																<div class="col-md-3">
-																<input type="date" id="datepicker" name="ref_date" class="form-control round-form"  placeholder="REF-DATE"></div>
-																</div>
+
 
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">เงินต้นที่คืน</label>
                                 <div class="col-md-3">
-                                <input id="ref_moneytree" name="ref_moneytree" type="text" placeholder="REF-MONEY" class="form-control"></div>
-                                </div>
+                                <input id="num1" name="ref_moneytree" type="text" placeholder="REF-MONEY" class="form-control"></div>
+																	<label class=" control-label" for="id">บาท</label>
+																</div>
                                 <!-- Email input-->
                                 <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">อัตราดอกเบี้ยที่ชำระ</label>
+                                <label class="col-md-3 control-label" for="name">ดอกเบี้ยที่ชำระ</label>
                                 <div class="col-md-3">
-                                <input id="ref_rate" name="ref_rate" type="text" placeholder="REF-RATE" class="form-control"></div>
-                                </div>
+                                <input id="num2" name="ref_rate" type="text" placeholder="REF-RATE" class="form-control"></div>
+																<label class=" control-label" for="id">บาท</label>
+																</div>
 
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">รวมเงินต้นและดอกเบี้ยที่ชำระ</label>
 																<div class="col-md-3">
-																<input id="ref_picetotal" name="ref_picetotal" type="text" placeholder="PRICE-TOTAL" class="form-control"></div>
+																<input id="sum" name="ref_picetotal" type="text" placeholder="PRICE-TOTAL" class="form-control"></div>
+																<label class=" control-label" for="id">บาท</label>
 																</div>
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">จำนวนเงินที่รับมา</label>
 																<div class="col-md-3">
-																<input id="ref_income" name="ref_income" type="text" placeholder="INCOME" class="form-control"></div>
+																<input id="num3" name="ref_income" type="text" placeholder="INCOME" class="form-control"></div>
+																<label class=" control-label" for="id">บาท</label>
 																</div>
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">เงินทอน</label>
 																<div class="col-md-3">
-																<input id="ref_out" name="ref_out" type="text" placeholder="REF-OUT" class="form-control" readonly></div>
+																<input id="sum_out" name="ref_out" type="text" placeholder="REF-OUT" class="form-control" readonly></div>
+																<label class=" control-label" for="id">บาท</label>
 																</div>
 
 
@@ -190,7 +194,7 @@ if (isset($_POST["btnsubmit"])) {
 											        <div class="form-group">
 											            <div class="col-md-12 text-right">
 
-											                 <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">ฝาก</button>
+											                 <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">บันทึก</button>
 											            </div>
 											        </div>
 											    </fieldset>
@@ -254,6 +258,12 @@ $(function() {
     $("#num1, #num2").on("keydown keyup", sum);
 	function sum() {
 	$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
+	}
+});
+$(function() {
+    $("#sum, #num3").on("keydown keyup", sum);
+	function sum() {
+	$("#sum_out").val(Number($("#num3").val()) - Number($("#sum").val()));
 	}
 });
 </script>

@@ -128,7 +128,7 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
                                 <label class="col-md-3 control-label" for="id">อัตราดอกเบี้ย</label>
                                 <div class="col-md-1">
-                                <input id="rate" name="rate" type="text" placeholder="RATE" class="form-control" value="0.06" readonly> </div>
+                                <input id="percentage" name="rate" type="text" placeholder="RATE" class="form-control" value="6" readonly> </div>
 																<label class=" control-label" for="id">% ต่อปี</label>
                                 </div>
 
@@ -140,11 +140,12 @@ if (isset($_POST["btnsubmit"])) {
                                 <input id="num1" name="ref_moneytree" type="text" placeholder="REF-MONEY" class="form-control"></div>
 																	<label class=" control-label" for="id">บาท</label>
 																</div>
-                                <!-- Email input-->
+
+
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="name">ดอกเบี้ยที่ชำระ</label>
                                 <div class="col-md-3">
-                                <input id="num2" name="ref_rate" type="text" placeholder="REF-RATE" class="form-control"></div>
+                                <input id="num2" name="ref_rate" type="text" placeholder="REF-RATE" class="form-control" readonly></div>
 																<label class=" control-label" for="id">บาท</label>
 																</div>
 
@@ -152,7 +153,7 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">รวมเงินต้นและดอกเบี้ยที่ชำระ</label>
 																<div class="col-md-3">
-																<input id="sum" name="ref_picetotal" type="text" placeholder="PRICE-TOTAL" class="form-control"></div>
+																<input id="sum" name="ref_picetotal" type="text" placeholder="PRICE-TOTAL" class="form-control" readonly></div>
 																<label class=" control-label" for="id">บาท</label>
 																</div>
 
@@ -255,15 +256,22 @@ require_once('include/_footer.php');
 </script>
 <script type="text/javascript">
 $(function() {
+    $("#percentage, #num1").on("keydown keyup", sum);
+		function sum() {
+		$("#num2").val(Number($("#num1").val()) /100 * Number($("#percentage").val()) *2);
+	}
+});
+$(function() {
     $("#num1, #num2").on("keydown keyup", sum);
-	function sum() {
-	$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
+		function sum() {
+		$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
 	}
 });
 $(function() {
     $("#sum, #num3").on("keydown keyup", sum);
-	function sum() {
-	$("#sum_out").val(Number($("#num3").val()) - Number($("#sum").val()));
+		function sum() {
+		$("#sum_out").val(Number($("#num3").val()) - Number($("#sum").val()));
 	}
 });
+
 </script>

@@ -28,7 +28,7 @@ if (isset($_GET["pay_id"])) {
 			$date_sent = $row["date_sent"];
 			$pay_date = $row["pay_date"];
 			$pay_pice = $row["pay_pice"];
-			$id_commit = $row["id_commit"];
+			$id_commit = $row["name_commit"];
 		}else{
 			$pay_id = "";
 			$mem_id = "";

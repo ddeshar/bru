@@ -162,15 +162,8 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">จำนวนเงินที่ต้องชำระต่องวด</label>
 																<div class="col-md-3">
-																<input id="aa" name="pay" type="text" placeholder="PAY" class="form-control" readonly></div>
+																<input id="pay" name="pay" type="text" placeholder="PAY" class="form-control" readonly></div>
 																<label class=" control-label" for="id">บาทต่องวด</label>
-																</div>
-
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="name">ค้างชำระคงเหลือ</label>
-																<div class="col-md-3">
-																<input id="bb" name="owe" type="text" placeholder="OWE" class="form-control" readonly></div>
-																<label class=" control-label" for="id">บาท</label>
 																</div>
 
 																<div class="form-group">
@@ -184,6 +177,13 @@ if (isset($_POST["btnsubmit"])) {
 																<label class="col-md-3 control-label" for="name">เงินทอน</label>
 																<div class="col-md-3">
 																<input id="sum_out" name="ref_out" type="text" placeholder="REF-OUT" class="form-control" readonly></div>
+																<label class=" control-label" for="id">บาท</label>
+																</div>
+
+																<div class="form-group">
+																<label class="col-md-3 control-label" for="name">ค้างชำระคงเหลือ</label>
+																<div class="col-md-3">
+																<input id="owe" name="owe" type="text" placeholder="OWE" class="form-control" readonly></div>
 																<label class=" control-label" for="id">บาท</label>
 																</div>
 
@@ -270,16 +270,10 @@ require_once('include/_footer.php');
 
 </script>
 <script type="text/javascript">
-$(function() { //ค้างชำระคงเหลือ
-    $("#sum, #aa").on("keydown keyup", sum);
-		function sum() {
-		$("#bb").val(Number($("#sum").val()) - Number($("#aa").val()));
-	}
-});
 $(function() { //เงินต้น + ดอกเบี้ย / 24
     $("#num1, #num2").on("keydown keyup", sum);
 		function sum() {
-		$("#aa").val((Number($("#num1").val()) + Number($("#num2").val())) /24);
+		$("#pay").val((Number($("#num1").val()) + Number($("#num2").val())) /24);
 	}
 });
 $(function() {//เงินต้นและดอกเบืี้ยที่ต้องชำระทั้งหมด ระยะเวลา 2 ปี
@@ -294,11 +288,16 @@ $(function() { //เงินต้น + ดอกเบีย
 		$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
 	}
 });
-$(function() {//เงินทอน
-    $("#aa, #num3").on("keydown keyup", sum);
+$(function() { //ค้างชำระคงเหลือ
+    $("#sum, #pay").on("keydown keyup", sum);
 		function sum() {
-		$("#sum_out").val(Number($("#num3").val()) - Number($("#aa").val()));
+		$("#owe").val(Number($("#sum").val()) - Number($("#pay").val()));
 	}
 });
-
+$(function() {//เงินทอน
+    $("#pay, #num3").on("keydown keyup", sum);
+		function sum() {
+		$("#sum_out").val(Number($("#num3").val()) - Number($("#pay").val()));
+	}
+});
 </script>

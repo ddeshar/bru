@@ -36,6 +36,8 @@ if (isset($_POST["btnsubmit"])) {
 		$ref_moneytree = $_POST["ref_moneytree"];
 		$ref_rate = $_POST["ref_rate"];
 		$ref_picetotal = $_POST["ref_picetotal"];
+		$pay = $_POST["pay"];
+		$owe = $_POST["owe"];
 		$ref_income = $_POST["ref_income"];
 		$ref_out = $_POST["ref_out"];
 		$id_commit = $_POST["id_commit"];
@@ -135,7 +137,7 @@ if (isset($_POST["btnsubmit"])) {
 
 
                                 <div class="form-group">
-                                <label class="col-md-3 control-label" for="id">เงินต้นที่คืน</label>
+                                <label class="col-md-3 control-label" for="id">เงินต้น</label>
                                 <div class="col-md-3">
                                 <input id="num1" name="ref_moneytree" type="text" placeholder="REF-MONEY" class="form-control"></div>
 																	<label class=" control-label" for="id">บาท</label>
@@ -158,6 +160,20 @@ if (isset($_POST["btnsubmit"])) {
 																</div>
 
 																<div class="form-group">
+																<label class="col-md-3 control-label" for="name">จำนวนเงินที่ต้องชำระต่องวด</label>
+																<div class="col-md-3">
+																<input id="aa" name="pay" type="text" placeholder="PAY" class="form-control" readonly></div>
+																<label class=" control-label" for="id">บาทต่องวด</label>
+																</div>
+
+																<div class="form-group">
+																<label class="col-md-3 control-label" for="name">ค้างชำระคงเหลือ</label>
+																<div class="col-md-3">
+																<input id="bb" name="owe" type="text" placeholder="OWE" class="form-control" readonly></div>
+																<label class=" control-label" for="id">บาท</label>
+																</div>
+
+																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">จำนวนเงินที่รับมา</label>
 																<div class="col-md-3">
 																<input id="num3" name="ref_income" type="text" placeholder="INCOME" class="form-control"></div>
@@ -170,7 +186,6 @@ if (isset($_POST["btnsubmit"])) {
 																<input id="sum_out" name="ref_out" type="text" placeholder="REF-OUT" class="form-control" readonly></div>
 																<label class=" control-label" for="id">บาท</label>
 																</div>
-
 
                                 <!-- Message body -->
 																<div class="form-group">
@@ -255,22 +270,34 @@ require_once('include/_footer.php');
 
 </script>
 <script type="text/javascript">
-$(function() {
+$(function() { //ค้างชำระคงเหลือ
+    $("#sum, #aa").on("keydown keyup", sum);
+		function sum() {
+		$("#bb").val(Number($("#sum").val()) - Number($("#aa").val()));
+	}
+});
+$(function() { //เงินต้น + ดอกเบี้ย / 24
+    $("#num1, #num2").on("keydown keyup", sum);
+		function sum() {
+		$("#aa").val((Number($("#num1").val()) + Number($("#num2").val())) /24);
+	}
+});
+$(function() {//เงินต้นและดอกเบืี้ยที่ต้องชำระทั้งหมด ระยะเวลา 2 ปี
     $("#percentage, #num1").on("keydown keyup", sum);
 		function sum() {
 		$("#num2").val(Number($("#num1").val()) /100 * Number($("#percentage").val()) *2);
 	}
 });
-$(function() {
+$(function() { //เงินต้น + ดอกเบีย
     $("#num1, #num2").on("keydown keyup", sum);
 		function sum() {
 		$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
 	}
 });
-$(function() {
-    $("#sum, #num3").on("keydown keyup", sum);
+$(function() {//เงินทอน
+    $("#aa, #num3").on("keydown keyup", sum);
 		function sum() {
-		$("#sum_out").val(Number($("#num3").val()) - Number($("#sum").val()));
+		$("#sum_out").val(Number($("#num3").val()) - Number($("#aa").val()));
 	}
 });
 

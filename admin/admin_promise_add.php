@@ -4,11 +4,27 @@ $title = 'Hello Admin';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/dataTables.bootstrap.css" />
+<link href="asset/css/pages/tables.css" rel="stylesheet" type="text/css" />
+
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
 ?>
+<link rel="stylesheet" type="text/css" href="asset/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="asset/js/jquery-ui.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 <div class="row">
 	<aside class="right-side">
@@ -98,17 +114,17 @@ require_once('include/_header.php');
 	                                    <input id="pro_id" name="pro_id" type="text" placeholder="ID" class="form-control" readonly></div>
 	                                </div>
 
-	                                <div class="form-group">
-	                                    <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
-	                                    <div class="col-md-3">
-	                                    <input id="mem_id" name="mem_id" type="text" placeholder="MEM-ID" class="form-control"></div>
-	                                </div>
-
 																	<div class="form-group">
-	                                    <label class="col-md-3 control-label" for="name">ชื่อ-สกุลสมาชิก</label>
-	                                    <div class="col-md-3">
-	                                    <input id="mem_name" name="mem_name" type="text" placeholder="MEM-NAME" class="form-control"></div>
-	                                </div>
+													        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
+													        <div class="col-md-3">
+													        <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
+													        </div>
+													        <!-- Email input-->
+													        <div class="form-group">
+													        <label class="col-md-3 control-label" for="name">ชื่อ</label>
+													        <div class="col-md-3">
+													        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
+													        </div>
 
 																	<div class="form-group">
 	                                    <label class="col-md-3 control-label" for="idcard">เลขที่บัตรประชาชนสมาชิก</label>
@@ -243,3 +259,38 @@ require_once('include/_footer.php');
 <!-- end of page level js -->
 </body>
 </html>
+<script type="text/javascript">
+	$('#countryname_1').autocomplete({
+		source: function( request, response ) {
+			$.ajax({
+				url : 'ajax_promise_add.php',
+				dataType: "json",
+				method: 'post',
+			data: {
+				 name_startsWith: request.term,
+				 type: 'country_table',
+				 row_num : 1
+			},
+			success: function( data ) {
+				response( $.map( data, function( item ) {
+					var code = item.split("|");
+						return {
+							label: code[0],
+							value: code[0],
+							data : item
+						}
+				}));
+			}
+			});
+		},
+		autoFocus: true,
+		minLength: 0,
+		select: function( event, ui ) {
+		var names = ui.item.data.split("|");
+		$('#user_id_mem').val(names[1]);
+		$('#mem_idcard').val(names[2]);
+		$('#sub_moneyloan').val(names[3]);
+	}
+	});
+
+</script>

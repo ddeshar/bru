@@ -271,33 +271,16 @@ require_once('include/_footer.php');
 </script>
 <script type="text/javascript">
 $(function() { //เงินต้น + ดอกเบี้ย / 24
-    $("#num1, #num2").on("keydown keyup", sum);
-		function sum() {
-		$("#pay").val((Number($("#num1").val()) + Number($("#num2").val())) /24);
-	}
+    $("#num1").on("keyup", function(){
+			$("#num2").val(parseFloat($('#num1').val())*2*6/100);
+			$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
+			$("#pay").val(parseFloat($('#sum').val())/24);
+		});
+
+		$("#num3").on("keyup", function(){
+			$("#sum_out").val(parseFloat($(this).val())-parseFloat($('#pay').val()));
+			$("#owe").val(parseFloat($('#sum').val())-parseFloat($('#pay').val()));
+		});
 });
-$(function() {//เงินต้นและดอกเบืี้ยที่ต้องชำระทั้งหมด ระยะเวลา 2 ปี
-    $("#percentage, #num1").on("keydown keyup", sum);
-		function sum() {
-		$("#num2").val(Number($("#num1").val()) /100 * Number($("#percentage").val()) *2);
-	}
-});
-$(function() { //เงินต้น + ดอกเบีย
-    $("#num1, #num2").on("keydown keyup", sum);
-		function sum() {
-		$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
-	}
-});
-$(function() { //ค้างชำระคงเหลือ
-    $("#sum, #pay").on("keydown keyup", sum);
-		function sum() {
-		$("#owe").val(Number($("#sum").val()) - Number($("#pay").val()));
-	}
-});
-$(function() {//เงินทอน
-    $("#pay, #num3").on("keydown keyup", sum);
-		function sum() {
-		$("#sum_out").val(Number($("#num3").val()) - Number($("#pay").val()));
-	}
-});
+
 </script>

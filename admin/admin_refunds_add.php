@@ -274,7 +274,9 @@ $(function() { //เงินต้น + ดอกเบี้ย / 24
     $("#num1").on("keyup", function(){
 			$("#num2").val(parseFloat($('#num1').val())*2*6/100);
 			$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
+			// Decimal
 			$("#pay").val(parseFloat($('#sum').val())/24);
+			$('#pay').val(Math.round($('#sum').val()) / 100);
 		});
 
 		$("#num3").on("keyup", function(){

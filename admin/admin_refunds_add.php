@@ -227,9 +227,27 @@ if (isset($_POST["btnsubmit"])) {
 require_once('refund.php');
 ?>
 <!-- right-side -->
+
+
 <?php
 require_once('include/_footer.php');
 ?>
+<script type="text/javascript">
+$(function() { //เงินต้น + ดอกเบี้ย / 24
+	$("#num1").on("keyup", function(){
+		$("#num2").val(parseFloat($('#num1').val())*2*6/100);
+		$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
+		// Decimal
+		$("#pay").val(parseFloat(Math.round($('#sum').val()) / 24).toFixed(2));
+	});
+
+	$("#num3").on("keyup", function(){
+		$("#sum_out").val(parseFloat(Math.round($(this).val())-parseFloat($('#pay').val())).toFixed(2));
+		$("#owe").val(parseFloat($('#sum').val())-parseFloat($('#pay').val()));
+	});
+});
+</script>
+
 <!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 <!-- end of page level js -->
@@ -269,20 +287,6 @@ require_once('include/_footer.php');
 	});
 
 </script>
-<script type="text/javascript">
-$(function() { //เงินต้น + ดอกเบี้ย / 24
-    $("#num1").on("keyup", function(){
-			$("#num2").val(parseFloat($('#num1').val())*2*6/100);
-			$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
-			// Decimal
-			$("#pay").val(parseFloat($('#sum').val())/24);
-			$('#pay').val(Math.round($('#sum').val()) / 100);
-		});
 
-		$("#num3").on("keyup", function(){
-			$("#sum_out").val(parseFloat($(this).val())-parseFloat($('#pay').val()));
-			$("#owe").val(parseFloat($('#sum').val())-parseFloat($('#pay').val()));
-		});
-});
-
-</script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->

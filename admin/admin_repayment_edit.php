@@ -37,9 +37,9 @@ if (isset($_POST["btnEdit"])) {
 	}else{
 		$id = $_GET["pay_id"];
 		$sql = "SELECT * FROM repayment
-						LEFT JOIN member ON repayment.mem_id = member.mem_id
-						LEFT JOIN promise ON repayment.pro_id = promise.pro_id
-						LEFT JOIN commits ON repayment.id_commit = commits.id_commit
+						-- LEFT JOIN member ON repayment.mem_id = member.mem_id
+						-- LEFT JOIN promise ON repayment.pro_id = promise.pro_id
+						-- LEFT JOIN commits ON repayment.id_commit = commits.id_commit
 						WHERE pay_id='$id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {

@@ -112,7 +112,8 @@ require_once('include/_header.php');
 										<td>$pro_pice</td>
                     <td>$pay_pice</td>
                     <td>$pay_date</td>
-                    <td align='center'><a href='admin_repayment_edit.php?pay_id=$pay_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <td align='center'>
+                    <a href='admin_repayment_edit.php?pay_id=$pay_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
                     <a href='admin_repayment_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
 										<a href='repayment.php?pay_id=$pay_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
                     </tr>";

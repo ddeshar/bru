@@ -270,19 +270,17 @@ require_once('include/_footer.php');
 
 </script>
 <script type="text/javascript">
-$(function() { //เงินต้น + ดอกเบี้ย / 24
-    $("#num1").on("keyup", function(){
-			$("#num2").val(parseFloat($('#num1').val())*2*6/100);
-			$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
-			// Decimal
-			$("#pay").val(parseFloat($('#sum').val())/24);
-			$('#pay').val(Math.round($('#sum').val()) / 100);
-		});
+ $(function() { //เงินต้น + ดอกเบี้ย / 24
+ 	$("#num1").on("keyup", function(){
+		$("#num2").val(parseFloat($('#num1').val())*2*6/100);
+ 		$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
+ 		// Decimal
+ 		$("#pay").val(parseFloat(Math.round($('#sum').val()) / 24).toFixed(0));
+ 	});
 
-		$("#num3").on("keyup", function(){
-			$("#sum_out").val(parseFloat($(this).val())-parseFloat($('#pay').val()));
-			$("#owe").val(parseFloat($('#sum').val())-parseFloat($('#pay').val()));
-		});
-});
-
-</script>
+ 	$("#num3").on("keyup", function(){
+ 		$("#sum_out").val(parseFloat(Math.round($(this).val())-parseFloat($('#pay').val())).toFixed(0));
+ 		$("#owe").val(parseFloat($('#sum').val())-parseFloat($('#pay').val()));
+	});
+ });
+ </script>

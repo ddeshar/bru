@@ -60,6 +60,7 @@ require_once('include/_header.php');
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>รวมเงินที่คืนทั้งหมด</th>
+                                        <th>ค้างชำระ</th>
                                         <th>วันที่รับชำระ</th>
                                         <th><center>ดูข้อมูล</center></th>
 
@@ -77,6 +78,7 @@ require_once('include/_header.php');
               refund.mem_id,
               member.mem_name,
               refund.ref_picetotal,
+              refund.owe,
               refund.ref_date
               FROM refund LEFT JOIN member
               ON refund.mem_id=member.mem_id";
@@ -86,6 +88,7 @@ require_once('include/_header.php');
 								$mem_id = $row["mem_id"];
 								$mem_name = $row["mem_name"];
                 $ref_picetotal = $row["ref_picetotal"];
+                $owe = $row["owe"];
                 $ref_date = $row["ref_date"];
 
 
@@ -95,6 +98,7 @@ require_once('include/_header.php');
 										<td>$mem_id</td>
 										<td>$mem_name</td>
                     <td>$ref_picetotal</td>
+                    <td>$owe</td>
                     <td>$ref_date</td>
 
                     <td align='center'><a href='admin_refund_view.php?ref_id=$ref_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>

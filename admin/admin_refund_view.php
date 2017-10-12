@@ -75,7 +75,7 @@ require_once('include/_header.php');
                                 $ref_date = $row["ref_date"];
 																$mem_id = $row["mem_id"];
 																$mem_name = $row["mem_name"];
-																$pro_pice = $row["pro_pice"];
+																$sub_moneyloan = $row["sub_moneyloan"];
 																$pay = $row["pay"];
 																$owe = $row["owe"];
 
@@ -84,7 +84,7 @@ require_once('include/_header.php');
                                       <td>$ref_date</td>
 																			<td>$mem_id</td>
 																			<td>$mem_name</td>
-																			<td>$pro_pice</td>
+																			<td>$sub_moneyloan</td>
 																			<td>$pay</td>
 																			<td>$owe</td>
 																	</tr>";

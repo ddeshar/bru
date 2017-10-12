@@ -31,7 +31,7 @@ if (isset($_POST["btnsubmit"])) {
 		$ref_id = $_POST["ref_id"];
 		$mem_id = $_POST["mem_id"];
 		$mem_name = $_POST["mem_name"];
-		$pro_pice = $_POST["pro_pice"];
+		$sub_moneyloan = $_POST["sub_moneyloan"];
 		$ref_date = $_POST["ref_date"];
 		$ref_moneytree = $_POST["ref_moneytree"];
 		$ref_rate = $_POST["ref_rate"];
@@ -44,8 +44,8 @@ if (isset($_POST["btnsubmit"])) {
 
 
 
-		$sql = "INSERT INTO refund (ref_id,mem_id,mem_name,pro_pice,ref_date,ref_moneytree,ref_rate,ref_picetotal,ref_income,ref_out,id_commit)
-		VALUES('$ref_id','$mem_id','$mem_name','$pro_pice','$ref_date','$ref_moneytree','$ref_rate','$ref_picetotal','$ref_income','$ref_out','$id_commit')";
+		$sql = "INSERT INTO refund (ref_id,mem_id,mem_name,sub_moneyloan,ref_date,ref_moneytree,ref_rate,ref_picetotal,ref_income,ref_out,id_commit)
+		VALUES('$ref_id','$mem_id','$mem_name','$sub_moneyloan','$ref_date','$ref_moneytree','$ref_rate','$ref_picetotal','$ref_income','$ref_out','$id_commit')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
@@ -124,7 +124,7 @@ if (isset($_POST["btnsubmit"])) {
 															<div class="form-group">
                                 <label class="col-md-3 control-label" for="id">จำนวนเงินกู้</label>
                                 <div class="col-md-3">
-                                <input id="pro_pice" name="pro_pice" type="text" placeholder="PRO-PICE" class="form-control" readonly></div>
+                                <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="PICE" class="form-control" readonly></div>
                                 </div>
 
 																<div class="form-group">
@@ -232,27 +232,15 @@ require_once('refund.php');
 <?php
 require_once('include/_footer.php');
 ?>
-<script type="text/javascript">
-$(function() { //เงินต้น + ดอกเบี้ย / 24
-	$("#num1").on("keyup", function(){
-		$("#num2").val(parseFloat($('#num1').val())*2*6/100);
-		$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
-		// Decimal
-		$("#pay").val(parseFloat(Math.round($('#sum').val()) / 24).toFixed(2));
-	});
 
-	$("#num3").on("keyup", function(){
-		$("#sum_out").val(parseFloat(Math.round($(this).val())-parseFloat($('#pay').val())).toFixed(2));
-		$("#owe").val(parseFloat($('#sum').val())-parseFloat($('#pay').val()));
-	});
-});
-</script>
+
 
 <!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 <!-- end of page level js -->
 </body>
 </html>
+
 <script type="text/javascript">
 	$('#countryname_1').autocomplete({
 		source: function( request, response ) {
@@ -282,12 +270,12 @@ $(function() { //เงินต้น + ดอกเบี้ย / 24
 		select: function( event, ui ) {
 		var names = ui.item.data.split("|");
 		$('#user_id_mem').val(names[1]);
-		$('#num2').val(names[2]);
+		$('#sub_moneyloan').val(names[2]);
 	}
 	});
 
 </script>
-<<<<<<< HEAD
+
 <script type="text/javascript">
  $(function() { //เงินต้น + ดอกเบี้ย / 24
  	$("#num1").on("keyup", function(){
@@ -303,8 +291,3 @@ $(function() { //เงินต้น + ดอกเบี้ย / 24
 	});
  });
  </script>
-=======
-
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
->>>>>>> 9df5b48fdfc644d3524ff038455a5a9786c9741d

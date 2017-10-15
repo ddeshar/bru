@@ -12,4 +12,5 @@ if($_POST['type'] == 'country_table'){
 		array_push($data, $name);
 	}
 	echo json_encode($data);
+	
 }

@@ -63,14 +63,14 @@ require_once('include/_header.php');
 													<tbody>
 														<?php
                             if (isset($_GET["ref_id"])) {
-                            $ref_id = $_GET["ref_id"];
+                            $mem_id = $_GET["ref_id"];
                             $sql = "SELECT * FROM refund
                             LEFT JOIN member ON refund.mem_id = member.mem_id
                             LEFT JOIN commits ON refund.id_commit = commits.id_commit
-                            WHERE ref_id='$ref_id'";
+                            WHERE refund.mem_id='$mem_id'";
 
                                 $result = mysqli_query($link, $sql);
-  															while ($row = mysqli_fetch_array($result)) {
+  															while ($row = mysqli_fetch_assoc($result)) {
 																$ref_id = $row["ref_id"];
                                 $ref_date = $row["ref_date"];
 																$mem_id = $row["mem_id"];

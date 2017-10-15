@@ -28,7 +28,7 @@ require_once('include/_header.php');
 <?php
 if (isset($_POST["btnsubmit"])) {
 
-		$fak_date = $_POST["fak_date"];
+		// $fak_date = $_POST["fak_date"];
 		$mem_id = $_POST["mem_id"];
 		$mem_name = $_POST["mem_name"];
 		$id_commit = $_POST["id_commit"];
@@ -37,8 +37,8 @@ if (isset($_POST["btnsubmit"])) {
 		$fak_total = $_POST["fak_total"];
 
 
-		$sql = "INSERT INTO deposit (fak_date,mem_id,id_commit,fak_sum,withdraw,fak_total)
-		VALUES('$fak_date','$mem_id','$id_commit','$fak_sum','','$fak_total')";
+		$sql = "INSERT INTO deposit (fak_date,mem_id,id_commit,fak_sum,fak_total)
+		VALUES(NOW(),'$mem_id','$id_commit','$fak_sum','$fak_total')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
@@ -95,12 +95,12 @@ if (isset($_POST["btnsubmit"])) {
 											<form class="form-horizontal" action="admin_deposit_add.php" method="post" name="fak" id="fak" >
 											    <fieldset>
 											        <!-- Name input-->
-
+<!--
 											        <div class="form-group">
 											        <label class="col-md-3 control-label" for="birth">วันที่ฝาก</label>
 											        <div class="col-md-3">
 											        <input type="date" id="datepicker" name="fak_date" class="form-control round-form"  placeholder="DATE"></div>
-											        </div>
+											        </div> -->
 
 											        <div class="form-group">
 											        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>

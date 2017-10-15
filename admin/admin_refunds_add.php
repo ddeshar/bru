@@ -27,12 +27,12 @@ require_once('include/_header.php');
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <?php
 if (isset($_POST["btnsubmit"])) {
-
-		$ref_id = $_POST["ref_id"];
+// var_dump($_POST); exit();
+		// $ref_id = $_POST["ref_id"];
 		$mem_id = $_POST["mem_id"];
 		$mem_name = $_POST["mem_name"];
 		$sub_moneyloan = $_POST["sub_moneyloan"];
-		$ref_date = $_POST["ref_date"];
+		// $ref_date = $_POST["ref_date"];
 		$ref_moneytree = $_POST["ref_moneytree"];
 		$ref_rate = $_POST["ref_rate"];
 		$ref_picetotal = $_POST["ref_picetotal"];
@@ -41,11 +41,9 @@ if (isset($_POST["btnsubmit"])) {
 		$ref_income = $_POST["ref_income"];
 		$ref_out = $_POST["ref_out"];
 		$id_commit = $_POST["id_commit"];
-
-
-
-		$sql = "INSERT INTO refund (ref_id,mem_id,mem_name,sub_moneyloan,ref_date,ref_moneytree,ref_rate,ref_picetotal,ref_income,ref_out,id_commit)
-		VALUES('$ref_id','$mem_id','$mem_name','$sub_moneyloan','$ref_date','$ref_moneytree','$ref_rate','$ref_picetotal','$ref_income','$ref_out','$id_commit')";
+		$sql = "INSERT INTO refund (mem_id,mem_name,sub_moneyloan,ref_date,ref_moneytree,ref_rate,pay,owe,ref_picetotal,ref_income,ref_out,id_commit)
+		VALUES('$mem_id','$mem_name','$sub_moneyloan',NOW(),'$ref_moneytree','$ref_rate','$pay','$owe','$ref_picetotal','$ref_income','$ref_out','$id_commit')";
+		// echo $sql; exit;
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
@@ -103,11 +101,11 @@ if (isset($_POST["btnsubmit"])) {
 											    <fieldset>
 											        <!-- Name input-->
 
-											        <div class="form-group">
+											        <!-- <div class="form-group">
 											        <label class="col-md-3 control-label" for="birth">วันที่ชำระ</label>
 											        <div class="col-md-3">
 											        <input type="date" id="datepicker" name="ref_date" class="form-control round-form"  placeholder="DATE"></div>
-											        </div>
+											        </div> -->
 
 											        <div class="form-group">
 											        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
@@ -124,7 +122,7 @@ if (isset($_POST["btnsubmit"])) {
 															<div class="form-group">
                                 <label class="col-md-3 control-label" for="id">จำนวนเงินกู้</label>
                                 <div class="col-md-3">
-                                <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="PICE" class="form-control" readonly></div>
+                                <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="PRICE" class="form-control" readonly></div>
                                 </div>
 
 																<div class="form-group">

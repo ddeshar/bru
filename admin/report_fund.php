@@ -30,15 +30,11 @@ require_once('include/_header.php');
     </section>
     <section class="content">
       <div class="portlet-body">
-          <?php
-          // count data by today
-            // เลือกทั้งหมดจากฐานข้อมูลโดยเข้าเงื่อนไขว่า (เลือกเฉพาะวันนี้)
-            $query = "SELECT * FROM `deposit` WHERE fak_date = CURRENT_DATE()";
-            // คำสั่งการเชื่อมต่อฐานข้อมูล
-            $select_all_deposit = mysqli_query($link,$query);
-            // นับจำนวนตามเงื่อนไขในฐานข้อมูล
-            $deposit_count = mysqli_num_rows($select_all_deposit);
-          ?>
+        <?php
+          $query = "SELECT * FROM member ";
+          $select_all_deposit = mysqli_query($link,$query);
+          $deposit_count = mysqli_num_rows($select_all_deposit);
+        ?>
     </section>
 
 </aside>

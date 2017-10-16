@@ -14,7 +14,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          รายงานข้อมูลการทำสัญญา
+          รายงานการอนุมัติเงินกู้
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -26,7 +26,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              รายงานข้อมูลการทำสัญญากู้ยืมเงิน
+              รายงานการอนุมัติเงินกู้
             </li>
         </ol>
     </section>
@@ -36,15 +36,17 @@ require_once('include/_header.php');
         <div class="row">
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet box success">
+                <div class="portlet box info">
                     <div class="portlet-title">
                         <div class="caption"> <i class="livicon" data-name="table" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางรายงานข้อมูลการทำสัญญากู้ยืมเงินกองทุน
+                          แสดงตารางรายงานการอนุมัติเงินกู้
                         </div>
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
+                            <div class="btn-group">
 
+                            </div>
                             <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                     Tools
@@ -69,39 +71,36 @@ require_once('include/_header.php');
                                     <tr role="row">
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
-                                        <th>จำนวนเงินที่อนุมัติ</th>
-                                        <th>วันที่ทำสัญญา</th>
-                                        <th><div align ='center'>ดูข้อมูล</div></th>
-
+                                        <th>จำนวนเงินทีอนุมัติ</th>
+                                        <th>สถานะ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-						<?php
-							if (isset($_GET["pro_id"])) {
-								$pro_id = $_GET["pro_id"];
-								$sql = "DELETE FROM promise WHERE pro_id ='$pro_id'";
-								$result = mysqli_query($link, $sql);
-							}
+                                  <?php
+                      							if (isset($_GET["sub_id"])) {
+                      								$sub_id = $_GET["sub_id"];
+                      								$sql = "delete from submitted where sub_id='$sub_id'";
+                      								$result = mysqli_query($link, $sql);
+                      							}
 
-							$sql = "SELECT * FROM promise LEFT JOIN member ON promise.mem_id = member.mem_id";
-							$result = mysqli_query($link, $sql);
-							while ($row = mysqli_fetch_array($result)){
-								$pro_id = $row["pro_id"];
-								$mem_id = $row["mem_id"];
-								$mem_name = $row["mem_name"];
-								$app_pice = $row["app_pice"];
-                $sub_date = $row["sub_date"];
-                $pro_date = $row["pro_date"];
+                      							$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp WHERE status_app = 'อนุมัติ'";
+                      							$result = mysqli_query($link, $sql);
+                      							while ($row = mysqli_fetch_array($result)){
+                      								$sub_id = $row["sub_id"];
+                      								$mem_id = $row["mem_id"];
+                      								$mem_name = $row["mem_name"];
+                      								$sub_moneyloan = $row["sub_moneyloan"];
+                                      $sub_date = $row["sub_date"];
+                                      $id_sapp = $row["status_app"];
 
-								echo "<tr>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-										<td>$app_pice</td>
-                    <td>$pro_date</td>
-                    <td align='center'><a href='admin_promise_view.php?pro_id=$pro_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
-                    </tr>";
-              }
-						?>
+                      								echo "<tr>
+                      										<td>$mem_id</td>
+                      										<td>$mem_name</td>
+                      										<td>$sub_moneyloan</td>
+                                          <td>$id_sapp</td>
+                                          </tr>";
+                                    }
+                      						?>
 					</tbody>
                             </table>
                         </div>

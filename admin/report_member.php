@@ -38,7 +38,7 @@ require_once('include/_header.php');
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet box default">
                     <div class="portlet-title">
-                        <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                        <div class="caption"> <i class="livicon" data-name="table" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                           ตารางรายงานข้อมูลสมาชิก
                         </div>
                     </div>

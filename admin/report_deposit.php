@@ -35,6 +35,14 @@ require_once('include/_header.php');
             </li>
         </ol>
     </section>
+    <section class="content">
+      <div class="portlet-body">
+          <?php
+            $query = "SELECT * FROM `deposit`";
+            $select_all_deposit = mysqli_query($link,$query);
+            $deposit_count = mysqli_num_rows($select_all_deposit);
+          ?>
+    </section>
   </aside>
 <div id="container" style="width: 1100px;
 height: 500px;

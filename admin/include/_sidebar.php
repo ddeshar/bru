@@ -172,8 +172,8 @@
                     ข้อมูลการยื่นกู้
                 </a>
             </li>
-            <li <?php if($page == 'grid') echo 'class="active" id="active"'; ?> >
-                <a href="grid.php">
+            <li <?php if($page == 'report_approve') echo 'class="active" id="active"'; ?> >
+                <a href="report_approve.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลอนุมัติเงินกู้
                 </a>
@@ -184,14 +184,14 @@
                     ข้อมูลการทำสัญญากู้ยืมเงิน
                 </a>
             </li>
-            <li <?php if($page == 'advanced_modals') echo 'class="active" id="active"'; ?> >
-                <a href="advanced_modals.php">
+            <li <?php if($page == 'report_repayment') echo 'class="active" id="active"'; ?> >
+                <a href="report_repayment.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการจ่ายเงินกู้ให้ผู้กู้
                 </a>
             </li>
-            <li <?php if($page == 'tagsinput') echo 'class="active" id="active"'; ?> >
-                <a href="tagsinput.php">
+            <li <?php if($page == 'report_refund') echo 'class="active" id="active"'; ?> >
+                <a href="report_refund.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการชำระเงินกู้และดอกเบี้ย
                 </a>

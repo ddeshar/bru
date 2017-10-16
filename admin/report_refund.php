@@ -12,23 +12,34 @@ require_once('include/_header.php');
 ?>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
-
-    <!-- Main content -->
+    <section class="content-header">
+        <h1>
+        รายงานข้อมูลการชำระเงินกู้และดอกเบี้ย
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.php"> <i class="livicon" data-name="home" data-size="18" data-loop="true"></i>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="#">DataTables</a>
+            </li>
+            <li class="active">
+              รายงานข้อมูลการชำระเงินกู้และดอกเบี้ย
+            </li>
+        </ol>
+    </section>
     <section class="content">
         <!-- Second Data Table -->
         <div class="row">
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet box default">
+                <div class="portlet box info">
 
                     <div class="portlet-body">
                         <div class="table-toolbar">
-                            <div class="btn-group">
-                              <a href="admin_refunds_add.php"   class=" btn btn-custom">
-                                  ชำระเงิน
-                                    <i class="fa fa-plus"></i>
-                                </button> </a>
-                            </div>
+
                             <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                     Tools
@@ -43,11 +54,7 @@ require_once('include/_header.php');
                                             Save as PDF
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            Export to Excel
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -55,13 +62,10 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
-                                        <th>รหัสการรับชำระ</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>เงินที่ต้องชำระ</th>
                                         <th>ค้างชำระ</th>
-                                        <th>วันที่รับชำระ</th>
                                         <th><center>ดูข้อมูล</center></th>
 
                                     </tr>
@@ -90,17 +94,11 @@ require_once('include/_header.php');
                 $ref_picetotal = $row["ref_picetotal"];
                 $owe = $row["owe"];
                 $ref_date = $row["ref_date"];
-
-
-
 								echo "<tr>
-										<td>$ref_id</td>
 										<td>$mem_id</td>
 										<td>$mem_name</td>
                     <td>$ref_picetotal</td>
                     <td>$owe</td>
-                    <td>$ref_date</td>
-
                     <td align='center'><a href='admin_refund_view.php?ref_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
 									</tr>";
 							}
@@ -119,8 +117,6 @@ require_once('include/_header.php');
 <?php
 require_once('include/_footer.php');
 ?>
-
-
 <script type="text/javascript" src="asset/vendors/datatables/select2.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/dataTables.bootstrap.js"></script>

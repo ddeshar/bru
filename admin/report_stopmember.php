@@ -35,7 +35,7 @@ require_once('include/_header.php');
         <div class="row">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    <h4 class="panel-title"> <i class="livicon" data-name="users-remove" data-size="18" data-c="#ffffff" data-hc="#ffffff"></i>
+                    <h4 class="panel-title"> <i class="livicon" data-name="table" data-size="18" data-c="#ffffff" data-hc="#ffffff"></i>
                           ตางรางรายงานการยกเลิกบัญชีของสมาชิก
                     </h4>
                 </div>

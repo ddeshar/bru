@@ -10,7 +10,7 @@ require_once('include/_header.php');
 
 <aside class="right-side">
     <section class="content-header">
-        <h1>กราฟแสดงการกู้เงินกองทุนหมู่บ้าน</h1>
+        <h1>กราฟแสดงการฝากและถอนเงินสัจจะออมทรัพย์</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
@@ -37,10 +37,6 @@ $result = array('day' => array(), 'amount' => array());
   // mysqli_stmt_close($stmt);
 }
 
-$sql = "SELECT id_gender as count FROM member";
-$mem = mysqli_query($link,$sql);
-$mem= mysqli_fetch_all($mem,MYSQLI_ASSOC);
-$mem = json_encode(array_column($mem, 'count'),JSON_NUMERIC_CHECK);
 
 /* Getting demo_viewer table data */
 $sql = "SELECT SUM(fak_sum) as count FROM deposit
@@ -94,7 +90,7 @@ $(function () {
         title: {
             text: 'อัตราส่วนต่อเดือน'
         },
-        colors: ['black','pink','green'],
+        colors: ['black','pink'],
         xAxis: {
           categories: <?php echo json_encode($result['day']) ?>
 
@@ -106,13 +102,10 @@ $(function () {
             }
         },
         series: [{
-            name: 'สมาชิกทั้งหมด',
+            name: 'จำนวนฝาก',
             data: data_faksum
         }, {
-            name: 'ยื่นกู้',
-            data: data_faksum
-        }, {
-            name: 'อนุมัติ',
+            name: 'จำนวนถอน',
             data: data_withdraw
         }]
     });

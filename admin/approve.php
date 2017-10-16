@@ -43,35 +43,6 @@ require_once('include/_header.php');
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div class="table-toolbar">
-                            <div class="btn-group">
-                              <a href="approve_add.php"   class=" btn btn-custom">
-                                    เพิ่ม
-                                    <i class="fa fa-plus"></i>
-                                </button> </a>
-                            </div>
-                            <div class="btn-group pull-right">
-                                <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
-                                    Tools
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu pull-right">
-                                    <li>
-                                        <a href="#">Print</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Save as PDF
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Export to Excel
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                         <div id="sample_editable_1_wrapper" class="">
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>

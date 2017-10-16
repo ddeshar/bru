@@ -148,7 +148,7 @@
             </li>
             <li <?php if($page == 'report_deposit') echo 'class="active" id="active"'; ?> >
               <i class ="re">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายงานข้อมูลสัจจะออมทรัพย์</i>
-                <a href="report_deposit.php">
+                <a href="report_tori2.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการฝาก-ถอน
                 </a>

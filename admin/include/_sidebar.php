@@ -134,40 +134,40 @@
                     ข้อมูลประวัติการเข้าใช้งาน
                 </a>
             </li>
-            <li <?php if($page == 'buttons') echo 'class="active" id="active"'; ?> >
-                <a href="buttons.php">
+            <li <?php if($page == 'chart_member') echo 'class="active" id="active"'; ?> >
+                <a href="report_member.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลสมาชิก
                 </a>
             </li>
-            <li <?php if($page == 'advanced_buttons') echo 'class="active" id="active"'; ?> >
-                <a href="advanced_buttons.php">
+            <li <?php if($page == 'report_committee') echo 'class="active" id="active"'; ?> >
+                <a href="report_committee.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลกรรมการ
                 </a>
             </li>
-            <li <?php if($page == 'tabs_accordions') echo 'class="active" id="active"'; ?> >
+            <li <?php if($page == 'report_deposit') echo 'class="active" id="active"'; ?> >
               <i class ="re">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายงานข้อมูลสัจจะออมทรัพย์</i>
-                <a href="tabs_accordions.php">
+                <a href="report_deposit.php">
                     <i class="fa fa-angle-double-right"></i>
-                    ข้อมูลการฝาก
+                    ข้อมูลการฝาก-ถอน
                 </a>
             </li>
-            <li <?php if($page == 'panels') echo 'class="active" id="active"'; ?> >
+            <!--<li <?php if($page == 'panels') echo 'class="active" id="active"'; ?> >
                 <a href="panels.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการถอน
                 </a>
-            </li>
-            <li <?php if($page == 'icon') echo 'class="active" id="active"'; ?> >
-                <a href="icon.php">
+            </li>-->
+            <li <?php if($page == 'report_stopmember') echo 'class="active" id="active"'; ?> >
+                <a href="report_stopmember.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการยกเลิกบัญชี
                 </a>
             </li>
-            <li <?php if($page == 'color') echo 'class="active" id="active"'; ?> >
+            <li <?php if($page == 'report_fund') echo 'class="active" id="active"'; ?> >
               <i class ="re">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายงานข้อมูลกองทุนหมู่บ้าน</i>
-                <a href="color.php">
+                <a href="report_fund.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการยื่นกู้
                 </a>
@@ -178,8 +178,8 @@
                     ข้อมูลอนุมัติเงินกู้
                 </a>
             </li>
-            <li <?php if($page == 'carousel') echo 'class="active" id="active"'; ?> >
-                <a href="carousel.php">
+            <li <?php if($page == 'report_promise') echo 'class="active" id="active"'; ?> >
+                <a href="report_promise.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการทำสัญญากู้ยืมเงิน
                 </a>

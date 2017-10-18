@@ -10,22 +10,22 @@ require_once('include/_header.php');
 
 <aside class="right-side">
     <section class="content-header">
-        <h1>กราฟแสดงการกู้เงินกองทุนหมู่บ้าน</h1>
+        <h1>กราฟแสดงรายงานการกู้เงินกองทุนหมู่บ้าน</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
-                    ข้อความใส้ตรงนี้นะจะ
+                    กองทุนหมู่บ้าน
                 </a>
             </li>
-            <li>Pages</li>
-            <li class="active">Blank page</li>
+            <li>รายงาน</li>
+            <li class="active">รายงานการกู้เงินกองทุนหมู่บ้าน</li>
         </ol>
     </section>
     <section class="content">
       <div class="portlet-body">
         <?php
 
-$stmt = mysqli_prepare($link, "SELECT date_format(fak_date, '%d-%b-%y') as pDate, sum(fak_sum) as pAmount FROM deposit GROUP BY pDate ASC");
+$stmt = mysqli_prepare($link, "SELECT date_format(sub_id, '%d-%b-%y') as pDate, sum(mem_id) as pAmount FROM promise GROUP BY pDate ASC");
 $result = array('day' => array(), 'amount' => array());
   if ($stmt) {
     mysqli_stmt_execute($stmt);
@@ -37,28 +37,23 @@ $result = array('day' => array(), 'amount' => array());
   // mysqli_stmt_close($stmt);
 }
 
-$sql = "SELECT id_gender as count FROM member";
-$mem = mysqli_query($link,$sql);
-$mem= mysqli_fetch_all($mem,MYSQLI_ASSOC);
-$mem = json_encode(array_column($mem, 'count'),JSON_NUMERIC_CHECK);
-
 /* Getting demo_viewer table data */
-$sql = "SELECT SUM(fak_sum) as count FROM deposit
-    GROUP BY MONTH(fak_date) ORDER BY fak_date";
+$sql = "SELECT sum(sub_moneyloan) as count FROM promise
+    GROUP BY MONTH(sub_date) ORDER BY sub_date";
 $faksum = mysqli_query($link,$sql);
 $faksum = mysqli_fetch_all($faksum,MYSQLI_ASSOC);
 $faksum = json_encode(array_column($faksum, 'count'),JSON_NUMERIC_CHECK);
 
 /* Getting demo_click table data */
-$sql = "SELECT SUM(withdraw) as count FROM deposit
-    GROUP BY MONTH(fak_date) ORDER BY fak_date";
+$sql = "SELECT SUM(app_pice) as count FROM promise
+    GROUP BY MONTH(sub_date) ORDER BY sub_date";
 $withdraw = mysqli_query($link,$sql);
 $withdraw = mysqli_fetch_all($withdraw,MYSQLI_ASSOC);
 $withdraw = json_encode(array_column($withdraw, 'count'),JSON_NUMERIC_CHECK);
 
 
 
-$stmt = mysqli_prepare($link, "SELECT date_format(fak_date, '%d-%b-%y') as pDate FROM deposit
+$stmt = mysqli_prepare($link, "SELECT date_format(sub_date, '%d-%b-%y') as pDate FROM promise
 GROUP BY pDate ASC");
 $result = array('day' => array());
   if ($stmt) {
@@ -94,7 +89,7 @@ $(function () {
         title: {
             text: 'อัตราส่วนต่อเดือน'
         },
-        colors: ['black','pink','green'],
+        colors: ['black','purple','pink','green'],
         xAxis: {
           categories: <?php echo json_encode($result['day']) ?>
 
@@ -106,13 +101,16 @@ $(function () {
             }
         },
         series: [{
-            name: 'สมาชิกทั้งหมด',
+            name: 'สมาชิกทั้งหมด(คน)',
             data: data_faksum
         }, {
-            name: 'ยื่นกู้',
+            name: 'สมาชิกยื่นกู้(คน)',
             data: data_faksum
         }, {
-            name: 'อนุมัติ',
+            name: 'จำนวนเงินกู้',
+            data: data_faksum
+        }, {
+            name: 'จำนวนเงินอนุมัติ',
             data: data_withdraw
         }]
     });

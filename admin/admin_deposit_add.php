@@ -166,24 +166,11 @@ if (isset($_POST["btnsubmit"])) {
     </section>
     <!-- content -->
 </aside>
-
-<?php
-require_once('deposit.php');
-?>
-<!-- right-side -->
-<?php
-require_once('include/_footer.php');
-?>
-<!-- begining of page level js -->
-<script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
-<!-- end of page level js -->
-</body>
-</html>
 <script type="text/javascript">
 	$('#countryname_1').autocomplete({
 		source: function( request, response ) {
 			$.ajax({
-				url : 'ajax.php',
+				url : 'ajax_deposit_add.php',
 				dataType: "json",
 				method: 'post',
 			data: {
@@ -212,12 +199,24 @@ require_once('include/_footer.php');
 	}
 	});
 
+	$(function() {
+		$("#num1, #num2").on("keydown keyup", sum);
+
+		function sum() {
+			$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
+		}
+	});
 </script>
-<script type="text/javascript">
-$(function() {
-    $("#num1, #num2").on("keydown keyup", sum);
-	function sum() {
-	$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
-	}
-});
-</script>
+
+<?php
+require_once('deposit.php');
+?>
+<!-- right-side -->
+<?php
+require_once('include/_footer.php');
+?>
+<!-- begining of page level js -->
+<script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+<!-- end of page level js -->
+</body>
+</html>

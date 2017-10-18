@@ -22,11 +22,11 @@ if (isset($_GET["pro_id"])) {
 			$mem_id = $row["mem_id"];
 			$mem_name = $row["mem_name"];
 			$mem_idcard = $row["mem_idcard"];
-			$sub_id = $row["sub_id"];
+			//$sub_id = $row["sub_id"];
 			$app_pice = $row["app_pice"];
 			$sub_date = $row["sub_date"];
 			$pro_date = $row["pro_date"];
-			$pro_number = $row["pro_number"];
+			//$pro_number = $row["pro_number"];
 			$sub_moneyloan = $row["sub_moneyloan"];
 			$sub_idcardBM1 = $row["sub_idcardBM1"];
 			$sub_idcardBM2 = $row["sub_idcardBM2"];
@@ -40,11 +40,11 @@ if (isset($_GET["pro_id"])) {
 			$mem_id = "";
 			$mem_name = "";
 			$mem_idcard = "";
-			$sub_id = "";
+			//$sub_id = "";
 			$app_pice = "";
 			$sub_date = "";
 			$pro_date = "";
-			$pro_number = "";
+			//$pro_number = "";
 			$sub_moneyloan = "";
 			$sub_idcardBM1 = "";
 			$sub_idcardBM2 = "";
@@ -101,11 +101,11 @@ if (isset($_GET["pro_id"])) {
 													<label class="col-md-5 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลสมาชิก</label><p><?=$mem_name?></p>
 													<label class="col-md-5 control-label" for="id">เลขที่บัตรประจำตัวประชาชาชน</label><p><?=$mem_idcard?></p>
-													<label class="col-md-5 control-label" for="id">รหัสการอนุมัติ</label><p><?=$sub_id?></p>
+													<!-- <label class="col-md-5 control-label" for="id">รหัสการอนุมัติ</label><p><?//=$sub_id?></p> -->
 													<label class="col-md-5 control-label" for="id">จำนวนเงินที่อนุมัติ</label><p><?=$app_pice?></p>
 													<label class="col-md-5 control-label" for="id">วันที่อนุมัติ</label><p><?=$sub_date?></p>
 													<label class="col-md-5 control-label" for="id">วันที่ทำสัญญา</label><p><?=$pro_date?></p>
-													<label class="col-md-5 control-label" for="id">เลขทีสัญญา</label><p><?=$pro_number?></p>
+													<!-- <label class="col-md-5 control-label" for="id">เลขทีสัญญา</label><p><?//=$pro_number?></p> -->
 													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?=$sub_moneyloan?></p>
 													<label class="col-md-5 control-label" for="id">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label><p><?=$sub_idcardBM1?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลผู้ค้ำคนที่ 1</label><p><?=$name1?></p>

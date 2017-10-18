@@ -26,27 +26,22 @@ require_once('include/_header.php');
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <?php
 if (isset($_POST["btnsubmit"])) {
-		$fak_date = $_POST["fak_date"];
 		$mem_id = $_POST["mem_id"];
-		$mem_name = $_POST["mem_name"];
 		$id_commit = $_POST["id_commit"];
-		//$fak_sum = $_POST["fak_sum"];
 		$withdraw = $_POST["withdraw"];
 		$fak_total = $_POST["fak_total"];
 
 
-		$sql = "INSERT INTO deposit (fak_date,mem_id,id_commit,fak_sum,withdraw,fak_total)
-		VALUES('$fak_date','$mem_id','$id_commit','','$withdraw','$fak_total')";
+		$sql = "INSERT INTO deposit (fak_date,mem_id,id_commit,withdraw,fak_total)
+		VALUES(NOW(),'$mem_id','$id_commit','$withdraw','$fak_total')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";
 			echo "window.location='admin_withdraw_add.php';";
 			echo "</script>";
-			//header('location: admin_product.php');
 		}else{
 			die("Query Failed" . mysqli_error($link));
-			// echo "<font color='red'>SQL Error</font><hr>";
 		}
 	}
 ?>
@@ -92,11 +87,11 @@ if (isset($_POST["btnsubmit"])) {
                             <fieldset>
                                 <!-- Name input-->
 
-																<div class="form-group">
+																<!-- <div class="form-group">
 																<label class="col-md-3 control-label" for="birth">วันที่ถอน</label>
 																<div class="col-md-3">
 																<input type="date" id="datepicker" name="fak_date" class="form-control round-form"  placeholder="DATE"></div>
-																</div>
+																</div> -->
 
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
@@ -179,7 +174,7 @@ require_once('include/_footer.php');
 	$('#countryname_1').autocomplete({
 		source: function( request, response ) {
 			$.ajax({
-				url : 'ajax.php',
+				url : 'ajax_deposit_add.php',
 				dataType: "json",
 				method: 'post',
 			data: {
@@ -208,12 +203,11 @@ require_once('include/_footer.php');
 	}
 	});
 
-</script>
-<script type="text/javascript">
-$(function() {
-    $("#num1, #num2").on("keydown keyup", sum);
-	function sum() {
-	$("#sum").val(Number($("#num2").val()) - Number($("#num1").val()));
-	}
-});
+	$(function() {
+		$("#num1, #num2").on("keydown keyup", sum);
+
+		function sum() {
+			$("#sum").val(Number($("#num2").val()) - Number($("#num1").val()));
+		}
+	});
 </script>

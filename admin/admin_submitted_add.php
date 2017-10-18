@@ -4,6 +4,9 @@ $title = 'Hello Admin';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
@@ -19,11 +22,11 @@ require_once('include/_header.php');
 			$sub_idcardBM2 = $_POST["sub_idcardBM2"];
 			$name2 = $_POST["name2"];
 			$id_commit = $_POST["id_commit"];
-			$id_sapp = $_POST["id_sapp"];
+			// $id_sapp = $_POST["id_sapp"];
 			//$com_name = $_POST["com_name"];
 
-			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,name1,sub_idcardBM2,name2,id_commit,id_sapp)
-							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$name1','$sub_idcardBM2','$name2','$id_commit','$id_sapp')";
+			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,name1,sub_idcardBM2,name2,id_commit)
+							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$name1','$sub_idcardBM2','$name2','$id_commit')";
 			$result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";
@@ -110,3 +113,44 @@ require_once('include/_footer.php');
 <!-- end of page level js -->
 </body>
 </html>
+<script type="text/javascript">
+	$('#countryname_1').autocomplete({
+		source: function( request, response ) {
+			$.ajax({
+				url : 'ajax_deposit_add.php',
+				dataType: "json",
+				method: 'post',
+			data: {
+				 name_startsWith: request.term,
+				 type: 'country_table',
+				 row_num : 1
+			},
+			success: function( data ) {
+				response( $.map( data, function( item ) {
+					var code = item.split("|");
+						return {
+							label: code[0],
+							value: code[0],
+							data : item
+						}
+				}));
+			}
+			});
+		},
+		autoFocus: true,
+		minLength: 0,
+		select: function( event, ui ) {
+		var names = ui.item.data.split("|");
+		$('#user_id_mem').val(names[1]);
+		$('#num2').val(names[2]);
+	}
+	});
+
+	$(function() {
+		$("#num1, #num2").on("keydown keyup", sum);
+
+		function sum() {
+			$("#sum").val(Number($("#num2").val()) - Number($("#num1").val()));
+		}
+	});
+</script>

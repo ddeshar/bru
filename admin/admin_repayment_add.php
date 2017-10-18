@@ -33,7 +33,7 @@ require_once('include/_header.php');
 			$mem_name = $_POST["mem_name"];
 			$mem_idcard = $_POST["mem_idcard"];
 			$pro_id = $_POST["pro_id"];
-			$pro_number = $_POST["pro_number"];
+			//$pro_number = $_POST["pro_number"];
 			$pro_pice = $_POST["pro_pice"];
 			$date_sent = $_POST["date_sent"];
 			$pay_date = $_POST["pay_date"];
@@ -41,8 +41,8 @@ require_once('include/_header.php');
 			$id_commit = $_POST["id_commit"];
 
 
-			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,pro_number,pro_pice,date_sent,pay_date,pay_pice,id_commit)
-							VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$pro_number','$pro_pice','$date_sent','$pay_date','$pay_pice','$id_commit')";
+			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,pro_pice,date_sent,pay_date,pay_pice,id_commit)
+							VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$pro_pice','$date_sent','$pay_date','$pay_pice','$id_commit')";
 			$result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";
@@ -122,11 +122,11 @@ require_once('include/_header.php');
 																		<input id="pro_id" name="pro_id" type="text" placeholder="PRO-ID" class="form-control"></div>
 																</div>
 
-																<div class="form-group">
+																<!-- <div class="form-group">
                                     <label class="col-md-3 control-label" for="number">เลขที่สัญญา</label>
                                     <div class="col-md-3">
                                     <input id="pro_number" name="pro_number" type="text" placeholder="PRO-NUMBER" class="form-control"></div>
-                                </div>
+                                </div> -->
 
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="number">จำนวนเงินกู้</label>
@@ -137,13 +137,13 @@ require_once('include/_header.php');
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="date">วันที่ครบกำหนดส่ง</label>
 																<div class="col-md-3">
-																<input type="date" id="datepicker" name="date_sent" class="form-control round-form"  placeholder="DATE"></div>
+																<input type="date" id="date_sent" name="date_sent" class="form-control round-form"  placeholder="DATE"></div>
 																</div>
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="date">วันที่จ่ายเงินกู้</label>
 																<div class="col-md-3">
-																<input type="date" id="datepicker" name="pay_date" class="form-control round-form"  placeholder="DATE"></div>
+																<input type="date" id="pay_date" name="pay_date" class="form-control round-form"  placeholder="DATE"></div>
 																</div>
 
 																<div class="form-group">
@@ -200,7 +200,7 @@ require_once('include/_footer.php');
 	$('#countryname_1').autocomplete({
 		source: function( request, response ) {
 			$.ajax({
-				url : 'ajax_promise_add.php',
+				url : 'ajax_repayment_add.php',
 				dataType: "json",
 				method: 'post',
 			data: {
@@ -226,7 +226,10 @@ require_once('include/_footer.php');
 		var names = ui.item.data.split("|");
 		$('#user_id_mem').val(names[1]);
 		$('#user_idcard_mem').val(names[2]);
-
+		$('#pro_id').val(names[3]);
+		$('#pro_pice').val(names[4]);
+		$('#pay_date').val(names[5]);
+		// $('#date_sent').val(names[6]);
 	}
 	});
 

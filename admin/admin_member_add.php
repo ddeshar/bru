@@ -10,7 +10,7 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-if (isset($_POST["btnsubmit"])) {
+if (isset($_POST["submit"])) {
 	$mem_id = $_POST["mem_id"];
 	$mem_idcard = $_POST["mem_idcard"];
 	$id_gender = $_POST["id_gender"];
@@ -22,15 +22,11 @@ if (isset($_POST["btnsubmit"])) {
 	$mem_address = $_POST["mem_address"];
 	$mem_tel = $_POST["mem_tel"];
 	$mem_email = $_POST["mem_email"];
-	$mem_username = $_POST["mem_username"];
+	$mem_username = $_POST["mem_idcard"];
 	$mem_password = $_POST["mem_password"];
 	$status_mem = $_POST["status_mem"];
 
-
-		$sql = "INSERT INTO member (mem_id,mem_idcard,id_gender,id_title,mem_name,mem_birthday,id_status,
-												mem_occupation,mem_address,mem_tel,mem_email,mem_username,mem_password,status_mem)
-						VALUES('$mem_id','$mem_idcard','$id_gender','$id_title','$mem_name','$mem_birthday','$id_status',
-									 '$mem_occupation','$mem_address','$mem_tel','$mem_email','$mem_username','$mem_password','$status_mem')";
+		$sql = "INSERT INTO member (mem_id,mem_idcard,id_gender,id_title,mem_name,mem_birthday,id_status,mem_occupation,mem_address,mem_tel,mem_email,mem_username,mem_password,status_mem)VALUES('$mem_id','$mem_idcard','$id_gender','$id_title','$mem_name','$mem_birthday','$id_status','$mem_occupation','$mem_address','$mem_tel','$mem_email','$mem_username','$mem_password','$status_mem')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
@@ -94,8 +90,9 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="name">เลขประจำตัวประชาชน</label>
                                 <div class="col-md-3">
-                                <input id="mem_idcard" name="mem_idcard" type="text" placeholder="IDCARD" class="form-control"></div>
-                                </div>
+                                <input id="sessionNum" name="mem_idcard" type="text" onkeypress="return isNumberKey(event)" maxlength="13" placeholder="IDCARD" class="form-control" required></div>
+																<span style="color: red;">	<span id="sessionNum_counter">13</span> *โปรดระบุเลขที่บัตรประชาชนให้ถูกต้องเพื่อใช้เป็น Username </span>
+																</div>
 
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="detail">เพศ</label>
@@ -142,7 +139,7 @@ if (isset($_POST["btnsubmit"])) {
 																					<div class="form-group">
 			                                    <label class="col-md-3 control-label" for="birth">วันเกิด</label>
 			                                    <div class="col-md-3">
-	                                        <input type="date" id="datepicker" name="mem_birthday" class="form-control round-form"  placeholder="DATE"></div>
+	                                        <input type="date"name="mem_birthday" class="form-control round-form"  placeholder="DATE"></div>
 																					</div>
 
 																					<div class="form-group">
@@ -187,12 +184,12 @@ if (isset($_POST["btnsubmit"])) {
 																<input id="mem_email" name="mem_email" type="email" placeholder="example@domain.com" class="form-control"></div>
 																</div>
 
-																<div class="form-group">
+																<!-- <div class="form-group">
 																<label class="col-md-3 control-label" for="user">ชื่อผู้ใช้</label>
 																<div class="col-md-3">
 																<input id="mem_username" name="mem_username" type="text" placeholder="USERNAME" class="form-control"></div>
 																<span style="color: red;">	*ชื่อผู้ใช้โปรดระบุเป็นเลขบัตรประจำตัวประชาชน </span>
-																</div>
+																</div> -->
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="pass">รหัสผ่าน</label>
@@ -217,7 +214,7 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
 
-                                         <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">เพิ่มสมาชิก</button>
+                                         <button type="submit" name="submit" value="submit" class="btn btn-primary">เพิ่มสมาชิก</button>
                                     </div>
                                 </div>
                             </fieldset>
@@ -244,4 +241,20 @@ require_once('include/_footer.php');
   $(document).ready(function() {
     $("#datepicker").datepicker();
   });
+
+
+
+	$(document).ready(function(){
+		var maxChars = $("#sessionNum");
+		var max_length = maxChars.attr('maxlength');
+		if (max_length > 0) {
+		    maxChars.bind('keyup', function(e){
+		        length = new Number(maxChars.val().length);
+		        counter = max_length-length;
+		        $("#sessionNum_counter").text(counter);
+		    });
+		}
+		});
+
+
   </script>

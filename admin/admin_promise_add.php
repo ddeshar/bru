@@ -37,30 +37,27 @@ require_once('include/_header.php');
 						$mem_id = $_POST["mem_id"];
 						$mem_name = $_POST["mem_name"];
 						$mem_idcard = $_POST["mem_idcard"];
-						$sub_id = $_POST["sub_id"];
 						$app_pice = $_POST["app_pice"];
-						$sub_date = $_POST["sub_date"];
-						$pro_date = $_POST["pro_date"];
-						$pro_number = $_POST["pro_number"];
 						$sub_moneyloan = $_POST["sub_moneyloan"];
 						$sub_idcardBM1 = $_POST["sub_idcardBM1"];
 						$sub_idcardBM2 = $_POST["sub_idcardBM2"];
 						$name1 = $_POST["name1"];
 						$name2 = $_POST["name2"];
-						$pro_redate = $_POST["pro_redate"];
 						$id_commit = $_POST["id_commit"];
-						//แยกระหว่างชื่อกับนามสกุล
-						$temp = explode(".", $_FILES["pro_Document"]["name"]);
-						//ให้เปลี่ยนชื่อตามเวลาโดยใช้ฟังก์ชั่น
-						$newfilename = round(microtime(true)) . '.' . end($temp);
-						// หลังจากที่เปลี่ยนชื่อแล้ว จะไปอัพโหลดที่ โฟเดอร์ asset/uploads
-						move_uploaded_file($_FILES["pro_Document"]["tmp_name"], "asset/uploads/" . $newfilename);
 
-						$sql = "INSERT INTO promise (pro_id,mem_id,mem_name,mem_idcard,sub_id,app_pice,sub_date,pro_date,pro_number,sub_moneyloan,
-										sub_idcardBM1,sub_idcardBM2,name1,name2,pro_redate,pro_Document,id_commit)
-										VALUES('$pro_id','$mem_id','$mem_name','$mem_idcard','$sub_id','$app_pice','$sub_date','$pro_date','$pro_number','$sub_moneyloan',
-													 '$sub_idcardBM1','$sub_idcardBM2','$name1','$name2','$pro_redate','$newfilename','$id_commit')";
+							if (isset($_POST['pro_Document'])) {
+								//แยกระหว่างชื่อกับนามสกุล
+								$temp = explode(".", $_FILES["pro_Document"]["name"]);
+								//ให้เปลี่ยนชื่อตามเวลาโดยใช้ฟังก์ชั่น
+								$newfilename = round(microtime(true)) . '.' . end($temp);
+								// หลังจากที่เปลี่ยนชื่อแล้ว จะไปอัพโหลดที่ โฟเดอร์ asset/uploads
+								move_uploaded_file($_FILES["pro_Document"]["tmp_name"], "asset/uploads/" . $newfilename);
+							}else {
+								$newfilename = "";
+							}
 
+						$sql = "INSERT INTO promise (pro_id,mem_id,mem_name,mem_idcard,app_pice,sub_date,pro_date,sub_moneyloan,sub_idcardBM1,sub_idcardBM2,name1,name2,pro_redate,pro_Document,id_commit)VALUES('$pro_id','$mem_id','$mem_name','$mem_idcard','$app_pice',NOW(),NOW(),'$sub_moneyloan', '$sub_idcardBM1','$sub_idcardBM2','$name1','$name2',NOW()+INTERVAL 24 MONTH,'$newfilename','$id_commit')";
+// echo $sql; exit;
 						$result = mysqli_query($link, $sql);
 						if ($result) {
 							echo "<script type='text/javascript'>";
@@ -132,11 +129,11 @@ require_once('include/_header.php');
 	                                    <input id="mem_idcard" name="mem_idcard" type="text" placeholder="MEM-ID" class="form-control"></div>
 	                                </div>
 
-																	<div class="form-group">
+																	<!-- <div class="form-group">
 																			<label class="col-md-3 control-label" for="id">รหัสการอนุมัติ</label>
 																			<div class="col-md-3">
 																			<input id="app_id" name="sub_id" type="text" placeholder="SUB-ID" class="form-control"></div>
-																	</div>
+																	</div> -->
 
 																	<div class="form-group">
 	                                    <label class="col-md-3 control-label" for="money">จำนวนเงินที่ขอกู้</label>
@@ -156,11 +153,11 @@ require_once('include/_header.php');
 																	<input type="date" id="datepicker" name="pro_date" class="form-control round-form"  placeholder="DATE"></div>
 																	</div>
 
-																	<div class="form-group">
+																	<!-- <div class="form-group">
 																			<label class="col-md-3 control-label" for="number">เลขที่สัญญา</label>
 																			<div class="col-md-3">
-																			<input id="pro_number" name="pro_number" type="text" placeholder="PRO-NUMBER" class="form-control"></div>
-																	</div>
+																			<input id="pro_number" name="pro_number" type="text" placeholder="PRO-NUMBER" class="form-control" readonly></div>
+																	</div> -->
 																	<div class="form-group">
 																			<label class="col-md-3 control-label" for="money">จำนวนเงินที่อนุมัติ</label>
 																			<div class="col-md-3">
@@ -290,6 +287,10 @@ require_once('include/_footer.php');
 		$('#user_id_mem').val(names[1]);
 		$('#mem_idcard').val(names[2]);
 		$('#sub_moneyloan').val(names[3]);
+		$('#sub_idcardBM1').val(names[4]);
+		$('#name1').val(names[5]);
+		$('#sub_idcardBM2').val(names[6]);
+		$('#name2').val(names[7]);
 	}
 	});
 

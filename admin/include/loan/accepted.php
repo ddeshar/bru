@@ -12,13 +12,13 @@
         <div class="form-group">
             <label class="col-md-3 control-label" for="name">รหัสสมาชิก</label>
             <div class="col-md-3">
-            <input id="mem_id" name="mem_id" type="text" placeholder="MEM-ID" class="form-control"></div>
+            <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control"></div>
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label" for="name">ชื่อ-สกุลสมาชิก</label>
-            <div class="col-md-3">
-            <input id="mem_name" name="mem_name" type="text" placeholder="MEM-NAME" class="form-control"></div>
+        <label class="col-md-3 control-label" for="name">ชื่อ-สกุลสมาชิก</label>
+        <div class="col-md-3">
+        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
         </div>
 
         <div class="form-group">
@@ -81,8 +81,6 @@
                 </select>
               </div>
         </div>
-
-
 
         <div class="form-group">
             <div class="col-md-12 text-right">

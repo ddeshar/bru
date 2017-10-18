@@ -13,11 +13,11 @@ if (isset($_POST["btnEdit"])) {
 		$mem_id = $_POST["mem_id"];
 		$mem_name = $_POST["mem_name"];
 		$mem_idcard = $_POST["mem_idcard"];
-		$sub_id = $_POST["sub_id"];
+		//$sub_id = $_POST["sub_id"];
 		$app_pice = $_POST["app_pice"];
 		$sub_date = $_POST["sub_date"];
 		$pro_date = $_POST["pro_date"];
-		$pro_number = $_POST["pro_number"];
+		//$pro_number = $_POST["pro_number"];
 		$sub_moneyloan = $_POST["sub_moneyloan"];
 		$sub_idcardBM1 = $_POST["sub_idcardBM1"];
 		$sub_idcardBM2 = $_POST["sub_idcardBM2"];
@@ -27,7 +27,7 @@ if (isset($_POST["btnEdit"])) {
 		$id_commit = $_POST["id_commit"];
 		$id_sapp = $_POST["id_sapp"];
 
-		$sql = "UPDATE promise SET  mem_id='$mem_id',mem_name='$mem_name', mem_idcard='$mem_idcard',sub_id='$sub_id', app_pice='$app_pice',sub_date='$sub_date',pro_date='$pro_date', pro_date='$pro_date', pro_number='$pro_number',sub_moneyloan='$sub_moneyloan',sub_idcardBM1='$sub_idcardBM1',sub_idcardBM2='$sub_idcardBM2', name1='$name1',name2='$name2',pro_redate='$pro_redate',id_commit='$id_commit',id_sapp='$id_sapp' WHERE pro_id='$id'";
+		$sql = "UPDATE promise SET  mem_id='$mem_id',mem_name='$mem_name', mem_idcard='$mem_idcard', app_pice='$app_pice',sub_date='$sub_date',pro_date='$pro_date', pro_date='$pro_date', sub_moneyloan='$sub_moneyloan',sub_idcardBM1='$sub_idcardBM1',sub_idcardBM2='$sub_idcardBM2', name1='$name1',name2='$name2',pro_redate='$pro_redate',id_commit='$id_commit',id_sapp='$id_sapp' WHERE pro_id='$id'";
 
 		$result = mysqli_query($link, $sql);
 
@@ -58,7 +58,7 @@ if (isset($_POST["btnEdit"])) {
 			$app_pice = $row["app_pice"];
 			$sub_date = $row["sub_date"];
 			$pro_date = $row["pro_date"];
-			$pro_number = $row["pro_number"];
+			//$pro_number = $row["pro_number"];
 			$sub_moneyloan = $row["sub_moneyloan"];
 			$sub_idcardBM1 = $row["sub_idcardBM1"];
 			$sub_idcardBM2 = $row["sub_idcardBM2"];
@@ -76,7 +76,7 @@ if (isset($_POST["btnEdit"])) {
 			$app_pice = "";
 			$sub_date = "";
 			$pro_date = "";
-			$pro_number = "";
+			//$pro_number = "";
 			$sub_moneyloan = "";
 			$sub_idcardBM1 = "";
 			$sub_idcardBM2 = "";
@@ -153,12 +153,12 @@ if (isset($_POST["btnEdit"])) {
 																						<input  name="mem_idcard" type="text"  value="<?php echo "$mem_idcard"; ?>" class="form-control"></div>
 																				</div>
 
-																<div class="form-group">
+																<!--<div class="form-group">
 																		<label class="col-md-3 control-label" for="money">รหัสการอนุมัติ</label>
 																		<div class="col-md-3">
 																				<input  name="sub_id" type="text" value="<?php echo "$sub_id"; ?>" class="form-control">
 																			</div>
-																</div>
+																</div>-->
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="name">จำนวนเงินที่ขอกู้</label>
@@ -181,12 +181,12 @@ if (isset($_POST["btnEdit"])) {
 																				</div>
 																		</div>
 
-																		<div class="form-group">
+																		<!-- <div class="form-group">
 		                                    <label class="col-md-3 control-label" for="name">เลขที่สัญญา</label>
 		                                    <div class="col-md-3">
-		                                        <input  name="pro_number" type="text" value="<?php echo "$pro_number"; ?>" class="form-control">
+		                                        <input  name="pro_number" type="text" value="<?php// echo "$pro_number"; ?>" class="form-control">
 		                                    </div>
-		                                </div>
+		                                </div> -->
 
 																		<div class="form-group">
 		                                    <label class="col-md-3 control-label" for="name">จำนวนเงินที่อนุมัติ</label>

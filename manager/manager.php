@@ -12,7 +12,7 @@ require_once('include/_header.php');
 ?>
 <aside class="right-side">
     <section class="content-header">
-        <h1>Blank page</h1>
+        <h1>Manager page</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>

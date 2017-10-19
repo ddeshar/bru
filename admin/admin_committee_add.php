@@ -80,7 +80,7 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">รหัสกรรมการ</label>
                                 <div class="col-md-3">
-                                <input id="id_committee" name="id_committee" type="text" placeholder="ID" class="form-control"></div>
+                                <input id="id_committee" name="id_committee" type="text" placeholder="ID" class="form-control" readonly></div>
                                 </div>
 
 																<div class="form-group">

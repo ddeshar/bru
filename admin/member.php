@@ -77,9 +77,9 @@ require_once('include/_header.php');
                                 <thead>
                                     <tr role="row">
 
+                                        <th>No.</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
-
                                         <th>วัน/เดือน/ปีเกิด</th>
                                         <th>เบอร์โทร</th>
                                         <th>สถานะ</th>
@@ -104,6 +104,7 @@ require_once('include/_header.php');
                       		                  ON member.id_status = status.id_status
                       			                ORDER BY mem_id ASC	";
                       							$result = mysqli_query($link, $sql);
+                                    $i = 1;
                       							while ($row = mysqli_fetch_array($result)){
                       								$mem_id = $row["mem_id"];
                       								$id_title = $row["title"];
@@ -114,9 +115,9 @@ require_once('include/_header.php');
 
 
                       								echo "<tr>
-                      										<td>$mem_id</td>
+                      										<td><?php echo $i++; ?></td>
+                                          <td>$mem_id</td>
                       										<td>$id_title $mem_name</td>
-
                       										<td>$mem_birthday</td>
                                           <td>$mem_tel</td>
                                           <td>$status_mem</td>

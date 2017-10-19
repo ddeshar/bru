@@ -21,7 +21,7 @@
 
         if ($row_user['status'] == 500) {
           $_SESSION['is_admin'] = 500;
-          header("Location: admin.php");
+          header("Location: ../admin/admin.php");
 
         }elseif ($row_user['status'] == 100) {
           $_SESSION['is_member'] = 100;

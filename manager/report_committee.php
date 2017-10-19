@@ -14,7 +14,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          ข้อมูลการจ่ายเงิน ให้ผู้กู้
+          รายงานข้อมูลกรรมการกองทุนหมู่บ้าน
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -26,7 +26,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              ข้อมูลการจ่ายเงิน ให้ผู้กู้
+              รายงานข้อมูลกรรมการกองทุนหมู่บ้าน
             </li>
         </ol>
     </section>
@@ -36,20 +36,15 @@ require_once('include/_header.php');
         <div class="row">
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet box success">
+                <div class="portlet box default">
                     <div class="portlet-title">
-                        <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางข้อมูลการจ่ายเงิน ให้ผู้กู้
+                        <div class="caption"> <i class="livicon" data-name="table" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                          ตารางรายงานข้อมูลกองกรรมการกองทุนหมู่บ้าน
                         </div>
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
-                            <div class="btn-group">
-                              <a href="admin_repayment_add.php"   class=" btn btn-custom">
-                                    เพิ่ม
-                                    <i class="fa fa-plus"></i>
-                                </button> </a>
-                            </div>
+
                             <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                     Tools
@@ -59,16 +54,7 @@ require_once('include/_header.php');
                                     <li>
                                         <a href="#">Print</a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            Save as PDF
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Export to Excel
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -76,48 +62,44 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
-                                        <th>รหัสจ่ายเงินกู้</th>
-                                        <th>รหัสสมาชิก</th>
+                                        <th>รหัสกรรมการ</th>
+                                        <th>คำนำหน้าชื่อ</th>
                                         <th>ชื่อ-สกุล</th>
-                                        <th>จำนวนเงินที่อนุมัติ</th>
-                                        <th>จำนวนเงินที่จ่าย</th>
-                                        <th>วันที่จ่ายเงิน</th>
-                                        <th><div align ='center'>จัดการข้อมูล</div></th>
-
+                                        <th>ตำแหน่ง</th>
+                                        <th>เบอร์โทร</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 						<?php
-							if (isset($_GET["pay_id"])) {
-								$pay_id = $_GET["pay_id"];
-								$sql = "DELETE FROM repayment WHERE pay_id='pay_id'";
+							if (isset($_GET["id_committee"])) {
+								$id_committee = $_GET["id_committee"];
+								$sql = "delete from committee where id_committee='$id_committee'";
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "SELECT * FROM repayment";
+							$sql = "SELECT * FROM committee
+			        LEFT JOIN title
+    		      ON committee.id_title = title.id_title
+			        LEFT JOIN position
+		          ON committee.id_position = position.id_position
+			        ORDER BY id_committee ASC ";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
-								$pay_id = $row["pay_id"];
-								$mem_id = $row["mem_id"];
-								$mem_name = $row["mem_name"];
-								$sub_moneyloan = $row["sub_moneyloan"];
-                $pay_pice = $row["pay_pice"];
-                $pay_date = $row["pay_date"];
+								$id_committee = $row["id_committee"];
+                $id_title = $row["title"];
+								$com_name = $row["com_name"];
+								$id_position = $row["name_position"];
+								$com_address = $row["com_address"];
+                $com_tel = $row["com_tel"];
 
 								echo "<tr>
-										<td>$pay_id</td>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-										<td>$sub_moneyloan</td>
-                    <td>$pay_pice</td>
-                    <td>$pay_date</td>
-                    <td align='center'>
-                    <a href='admin_repayment_edit.php?pay_id=$pay_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_repayment_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='repayment.php?pay_id=$pay_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-                    </tr>";
-              }
+										<td>$id_committee</td>
+                    <td>$id_title</td>
+										<td>$com_name</td>
+										<td>$id_position</td>
+                    <td>$com_tel</td>
+						        </tr>";
+							}
 						?>
 					</tbody>
                             </table>

@@ -14,7 +14,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          ข้อมูลการจ่ายเงิน ให้ผู้กู้
+          รายงานข้อมูลการทำสัญญา
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -26,7 +26,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              ข้อมูลการจ่ายเงิน ให้ผู้กู้
+              รายงานข้อมูลการทำสัญญากู้ยืมเงิน
             </li>
         </ol>
     </section>
@@ -38,18 +38,13 @@ require_once('include/_header.php');
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet box success">
                     <div class="portlet-title">
-                        <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางข้อมูลการจ่ายเงิน ให้ผู้กู้
+                        <div class="caption"> <i class="livicon" data-name="table" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                          ตารางรายงานข้อมูลการทำสัญญากู้ยืมเงินกองทุน
                         </div>
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
-                            <div class="btn-group">
-                              <a href="admin_repayment_add.php"   class=" btn btn-custom">
-                                    เพิ่ม
-                                    <i class="fa fa-plus"></i>
-                                </button> </a>
-                            </div>
+
                             <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                     Tools
@@ -64,11 +59,7 @@ require_once('include/_header.php');
                                             Save as PDF
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            Export to Excel
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -76,46 +67,38 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
-                                        <th>รหัสจ่ายเงินกู้</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>จำนวนเงินที่อนุมัติ</th>
-                                        <th>จำนวนเงินที่จ่าย</th>
-                                        <th>วันที่จ่ายเงิน</th>
-                                        <th><div align ='center'>จัดการข้อมูล</div></th>
+                                        <th>วันที่ทำสัญญา</th>
+                                        <th><div align ='center'>ดูข้อมูล</div></th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
 						<?php
-							if (isset($_GET["pay_id"])) {
-								$pay_id = $_GET["pay_id"];
-								$sql = "DELETE FROM repayment WHERE pay_id='pay_id'";
+							if (isset($_GET["pro_id"])) {
+								$pro_id = $_GET["pro_id"];
+								$sql = "DELETE FROM promise WHERE pro_id ='$pro_id'";
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "SELECT * FROM repayment";
+							$sql = "SELECT * FROM promise LEFT JOIN member ON promise.mem_id = member.mem_id";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
-								$pay_id = $row["pay_id"];
+								$pro_id = $row["pro_id"];
 								$mem_id = $row["mem_id"];
 								$mem_name = $row["mem_name"];
-								$sub_moneyloan = $row["sub_moneyloan"];
-                $pay_pice = $row["pay_pice"];
-                $pay_date = $row["pay_date"];
+								$app_pice = $row["app_pice"];
+                $sub_date = $row["sub_date"];
+                $pro_date = $row["pro_date"];
 
 								echo "<tr>
-										<td>$pay_id</td>
 										<td>$mem_id</td>
 										<td>$mem_name</td>
-										<td>$sub_moneyloan</td>
-                    <td>$pay_pice</td>
-                    <td>$pay_date</td>
-                    <td align='center'>
-                    <a href='admin_repayment_edit.php?pay_id=$pay_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_repayment_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='repayment.php?pay_id=$pay_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+										<td>$app_pice</td>
+                    <td>$pro_date</td>
+                    <td align='center'><a href='admin_promise_view.php?pro_id=$pro_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
                     </tr>";
               }
 						?>

@@ -14,7 +14,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          ข้อมูลการจ่ายเงิน ให้ผู้กู้
+          รายงานการอนุมัติเงินกู้
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -26,7 +26,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              ข้อมูลการจ่ายเงิน ให้ผู้กู้
+              รายงานการอนุมัติเงินกู้
             </li>
         </ol>
     </section>
@@ -36,19 +36,16 @@ require_once('include/_header.php');
         <div class="row">
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet box success">
+                <div class="portlet box info">
                     <div class="portlet-title">
-                        <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางข้อมูลการจ่ายเงิน ให้ผู้กู้
+                        <div class="caption"> <i class="livicon" data-name="table" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                          แสดงตารางรายงานการอนุมัติเงินกู้
                         </div>
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                              <a href="admin_repayment_add.php"   class=" btn btn-custom">
-                                    เพิ่ม
-                                    <i class="fa fa-plus"></i>
-                                </button> </a>
+
                             </div>
                             <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
@@ -64,11 +61,7 @@ require_once('include/_header.php');
                                             Save as PDF
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            Export to Excel
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -76,49 +69,38 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
-                                        <th>รหัสจ่ายเงินกู้</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
-                                        <th>จำนวนเงินที่อนุมัติ</th>
-                                        <th>จำนวนเงินที่จ่าย</th>
-                                        <th>วันที่จ่ายเงิน</th>
-                                        <th><div align ='center'>จัดการข้อมูล</div></th>
-
+                                        <th>จำนวนเงินทีอนุมัติ</th>
+                                        <th>สถานะ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-						<?php
-							if (isset($_GET["pay_id"])) {
-								$pay_id = $_GET["pay_id"];
-								$sql = "DELETE FROM repayment WHERE pay_id='pay_id'";
-								$result = mysqli_query($link, $sql);
-							}
+                                  <?php
+                      							if (isset($_GET["sub_id"])) {
+                      								$sub_id = $_GET["sub_id"];
+                      								$sql = "delete from submitted where sub_id='$sub_id'";
+                      								$result = mysqli_query($link, $sql);
+                      							}
 
-							$sql = "SELECT * FROM repayment";
-							$result = mysqli_query($link, $sql);
-							while ($row = mysqli_fetch_array($result)){
-								$pay_id = $row["pay_id"];
-								$mem_id = $row["mem_id"];
-								$mem_name = $row["mem_name"];
-								$sub_moneyloan = $row["sub_moneyloan"];
-                $pay_pice = $row["pay_pice"];
-                $pay_date = $row["pay_date"];
+                      							$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp WHERE status_app = 'อนุมัติ'";
+                      							$result = mysqli_query($link, $sql);
+                      							while ($row = mysqli_fetch_array($result)){
+                      								$sub_id = $row["sub_id"];
+                      								$mem_id = $row["mem_id"];
+                      								$mem_name = $row["mem_name"];
+                      								$sub_moneyloan = $row["sub_moneyloan"];
+                                      $sub_date = $row["sub_date"];
+                                      $id_sapp = $row["status_app"];
 
-								echo "<tr>
-										<td>$pay_id</td>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-										<td>$sub_moneyloan</td>
-                    <td>$pay_pice</td>
-                    <td>$pay_date</td>
-                    <td align='center'>
-                    <a href='admin_repayment_edit.php?pay_id=$pay_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_repayment_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='repayment.php?pay_id=$pay_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-                    </tr>";
-              }
-						?>
+                      								echo "<tr>
+                      										<td>$mem_id</td>
+                      										<td>$mem_name</td>
+                      										<td>$sub_moneyloan</td>
+                                          <td>$id_sapp</td>
+                                          </tr>";
+                                    }
+                      						?>
 					</tbody>
                             </table>
                         </div>

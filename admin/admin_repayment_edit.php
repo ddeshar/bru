@@ -15,13 +15,13 @@ if (isset($_POST["btnEdit"])) {
 		$mem_idcard = $_POST["mem_idcard"];
 		$pro_id = $_POST["pro_id"];
 		$pro_number = $_POST["pro_number"];
-		$pro_pice = $_POST["pro_pice"];
-		$date_sent = $_POST["date_sent"];
+		$sub_moneyloan = $_POST["sub_moneyloan"];
+		$pro_redate = $_POST["pro_redate"];
 		$pay_date = $_POST["pay_date"];
 		$pay_pice = $_POST["pay_pice"];
 		$id_commit = $_POST["id_commit"];
 
-		$sql = "UPDATE repayment SET  mem_id='$mem_id',mem_name='$mem_name', mem_idcard='$mem_idcard',pro_id='$pro_id', pro_number='$pro_number',pro_pice='$pro_pice',date_sent='$date_sent', pay_date='$pay_date', pay_pice='$pay_pice',id_commit='$id_commit' WHERE pay_id='$id'";
+		$sql = "UPDATE repayment SET  mem_id='$mem_id',mem_name='$mem_name', mem_idcard='$mem_idcard',pro_id='$pro_id', pro_number='$pro_number',sub_moneyloan='$sub_moneyloan',pro_redate='$pro_redate', pay_date='$pay_date', pay_pice='$pay_pice',id_commit='$id_commit' WHERE pay_id='$id'";
 
 		$result = mysqli_query($link, $sql);
 
@@ -49,9 +49,9 @@ if (isset($_POST["btnEdit"])) {
 			$mem_name = $row["mem_name"];
 			$mem_idcard = $row["mem_idcard"];
 			$pro_id = $row["pro_id"];
-			$pro_number = $row["pro_number"];
-			$pro_pice = $row["pro_pice"];
-			$date_sent = $row["date_sent"];
+			//$pro_number = $row["pro_number"];
+			$sub_moneyloan = $row["sub_moneyloan"];
+			$pro_redate = $row["pro_redate"];
 			$pay_date = $row["pay_date"];
 			$pay_pice = $row["pay_pice"];
 			$id_commit = $row["id_commit"];
@@ -61,9 +61,9 @@ if (isset($_POST["btnEdit"])) {
 			$mem_name = "";
 			$mem_idcard = "";
 			$pro_id = "";
-			$pro_number = "";
-			$pro_pice = "";
-			$date_sent = "";
+			//$pro_number = "";
+			$sub_moneyloan = "";
+			$pro_redate = "";
 			$pay_date = "";
 			$pay_pice = "";
 			$id_commit = "";
@@ -141,22 +141,22 @@ if (isset($_POST["btnEdit"])) {
 																	<input id="pro_id" name="pro_id" type="text" value="<?php echo "$pro_id"; ?>" class="form-control"></div>
 															</div>
 
-															<div class="form-group">
+															<!-- <div class="form-group">
 																	<label class="col-md-3 control-label" for="number">เลขที่สัญญา</label>
 																	<div class="col-md-3">
-																	<input id="pro_number" name="pro_number" type="text" value="<?php echo "$pro_number"; ?>" class="form-control"></div>
-															</div>
+																	<input id="pro_number" name="pro_number" type="text" value="<?php// echo "$pro_number"; ?>" class="form-control"></div>
+															</div> -->
 
 															<div class="form-group">
 																	<label class="col-md-3 control-label" for="number">จำนวนเงินกู้</label>
 																	<div class="col-md-3">
-																	<input id="pro_pice" name="pro_pice" type="text" value="<?php echo "$pro_pice"; ?>" class="form-control"></div>
+																	<input id="sub_moneyloan" name="sub_moneyloan" type="text" value="<?php echo "$sub_moneyloan"; ?>" class="form-control"></div>
 															</div>
 
 															<div class="form-group">
 															<label class="col-md-3 control-label" for="date">วันที่ครบกำหนดส่ง</label>
 															<div class="col-md-3">
-															<input type="date" id="datepicker" name="date_sent" class="form-control "  value="<?php echo "$date_sent"; ?>"></div>
+															<input type="date" id="datepicker" name="pro_redate" class="form-control "  value="<?php echo "$pro_redate"; ?>"></div>
 															</div>
 
 															<div class="form-group">

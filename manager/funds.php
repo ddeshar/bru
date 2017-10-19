@@ -14,7 +14,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          ข้อมูลการจ่ายเงิน ให้ผู้กู้
+          ข้อมูลกองทุนหมู่บ้าน
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -26,7 +26,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              ข้อมูลการจ่ายเงิน ให้ผู้กู้
+              ข้อมูลกองทุนหมู่บ้าน
             </li>
         </ol>
     </section>
@@ -36,16 +36,16 @@ require_once('include/_header.php');
         <div class="row">
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet box success">
+                <div class="portlet box default">
                     <div class="portlet-title">
                         <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางข้อมูลการจ่ายเงิน ให้ผู้กู้
+                          ตารางข้อมูลกองทุนหมู่บ้าน
                         </div>
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                              <a href="admin_repayment_add.php"   class=" btn btn-custom">
+                              <a href="admin_fund_add.php"   class=" btn btn-custom">
                                     เพิ่ม
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
@@ -77,47 +77,40 @@ require_once('include/_header.php');
                                 <thead>
                                     <tr role="row">
 
-                                        <th>รหัสจ่ายเงินกู้</th>
-                                        <th>รหัสสมาชิก</th>
-                                        <th>ชื่อ-สกุล</th>
-                                        <th>จำนวนเงินที่อนุมัติ</th>
-                                        <th>จำนวนเงินที่จ่าย</th>
-                                        <th>วันที่จ่ายเงิน</th>
+                                        <th>รหัสกองทุน</th>
+                                        <th>ชื่อกองทุน</th>
+                                        <th>รายละเอียดกองทุน</th>
+                                        <th>จำนวนเงินเริ่มต้น</th>
                                         <th><div align ='center'>จัดการข้อมูล</div></th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
 						<?php
-							if (isset($_GET["pay_id"])) {
-								$pay_id = $_GET["pay_id"];
-								$sql = "DELETE FROM repayment WHERE pay_id='pay_id'";
+							if (isset($_GET["id_fund"])) {
+								$id_fund = $_GET["id_fund"];
+								$sql = "delete from fund where id_fund='$id_fund'";
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "SELECT * FROM repayment";
+							$sql = "select * from fund";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
-								$pay_id = $row["pay_id"];
-								$mem_id = $row["mem_id"];
-								$mem_name = $row["mem_name"];
-								$sub_moneyloan = $row["sub_moneyloan"];
-                $pay_pice = $row["pay_pice"];
-                $pay_date = $row["pay_date"];
+								$id_fund = $row["id_fund"];
+								$fund_name = $row["fund_name"];
+								$fund_detail = $row["fund_detail"];
+								$fund_money = $row["fund_money"];
 
 								echo "<tr>
-										<td>$pay_id</td>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-										<td>$sub_moneyloan</td>
-                    <td>$pay_pice</td>
-                    <td>$pay_date</td>
-                    <td align='center'>
-                    <a href='admin_repayment_edit.php?pay_id=$pay_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_repayment_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='repayment.php?pay_id=$pay_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-                    </tr>";
-              }
+										<td>$id_fund</td>
+										<td>$fund_name</td>
+										<td>$fund_detail</td>
+										<td>$fund_money</td>
+                    <td align='center'><a href='admin_fund_edit.php?id_fund=$id_fund' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <a href='admin_fund_view.php?id_fund=$id_fund' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+										<a href='funds.php?id_fund=$id_fund' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+									</tr>";
+							}
 						?>
 					</tbody>
                             </table>

@@ -12,40 +12,19 @@ require_once('include/_header.php');
 ?>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-          ข้อมูลการจ่ายเงิน ให้ผู้กู้
-        </h1>
-        <ol class="breadcrumb">
-            <li>
-                <a href="index.php"> <i class="livicon" data-name="home" data-size="18" data-loop="true"></i>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="#">DataTables</a>
-            </li>
-            <li class="active">
-              ข้อมูลการจ่ายเงิน ให้ผู้กู้
-            </li>
-        </ol>
-    </section>
+
     <!-- Main content -->
     <section class="content">
         <!-- Second Data Table -->
         <div class="row">
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet box success">
-                    <div class="portlet-title">
-                        <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางข้อมูลการจ่ายเงิน ให้ผู้กู้
-                        </div>
-                    </div>
+                <div class="portlet box default">
+
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                              <a href="admin_repayment_add.php"   class=" btn btn-custom">
+                              <a href="admin_withdraw_add.php"   class=" btn btn-custom">
                                     เพิ่ม
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
@@ -77,47 +56,59 @@ require_once('include/_header.php');
                                 <thead>
                                     <tr role="row">
 
-                                        <th>รหัสจ่ายเงินกู้</th>
                                         <th>รหัสสมาชิก</th>
-                                        <th>ชื่อ-สกุล</th>
-                                        <th>จำนวนเงินที่อนุมัติ</th>
-                                        <th>จำนวนเงินที่จ่าย</th>
-                                        <th>วันที่จ่ายเงิน</th>
-                                        <th><div align ='center'>จัดการข้อมูล</div></th>
-
+                                        <th>วันที่ฝาก</th>
+                                        <th>ชื่อผู้ฝาก</th>
+                                        <th>ชื่อผู้รับฝาก</th>
+                                        <th>ฝาก</th>
+                                        <th>ถอน</th>
+                                        <th>ยอดเงินคงเหลือ</th>
+                                        <th><div align ='center'>ดูข้อมูล</div></th>
                                     </tr>
                                 </thead>
                                 <tbody>
 						<?php
-							if (isset($_GET["pay_id"])) {
-								$pay_id = $_GET["pay_id"];
-								$sql = "DELETE FROM repayment WHERE pay_id='pay_id'";
+							if (isset($_GET["fak_id"])) {
+								$fak_id = $_GET["fak_id"];
+								$sql = "DELETE FROM deposit WHERE fak_id='$fak_id'";
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "SELECT * FROM repayment";
+							$sql = "SELECT DISTINCT deposit.mem_id,
+              member.mem_name,
+              deposit.fak_date,
+              deposit.fak_sum,
+              deposit.withdraw,
+              deposit.fak_total,
+              commits.name_commit
+              FROM deposit left JOIN member
+              ON deposit.mem_id = member.mem_id
+              left JOIN commits
+              ON deposit.id_commit = commits.id_commit
+              order by deposit.mem_id asc
+              ";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
-								$pay_id = $row["pay_id"];
 								$mem_id = $row["mem_id"];
+								$fak_date = $row["fak_date"];
 								$mem_name = $row["mem_name"];
-								$sub_moneyloan = $row["sub_moneyloan"];
-                $pay_pice = $row["pay_pice"];
-                $pay_date = $row["pay_date"];
+								$name_commit = $row["name_commit"];
+                $fak_sum = $row["fak_sum"];
+                $withdraw = $row["withdraw"];
+                $fak_total = $row["fak_total"];
 
 								echo "<tr>
-										<td>$pay_id</td>
 										<td>$mem_id</td>
+										<td>$fak_date</td>
 										<td>$mem_name</td>
-										<td>$sub_moneyloan</td>
-                    <td>$pay_pice</td>
-                    <td>$pay_date</td>
-                    <td align='center'>
-                    <a href='admin_repayment_edit.php?pay_id=$pay_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_repayment_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='repayment.php?pay_id=$pay_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-                    </tr>";
-              }
+										<td>$name_commit</td>
+                    <td>$fak_sum</td>
+                    <td>$withdraw</td>
+                    <td>$fak_total</td>
+
+                    <td align='center'><a href='admin_deposit_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
+									</tr>";
+							}
 						?>
 					</tbody>
                             </table>

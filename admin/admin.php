@@ -1,6 +1,6 @@
 <?php
-$page = 'blank';
-$title = 'Blank Page';
+$page = 'Admin';
+$title = 'Admin Page';
 $css = <<<EOT
 <!--page level css -->
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
@@ -12,7 +12,7 @@ require_once('include/_header.php');
 ?>
 <aside class="right-side">
     <section class="content-header">
-        <h1>Blank page</h1>
+        <h1>Admin page</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>

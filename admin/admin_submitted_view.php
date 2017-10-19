@@ -37,9 +37,9 @@ if (isset($_GET["sub_id"])) {
 			$sub_objective = "";
 			$sub_date = "";
 			$sub_idcardBM1 = "";
-			$sub_status1 = "";
+			$name1 = "";
 			$sub_idcardBM2 = "";
-			$sub_status2 = "";
+			$name2 = "";
 			$id_commit = "";
 			$id_sapp = "";
 		}

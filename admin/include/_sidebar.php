@@ -153,7 +153,7 @@
                     ข้อมูลการฝาก-ถอน
                 </a>
             </li>
-            <!--<li <?php if($page == 'panels') echo 'class="active" id="active"'; ?> >
+            <!--<li <?php// if($page == 'panels') echo 'class="active" id="active"'; ?> >
                 <a href="panels.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการถอน

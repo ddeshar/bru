@@ -44,12 +44,12 @@ require_once('include/_header.php');
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
-                            <div class="btn-group">
+                            <!-- <div class="btn-group">
                               <a href="admin_submitted_add.php"   class=" btn btn-custom">
                                     เพิ่ม
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
-                            </div>
+                            </div> -->
                             <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                     Tools

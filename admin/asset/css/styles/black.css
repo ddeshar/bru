@@ -19,7 +19,10 @@ html, body {
 .wrapper {
     min-height: 100%;
 }
+.report_black{
+color: white;
 
+}
 .wrapper:before, .wrapper:after {
     display: table;
     content: " ";
@@ -180,7 +183,7 @@ body > .header .navbar .sidebar-toggle {
 
 /* skin-josh logo */
 .skin-josh .logo {
-    background-color: #515763;
+    background-color: #006666;
 }
 
 .skin-josh .logo > h1 {
@@ -1316,7 +1319,7 @@ li.dropdown-footer {
 }
 
 .sidebar-nav {
-    background: #515763;
+    background: #006666;
 }
 
 .sidebar-nav ul {
@@ -1336,7 +1339,7 @@ li.dropdown-footer {
 }
 
 .skin-josh .navbar {
-    background-color: #515763; /*	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); */
+    background-color: #006666; /*	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); */
 }
 
 .skin-josh .navbar .nav a {
@@ -1352,15 +1355,15 @@ li.dropdown-footer {
 }
 
 .skin-josh .navbar .sidebar-toggle .icon-bar {
-    background: #515763;
+    background: #006666;
 }
 
 .skin-josh .sidebar .page-sidebar-menu > li {
-    border-bottom: 1px solid #515763;
+    border-bottom: 1px solid #006666;
 }
 
 .skin-josh .sidebar .page-sidebar-menu > li:hover {
-    background: #3a4252;
+    background: #3a4252; /*ชี้แล้วเปลี่ยนสี*/
     border-bottom: 1px solid rgba(54, 60, 70, 0.5);
 }
 
@@ -1369,7 +1372,7 @@ li.dropdown-footer {
 }
 
 .skin-josh .left-side {
-    background: #515763;
+    background: #006666;
     border-right: none;
 }
 
@@ -1392,7 +1395,7 @@ li.dropdown-footer {
 
 .left-side #active {
     background: #32323c !important;
-    color: #FFF;
+    color: #FFF; /*ตัวหนังสือสีขาว*/
 }
 
 .skin-josh .sidebar li.open ul:hover, .skin-josh .sidebar li.open a ul:hover, .skin-josh .sidebar li.open ul li:hover, a, a:hover {
@@ -1413,7 +1416,7 @@ li.dropdown-footer {
 }
 
 .sidebar_threeicons li:hover {
-    background: #3a4252;
+    background: #006666;
 }
 
 /*dashboard top 4 panels css*/
@@ -1448,7 +1451,7 @@ li.dropdown-footer {
     margin: 10px 0px;
 }
 
-.redbg {
+.#006666bg {
     background: #EF6F6C;
     color: #FFF;
     font-family: Lato, sans-serif;

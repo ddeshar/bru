@@ -34,15 +34,15 @@ require_once('include/_header.php');
 			$mem_idcard = $_POST["mem_idcard"];
 			$pro_id = $_POST["pro_id"];
 			//$pro_number = $_POST["pro_number"];
-			$pro_pice = $_POST["pro_pice"];
-			$date_sent = $_POST["date_sent"];
+			$sub_moneyloan = $_POST["sub_moneyloan"];
+			$pro_redate = $_POST["pro_redate"];
 			$pay_date = $_POST["pay_date"];
 			$pay_pice = $_POST["pay_pice"];
 			$id_commit = $_POST["id_commit"];
 
 
-			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,pro_pice,date_sent,pay_date,pay_pice,id_commit)
-							VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$pro_pice','$date_sent','$pay_date','$pay_pice','$id_commit')";
+			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,sub_moneyloan,pro_redate,pay_date,pay_pice,id_commit)
+							VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$sub_moneyloan','$pro_redate','$pay_date','$pay_pice','$id_commit')";
 			$result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";
@@ -131,13 +131,13 @@ require_once('include/_header.php');
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="number">จำนวนเงินกู้</label>
                                     <div class="col-md-3">
-                                    <input id="pro_pice" name="pro_pice" type="text" placeholder="MONEY" class="form-control"></div>
+                                    <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="date">วันที่ครบกำหนดส่ง</label>
 																<div class="col-md-3">
-																<input type="date" id="date_sent" name="date_sent" class="form-control round-form"  placeholder="DATE"></div>
+																<input type="date" id="pro_redate" name="pro_redate" class="form-control round-form"  placeholder="DATE"></div>
 																</div>
 
 																<div class="form-group">
@@ -227,9 +227,9 @@ require_once('include/_footer.php');
 		$('#user_id_mem').val(names[1]);
 		$('#user_idcard_mem').val(names[2]);
 		$('#pro_id').val(names[3]);
-		$('#pro_pice').val(names[4]);
+		$('#sub_moneyloan').val(names[4]);
 		$('#pay_date').val(names[5]);
-		// $('#date_sent').val(names[6]);
+		$('#pro_redate').val(names[6]);
 	}
 	});
 

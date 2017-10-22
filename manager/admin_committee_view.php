@@ -1,6 +1,6 @@
 <?php
-$page = 'Admin';
-$title = 'Hello admin';
+$page = 'Manager';
+$title = 'Hello Manager';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />

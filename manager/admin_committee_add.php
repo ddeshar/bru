@@ -1,6 +1,6 @@
 <?php
-$page = 'Admin';
-$title = 'Hello admin';
+$page = 'Manager';
+$title = 'Hello Manager';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
@@ -80,14 +80,15 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">รหัสกรรมการ</label>
                                 <div class="col-md-3">
-                                <input id="id_committee" name="id_committee" type="text" placeholder="ID" class="form-control"></div>
+                                <input id="id_committee" name="id_committee" type="text" placeholder="ID" class="form-control" readonly></div>
                                 </div>
 
-                                <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">เลขประจำตัวประชาชน</label>
-                                <div class="col-md-3">
-                                <input id="com_idcard" name="com_idcard" type="text" placeholder="IDCARD" class="form-control"></div>
-                                </div>
+																<div class="form-group">
+																<label class="col-md-3 control-label" for="name">เลขประจำตัวประชาชน</label>
+																<div class="col-md-3">
+																<input id="sessionNum" name="com_idcard" type="text" onkeypress="return isNumberKey(event)" maxlength="13" placeholder="IDCARD" class="form-control" required></div>
+																<span style="color: red;">	<span id="sessionNum_counter">13</span> *โปรดระบุเลขที่บัตรประชาชนให้ถูกต้องเพื่อใช้เป็น Username </span>
+																</div>
 
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="detail">คำนำหน้าชื่อ</label>
@@ -195,4 +196,20 @@ require_once('include/_footer.php');
   $(document).ready(function() {
     $("#datepicker").datepicker();
   });
+
+
+
+	$(document).ready(function(){
+		var maxChars = $("#sessionNum");
+		var max_length = maxChars.attr('maxlength');
+		if (max_length > 0) {
+		    maxChars.bind('keyup', function(e){
+		        length = new Number(maxChars.val().length);
+		        counter = max_length-length;
+		        $("#sessionNum_counter").text(counter);
+		    });
+		}
+		});
+
+
   </script>

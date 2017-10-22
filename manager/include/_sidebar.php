@@ -7,7 +7,7 @@ color: white;
 
 
 <ul id="menu" class="page-sidebar-menu">
-    <li  <?php if($page == 'admin') echo 'class="active" id="active"'; ?> >
+    <li  <?php if($page == 'manager') echo 'class="active" id="active"'; ?> >
         <a href="manager.php">
             <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
             <span class="title">หน้าแรก</span>

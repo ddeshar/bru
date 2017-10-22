@@ -100,8 +100,8 @@ if (isset($_POST["btnsubmit"])) {
 																            <div class="col-lg-3">
 																              <select class="form-control" name="status" id="select">
 																								 <option  >---เลือก---</option>
-																								<option value="0" >ผู้บริหาร</option>
-																                <option value="100" >สมาชิก</option>
+																								<option value="0" >สมาชิก</option>
+																                <option value="100" >ผู้บริหาร</option>
 																                <option value="500" >ผู้ดูแลระบบ</option>
 																              </select>
 																            </div>

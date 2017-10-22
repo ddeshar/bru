@@ -119,13 +119,13 @@ if (isset($_POST["btnEdit"])) {
                   												if ($status == 500) {
                     												echo "ผู้ดูแลระบบ";
                   												}else if ($status == 100) {
-                    												echo "สมาชิก";
-                  												}else if ($status == 0) {
                     												echo "ผู้บริหาร";
+                  												}else if ($status == 0) {
+                    												echo "สมาชิก";
                   												}
                 												?></option>
-                												<option value="0" >ผู้บริหาร</option>
-                												<option value="100" >สมาชิก</option>
+                												<option value="0" >สมาชิก</option>
+                												<option value="100" >ผู้บริหาร</option>
                 												<option value="500" >ผู้ดูแลระบบ</option>
               												</select>
             												</div>

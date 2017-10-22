@@ -1,6 +1,6 @@
 <?php
         session_start();
-        if (!isset($_SESSION['is_admin'])) {
+        if (!isset($_SESSION['is_manager'])) {
             header("Location: index.php");
         }
         require 'connect.php';

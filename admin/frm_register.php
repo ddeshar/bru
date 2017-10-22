@@ -25,19 +25,19 @@
                         <form accept-charset="UTF-8" action="register.php" method="post" role="form">
                             <fieldset>
                                 <div class="form-group input-group">
-                                    <div class="input-group-addon"> <i class="livicon" data-name="user" data-size="18" data-c="#000" data-hc="#000" data-loop="true"></i>
+                                    <div class="input-group-addon"> <i class="livicon" data-name="user" data-size="18" data-c="#000" data-hc="#000" data-loop="true"  ></i>
                                     </div>
-                                    <input class="form-control" placeholder="username" name="username" type="text" />
+                                    <input class="form-control" placeholder="username" name="username" type="text" required/>
                                 </div>
                                 <div class="form-group input-group">
                                     <div class="input-group-addon"> <i class="livicon" data-name="key" data-size="18" data-c="#000" data-hc="#000" data-loop="true"></i>
                                     </div>
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="" />
+                                    <input class="form-control" placeholder="Password" name="password" type="password" value="" required/>
                                 </div>
                                 <div class="form-group input-group">
                                     <div class="input-group-addon"> <i class="livicon" data-name="at" data-size="18" data-c="#000" data-hc="#000" data-loop="true"></i>
                                     </div>
-                                    <input class="form-control" placeholder="example@domain.com" name="email" type="email" value="" />
+                                    <input class="form-control" placeholder="example@domain.com" name="email" type="email" value="" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>

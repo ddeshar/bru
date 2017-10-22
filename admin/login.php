@@ -24,13 +24,13 @@
           header("Location: admin.php");
 
         }elseif ($row_user['status'] == 100) {
-          $_SESSION['is_member'] = 100;
+          $_SESSION['is_manager'] = 100;
           header("Location: ../manager/manager.php");
 
         }else{
           $_SESSION['is_user'] = 0;
           $_SESSION['login_username'] = $row_user['login_username'];
-          header("Location: user.php");
+          header("Location: ../member/mem.php");
         }
     } else{
       echo "sorry ผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";

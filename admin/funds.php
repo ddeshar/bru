@@ -93,7 +93,7 @@ require_once('include/_header.php');
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "select * from fund";
+							$sql = "SELECT * FROM und";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$id_fund = $row["id_fund"];

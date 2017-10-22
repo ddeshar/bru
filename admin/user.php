@@ -1,7 +1,7 @@
 <?php
 $status_array = array('500' => 'ผู้ดูแลระบบ','100' => 'สมาชิก','0' => 'ผู้บริหาร' );
-$page = 'blank';
-$title = 'Blank Page';
+$page = 'Admin';
+$title = 'Admin Page';
 $css = <<<EOT
 <!--page level css -->
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
@@ -88,7 +88,7 @@ require_once('include/_header.php');
 						<?php
 							if (isset($_GET["user_id"])) {
 								$user_id = $_GET["user_id"];
-								$sql = "DELETE FROM tbl_user WHERE user_id='$user_id'";
+								$sql = "delete from tbl_users where user_id='$user_id'";
 								$result = mysqli_query($link, $sql);
 							}
 							$sql = "SELECT * FROM tbl_users";

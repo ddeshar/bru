@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Admin Login | บ้านสวนครัว</title>
+    <title>Manager Login | บ้านสวนครัว</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- global level css -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" />

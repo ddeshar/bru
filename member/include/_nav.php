@@ -16,7 +16,7 @@
                         <img data-src="holder.js/35x35/#fff:#000" width="35" class="img-circle img-responsive pull-left" height="35" alt="riot">
                         <div class="riot">
                             <div>
-                                <?=$s_login_username?>
+                                <?=$s_login_name?>
                                 <span>
                                     <i class="caret"></i>
                                 </span>

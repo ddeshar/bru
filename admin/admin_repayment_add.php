@@ -36,13 +36,13 @@ require_once('include/_header.php');
 			//$pro_number = $_POST["pro_number"];
 			$sub_moneyloan = $_POST["sub_moneyloan"];
 			$pro_redate = $_POST["pro_redate"];
-			$pay_date = $_POST["pay_date"];
+			// $pay_date = $_POST["pay_date"];
 			$pay_pice = $_POST["pay_pice"];
 			$id_commit = $_POST["id_commit"];
 
 
-			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,sub_moneyloan,pro_redate,pay_date,pay_pice,id_commit)
-							VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$sub_moneyloan','$pro_redate','$pay_date','$pay_pice','$id_commit')";
+			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,sub_moneyloan,pro_redate,pay_date,pay_pice,id_commit)VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$sub_moneyloan','$pro_redate',NOW(),'$pay_pice','$id_commit')";
+			// echo $sql; exit;
 			$result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";
@@ -140,11 +140,11 @@ require_once('include/_header.php');
 																<input type="date" id="pro_redate" name="pro_redate" class="form-control round-form"  placeholder="DATE"></div>
 																</div>
 
-																<div class="form-group">
+																<!-- <div class="form-group">
 																<label class="col-md-3 control-label" for="date">วันที่จ่ายเงินกู้</label>
 																<div class="col-md-3">
 																<input type="date" id="pay_date" name="pay_date" class="form-control round-form"  placeholder="DATE"></div>
-																</div>
+																</div> -->
 
 																<div class="form-group">
 																		<label class="col-md-3 control-label" for="money">จำนวนเงินที่จ่าย</label>
@@ -228,8 +228,7 @@ require_once('include/_footer.php');
 		$('#user_idcard_mem').val(names[2]);
 		$('#pro_id').val(names[3]);
 		$('#sub_moneyloan').val(names[4]);
-		$('#pay_date').val(names[5]);
-		$('#pro_redate').val(names[6]);
+		$('#pro_redate').val(names[5]);
 	}
 	});
 

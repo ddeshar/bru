@@ -8,15 +8,14 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-if (isset($_GET["mem_id"])) {
-		$mem_id = $_GET["mem_id"];
-		$sql = "SELECT * FROM member
+if (isset($s_login_mem_id)) {
+				$sql = "SELECT * FROM member
 						LEFT JOIN gender
 						ON member.id_gender = gender.id_gender
 						LEFT JOIN title
 						ON member.id_title = title.id_title
 						LEFT JOIN status
-						ON member.id_status = status.id_status
+						ON member.id_status = status.id_status WHERE member.mem_id = '$s_login_mem_id'
 						ORDER BY mem_id ASC
 		";
 		$result = mysqli_query($link, $sql);
@@ -106,13 +105,12 @@ if (isset($_GET["mem_id"])) {
 													<label class="col-md-5 control-label" for="id">เบอร์โทร</label><p><?=$mem_tel?></p>
 													<label class="col-md-5 control-label" for="id">อีเมล</label><p><?=$mem_email?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$mem_username?></p>
-													<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$mem_password?></p>
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
                         <a style="color:#fff;" onclick="javascript:window.print();">Print<i class="livicon" data-name="printer" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
                         </button>
-                        
+
                     </div>
                 </div>
             </div>

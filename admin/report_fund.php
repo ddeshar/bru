@@ -24,50 +24,75 @@ require_once('include/_header.php');
     <section class="content">
       <div class="portlet-body">
         <?php
+          //
+          // $stmt = mysqli_prepare($link, "SELECT date_format(sub_id, '%d-%b-%y') as pDate, sum(mem_id) as pAmount FROM promise GROUP BY pDate ASC");
+          // $result = array('day' => array(), 'amount' => array());
+          //   if ($stmt) {
+          //     mysqli_stmt_execute($stmt);
+          //     mysqli_stmt_bind_result($stmt, $day, $amount);
+          //     while (mysqli_stmt_fetch($stmt)) {
+          //       $result['day'][] = $day;
+          //       $result['amount'][] = (int)$amount;
+          //   }
+          //   // mysqli_stmt_close($stmt);
+          // }
 
-$stmt = mysqli_prepare($link, "SELECT date_format(sub_id, '%d-%b-%y') as pDate, sum(mem_id) as pAmount FROM promise GROUP BY pDate ASC");
-$result = array('day' => array(), 'amount' => array());
-  if ($stmt) {
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $day, $amount);
-    while (mysqli_stmt_fetch($stmt)) {
-      $result['day'][] = $day;
-      $result['amount'][] = (int)$amount;
-  }
-  // mysqli_stmt_close($stmt);
-}
+          /*member count from db*/
+          // $sql_member = "SELECT * FROM `member`";
+          // $sql_all_member = mysqli_query($link,$sql_member);
+          // $fetch_all_member = mysqli_fetch_all($sql_all_member,MYSQLI_ASSOC);
+          // $count_member = json_encode(array_column($fetch_all_member, 'count'),JSON_NUMERIC_CHECK);
 
-/* Getting demo_viewer table data */
-$sql = "SELECT sum(sub_moneyloan) as count FROM promise
-    GROUP BY MONTH(sub_date) ORDER BY sub_date";
-$faksum = mysqli_query($link,$sql);
-$faksum = mysqli_fetch_all($faksum,MYSQLI_ASSOC);
-$faksum = json_encode(array_column($faksum, 'count'),JSON_NUMERIC_CHECK);
+          $sql_member = "SELECT count(*) as totalm from member";
+          $sql_allmember = mysqli_query($link,$sql_member);
+          $data=mysqli_fetch_assoc($sql_allmember);
+          $total_mem=  $data['totalm'];
+          $count_member =  json_encode($total_mem,JSON_NUMERIC_CHECK);
 
-/* Getting demo_click table data */
-$sql = "SELECT SUM(app_pice) as count FROM promise
-    GROUP BY MONTH(sub_date) ORDER BY sub_date";
-$withdraw = mysqli_query($link,$sql);
-$withdraw = mysqli_fetch_all($withdraw,MYSQLI_ASSOC);
-$withdraw = json_encode(array_column($withdraw, 'count'),JSON_NUMERIC_CHECK);
+          /* Getting demo_viewer table data */
+          $sql_loan = "SELECT sum(sub_moneyloan) as count FROM promise GROUP BY MONTH(sub_date) ORDER BY sub_date";
+          $sum_all_loan = mysqli_query($link,$sql_loan);
+          $fetch_all_loan = mysqli_fetch_all($sum_all_loan,MYSQLI_ASSOC);
+          $faksum = json_encode(array_column($fetch_all_loan, 'count'),JSON_NUMERIC_CHECK);
 
+          /* Getting demo_click table data */
+          $sql_loan = "SELECT SUM(app_pice) as count FROM promise GROUP BY MONTH(sub_date) ORDER BY sub_date";
+          $withdraw_loan = mysqli_query($link,$sql_loan);
+          $fetch_all_withdraw = mysqli_fetch_all($withdraw_loan,MYSQLI_ASSOC);
+          $withdraw = json_encode(array_column($fetch_all_withdraw, 'count'),JSON_NUMERIC_CHECK);
 
+          /* Getting demo_click table data */
+          $sql_submitted = "SELECT count(*) as total from submitted WHERE id_sapp = 1";
+          $withdraw_sumnit = mysqli_query($link,$sql_submitted);
+          $data=mysqli_fetch_assoc($withdraw_sumnit);
+          $total_sub =  $data['total'];
+          $submitted =  json_encode($total_sub,JSON_NUMERIC_CHECK);
+          // $submitted = json_encode(array_column($data, 'total'),JSON_NUMERIC_CHECK);
 
-$stmt = mysqli_prepare($link, "SELECT date_format(sub_date, '%d-%b-%y') as pDate FROM promise
-GROUP BY pDate ASC");
-$result = array('day' => array());
-  if ($stmt) {
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $day);
-    while (mysqli_stmt_fetch($stmt)) {
-      $result['day'][] = $day;
-      // $result['amount'][] = (int)$amount;
-  }
-  // mysqli_stmt_close($stmt);
-}
+          // $sql_submitted = "SELECT * FROM `submitted` WHERE id_sapp = 1";
+          // $withdraw_sumnit = mysqli_query($link,$sql_submitted);
+          // $fetch_all_sumnit = mysqli_fetch_all($withdraw_sumnit,MYSQLI_ASSOC);
+          // $submitted = json_encode(array_column($fetch_all_sumnit, 'count'),JSON_NUMERIC_CHECK);
 
+          $stmt = mysqli_prepare($link, "SELECT date_format(sub_date, '%d-%b-%y') as pDate FROM promise
+          GROUP BY pDate ASC");
+          $result = array('day' => array());
+            if ($stmt) {
+              mysqli_stmt_execute($stmt);
+              mysqli_stmt_bind_result($stmt, $day);
+              while (mysqli_stmt_fetch($stmt)) {
+                $result['day'][] = $day;
+                // $result['amount'][] = (int)$amount;
+            }
+            // mysqli_stmt_close($stmt);
+          }
 
         ?>
+
+      <?php echo $withdraw; ?>
+    <?php echo $faksum; ?>
+        <?php echo $count_member; ?>
+     <?php echo $submitted; ?>
 
         <div id="container"></div>
     </section>
@@ -81,6 +106,8 @@ $(function () {
 
   var data_withdraw = <?php echo $withdraw; ?>;
   var data_faksum = <?php echo $faksum; ?>;
+  var count_member = <?php echo $count_member; ?>;
+  var data_submitted = <?php echo $submitted; ?>;
 
     $('#container').highcharts({
         chart: {
@@ -92,8 +119,6 @@ $(function () {
         colors: ['black','purple','pink','green'],
         xAxis: {
           categories: <?php echo json_encode($result['day']) ?>
-
-            // categories: ['1','2','3', '4']
         },
         yAxis: {
             title: {
@@ -102,16 +127,16 @@ $(function () {
         },
         series: [{
             name: 'สมาชิกทั้งหมด(คน)',
-            data: data_faksum
+            data: count_member
         }, {
             name: 'สมาชิกยื่นกู้(คน)',
             data: data_faksum
         }, {
             name: 'จำนวนเงินกู้',
-            data: data_faksum
+            data: data_withdraw
         }, {
             name: 'จำนวนเงินอนุมัติ',
-            data: data_withdraw
+            data: data_submitted
         }]
     });
 });

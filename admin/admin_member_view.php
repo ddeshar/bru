@@ -17,7 +17,7 @@ if (isset($_GET["mem_id"])) {
 						ON member.id_title = title.id_title
 						LEFT JOIN status
 						ON member.id_status = status.id_status
-						ORDER BY mem_id ASC
+						WHERE member.mem_id = '$mem_id'
 		";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {

@@ -12,5 +12,7 @@
             $row_user = mysqli_fetch_array($result_user,MYSQLI_ASSOC);
             $s_login_username = $row_user['username'];
             $s_login_email = $row_user['email'];
+            $s_login_mem_id = $row_user['mem_id'];
+            $s_login_name = $row_user['name'];
             mysqli_free_result($result_user);
         }

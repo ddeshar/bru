@@ -2,9 +2,6 @@
 require_once 'include/connect.php';
 if($_POST['type'] == 'country_table'){
 	$row_num = $_POST['row_num'];
-	//
-	// $result = mysqli_query($link, "SELECT mem_name, member.mem_id, promise.sub_moneyloan FROM member LEFT JOIN promise ON member.mem_id = promise.mem_id  where mem_name LIKE '".strtoupper($_POST['name_startsWith'])."%' ORDER BY promise.pro_id DESC LIMIT 1");
-
 
 	$result = mysqli_query($link, "SELECT member.mem_name, member.mem_id, deposit.fak_total FROM member LEFT JOIN deposit ON member.mem_id = deposit.mem_id  WHERE member.mem_name LIKE '%".strtoupper($_POST['name_startsWith'])."%' ORDER BY deposit.fak_id DESC LIMIT 1");
 	$data = array();

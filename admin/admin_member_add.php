@@ -26,8 +26,13 @@ if (isset($_POST["submit"])) {
 	$mem_password = $_POST["mem_password"];
 	$status_mem = $_POST["status_mem"];
 
-		$sql = "INSERT INTO member (mem_id,mem_idcard,id_gender,id_title,mem_name,mem_birthday,id_status,mem_occupation,mem_address,mem_tel,mem_email,mem_username,mem_password,status_mem)VALUES('$mem_id','$mem_idcard','$id_gender','$id_title','$mem_name','$mem_birthday','$id_status','$mem_occupation','$mem_address','$mem_tel','$mem_email','$mem_username','$mem_password','$status_mem')";
-		$result = mysqli_query($link, $sql);
+	$salt = 'tikde78uj4ujuhlaoikiksakeidke';
+	$hash_login_password = hash_hmac('sha256', $mem_password, $salt);
+
+		$sql = "INSERT INTO member (mem_id,mem_idcard,id_gender,id_title,mem_name,mem_birthday,id_status,mem_occupation,mem_address,mem_tel,mem_email,mem_username,mem_password,status_mem)VALUES('$mem_id','$mem_idcard','$id_gender','$id_title','$mem_name','$mem_birthday','$id_status','$mem_occupation','$mem_address','$mem_tel','$mem_email','$mem_username','$hash_login_password','$status_mem');
+		SET @last_mem_id = LAST_INSERT_ID();
+		INSERT INTO tbl_users (username,password,name,mem_id) VALUES ('$mem_username','$hash_login_password','$mem_name',@last_mem_id);";
+		$result = mysqli_multi_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";

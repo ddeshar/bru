@@ -40,8 +40,7 @@ if (isset($_POST["btnEdit"])) {
 			echo "<font color='red'>SQL Error</font><hr>";
 		}
 	}else{
-		$mem_id = $_GET["mem_id"];
-		$sql = "SELECT * FROM member WHERE mem_id='$mem_id'";
+		$sql = "SELECT * FROM member WHERE mem_id='$s_login_mem_id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
@@ -224,7 +223,7 @@ if (isset($_POST["btnEdit"])) {
 																<div class="form-group">
 															  	<label class="col-md-3 control-label" for="pass">รหัสผ่าน</label>
 																	<div class="col-md-3">
-																		<input  name="mem_password" type="text" value="<?php echo "$mem_password"; ?>" class="form-control" readonly>
+																		<input  name="mem_password" type="password" value="<?php echo "$mem_password"; ?>" class="form-control" readonly>
 																	</div>
 																</div>
 

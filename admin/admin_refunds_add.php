@@ -106,7 +106,10 @@ if (isset($_POST["btnsubmit"])) {
 											        <div class="col-md-3">
 											        <input type="date" id="datepicker" name="ref_date" class="form-control round-form"  placeholder="DATE"></div>
 											        </div> -->
+<?php $percentage = 6;
+$totalwidth = 12880;
 
+echo $new_width = ($percentage * $totalwidth) /100; ?>
 											        <div class="form-group">
 											        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
 											        <div class="col-md-3">
@@ -160,7 +163,7 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">จำนวนเงินที่ต้องชำระต่องวด</label>
 																<div class="col-md-3">
-																<input id="pay" name="pay" type="text" placeholder="PAY" class="form-control" readonly></div>
+																<input id="pay" name="pay" type="text" placeholder="PAY" class="form-control" ></div>
 																<label class=" control-label" for="id">บาทต่องวด</label>
 																</div>
 
@@ -269,23 +272,33 @@ require_once('include/_footer.php');
 		var names = ui.item.data.split("|");
 		$('#user_id_mem').val(names[1]);
 		$('#sub_moneyloan').val(names[2]);
+		$('#num1').val(names[2]);
+		$("#num2").val(parseFloat($('#num1').val())*6/100);
+ 		$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
+ 		// Decimal
+ 		$("#pay").val(parseFloat(Math.round($('#sum').val()) / 24).toFixed());
+
+		$("#num3").on("keyup", function(){
+	 		$("#sum_out").val(parseFloat(Math.round($(this).val())-parseFloat($('#pay').val())).toFixed());
+	 		$("#owe").val(parseFloat($('#num1').val()) - parseFloat($('#pay').val()));
+		});
 	}
 	});
 
 </script>
 
 <script type="text/javascript">
- $(function() { //เงินต้น + ดอกเบี้ย / 24
- 	$("#num1").on("keyup", function(){
-		$("#num2").val(parseFloat($('#num1').val())*2*6/100);
- 		$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
- 		// Decimal
- 		$("#pay").val(parseFloat(Math.round($('#sum').val()) / 24).toFixed(0));
- 	});
-
- 	$("#num3").on("keyup", function(){
- 		$("#sum_out").val(parseFloat(Math.round($(this).val())-parseFloat($('#pay').val())).toFixed(0));
- 		$("#owe").val(parseFloat($('#sum').val())-parseFloat($('#pay').val()));
-	});
- });
+ // $(function() { //เงินต้น + ดอกเบี้ย / 24
+ // 	$("#num1").bind("keyup change", function(){
+ // 	$("#num2").val(parseFloat($('#num1').val())*6/100);
+ // 		$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
+ // 		// Decimal
+ // 		$("#pay").val(parseFloat(Math.round($('#sum').val()) / 24).toFixed());
+ // 	});
+ //
+ // 	$("#num3").on("keyup", function(){
+ // 		$("#sum_out").val(parseFloat(Math.round($(this).val())-parseFloat($('#pay').val())).toFixed());
+ // 		$("#owe").val(parseFloat($('#sum').val()) - parseFloat($('#pay').val()));
+ // });
+ // });
  </script>

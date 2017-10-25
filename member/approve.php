@@ -47,7 +47,6 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
                                         <th>รหัสการอนุมัติ</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
@@ -55,17 +54,16 @@ require_once('include/_header.php');
                                         <th>วันที่อนุมัติ</th>
                                         <th>สถานะ</th>
                                         <th><div align ='center'>ดูข้อมูล</div></th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
                                   <?php
-                      							if (isset($_GET["sub_id"])) {
-                      								$sub_id = $_GET["sub_id"];
-                      								$sql = "delete from submitted where sub_id='$sub_id'";
-                      								$result = mysqli_query($link, $sql);
-                      							}
-
+                      							// if (isset($_GET["sub_id"])) {
+                      							// 	$sub_id = $_GET["sub_id"];
+                      							// 	$sql = "delete from submitted where sub_id='$sub_id'";
+                      							// 	$result = mysqli_query($link, $sql);
+                      							// }
+                                    if(isset($s_login_mem_id)){
                       							$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp WHERE status_app = 'อนุมัติ' AND submitted.mem_id = '$s_login_mem_id'";
                       							$result = mysqli_query($link, $sql);
                       							while ($row = mysqli_fetch_array($result)){
@@ -88,6 +86,7 @@ require_once('include/_header.php');
                                           <a href='submitted_view.php?sub_id=$sub_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
                                           </tr>";
                                     }
+                                  }
                       						?>
 					</tbody>
                             </table>

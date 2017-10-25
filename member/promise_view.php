@@ -8,13 +8,13 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-if (isset($_GET["pro_id"])) {
-		$pro_id = $_GET["pro_id"];
+if (isset($s_login_mem_id)) {
+		// $pro_id = $_GET["pro_id"];
 		$sql = "SELECT * FROM promise
 						LEFT JOIN member ON promise.mem_id = member.mem_id
 						LEFT JOIN statusb_app ON promise.id_sapp = statusb_app.id_sapp
 						LEFT JOIN commits ON promise.id_commit = commits.id_commit
-						WHERE pro_id='$pro_id'";
+						WHERE member.mem_id ='$s_login_mem_id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
@@ -119,7 +119,7 @@ if (isset($_GET["pro_id"])) {
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
                         <a style="color:#fff;" onclick="javascript:window.print();">Print<i class="livicon" data-name="printer" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
                         </button>
-                        
+
                     </div>
                 </div>
             </div>

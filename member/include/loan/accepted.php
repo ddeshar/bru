@@ -12,7 +12,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label" for="name">รหัสสมาชิก</label>
             <div class="col-md-3">
-            <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control"></div>
+            <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
         </div>
 
         <div class="form-group">

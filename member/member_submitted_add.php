@@ -78,10 +78,9 @@ require_once('include/_header.php');
 
 										<div class="panel-body">
 											<?php
-											if (isset($_GET["loan"])) {
-													$loan = $_GET["loan"];
-
-													$sql = "SELECT mem_id ,fak_total, MAX(fak_date) AS fak_date FROM deposit WHERE mem_id = $loan GROUP BY fak_total  desc LIMIT 1";
+											if (isset($s_login_mem_id)) {
+													// $loan = $_GET["loan"];
+													$sql = "SELECT mem_id ,fak_total, MAX(fak_date) AS fak_date FROM deposit WHERE mem_id = '$s_login_mem_id' GROUP BY fak_total  desc LIMIT 1";
 													$result = mysqli_query($link, $sql);
 													$row = mysqli_fetch_assoc($result);
 													$budget = $row["fak_total"];
@@ -97,20 +96,12 @@ require_once('include/_header.php');
 												?>
 										</div>
 								</div>
-
-				<!--main content ends-->
 		</section>
-		<!-- content -->
-
-
 </aside>
-<!-- right-side -->
 <?php
 require_once('include/_footer.php');
 ?>
-<!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
-<!-- end of page level js -->
 </body>
 </html>
 <script type="text/javascript">
@@ -145,10 +136,8 @@ require_once('include/_footer.php');
 		$('#num2').val(names[2]);
 	}
 	});
-
 	$(function() {
 		$("#num1, #num2").on("keydown keyup", sum);
-
 		function sum() {
 			$("#sum").val(Number($("#num2").val()) - Number($("#num1").val()));
 		}

@@ -62,7 +62,6 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
                                         <th>รหัสจ่ายเงินกู้</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
@@ -70,18 +69,17 @@ require_once('include/_header.php');
                                         <th>จำนวนเงินที่จ่าย</th>
                                         <th>วันที่จ่ายเงิน</th>
                                         <th><div align ='center'>ดูข้อมูล</div></th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
 						<?php
-							if (isset($_GET["pay_id"])) {
-								$pay_id = $_GET["pay_id"];
-								$sql = "DELETE FROM repayment WHERE pay_id='pay_id'";
-								$result = mysqli_query($link, $sql);
-							}
-
-							$sql = "SELECT * FROM repayment";
+							// if (isset($_GET["pay_id"])) {
+							// 	$pay_id = $_GET["pay_id"];
+							// 	$sql = "DELETE FROM repayment WHERE pay_id='pay_id'";
+							// 	$result = mysqli_query($link, $sql);
+							// }
+              if (isset($s_login_mem_id)) {
+							$sql = "SELECT * FROM repayment LEFT JOIN member ON repayment.mem_id = member.mem_id WHERE repayment.mem_id = '$s_login_mem_id'";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$pay_id = $row["pay_id"];
@@ -103,6 +101,7 @@ require_once('include/_header.php');
 										</td>
                     </tr>";
               }
+            }
 						?>
 					</tbody>
                             </table>
@@ -118,8 +117,6 @@ require_once('include/_header.php');
 <?php
 require_once('include/_footer.php');
 ?>
-
-
 <script type="text/javascript" src="asset/vendors/datatables/select2.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/dataTables.bootstrap.js"></script>

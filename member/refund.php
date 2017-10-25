@@ -32,7 +32,6 @@ require_once('include/_header.php');
     </section>
     <!-- Main content -->
     <section class="content">
-
         <!-- Second Data Table -->
         <div class="row">
             <div class="col-md-12">
@@ -43,10 +42,8 @@ require_once('include/_header.php');
                       </div>
                   </div>
                 <div class="portlet box default">
-
                     <div class="portlet-body">
                         <div class="table-toolbar">
-
                             <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                     Tools
@@ -56,7 +53,6 @@ require_once('include/_header.php');
                                     <li>
                                         <a href="#">Print</a>
                                     </li>
-
                                 </ul>
                             </div>
                         </div>
@@ -64,7 +60,6 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
                                         <th>รหัสการรับชำระ</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
@@ -72,25 +67,23 @@ require_once('include/_header.php');
                                         <th>ค้างชำระ</th>
                                         <th>วันที่รับชำระ</th>
                                         <th><center>ดูข้อมูล</center></th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
 						<?php
-							if (isset($_GET["ref_id"])) {
-								$ref_id = $_GET["ref_id"];
-								$sql = "DELETE FROM refund WHERE ref_id='$ref_id'";
-								$result = mysqli_query($link, $sql);
-							}
-
+							// if (isset($_GET["ref_id"])) {
+							// 	$ref_id = $_GET["ref_id"];
+							// 	$sql = "DELETE FROM refund WHERE ref_id='$ref_id'";
+							// 	$result = mysqli_query($link, $sql);
+							// }
+              if(isset($s_login_mem_id)){
 							$sql = "SELECT refund.ref_id,
               refund.mem_id,
               member.mem_name,
               refund.ref_picetotal,
               refund.owe,
               refund.ref_date
-              FROM refund LEFT JOIN member
-              ON refund.mem_id=member.mem_id";
+              FROM refund LEFT JOIN member ON refund.mem_id = member.mem_id WHERE member.mem_id = '$s_login_mem_id'";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$ref_id = $row["ref_id"];
@@ -99,9 +92,6 @@ require_once('include/_header.php');
                 $ref_picetotal = $row["ref_picetotal"];
                 $owe = $row["owe"];
                 $ref_date = $row["ref_date"];
-
-
-
 								echo "<tr>
 										<td>$ref_id</td>
 										<td>$mem_id</td>
@@ -109,10 +99,10 @@ require_once('include/_header.php');
                     <td>$ref_picetotal</td>
                     <td>$owe</td>
                     <td>$ref_date</td>
-
-                    <td align='center'><a href='admin_refund_view.php?ref_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
+                    <td align='center'><a href='refund_view.php?ref_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
 									</tr>";
 							}
+            }
 						?>
 					</tbody>
                             </table>
@@ -128,8 +118,6 @@ require_once('include/_header.php');
 <?php
 require_once('include/_footer.php');
 ?>
-
-
 <script type="text/javascript" src="asset/vendors/datatables/select2.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/dataTables.bootstrap.js"></script>

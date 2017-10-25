@@ -7,11 +7,7 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
-
 ?>
-
-
-
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -62,9 +58,7 @@ require_once('include/_header.php');
 													</thead>
 													<tbody>
 														<?php
-
-														if (isset($_GET["mem_id"])) {
-																$mem_id = $_GET["mem_id"];
+														if (isset($s_login_mem_id)) {
 																$sql = "SELECT DISTINCT deposit.mem_id,
 																member.mem_name,
 																deposit.fak_id,
@@ -73,11 +67,8 @@ require_once('include/_header.php');
 																deposit.withdraw,
 																deposit.fak_total,
 																commits.name_commit
-																FROM deposit LEFT JOIN member
-																ON deposit.mem_id = member.mem_id
-																LEFT JOIN commits
-																ON deposit.id_commit = commits.id_commit WHERE deposit.mem_id = '$mem_id'
-																ORDER BY deposit.mem_id asc";
+																FROM deposit LEFT JOIN member ON deposit.mem_id = member.mem_id
+																LEFT JOIN commits ON deposit.id_commit = commits.id_commit WHERE deposit.mem_id = '$s_login_mem_id'";
 																$result = mysqli_query($link, $sql);
 																while ($row = mysqli_fetch_array($result)) {
 																	$fak_id = $row["fak_id"];
@@ -88,7 +79,6 @@ require_once('include/_header.php');
 																	$withdraw = $row["withdraw"];
 																	$fak_total = $row["fak_total"];
 																	$mem_name = $row["mem_name"];
-
 																	echo "<tr>
 																	 		<td>$fak_id</td>
 																			<td>$fak_date</td>
@@ -99,29 +89,24 @@ require_once('include/_header.php');
 																			<td>$withdraw</td>
 																			<td>$fak_total</td>
 																	</tr>";
-
 																}
 															}
 														 ?>
 														<tr>
-
 													</tbody>
 											</table>
 										</div>
-
                     <div class="pull-right" style="margin:10px 20px;">
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
                         <a style="color:#fff;" onclick="javascript:window.print();">Print<i class="livicon" data-name="printer" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
                         </button>
-                      
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- content -->
 </aside>
-<!-- right-side -->
 <?php
 require_once('include/_footer.php');
 ?>

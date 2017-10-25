@@ -8,12 +8,12 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-if (isset($_GET["sub_id"])) {
-		$sub_id = $_GET["sub_id"];
+if (isset($s_login_mem_id)) {
 		$sql = "SELECT * FROM submitted
+						LEFT JOIN member ON submitted.mem_id = member.mem_id 
 						LEFT JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp
 						LEFT JOIN commits ON submitted.id_commit = commits.id_commit
-						WHERE sub_id='$sub_id'";
+						WHERE member.mem_id='$s_login_mem_id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);

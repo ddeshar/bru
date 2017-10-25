@@ -9,9 +9,9 @@
         <div class="col-md-12">
             <div class="error-template">
                 <h1><?=$budget?></h1>
-                <h2>จำนวนเงินมึงคือ</h2>
+                <h2>จำนวนเงินคุณคือ</h2>
                 <div class="error-details">
-                  ไม่สามารถกู้ได้ เงินฝากก็ไม่มีแล้วจะกูอีไอฟัสสสสสสส
+                  ไม่สามารถทำการกู้เงินได้ 
                 </div>
                 <div class="error-actions">
                     <a href="all_member_loan.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>

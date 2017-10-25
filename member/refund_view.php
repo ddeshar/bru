@@ -7,11 +7,7 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
-
 ?>
-
-
-
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -57,18 +53,15 @@ require_once('include/_header.php');
 															<th>จำนวนเงินกู้</th>
 															<th>ชำระ</th>
 															<th>คงเหลือ</th>
-
 														</tr>
 													</thead>
 													<tbody>
 														<?php
-                            if (isset($_GET["ref_id"])) {
-                            $mem_id = $_GET["ref_id"];
+                            if (isset($s_login_mem_id)) {
                             $sql = "SELECT * FROM refund
                             LEFT JOIN member ON refund.mem_id = member.mem_id
                             LEFT JOIN commits ON refund.id_commit = commits.id_commit
-                            WHERE refund.mem_id='$mem_id'";
-
+                            WHERE member.mem_id='$s_login_mem_id'";
                                 $result = mysqli_query($link, $sql);
   															while ($row = mysqli_fetch_assoc($result)) {
 																$ref_id = $row["ref_id"];
@@ -78,7 +71,6 @@ require_once('include/_header.php');
 																$sub_moneyloan = $row["sub_moneyloan"];
 																$pay = $row["pay"];
 																$owe = $row["owe"];
-
 																	echo "<tr>
 																	 		<td>$ref_id</td>
                                       <td>$ref_date</td>
@@ -88,21 +80,17 @@ require_once('include/_header.php');
 																			<td>$pay</td>
 																			<td>$owe</td>
 																	</tr>";
-
 																}
 															}
 														 ?>
 														<tr>
-
 													</tbody>
 											</table>
 										</div>
-
                     <div class="pull-right" style="margin:10px 20px;">
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
                         <a style="color:#fff;" onclick="javascript:window.print();">Print<i class="livicon" data-name="printer" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
                         </button>
-                        
                     </div>
                 </div>
             </div>

@@ -84,13 +84,13 @@ require_once('include/_header.php');
                                 </thead>
                                 <tbody>
 						<?php
-							if (isset($_GET["pro_id"])) {
-								$pro_id = $_GET["pro_id"];
-								$sql = "DELETE FROM promise WHERE pro_id ='$pro_id'";
-								$result = mysqli_query($link, $sql);
-							}
-
-							$sql = "SELECT * FROM promise LEFT JOIN member ON promise.mem_id = member.mem_id";
+							// if (isset($_GET["pro_id"])) {
+							// 	$pro_id = $_GET["pro_id"];
+							// 	$sql = "DELETE FROM promise WHERE pro_id ='$pro_id'";
+							// 	$result = mysqli_query($link, $sql);
+							// }
+              if (isset($s_login_mem_id)) {
+							$sql = "SELECT * FROM promise LEFT JOIN member ON promise.mem_id = member.mem_id WHERE promise.mem_id = '$s_login_mem_id'";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$pro_id = $row["pro_id"];
@@ -99,7 +99,6 @@ require_once('include/_header.php');
 								$app_pice = $row["app_pice"];
                 $sub_date = $row["sub_date"];
                 $pro_date = $row["pro_date"];
-
 								echo "<tr>
 										<td>$pro_id</td>
 										<td>$mem_id</td>
@@ -111,6 +110,7 @@ require_once('include/_header.php');
                     <a href='promise_view.php?pro_id=$pro_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
 										</td>
                     </tr>";
+                  }
               }
 						?>
 					</tbody>

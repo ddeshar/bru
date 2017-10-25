@@ -106,7 +106,7 @@ require_once('include/_header.php');
                     <td>$withdraw</td>
                     <td>$fak_total</td>
 
-                    <td align='center'><a href='admin_deposit_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
+                    <td align='center'><a href='manager_deposit_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
 									</tr>";
 							}
 						?>

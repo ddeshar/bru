@@ -7,14 +7,12 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
-
-if (isset($_GET["pay_id"])) {
-		$pay_id = $_GET["pay_id"];
+    if (isset($s_login_mem_id)) {
 		$sql = "SELECT * FROM repayment
 						LEFT JOIN member ON repayment.mem_id = member.mem_id
 						LEFT JOIN promise ON repayment.pro_id = promise.pro_id
 						LEFT JOIN commits ON repayment.id_commit = commits.id_commit
-						WHERE pay_id='$pay_id'";
+						WHERE member.mem_id ='$s_login_mem_id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
@@ -44,9 +42,6 @@ if (isset($_GET["pay_id"])) {
 		}
 	}
 ?>
-
-
-
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -102,7 +97,7 @@ if (isset($_GET["pay_id"])) {
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
                         <a style="color:#fff;" onclick="javascript:window.print();">Print<i class="livicon" data-name="printer" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
                         </button>
-                        
+
                     </div>
                 </div>
             </div>

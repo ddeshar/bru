@@ -45,7 +45,7 @@ require_once('include/_header.php');
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                              <a href="admin_committee_add.php"   class=" btn btn-custom">
+                              <a href="manager_committee_add.php"   class=" btn btn-custom">
                                     เพิ่ม
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
@@ -116,8 +116,8 @@ require_once('include/_header.php');
 										<td>$com_address</td>
                     <td>$com_tel</td>
 
-                    <td align='center'><a href='admin_committee_edit.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_committee_view.php?id_committee=$id_committee' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                    <td align='center'><a href='manager_committee_edit.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <a href='manager_committee_view.php?id_committee=$id_committee' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
 										<a href='committee.php?id_committee=$id_committee' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
 									</tr>";
 							}

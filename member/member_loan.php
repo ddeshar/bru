@@ -68,13 +68,11 @@ require_once('include/_header.php');
                               <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                   <thead>
                                       <tr role="row">
-
                                           <th>รหัสสมาชิก</th>
                                           <th>ชื่อ-สกุล</th>
                                           <th>วัน/เดือน/ปีเกิด</th>
                                           <th>เบอร์โทร</th>
                                           <th>สถานะ</th>
-
                                           <th><div align ='center'>จัดการข้อมูล</div></th>
                                       </tr>
                                   </thead>
@@ -103,8 +101,6 @@ require_once('include/_header.php');
                         								$mem_birthday = $row["mem_birthday"];
                                         $mem_tel = $row["mem_tel"];
                                         $status_mem = $row["status_mem"];
-
-
                         								echo "<tr>
                         										<td>$mem_id</td>
                         										<td>$id_title $mem_name</td>
@@ -129,8 +125,6 @@ require_once('include/_header.php');
 <?php
 require_once('include/_footer.php');
 ?>
-
-
 <script type="text/javascript" src="asset/vendors/datatables/select2.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/dataTables.bootstrap.js"></script>

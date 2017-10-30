@@ -22,7 +22,7 @@ if (isset($_POST["btnEdit"])) {
 		$mem_email = $_POST["mem_email"];
 		$mem_username = $_POST["mem_username"];
 		$mem_password = $_POST["mem_password"];
-		$status_mem = $_POST["status_mem"];
+		//$status_mem = $_POST["status_mem"];
 
 		$sql = "UPDATE member SET mem_id='$mem_id', mem_idcard='$mem_idcard',id_gender='$id_gender', id_title='$id_title',
 		mem_name='$mem_name',mem_birthday='$mem_birthday',id_status='$id_status',mem_occupation='$mem_occupation', mem_address='$mem_address',
@@ -33,7 +33,7 @@ if (isset($_POST["btnEdit"])) {
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('แก้ไขเสร็จแล้ว');";
-			echo "window.location='member.php';";
+			echo "window.location='member_view.php';";
 			echo "</script>";
 			//header('location: admin_product.php');
 		}else{

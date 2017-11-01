@@ -47,7 +47,7 @@ require_once('include/_header.php');
                                 </button>
                                 <ul class="dropdown-menu pull-right">
                                     <li>
-                                        <a href="#">Print</a>
+                                        <a href="asset/fpdf17/MyPDF/MyPDF.pdf" target="_blank">Print</a>
                                     </li>
                                     <li>
                                         <a href="#">
@@ -115,6 +115,7 @@ require_once('include/_header.php');
 </aside>
 <!-- right-side -->
 <?php
+require_once('report_refund-pdf.php');
 require_once('include/_footer.php');
 ?>
 <script type="text/javascript" src="asset/vendors/datatables/select2.min.js"></script>

@@ -52,7 +52,7 @@ require_once('include/_header.php');
                                 </button>
                                 <ul class="dropdown-menu pull-right">
                                     <li>
-                                        <a href="#">Print</a>
+                                        <a href="asset/fpdf17/MyPDF/MyPDF.pdf" target="_blank"">Print</a>
                                     </li>
 
                                 </ul>
@@ -113,6 +113,7 @@ require_once('include/_header.php');
 </aside>
 <!-- right-side -->
 <?php
+require_once('report_committee-pdf.php');
 require_once('include/_footer.php');
 ?>
 

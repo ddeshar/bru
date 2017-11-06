@@ -112,8 +112,11 @@ $pdf->SetFont('angsana','',18);
 $pdf->Image('asset/fpdf17/tutorial/logo.png',88,8,33);
 $pdf->Ln(25);
 $pdf->Cell(0,20,iconv( 'UTF-8','TIS-620','รายงานสมาชิก'),0,1,"C");
-$pdf->Cell(0,0,iconv('UTF-8','TIS-620','บ้านสวนครัว'),0,1,"L");
-$pdf->Cell(0,0,date('Y-m-d_H-i',time())  ,0,1,'R');
+$pdf->Ln(10);
+$pdf->Cell(0,0,iconv('UTF-8','TIS-620','กองทุนหมู่บ้านและสัจจะออมทรัพย์หมู่บ้านสวนครัว'),0,1,"L");
+//$pdf->Cell(0,0,iconv('UTF-8','TIS-620','---'),88,8,33,"R");
+
+$pdf->Cell(0,0,date('Y-m-d',time())  ,0,1,'R');
 $pdf->Ln(10);
 $pdf->BasicTable($header,$resultData);
 $pdf->Cell(10,10,iconv('UTF-8','TIS-620','หมายเหตุ : publish = เป็นสมาชิก, unpublish = ไม่เป็นสมาชิก'),0,1,"L");

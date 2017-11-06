@@ -63,7 +63,7 @@ require_once('include/_header.php');
 											</h3>
 										</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="admin_fund_add.php" method="post">
+                        <form class="form-horizontal" action="manager_fund_add.php" method="post">
                             <fieldset>
                                 <!-- Name input-->
                                 <div class="form-group">

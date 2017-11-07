@@ -25,7 +25,7 @@ require_once('include/connect.php');
       						LEFT JOIN title
       						ON member.id_title = title.id_title
       						LEFT JOIN status
-      						ON member.id_status = status.id_status
+      						ON member.id_status = status.id_status WHERE member.mem_id = '$mem_id'
       						ORDER BY mem_id ASC
       		";
       		$result = mysqli_query($link, $sql);

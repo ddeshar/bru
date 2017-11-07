@@ -74,11 +74,10 @@ if (isset($_GET["id_fund"])) {
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
                         <div class="btn-group pull-right">
-                                                <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
-                                                    Print
-
-                                                </button>
-                                            </div>
+                            <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
+                                    Print
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

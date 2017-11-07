@@ -44,11 +44,9 @@ require_once('include/_header.php');
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
-
                             <div class="btn-group pull-right">
                             <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                                     Print
-
                             </button>
                         </div>
                         </div>

@@ -48,21 +48,11 @@ require_once('include/_header.php');
 
                             </div>
                             <div class="btn-group pull-right">
-                                <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
-                                    Tools
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu pull-right">
-                                    <li>
-                                        <a href="asset/fpdf17/MyPDF/MyPDF.pdf" target="_blank">Print</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Save as PDF
-                                        </a>
-                                    </li>
-
-                                </ul>
+                              <div class="btn-group pull-right">
+                              <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
+                                                      Print
+                              </button>
+                          </div>
                             </div>
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
@@ -113,14 +103,18 @@ require_once('include/_header.php');
 </aside>
 <!-- right-side -->
 <?php
-require_once('report_approve-pdf.php');
 require_once('include/_footer.php');
 ?>
-
-
 <script type="text/javascript" src="asset/vendors/datatables/select2.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/dataTables.bootstrap.js"></script>
 <script type="text/javascript" src="asset/js/pages/table-editable.js"></script>
 </body>
 </html>
+
+<script type="text/javascript">
+  $('#test_print').click(function(){
+    var view_open = window.open('report_approve_print.php','Print-Window','width=1024,height=768,top=100,left=100');
+    view_open.print();
+  });
+</script>

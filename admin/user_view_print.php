@@ -41,12 +41,12 @@ require_once('include/connect.php');
 						<div class="container">
 							<h2> <?=$username?><p></h2>
 						</div>
-							<label class="col-md-5 control-label" for="id"> <b>รหัส</b></label><p><?=$user_id?></p>
-							<label class="col-md-5 control-label" for="id"><b>ชื่อผู้ใช้</b></label><p><?=$username?></p>
+							<label for="id"><b>รหัส</b> : <?=$user_id?></label><br>
+							<label for="id"><b>ชื่อผู้ใช้</b> : <?=$username?></label><br>
 							<!-- ไม่ควรแสดงรหัวผ่าน -->
 							<!-- <label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?//$password?></p> -->
-							<label class="col-md-5 control-label" for="id"><b>อีเมล</b></label><p><?=$email?></p>
-							<label class="col-md-5 control-label" for="id"><b>สถานะ</b></label><p><?=$status?></p>
+							<label for="id"><b>อีเมล</b> : <?=$email?></label><br>
+							<label for="id"><b>สถานะ</b> : <?=$status?></label><br>
 
 
     </tbody>

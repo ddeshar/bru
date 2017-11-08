@@ -66,19 +66,19 @@ require_once('include/connect.php');
 						<div class="container">
               <h2><?=$id_title?> <?=$mem_name?><p></h2>
             </div>
-              <label class="col-md-5 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
-              <label class="col-md-5 control-label" for="id">เลขที่บัตรประชาชน</label><p><?=$mem_idcard?></p>
-              <label class="col-md-5 control-label" for="id">เพศ</label><p><?=$id_gender?></p>
-              <label class="col-md-5 control-label" for="id">คำนำหน้าชื่อ</label><p><?=$id_title?></p>
-              <label class="col-md-5 control-label" for="id">ชื่อ-สกุล</label><p><?=$mem_name?></p>
-              <label class="col-md-5 control-label" for="id">วันเกิด</label><p><?=$mem_birthday?></p>
-              <label class="col-md-5 control-label" for="id">สถานภาพ</label><p><?=$id_status?></p>
-              <label class="col-md-5 control-label" for="id">อาชีพ</label><p><?=$mem_occupation?></p>
-              <label class="col-md-5 control-label" for="id">ที่อยู่</label><p><?=$mem_address?></p>
-              <label class="col-md-5 control-label" for="id">เบอร์โทร</label><p><?=$mem_tel?></p>
-              <label class="col-md-5 control-label" for="id">อีเมล</label><p><?=$mem_email?></p>
-              <label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$mem_username?></p>
-              <label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$mem_password?></p>
+              <label for="id"><b>รหัสสมาชิก</b> : <?=$mem_id?></label><br>
+              <label for="id"><b>เลขที่บัตรประชาชน</b> : <?=$mem_idcard?></label><br>
+              <label for="id"><b>เพศ</b> : <?=$id_gender?></label><br>
+              <label for="id"><b>คำนำหน้าชื่อ</b> : <?=$id_title?></label><br>
+              <label for="id"><b>ชื่อ-สกุล</b> : <?=$mem_name?></label><br>
+              <label for="id"><b>วันเกิด</b> : <?=$mem_birthday?></label><br>
+              <label for="id"><b>สถานภาพ</b> : <?=$id_status?></label><br>
+              <label for="id"><b>อาชีพ</b> : <?=$mem_occupation?></label><br>
+              <label for="id"><b>ที่อยู่</b> : <?=$mem_address?></label><br>
+              <label for="id"><b>เบอร์โทร</b> : <?=$mem_tel?></label><br>
+              <label for="id"><b>อีเมล</b> : <?=$mem_email?></label><br>
+              <label for="id"><b>ชื่อผู้ใช้</b> : <?=$mem_username?></label><br>
+              <label for="id"><b>รหัสผ่าน</b> : <?=$mem_password?></label><br>
 
 
     </tbody>

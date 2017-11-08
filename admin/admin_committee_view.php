@@ -97,12 +97,11 @@ if (isset($_GET["id_committee"])) {
 													<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$com_password?></p>
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
-                        <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
-                        <a style="color:#fff;" onclick="javascript:window.print();">Print<i class="livicon" data-name="printer" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
-                        </button>
-                        <button type="button" class="btn btn-responsive button-alignment btn-warning" data-toggle="button">
-                        <a style="color:#fff;">Submit Your Invoice<i class="livicon" data-name="check" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
-                        </button>
+                        <div class="btn-group pull-right">
+                            <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
+                                    Print
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -116,3 +115,11 @@ require_once('include/_footer.php');
 ?>
 </body>
 </html>
+
+<script type="text/javascript">
+  var id_committee = "<?=$id_committee?>";
+  $('#test_print').click(function(){
+    var view_open = window.open('committee_view_print.php?id_committee=' + id_committee,'Print-Window','width=1024,height=768,top=100,left=100');
+    view_open.print();
+  });
+</script>

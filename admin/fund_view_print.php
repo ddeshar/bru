@@ -36,13 +36,13 @@ require_once('include/connect.php');
 				}
 ?>
 
-						<div class="container">
-							<h2> <?=$fund_name?><p></h2>
-						</div>
-							<label class="col-md-5 control-label" for="id"> <b>รหัสกองทุน</b></label><p><?=$id_fund?></p>
-							<label class="col-md-5 control-label" for="id"> <b>ชื่อกองทุน</b></label><p><?=$fund_name?></p>
-							<label class="col-md-5 control-label" for="id"> <b>รายละเอียด</b></label><p><?=$fund_detail?></p>
-							<label class="col-md-5 control-label" for="id"> <b>จำนวนเงิน</b></label><p><?=$fund_money?></p>
+		<div class="container">
+		<h2> <?=$fund_name?><p></h2>
+		</div>
+		<label for="id"> <b>รหัสกองทุน</b> : <?=$id_fund?></label> <br>
+		<label for="id"> <b>ชื่อกองทุน</b> : <?=$fund_name?></label> <br>
+		<label for="id"> <b>รายละเอียด</b> : <?=$fund_detail?></label> <br>
+		<label for="id"> <b>จำนวนเงิน</b> : <?=$fund_money?> บาท</label> <br>
 
 
     </tbody>

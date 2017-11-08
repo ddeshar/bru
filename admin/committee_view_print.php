@@ -57,16 +57,16 @@ require_once('include/connect.php');
 						<div class="container">
 							<h2><?=$id_title?> <?=$com_name?><p></h2>
 						</div>
-							<label class="col-md-5 control-label" for="id">รหัสกรรมการ</label><p><?=$id_committee?></p>
-							<label class="col-md-5 control-label" for="id">เลขที่บัตรประชาชน</label><p><?=$com_idcard?></p>
-							<label class="col-md-5 control-label" for="id">คำนำหน้าชื่อ</label><p><?=$id_title?></p>
-							<label class="col-md-5 control-label" for="id">ชื่อ-สกุล</label><p><?=$com_name?></p>
-							<label class="col-md-5 control-label" for="id">ตำแหน่ง</label><p><?=$id_position?></p>
-							<label class="col-md-5 control-label" for="id">วันเกิด</label><p><?=$com_birthday?></p>
-							<label class="col-md-5 control-label" for="id">ที่อยู่</label><p><?=$com_address?></p>
-							<label class="col-md-5 control-label" for="id">เบอร์โทร</label><p><?=$com_tel?></p>
-							<label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$com_username?></p>
-							<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$com_password?></p>
+							<label for="id"><b>รหัสกรรมการ</b> : <?=$id_committee?></label><br>
+							<label for="id"><b>เลขที่บัตรประชาชน</b> : <?=$com_idcard?></label><br>
+							<label for="id"><b>คำนำหน้าชื่อ</b> : <?=$id_title?></label><br>
+							<label for="id"><b>ชื่อ-สกุล</b> : <?=$com_name?></label><br>
+							<label for="id"><b>ตำแหน่ง</b> : <?=$id_position?></label><br>
+							<label for="id"><b>วันเกิด</b> : <?=$com_birthday?></label><br>
+							<label for="id"><b>ที่อยู่</b> : <?=$com_address?></label><br>
+							<label for="id"><b>เบอร์โทร</b> : <?=$com_tel?></label><br>
+							<label for="id"><b>ชื่อผู้ใช้</b> : <?=$com_username?></label><br>
+							<label for="id"><b>รหัสผ่าน</b> : <?=$com_password?></label><br>
 
 
     </tbody>

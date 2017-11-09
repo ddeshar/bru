@@ -44,12 +44,7 @@ require_once('include/_header.php');
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
-                            <!--<div class="btn-group">
-                              <a href="admin_member_add.php"   class=" btn btn-custom">
-                                    เพิ่ม
-                                    <i class="fa fa-plus"></i>
-                                </button> </a>
-                            </div>-->
+
                             <div class="btn-group pull-right">
                               <div class="table-toolbar">
                                   <div class="btn-group pull-right">
@@ -57,7 +52,7 @@ require_once('include/_header.php');
                                                           Print
                                   </button>
                               </div>
-                            </div> 
+                            </div>
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">

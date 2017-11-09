@@ -10,7 +10,7 @@ require_once('include/_header.php');
 
 if (isset($s_login_mem_id)) {
 		$sql = "SELECT * FROM submitted
-						LEFT JOIN member ON submitted.mem_id = member.mem_id 
+						LEFT JOIN member ON submitted.mem_id = member.mem_id
 						LEFT JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp
 						LEFT JOIN commits ON submitted.id_commit = commits.id_commit
 						WHERE member.mem_id='$s_login_mem_id'";
@@ -99,11 +99,7 @@ if (isset($s_login_mem_id)) {
 													<label class="col-md-5 control-label" for="id">ชื่อกรรมการ</label><p><?=$id_commit?></p>
 													<label class="col-md-5 control-label" for="id">สถานะการกู้เงิน</label><p><?=$id_sapp?></p>
 										</div>
-                    <div class="pull-right" style="margin:10px 20px;">
-                        <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
-                        <a style="color:#fff;" onclick="javascript:window.print();">Print<i class="livicon" data-name="printer" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

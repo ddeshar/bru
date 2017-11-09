@@ -45,18 +45,7 @@ require_once('include/_header.php');
                     <div class="portlet-body">
                         <div class="table-toolbar">
 
-                            <div class="btn-group pull-right">
-                                <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
-                                    Tools
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu pull-right">
-                                    <li>
-                                        <a href="#">Print</a>
-                                    </li>
-
-                                </ul>
-                            </div>
+                            
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">

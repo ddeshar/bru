@@ -50,18 +50,7 @@ require_once('include/_header.php');
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
                             </div> -->
-                            <div class="btn-group pull-right">
-                                <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
-                                    Tools
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu pull-right">
-                                    <li>
-                                        <a href="#">Print</a>
-                                    </li>
-
-                                </ul>
-                            </div>
+                            
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
                           <div id="sample_editable_1_wrapper" class="">

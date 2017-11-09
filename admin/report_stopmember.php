@@ -40,6 +40,17 @@ require_once('include/_header.php');
                     </h4>
                 </div>
                 <div class="panel-body">
+                  <div class="portlet-body">
+                      <div class="table-toolbar">
+                          <div class="btn-group pull-right">
+                            <div class="table-toolbar">
+                                <div class="btn-group pull-right">
+                                <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
+                                                        Print
+                                </button>
+                            </div>
+                          </div>
+                      </div>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table">
                           <thead>

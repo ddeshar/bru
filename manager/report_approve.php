@@ -48,21 +48,9 @@ require_once('include/_header.php');
 
                             </div>
                             <div class="btn-group pull-right">
-                                <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
-                                    Tools
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu pull-right">
-                                    <li>
-                                        <a href="#">Print</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Save as PDF
-                                        </a>
-                                    </li>
-
-                                </ul>
+                              <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
+                                                    Print
+                            </button>
                             </div>
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
@@ -123,3 +111,10 @@ require_once('include/_footer.php');
 <script type="text/javascript" src="asset/js/pages/table-editable.js"></script>
 </body>
 </html>
+
+<script type="text/javascript">
+  $('#test_print').click(function(){
+    var view_open = window.open('report_approve_print.php','Print-Window','width=1024,height=768,top=100,left=100');
+    view_open.print();
+  });
+</script>

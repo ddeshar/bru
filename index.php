@@ -67,30 +67,30 @@
 
                 <div class="carousel-item active" style="background-image: url('index_page/img/1.png')">
                   <div class="carousel-caption d-none d-md-block">
-                    <h3>กองทุนหมู่บ้าน</h3>
-                    <p>ลดรายจ่ายเพิ่มราไย</p>
+                    <!-- <h3>กองทุนหมู่บ้าน</h3> -->
+                    <!-- <p>ลดรายจ่ายเพิ่มราย</p> -->
                   </div>
                 </div>
 
                 <!-- Slide Two - Set the background image for this slide in the line below -->
                 <div class="carousel-item" style="background-image: url('index_page/img/s1.png')">
                   <div class="carousel-caption d-none d-lg-block">
-                    <h3>Second Slide</h3>
-                    <p>This is a description for the second slide.</p>
+                    <!-- <h3>Second Slide</h3>
+                    <p>This is a description for the second slide.</p> -->
                   </div>
                 </div>
                 <!-- Slide Three - Set the background image for this slide in the line below -->
                 <div class="carousel-item" style="background-image: url('index_page/img/s2.png') " height="250" width="704">
                   <div class="carousel-caption d-none d-md-block">
-                    <h3>Third Slide</h3>
-                    <p>This is a description for the third slide.</p>
+                    <!-- <h3>Third Slide</h3>
+                    <p>This is a description for the third slide.</p> -->
                   </div>
                 </div>
                 <!-- Slide Three - Set the background image for this slide in the line below -->
                 <div class="carousel-item" style="background-image: url('index_page/img/s3.png') " height="250" width="704">
                 <div class="carousel-caption d-none d-md-block">
-                  <h3>Third Slide</h3>
-                  <p>This is a description for the third slide.</p>
+                  <!-- <h3>Third Slide</h3>
+                  <p>This is a description for the third slide.</p> -->
                 </div>
               </div>
               </div>

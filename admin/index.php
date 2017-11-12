@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- global level css -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- end of global level css -->
-    <!-- page level css -->
-    <link href="asset/css/pages/login2.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../css/pages/login.css" />
     <link href="asset/vendors/iCheck/skins/minimal/blue.css" rel="stylesheet" />
     <!-- styles of the page ends-->
 </head>
@@ -16,7 +14,10 @@
 <body>
     <div class="container">
         <div class="row vertical-offset-100">
+          <center><font color="DimGrey"><h2> ระบบบริหารจัดการ</h2> </font></center>
+          <center> <font color="DimGrey"><h2> สัจจะออมทรัพย์และกองทุนหมู่บ้านสวนครัว</h2> </font>  </center>
             <div class=" col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3  col-md-5 col-md-offset-4 col-lg-4 col-lg-offset-4">
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title text-center">Sign In</h3>

@@ -42,7 +42,7 @@
           <br>
           <p>
           <ul> <h4>กองทุนหมู่บ้าน</h4>
-          <li>ระเบียบข้อบังคับ <a href="file/knowledge2.pdf" target="_blank">CLICK! </a>
+          <li>ระเบียบข้อบังคับ <a href="file/knowledge1.pdf" target="_blank">CLICK! </a>
           </ul>
           </p>
 

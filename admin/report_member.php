@@ -48,9 +48,10 @@ require_once('include/_header.php');
                             <div class="btn-group pull-right">
                               <div class="table-toolbar">
                                   <div class="btn-group pull-right">
-                                  <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
+                                    <a class="btn dropdown-toggle btn-custom" href="_pdf.php">Print</a>
+                                  <!-- <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                                           Print
-                                  </button>
+                                  </button> -->
                               </div>
                             </div>
                         </div>

@@ -104,19 +104,20 @@ require_once('include/_header.php');
 								$sub_moneyloan = $row["sub_moneyloan"];
                 $pay_pice = $row["pay_pice"];
                 $pay_date = $row["pay_date"];
-
-								echo "<tr>
-										<td>$pay_id</td>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-										<td>$sub_moneyloan</td>
-                    <td>$pay_pice</td>
-                    <td>$pay_date</td>
+?>
+			              <tr>
+										<td><?=$pay_id?></td>
+										<td><?=$mem_id?></td>
+										<td><?=$mem_name?></td>
+										<td><?php echo number_format($sub_moneyloan);?></td>
+                    <td><?php echo number_format($pay_pice);?></td>
+                    <td><?=$pay_date?></td>
                     <td align='center'>
-                    <a href='admin_repayment_edit.php?pay_id=$pay_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_repayment_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='repayment.php?pay_id=$pay_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-                    </tr>";
+                    <a href='admin_repayment_edit.php?pay_id=<?=$pay_id?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <a href='admin_repayment_view.php?pay_id=<?=$pay_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+										<a href='repayment.php?pay_id=<?=$pay_id?>' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+                    </tr>
+                    <?php
               }
 						?>
 					</tbody>

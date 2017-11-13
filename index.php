@@ -53,7 +53,7 @@
           </nav>
           <br>
           <br>
-          <br>
+
 
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
@@ -109,8 +109,10 @@
           <section class="py-5">
           <div class="container">
           <h1>ข่าวประชาสัมพันธ์</h1>
-          <p>กำหนดการกู้ยืมเงินประจำปี 2560</p>
-          <p>   <a href="index_page/file/file.pdf" target="_blank">CLICK! </a></P>
+          <p>แบบฟอร์มสมัครสมาชิก</p>
+          <p>   <a href="index_page/file/memberadd.pdf" target="_blank">CLICK! </a></P>
+          <p>แบบฟอร์มการขอกู้เงินกองทุน</p>
+          <p>   <a href="index_page/file/frm_submitted.pdf" target="_blank">CLICK! </a></P>
 
           </div>
           </section>

@@ -16,7 +16,7 @@ require_once('include/_header.php');
         <ol class="breadcrumb">
             <li>
                 <a href="#"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
-                    Dashboard
+                    Dashboard echo
                 </a>
             </li>
             <li>Pages</li>

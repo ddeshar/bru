@@ -11,11 +11,11 @@
                 <h1><?=$budget?></h1>
                 <h2>จำนวนเงินคุณคือ</h2>
                 <div class="error-details">
-                  ไม่สามารถกู้ทำการกู้เงินได้ 
+                  ไม่สามารถกู้ทำการกู้เงินได้
                 </div>
                 <div class="error-actions">
-                    <a href="all_member_loan.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
-                    <a href="all_member_loan.php" class="btn btn-primary btn-lg"><span class="#"></span> ตกลง </a>
+                    <a href="member_loan.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+                    <a href="member_loan.php" class="btn btn-primary btn-lg"><span class="#"></span> ตกลง </a>
                 </div>
             </div>
         </div>

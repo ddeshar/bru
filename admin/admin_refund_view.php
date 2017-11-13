@@ -54,9 +54,9 @@ require_once('include/_header.php');
 															<th>วันที่ชำระ</th>
 															<th>รหัสสมาชิก</th>
 															<th>ชื่อสมาชิก</th>
-															<th>จำนวนเงินกู้</th>
-															<th>ชำระ</th>
-															<th>คงเหลือ</th>
+															<th><div align ='right'>จำนวนเงินกู้</div></th>
+															<th><div align ='right'>ชำระ</div></th>
+															<th><div align ='right'>คงเหลือ</div></th>
 
 														</tr>
 													</thead>
@@ -78,16 +78,17 @@ require_once('include/_header.php');
 																$sub_moneyloan = $row["sub_moneyloan"];
 																$pay = $row["pay"];
 																$owe = $row["owe"];
-
-																	echo "<tr>
-																	 		<td>$ref_id</td>
-                                      <td>$ref_date</td>
-																			<td>$mem_id</td>
-																			<td>$mem_name</td>
-																			<td>$sub_moneyloan</td>
-																			<td>$pay</td>
-																			<td>$owe</td>
-																	</tr>";
+?>
+																	<tr>
+																	 		<td><?=$ref_id?></td>
+                                      <td><?=$ref_date?></td>
+																			<td><?=$mem_id?></td>
+																			<td><?=$mem_name?></td>
+																			<td align="right"><?php echo number_format($sub_moneyloan);?></td>
+																			<td align="right"><?php echo number_format($pay);?></td>
+																			<td align="right"><?php echo number_format($owe);?></td>
+																	</tr>
+                                  <?php
 
 																}
 															}

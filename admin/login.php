@@ -19,31 +19,27 @@
         //ตรวจสอบ Status ใช้งาน
         $_SESSION['user_id'] = $row_user['user_id'];
 
+        $session = session_id();
+        $userid = $_SESSION['user_id'];
+        $action = "1";
+        $IP = getHostByName(php_uname('n'));
+
         if ($row_user['status'] == 500) {
           $_SESSION['is_admin'] = 500;
+            mysqli_query($link, "INSERT INTO user_history (session,timein,timeout,user_id,action,ip ) VALUES ('$session',NOW(),'','$userid','$action','$IP')");
           header("Location: admin.php");
 
         }elseif ($row_user['status'] == 100) {
           $_SESSION['is_manager'] = 100;
+            mysqli_query($link, "INSERT INTO user_history (session,timein,timeout,user_id,action,ip ) VALUES ('$session',NOW(),'','$userid','$action','$IP')");
           header("Location: ../manager/manager.php");
 
         }else{
           $_SESSION['is_user'] = 0;
           $_SESSION['login_username'] = $row_user['login_username'];
+            mysqli_query($link, "INSERT INTO user_history (session,timein,timeout,user_id,action,ip ) VALUES ('$session',NOW(),'','$userid','$action','$IP')");
           header("Location: ../member/mem.php");
         }
     } else{
       echo "sorry ผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
     }
-
-
-// var_dump($result_user);
-// exit;
-    // if ($result_user->num_rows == 1) {
-    //     session_start();
-    //     $row_user = mysqli_fetch_array($result_user,MYSQLI_ASSOC);
-    //     $_SESSION['user_id'] = $row_user['user_id'];
-    //     header("Location: admin.php");
-    // } else {
-    //     echo "ผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-    // }

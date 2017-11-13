@@ -51,9 +51,9 @@ require_once('include/_header.php');
 															<th>รหัสสมาชิก</th>
 															<th>ชื่อผู้ฝาก</th>
 															<th>ชื่อผู้รับฝาก</th>
-															<th>เงินฝาก</th>
-															<th>ถอน</th>
-															<th>ยอดเงินคงเหลือ</th>
+															<th><div align="right">เงินฝาก</div></th>
+															<th><div align="right">ถอน</div></th>
+															<th><div align="right">ยอดเงินคงเหลือ</div></th>
 														</tr>
 													</thead>
 													<tbody>
@@ -84,18 +84,18 @@ require_once('include/_header.php');
 																	$withdraw = $row["withdraw"];
 																	$fak_total = $row["fak_total"];
 																	$mem_name = $row["mem_name"];
-
-																	echo "<tr>
-																	 		<td>$fak_id</td>
-																			<td>$fak_date</td>
-																			<td>$mem_id</td>
-																			<td>$mem_name</td>
-																			<td>$name_commit</td>
-																			<td>$fak_sum</td>
-																			<td>$withdraw</td>
-																			<td>$fak_total</td>
-																	</tr>";
-
+?>
+																	<tr>
+																	 		<td><?=$fak_id?></td>
+																			<td><?=$fak_date?></td>
+																			<td><?=$mem_id?></td>
+																			<td><?=$mem_name?></td>
+																			<td><?=$name_commit?></td>
+																			<td align='right'><?php echo number_format($fak_sum);?></td>
+																			<td align='right'><?php echo number_format($withdraw);?></td>
+																			<td align='right'><?php echo number_format($fak_total);?></td>
+																	</tr>
+                                  <?php
 																}
 															}
 														 ?>

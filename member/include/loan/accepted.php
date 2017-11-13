@@ -1,6 +1,6 @@
 <h2><center>สามารถกู้ได้ เพราะคุณมีจำนวนเงินคือ<?=$budget?> <center></h2>
 
-<form class="form-horizontal" action="admin_submitted_add.php" method="post">
+<form class="form-horizontal" action="member_submitted_add.php" method="post">
     <fieldset>
         <!-- Name input-->
         <div class="form-group">

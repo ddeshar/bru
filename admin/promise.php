@@ -104,18 +104,19 @@ require_once('include/_header.php');
 								$app_pice = $row["app_pice"];
                 $sub_date = $row["sub_date"];
                 $pro_date = $row["pro_date"];
-
-								echo "<tr>
-										<td>$pro_id</td>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-										<td>$app_pice</td>
-                    <td>$sub_date</td>
-                    <td>$pro_date</td>
-                    <td align='center'><a href='admin_promise_edit.php?pro_id=$pro_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_promise_view.php?pro_id=$pro_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='promise.php?pro_id=$pro_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-                    </tr>";
+?>
+							   <tr>
+										<td><?=$pro_id?></td>
+										<td><?=$mem_id?></td>
+										<td><?=$mem_name?></td>
+										<td><?php echo number_format($app_pice);?></td>
+                    <td><?=$sub_date?></td>
+                    <td><?=$pro_date?></td>
+                    <td align='center'><a href='admin_promise_edit.php?pro_id=<?=$pro_id?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <a href='admin_promise_view.php?pro_id=<?=$pro_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+										<a href='promise.php?pro_id=<?=$pro_id?>' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+                    </tr>
+                    <?php
               }
 						?>
 					</tbody>

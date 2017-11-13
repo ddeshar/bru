@@ -44,11 +44,11 @@ require_once('include/_header.php');
                       <div class="table-toolbar">
                           <div class="btn-group pull-right">
                             <div class="table-toolbar">
-                                <div class="btn-group pull-right">
+                              <div class="btn-group pull-right">
                                 <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
-                                                        Print
+                                                      Print
                                 </button>
-                            </div>
+                              </div>
                           </div>
                       </div>
 
@@ -116,3 +116,10 @@ require_once('include/_footer.php');
         $('#table').DataTable();
     });
     </script>
+
+        <script type="text/javascript">
+          $('#test_print').click(function(){
+            var view_open = window.open('report_stopmember_print.php','Print-Window','width=1024,height=768,top=100,left=100');
+            view_open.print();
+          });
+        </script>

@@ -127,6 +127,7 @@ if (isset($_POST["btnEdit"])) {
                                 <input name="mem_idcard" type="text" value="<?php echo "$mem_idcard"; ?>" class="form-control"></div>
                                 </div>
 
+
 																<div class="form-group">
 																		<label class="col-md-3 control-label" for="gender">เพศ</label>
 																		<div class="col-md-3">
@@ -134,10 +135,16 @@ if (isset($_POST["btnEdit"])) {
 																				<?php
 																					$sql="SELECT * FROM gender";
 																					$result = mysqli_query($link, $sql);
+
 																					while ($row=mysqli_fetch_array($result)){
-																				?>
-																				<option value="<?=$row['id_gender']?>"> <?=$row['gender_name']?></option>
-																				<?php
+																						$genderid = $row['id_gender'];
+																						$gendername = $row['gender_name'];
+
+																								if($genderid == $id_gender){ // check from database and get option selceted
+																									echo "<option selected value='{$genderid}'> {$gendername}</option>";
+																								}else{ // after selecting upper then show this one for selection
+																									echo "<option value='{$genderid}'>{$gendername}</option>";
+																								}
 																					}
 																				?>
 																				</select>

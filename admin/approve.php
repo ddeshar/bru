@@ -75,19 +75,20 @@ require_once('include/_header.php');
                       								$sub_moneyloan = $row["sub_moneyloan"];
                                       $sub_date = $row["sub_date"];
                                       $id_sapp = $row["status_app"];
+?>
+                      							<tr>
+                      										<td><?=$sub_id?></td>
+                      										<td><?=$mem_id?></td>
+                      										<td><?=$mem_name?></td>
+                      										<td><?php echo number_format($sub_moneyloan);?></td>
+                                          <td><?=$sub_date?></td>
+                                          <td><?=$id_sapp?></td>
 
-                      								echo "<tr>
-                      										<td>$sub_id</td>
-                      										<td>$mem_id</td>
-                      										<td>$mem_name</td>
-                      										<td>$sub_moneyloan</td>
-                                          <td>$sub_date</td>
-                                          <td>$id_sapp</td>
-
-                                          <td align='center'><a href='admin_submitted_edit.php?sub_id=$sub_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                                          <a href='admin_submitted_view.php?sub_id=$sub_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-                      										<a href='submitted.php?sub_id=$sub_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-                                          </tr>";
+                                          <td align='center'><a href='admin_submitted_edit.php?sub_id=<?=$sub_id?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                                          <a href='admin_submitted_view.php?sub_id=<?=$sub_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                      										<a href='submitted.php?sub_id=<?=$sub_id?>' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+                                          </tr>
+                                          <?php
                                     }
                       						?>
 					</tbody>

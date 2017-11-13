@@ -91,7 +91,7 @@ require_once('include/_header.php');
 								$sql = "delete from tbl_users where user_id='$user_id'";
 								$result = mysqli_query($link, $sql);
 							}
-							$sql = "SELECT * FROM tbl_users";
+							$sql = "SELECT * FROM tbl_users LEFT JOIN member ON tbl_users.mem_id = member.mem_id";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$user_id = $row["user_id"];

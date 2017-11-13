@@ -13,7 +13,7 @@ if (isset($_GET["sub_id"])) {
 		$sql = "SELECT * FROM submitted
 						LEFT JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp
 						LEFT JOIN commits ON submitted.id_commit = commits.id_commit
-						WHERE sub_id='$sub_id'";
+						WHERE submitted.sub_id ='$sub_id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
@@ -126,4 +126,3 @@ require_once('include/_footer.php');
     view_open.print();
   });
 </script>
-

@@ -59,9 +59,9 @@ require_once('include/_header.php');
                                         <th>รหัสการรับชำระ</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
-                                        <th>รวมเงินที่คืนทั้งหมด</th>
-                                        <th>ค้างชำระ</th>
-                                        <th>วันที่รับชำระ</th>
+                                        <th><div align='right'>รวมเงินที่คืนทั้งหมด</div></th>
+                                        <th><div align='right'>ค้างชำระ</div></th>
+                                        <th><center>วันที่รับชำระ</center></th>
                                         <th><center>ดูข้อมูล</center></th>
 
                                     </tr>
@@ -90,19 +90,18 @@ require_once('include/_header.php');
                 $ref_picetotal = $row["ref_picetotal"];
                 $owe = $row["owe"];
                 $ref_date = $row["ref_date"];
+?>
+                <tr>
+										<td><?=$ref_id?></td>
+										<td><?=$mem_id?></td>
+										<td><?=$mem_name?></td>
+                    <td align="right"><?php echo number_format($ref_picetotal);?></td>
+                    <td align="right"><?php echo number_format($owe);?></td>
+                    <td align="center"><?=$ref_date?></td>
 
-
-
-								echo "<tr>
-										<td>$ref_id</td>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-                    <td>$ref_picetotal</td>
-                    <td>$owe</td>
-                    <td>$ref_date</td>
-
-                    <td align='center'><a href='admin_refund_view.php?ref_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
-									</tr>";
+                    <td align='center'><a href='admin_refund_view.php?ref_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
+									</tr>
+                  <?php
 							}
 						?>
 					</tbody>

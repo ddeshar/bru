@@ -91,10 +91,10 @@ if (isset($_GET["pay_id"])) {
 													<label class="col-md-5 control-label" for="id">เลขที่บัตรประจำตัวประชาชาชน</label><p><?=$mem_idcard?></p>
 													<label class="col-md-5 control-label" for="id">รหัสการทำสัญญา</label><p><?=$pro_id?></p>
 													<!-- <label class="col-md-5 control-label" for="id">เลขที่สัญญา</label><p><?//=$pro_number?></p> -->
-													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?=$sub_moneyloan?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?php echo number_format($sub_moneyloan);?> บาท</p>
 													<label class="col-md-5 control-label" for="id">วันที่ครบกำหนดส่ง</label><p><?=$pro_redate?></p>
 													<label class="col-md-5 control-label" for="id">วันที่จ่ายเงินกู้</label><p><?=$pay_date?></p>
-													<label class="col-md-5 control-label" for="id">จำนวนเงินที่จ่าย</label><p><?=$pay_pice?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินที่จ่าย</label><p><?php echo number_format($pay_pice);?> บาท</p>
 													<label class="col-md-5 control-label" for="id">ชื่อกรรมการ</label><p><?=$id_commit?></p>
 
 										</div>
@@ -109,7 +109,9 @@ if (isset($_GET["pay_id"])) {
             </div>
         </div>
     </section>
-    <!-- content -->
+		<div align='center' class="error-actions">
+				<a href="repayment.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+		</div>
 </aside>
 <!-- right-side -->
 <?php

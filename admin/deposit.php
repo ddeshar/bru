@@ -107,7 +107,7 @@ require_once('include/_header.php');
                     <td align='right'><?php echo number_format($withdraw);?></td>
                     <td align='right'><?php echo number_format($fak_total);?></td>
                     <td align ='center'><a href='admin_deposit_view.php?mem_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-                    <a href='_table.php?mem_id=<?=$fak_date?>' class='btn warning btn-xs purple'><i class='fa fa-print'></i></a></td>
+                    <a href='_table.php?mem_id=<?=$fak_date?>' class='btn warning btn-xs purple' target="_blank"><i class='fa fa-print'></i></a></td>
 									</tr>
                   <?php
 							}

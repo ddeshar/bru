@@ -20,7 +20,7 @@ require_once('include/connect.php');
             <th width="8%" align="left">รหัส</th>
             <th width="18%" align="left">ชื่อ-สกุล</th>
 
-            <th width="15%" align="left">ยอดที่ต้องชำระ</th>
+            <th width="15%" align="left">่ต้องชำระ</th>
             <th width="16%" align="left">ครบกำหนดส่ง</th>
             <th width="14%" align="left">ชำระต่อเดือน</th>
             <th width="14%" align="left">ชำระล่าสุด</th>
@@ -59,21 +59,18 @@ require_once('include/connect.php');
           $ref_rate = $row["ref_date"];
           $owe = $row["owe"];
 
+?>
+<tr>
 
-
-          echo "<tr>
-
-              <td>$ref_id</td>
-              <td>$mem_name</td>
-              <td>$ref_picetotal</td>
-              <td>$ref_date</td>
-              <td>$pay</td>
-              <td>$ref_rate</td>
-              <td>$owe</td>
-
-
-
-            </tr>";
+              <td><?=$ref_id?></td>
+              <td><?=$mem_name?></td>
+              <td><?php echo number_format($ref_picetotal);?></td>
+              <td><?=$ref_date?></td>
+              <td><?php echo number_format($pay);?></td>
+              <td><?=$ref_rate?></td>
+              <td><?php echo number_format($owe);?></td>
+            </tr>
+      <?php
         }
       ?>
     </tbody>

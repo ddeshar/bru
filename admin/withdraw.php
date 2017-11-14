@@ -57,12 +57,12 @@ require_once('include/_header.php');
                                     <tr role="row">
 
                                         <th>รหัสสมาชิก</th>
-                                        <th>วันที่ฝาก</th>
-                                        <th>ชื่อผู้ฝาก</th>
-                                        <th>ชื่อผู้รับฝาก</th>
-                                        <th>ฝาก</th>
-                                        <th>ถอน</th>
-                                        <th>ยอดเงินคงเหลือ</th>
+                                        <th>วันทีถอน</th>
+                                        <th>ชื่อผู้ถอน</th>
+                                        <th>ชื่อผู้รับถอน</th>
+                                        <th><div align='right'>ฝาก</div></th>
+                                        <th><div align='right'>ถอน</div></th>
+                                        <th><div align='right'>ยอดเงินคงเหลือ</div></th>
                                         <th><div align ='center'>ดูข้อมูล</div></th>
                                     </tr>
                                 </thead>
@@ -96,18 +96,20 @@ require_once('include/_header.php');
                 $fak_sum = $row["fak_sum"];
                 $withdraw = $row["withdraw"];
                 $fak_total = $row["fak_total"];
+?>
+								 <tr>
+										<td><?=$mem_id?></td>
+										<td><?=$fak_date?></td>
+										<td><?=$mem_name?></td>
+										<td><?=$name_commit?></td>
+                    <td align='right'><?php echo number_format($fak_sum);?></td>
+                    <td align='right'><?php echo number_format($withdraw);?></td>
+                    <td align='right'><?php echo number_format($fak_total);?></td>
 
-								echo "<tr>
-										<td>$mem_id</td>
-										<td>$fak_date</td>
-										<td>$mem_name</td>
-										<td>$name_commit</td>
-                    <td>$fak_sum</td>
-                    <td>$withdraw</td>
-                    <td>$fak_total</td>
-
-                    <td align='center'><a href='admin_deposit_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
-									</tr>";
+                    <td align='center'><a href='admin_deposit_view.php?mem_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                    <a href='_table.php?mem_id=<?=$fak_date?>' class='btn warning btn-xs purple' target="_blank"><i class='fa fa-print'></i></a></td>
+                  </tr>
+                  <?php
 							}
 						?>
 					</tbody>

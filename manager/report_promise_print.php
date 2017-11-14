@@ -17,13 +17,12 @@ require_once('include/connect.php');
     <thead>
             <tr role="row">
             <th width="8%" align="left">รหัส</th>
-             
              <th width="20%" align="left">ชื่อ-สกุล</th>
-             <th width="20%" align="left">จำนวนเงินที่อนุมัติ</th>
+             <th width="20%" align="left">เงินที่อนุมัติ</th>
              <th width="19%" align="left">วันที่อนุมัติ</th>
              <th width="19%" align="left">วันที่ทำสัญญา</th>
              <th width="19%" align="left">กำหนดส่ง</th>
-             
+
 
            </tr>
 
@@ -48,17 +47,17 @@ require_once('include/connect.php');
                 $sub_date = $row["sub_date"];
                 $pro_date = $row["pro_date"];
                 $pro_redate = $row["pro_redate"];
+                ?>
+                <tr>
+                    <td><?=$pro_id?></td>
+                    <td><?=$mem_name?></td>
+                    <td><?php echo number_format($app_pice);?></td>
+                    <td><?=$sub_date?></td>
+                    <td><?=$pro_date?></td>
+                    <td><?=$pro_redate?></td>
 
-                echo "<tr>
-                    <td>$pro_id</td>
-                   
-                    <td>$mem_name</td>
-                    <td>$app_pice</td>
-                    <td>$sub_date</td>
-                    <td>$pro_date</td>
-                    <td>$pro_redate</td>
-
-            </tr>";
+            </tr>
+      <?php
         }
       ?>
     </tbody>

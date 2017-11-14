@@ -78,17 +78,17 @@ require_once('include/_header.php');
 																$sub_moneyloan = $row["sub_moneyloan"];
 																$pay = $row["pay"];
 																$owe = $row["owe"];
-
-																	echo "<tr>
-																	 		<td>$ref_id</td>
-                                      <td>$ref_date</td>
-																			<td>$mem_id</td>
-																			<td>$mem_name</td>
-																			<td>$sub_moneyloan</td>
-																			<td>$pay</td>
-																			<td>$owe</td>
-																	</tr>";
-
+                                ?>
+                                    <tr>
+																	 		<td><?=$ref_id?></td>
+                                      <td><?=$ref_date?></td>
+																			<td><?=$mem_id?></td>
+																			<td><?=$mem_name?></td>
+																			<td><?php echo number_format($sub_moneyloan);?></td>
+																			<td><?php echo number_format($pay);?></td>
+																			<td><?php echo number_format($owe);?></td>
+																	</tr>
+                              <?php
 																}
 															}
 														 ?>
@@ -103,12 +103,19 @@ require_once('include/_header.php');
                             <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                     Print
                             </button>
-                        </div>
+                            </div>
                     </div>
+                    <div class="pull-right" style="margin:10px 20px;">
+                    <div class="btn-group pull-right">
+                    <a href="report_refund.php"class="btn dropdown-toggle btn-custom"><span class="fa fa-reply"></span> ถอยกลับ </a>
+                  <div>
+
+                  </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- content -->
 </aside>
 <!-- right-side -->

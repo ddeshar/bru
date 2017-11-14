@@ -129,7 +129,7 @@
         <ul class="sub-menu">
             <li <?php if($page == 'animatedicons') echo 'class="active" id="active"'; ?> >
               <i class ="re">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายงานข้อมูลพื้นฐาน</i>
-                <a href="animatedicons.php">
+                <a href="report_history.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลประวัติการเข้าใช้งาน
                 </a>

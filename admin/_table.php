@@ -8,7 +8,7 @@ class my_pdf extends TCPDF {
 
       //Page header
       public function Header() {
-      	$file = 'images/logo_example.png';
+      	$file = 'tcpdf/img/logos.png';
         $this->Image($file, 15, 3, '', '', 'PNG', '', 'T', false, 600, '', false, false, 0, false, false, false);
       }
 
@@ -103,6 +103,9 @@ if (isset($_GET["mem_id"])) {
       }
 
 // Set some content to print
+
+$pdf->Image('tcpdf/img/logos.png',96,20,20,20);
+$pdf->Ln(15);
 $ft = '<div style="text-align:center"><b>กองทุนหมู่บ้านและสัจจะออมทรัพย์ <br> บ้านสวนครัว หมู่ 14 ต.อิสาณ อ.เมือง <br> จ.บุรีรัมย์ 31000</b></div><br>';
 $pdf->writeHTML($ft, true, false, true, false, '');
 

@@ -83,7 +83,9 @@ if (isset($_GET["id_fund"])) {
             </div>
         </div>
     </section>
-    <!-- content -->
+		<div align='center' class="error-actions">
+				<a href="funds.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+		</div>
 </aside>
 <!-- right-side -->
 <?php

@@ -37,22 +37,24 @@ if (isset($_GET["ref_id"])){
     $result = mysqli_query($link, $sql);
   	while ($row = mysqli_fetch_assoc($result)) {
 	$ref_id = $row["ref_id"];
-    $ref_date = $row["ref_date"];
+  $ref_date = $row["ref_date"];
 	$mem_id = $row["mem_id"];
 	$mem_name = $row["mem_name"];
 	$sub_moneyloan = $row["sub_moneyloan"];
 	$pay = $row["pay"];
 	$owe = $row["owe"];
+?>
+<tr>
+	<td><?php echo $ref_id?></td>
+  <td><?php echo $ref_date?></td>
+	<td><?php echo $mem_id ?></td>
+	<td><?php echo $mem_name ?></td>
+	<td><?php echo number_format($sub_moneyloan);?></td>
+	<td><?php echo number_format($pay);?></td>
+  <td><?php echo number_format($owe);?></td>
 
-	echo "<tr>
-	<td>$ref_id</td>
-    <td>$ref_date</td>
-	<td>$mem_id</td>
-	<td>$mem_name</td>
-	<td>$sub_moneyloan</td>
-	<td>$pay</td>
-	<td>$owe</td>
-	</tr>";
+  </tr>
+  <?php
 		}
 	}
 ?>

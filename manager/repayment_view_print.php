@@ -63,10 +63,10 @@ if (isset($_GET["pay_id"])) {
 						<label for="id"><b>เลขที่บัตรประจำตัวประชาชาชน</b> : <?=$mem_idcard?></label><br>
 						<label for="id"><b>รหัสการทำสัญญา</b> : <?=$pro_id?></label><br>
 						<!-- <label class="col-md-5 control-label" for="id">เลขที่สัญญา</label><p><?//=$pro_number?></p> -->
-						<label for="id"><b>จำนวนเงินกู้</b> : <?=$sub_moneyloan?></label><br>
+						<label for="id"><b>จำนวนเงินกู้</b> : <?php echo number_format($sub_moneyloan);?> บาท</label><br>
 						<label for="id"><b>วันที่ครบกำหนดส่ง</b> : <?=$pro_redate?></label><br>
 						<label for="id"><b>วันที่จ่ายเงินกู้</b> : <?=$pay_date?></label><br>
-						<label for="id"><b>จำนวนเงินที่จ่าย</b> : <?=$pay_pice?></label><br>
+						<label for="id"><b>จำนวนเงินที่จ่าย</b> : <?php echo number_format($pay_pice);?> บาท</label><br>
 						<label for="id"><b>ชื่อกรรมการ</b> : <?=$id_commit?></label><br>
 
 

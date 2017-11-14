@@ -80,15 +80,16 @@ require_once('include/_header.php');
 								//$pro_pice = $row["pro_pice"];
                 $pay_pice = $row["pay_pice"];
                 $pay_date = $row["pay_date"];
-
-								echo "<tr>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-                    <td>$pay_pice</td>
-                    <td>$pay_date</td>
+?>
+                    <tr>
+										<td><?=$mem_id?></td>
+										<td><?=$mem_name?></td>
+                    <td><?php echo number_format($pay_pice);?></td>
+                    <td><?=$pay_date?></td>
                     <td align='center'>
-                    <a href='admin_repayment_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
-                    </tr>";
+                    <a href='manager_repayment_view.php?pay_id=<?=$pay_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
+                    </tr>
+            <?php
               }
 						?>
 					</tbody>

@@ -57,21 +57,18 @@ require_once('include/connect.php');
           $pro_redate = $row["pro_redate"];
           $pay_date = $row["pay_pice"];
           $pay_pice = $row["pay_date"];
+?>
+            <tr>
+              <td><?=$pay_id?></td>
+              <td><?=$mem_name?></td>
+              <td><?=$pro_id?></td>
+              <td><?php echo number_format($sub_moneyloan);?></td>
+              <td><?=$pro_redate?></td>
+              <td><?php echo number_format($pay_date);?></td>
+              <td><?=$pay_pice?></td>
 
-
-
-
-          echo "<tr>
-
-              <td>$pay_id</td>
-              <td>$mem_name</td>
-              <td>$pro_id</td>
-              <td>$sub_moneyloan</td>
-              <td>$pro_redate</td>
-              <td>$pay_date</td>
-              <td>$pay_pice</td>
-
-            </tr>";
+            </tr>
+      <?php
         }
       ?>
     </tbody>

@@ -102,11 +102,11 @@ if (isset($_GET["pro_id"])) {
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลสมาชิก</label><p><?=$mem_name?></p>
 													<label class="col-md-5 control-label" for="id">เลขที่บัตรประจำตัวประชาชาชน</label><p><?=$mem_idcard?></p>
 													<!-- <label class="col-md-5 control-label" for="id">รหัสการอนุมัติ</label><p><?//=$sub_id?></p> -->
-													<label class="col-md-5 control-label" for="id">จำนวนเงินที่อนุมัติ</label><p><?=$app_pice?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินที่อนุมัติ</label><p><?php echo number_format($app_pice);?> บาท</p>
 													<label class="col-md-5 control-label" for="id">วันที่อนุมัติ</label><p><?=$sub_date?></p>
 													<label class="col-md-5 control-label" for="id">วันที่ทำสัญญา</label><p><?=$pro_date?></p>
 													<!-- <label class="col-md-5 control-label" for="id">เลขทีสัญญา</label><p><?//=$pro_number?></p> -->
-													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?=$sub_moneyloan?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?php echo number_format($sub_moneyloan);?> บาท</p>
 													<label class="col-md-5 control-label" for="id">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label><p><?=$sub_idcardBM1?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลผู้ค้ำคนที่ 1</label><p><?=$name1?></p>
 													<label class="col-md-5 control-label" for="id">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label><p><?=$sub_idcardBM2?></p>
@@ -115,14 +115,18 @@ if (isset($_GET["pro_id"])) {
 													<label class="col-md-5 control-label" for="id">ชื่อกรรมการ</label><p><?=$id_commit?></p>
 
 										</div>
-                    <div class="pull-right" style="margin:10px 20px;">
-                        <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
-                        <a style="color:#fff;" onclick="javascript:window.print();">Print<i class="livicon" data-name="printer" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
-                        </button>
-                        <button type="button" class="btn btn-responsive button-alignment btn-warning" data-toggle="button">
-                        <a style="color:#fff;">Submit Your Invoice<i class="livicon" data-name="check" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
-                        </button>
-                    </div>
+										<div class="pull-right" style="margin:10px 20px;">
+											<div class="btn-group pull-right">
+												<button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
+																							Print
+											</button>
+											</div>
+										</div>
+										<div class="pull-right" style="margin:10px 20px;">
+										<div class="btn-group pull-right">
+										<a href="report_promise.php"class="btn dropdown-toggle btn-custom"><span class="fa fa-reply"></span> ถอยกลับ </a>
+									<div>
+									</div>
                 </div>
             </div>
         </div>
@@ -135,3 +139,11 @@ require_once('include/_footer.php');
 ?>
 </body>
 </html>
+
+<script type="text/javascript">
+  var pro_id = "<?=$pro_id?>";
+  $('#test_print').click(function(){
+    var view_open = window.open('promise_view_print.php?pro_id=' + pro_id,'Print-Window','width=1024,height=768,top=100,left=100');
+    view_open.print();
+  });
+</script>

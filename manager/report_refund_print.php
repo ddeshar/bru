@@ -56,24 +56,19 @@ require_once('include/connect.php');
           $ref_picetotal = $row["ref_picetotal"];
           $ref_date = $row["ref_date"];
           $pay = $row["pay"];
-          $ref_rate = $row["ref_date"];
+          $ref_rate = $row["ref_rate"];
           $owe = $row["owe"];
-
-
-
-          echo "<tr>
-
-              <td>$ref_id</td>
-              <td>$mem_name</td>
-              <td>$ref_picetotal</td>
-              <td>$ref_date</td>
-              <td>$pay</td>
-              <td>$ref_rate</td>
-              <td>$owe</td>
-
-
-
-            </tr>";
+            ?>
+            <tr>
+              <td><?=$ref_id?></td>
+              <td><?=$mem_name?></td>
+              <td><?php echo number_format($ref_picetotal);?></td>
+              <td><?=$ref_date?></td>
+              <td><?=$pay?></td>
+              <td><?php echo number_format($ref_rate);?></td>
+              <td><?php echo number_format($owe);?></td>
+            </tr>
+      <?php
         }
       ?>
     </tbody>

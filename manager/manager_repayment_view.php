@@ -91,21 +91,25 @@ if (isset($_GET["pay_id"])) {
 													<label class="col-md-5 control-label" for="id">เลขที่บัตรประจำตัวประชาชาชน</label><p><?=$mem_idcard?></p>
 													<label class="col-md-5 control-label" for="id">รหัสการทำสัญญา</label><p><?=$pro_id?></p>
 													<!-- <label class="col-md-5 control-label" for="id">เลขที่สัญญา</label><p><?//=$pro_number?></p> -->
-													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?=$sub_moneyloan?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?php echo number_format($sub_moneyloan);?> บาท</p>
 													<label class="col-md-5 control-label" for="id">วันที่ครบกำหนดส่ง</label><p><?=$pro_redate?></p>
 													<label class="col-md-5 control-label" for="id">วันที่จ่ายเงินกู้</label><p><?=$pay_date?></p>
-													<label class="col-md-5 control-label" for="id">จำนวนเงินที่จ่าย</label><p><?=$pay_pice?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินที่จ่าย</label><p><?php echo number_format($pay_pice);?> บาท</p>
 													<label class="col-md-5 control-label" for="id">ชื่อกรรมการ</label><p><?=$id_commit?></p>
 
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
-                        <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
-                        <a style="color:#fff;" onclick="javascript:window.print();">Print<i class="livicon" data-name="printer" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
-                        </button>
-                        <button type="button" class="btn btn-responsive button-alignment btn-warning" data-toggle="button">
-                        <a style="color:#fff;">Submit Your Invoice<i class="livicon" data-name="check" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>
-                        </button>
+											<div class="btn-group pull-right">
+												<button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
+																							Print
+											</button>
+											</div>
                     </div>
+										<div class="pull-right" style="margin:10px 20px;">
+                    <div class="btn-group pull-right">
+                    <a href="report_repayment.php"class="btn dropdown-toggle btn-custom"><span class="fa fa-reply"></span> ถอยกลับ </a>
+                  <div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -118,3 +122,11 @@ require_once('include/_footer.php');
 ?>
 </body>
 </html>
+
+<script type="text/javascript">
+  var pay_id = "<?=$pay_id?>";
+  $('#test_print').click(function(){
+    var view_open = window.open('repayment_view_print.php?pay_id=' + pay_id,'Print-Window','width=1024,height=768,top=100,left=100');
+    view_open.print();
+  });
+</script>

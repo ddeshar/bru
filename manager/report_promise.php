@@ -80,14 +80,15 @@ require_once('include/_header.php');
 								$app_pice = $row["app_pice"];
                 $sub_date = $row["sub_date"];
                 $pro_date = $row["pro_date"];
-
-								echo "<tr>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-										<td>$app_pice</td>
-                    <td>$pro_date</td>
-                    <td align='center'><a href='admin_promise_view.php?pro_id=$pro_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
-                    </tr>";
+?>
+                    <tr>
+										<td><?=$mem_id?></td>
+										<td><?=$mem_name?></td>
+										<td><?php echo number_format($app_pice);?></td>
+                    <td><?=$pro_date?></td>
+                    <td align='center'><a href='manager_promise_view.php?pro_id=<?=$pro_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
+                    </tr>
+                    <?php
               }
 						?>
 					</tbody>

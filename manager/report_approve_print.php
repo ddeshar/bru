@@ -18,11 +18,11 @@ require_once('include/connect.php');
         <tr role="row">
 
             <th width="10%" align="left">รหัสยื่นกู้</th>
-            <th width="10%" align="left">รหัสสมาชิก</th>
+            <th width="13%" align="left">รหัสสมาชิก</th>
             <th width="20%" align="left">ชื่อ-สกุล</th>
-            <th width="10%" align="left">เงินที่ขอกู้</th>
-            <th width="17%" align="left">วันที่ขอกู้</th>
-            <th width="16%" align="left">สถานะ</th>
+            <th width="15%" align="left">เงินที่ขอกู้</th>
+            <th width="15%" align="left">วันที่ขอกู้</th>
+            <th width="15%" align="left">สถานะ</th>
 
 
 
@@ -45,17 +45,18 @@ require_once('include/connect.php');
           $sub_date = $row["sub_date"];
           $id_sapp = $row["id_sapp"];
           $status_app = $row["status_app"];
+          ?>
 
-          echo "<tr>
+          <tr>
+              <td><?=$sub_id?></td>
+              <td><?=$mem_id?></td>
+              <td><?=$mem_name?></td>
+              <td><?php echo number_format($sub_moneyloan);?></td>
+              <td><?=$sub_date?></td>
+              <td><?=$status_app?></td>
 
-              <td>$sub_id</td>
-              <td>$mem_id</td>
-              <td>$mem_name</td>
-              <td>$sub_moneyloan</td>
-              <td>$sub_date</td>
-              <td>$status_app</td>
-
-            </tr>";
+            </tr>
+      <?php
         }
       ?>
     </tbody>

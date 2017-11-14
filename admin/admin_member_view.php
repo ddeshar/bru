@@ -119,7 +119,9 @@ if (isset($_GET["mem_id"])) {
             </div>
         </div>
     </section>
-    <!-- content -->
+		<div align='center' class="error-actions">
+				<a href="member.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+		</div>
 </aside>
 <!-- right-side -->
 <?php

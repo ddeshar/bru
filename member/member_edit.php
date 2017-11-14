@@ -151,22 +151,28 @@ if (isset($_POST["btnEdit"])) {
 																			</div>
 																		</div>
 
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="nam">คำนำหน้าชื่อ</label>
-                                    <div class="col-md-3">
-																			<select class="form-control" name="id_title" id="id_title">
-																				<?php
-																					$sql="SELECT * FROM title";
-																					$result = mysqli_query($link, $sql);
-																					while ($row=mysqli_fetch_array($result)){
-																				?>
-																				<option value="<?=$row['id_title']?>"> <?=$row['title']?></option>
-																				<?php
-																					}
-																				?>
-																				</select>
-																			</div>
-																		</div>
+																		<div class="form-group">
+																				<label class="col-md-3 control-label" for="gender">คำนำหน้าชื่อ</label>
+																				<div class="col-md-3">
+																					<select class="form-control" name="id_title" id="id_title">
+																						<?php
+																							$sql="SELECT * FROM title";
+																							$result = mysqli_query($link, $sql);
+
+																							while ($row=mysqli_fetch_array($result)){
+																								$titleid = $row['id_title'];
+																								$titlename = $row['title'];
+
+																										if($titleid == $id_title){ // check from database and get option selceted
+																											echo "<option selected value='{$titleid}'> {$titlename}</option>";
+																										}else{ // after selecting upper then show this one for selection
+																											echo "<option value='{$titleid}'>{$titlename}</option>";
+																										}
+																							}
+																						?>
+																						</select>
+																					</div>
+																				</div>
 
 																		<div class="form-group">
 		                                <label class="col-md-3 control-label" for="name">ชื่อ-สกุล</label>

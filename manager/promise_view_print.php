@@ -17,7 +17,7 @@ require_once('include/connect.php');
 
     <tbody>
       <?php
-			
+
 if (isset($_GET["pro_id"])) {
 		$pro_id = $_GET["pro_id"];
 		$sql = "SELECT * FROM promise
@@ -75,11 +75,11 @@ if (isset($_GET["pro_id"])) {
 						<label for="id"><b>ชื่อ-สกุลสมาชิก</b> : <?=$mem_name?></label><br>
 						<label for="id"><b>เลขที่บัตรประจำตัวประชาชาชน</b> : <?=$mem_idcard?></label><br>
 													<!-- <label class="col-md-5 control-label" for="id">รหัสการอนุมัติ</label><p><?//=$sub_id?></p> -->
-						<label for="id"><b>จำนวนเงินที่อนุมัติ</b> : <?=$app_pice?></label><br>
+						<label for="id"><b>จำนวนเงินที่อนุมัติ</b> : <?php echo number_format($app_pice);?> บาท</label><br>
 						<label for="id"><b>วันที่อนุมัติ</b> : <?=$sub_date?></label><br>
 						<label for="id"><b>วันที่ทำสัญญา</b> : <?=$pro_date?></label><br>
 													<!-- <label class="col-md-5 control-label" for="id">เลขทีสัญญา</label><p><?//=$pro_number?></p> -->
-						<label for="id"><b>จำนวนเงินกู้</b> : <?=$sub_moneyloan?></label><br>
+						<label for="id"><b>จำนวนเงินกู้</b> : <?php echo number_format($sub_moneyloan);?> บาท</label><br>
 						<label for="id"><b>เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</b> : <?=$sub_idcardBM1?></label><br>
 						<label for="id"><b>ชื่อ-สกุลผู้ค้ำคนที่ 1</b> : <?=$name1?></label><br>
 						<label for="id"><b>เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</b> : <?=$sub_idcardBM2?></label><br>

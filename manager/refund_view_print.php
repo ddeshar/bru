@@ -43,16 +43,17 @@ if (isset($_GET["ref_id"])){
 	$sub_moneyloan = $row["sub_moneyloan"];
 	$pay = $row["pay"];
 	$owe = $row["owe"];
-
-	echo "<tr>
-	<td>$ref_id</td>
-    <td>$ref_date</td>
-	<td>$mem_id</td>
-	<td>$mem_name</td>
-	<td>$sub_moneyloan</td>
-	<td>$pay</td>
-	<td>$owe</td>
-	</tr>";
+?>
+<tr>
+	<td><?=$ref_id?></td>
+  <td><?=$ref_date?></td>
+	<td><?=$mem_id?></td>
+	<td><?=$mem_name?></td>
+	<td><?php echo number_format($sub_moneyloan);?></td>
+	<td><?php echo number_format($pay);?></td>
+	<td><?php echo number_format($owe);?></td>
+	</tr>
+  <?php
 		}
 	}
 ?>

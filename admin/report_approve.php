@@ -82,13 +82,14 @@ require_once('include/_header.php');
                       								$sub_moneyloan = $row["sub_moneyloan"];
                                       $sub_date = $row["sub_date"];
                                       $id_sapp = $row["status_app"];
-
-                      								echo "<tr>
-                      										<td>$mem_id</td>
-                      										<td>$mem_name</td>
-                      										<td>$sub_moneyloan</td>
-                                          <td>$id_sapp</td>
-                                          </tr>";
+                                      ?>
+                                      <tr>
+                      										<td><?=$mem_id?></td>
+                      										<td><?=$mem_name?></td>
+                      										<td><?php echo number_format($sub_moneyloan);?></td>
+                                          <td><?=$id_sapp?></td>
+                                          </tr>
+                                  <?php
                                     }
                       						?>
 					</tbody>

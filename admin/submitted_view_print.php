@@ -17,7 +17,7 @@ require_once('include/connect.php');
 
     <tbody>
       <?php
-			
+
 if (isset($_GET["sub_id"])) {
 		$sub_id = $_GET["sub_id"];
 		$sql = "SELECT * FROM submitted
@@ -62,7 +62,7 @@ if (isset($_GET["sub_id"])) {
 						<label for="id"><b>รหัสกการยื่นกู้</b> : <?=$sub_id?></label><br>
 						<label for="id"><b>รหัสสมาชิก</b> : <?=$mem_id?></label><br>
 						<label for="id"><b>ชื่อ-สกุลสมาชิก</b> : <?=$mem_name?></label><br>
-						<label for="id"><b>จำนวนเงินที่ขอกู้</b> : <?=$sub_moneyloan?></label><br>
+						<label for="id"><b>จำนวนเงินที่ขอกู้</b> : <?php echo number_format($sub_moneyloan);?> บาท</label><br>
 						<label for="id"><b>วัตถุประสงค์ในการขอกู้</b> : <?=$sub_objective?></label><br>
 						<label for="id"><b>วันที่ยื่นกู้</b> : <?=$sub_date?></label><br>
 						<label for="id"><b>เลขที่บัตรผู้ค้ำประกันคนที่ 1</b> : <?=$sub_idcardBM1?></label><br>

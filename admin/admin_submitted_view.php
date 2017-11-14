@@ -89,7 +89,7 @@ if (isset($_GET["sub_id"])) {
 													<label class="col-md-5 control-label" for="id">รหัสกการยื่นกู้</label><p><?=$sub_id?></p>
 													<label class="col-md-5 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลสมาชิก</label><p><?=$mem_name?></p>
-													<label class="col-md-5 control-label" for="id">จำนวนเงินที่ขอกู้</label><p><?=$sub_moneyloan?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินที่ขอกู้</label><p><?php echo number_format($sub_moneyloan);?> บาท</p>
 													<label class="col-md-5 control-label" for="id">วัตถุประสงค์ในการขอกู้</label><p><?=$sub_objective?></p>
 													<label class="col-md-5 control-label" for="id">วันที่ยื่นกู้</label><p><?=$sub_date?></p>
 													<label class="col-md-5 control-label" for="id">เลขที่บัตรผู้ค้ำประกันคนที่ 1</label><p><?=$sub_idcardBM1?></p>
@@ -110,7 +110,9 @@ if (isset($_GET["sub_id"])) {
             </div>
         </div>
     </section>
-    <!-- content -->
+		<div align='center' class="error-actions">
+				<a href="approve.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+		</div>
 </aside>
 <!-- right-side -->
 <?php

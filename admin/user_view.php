@@ -86,7 +86,9 @@ if (isset($_GET["user_id"])) {
             </div>
         </div>
     </section>
-    <!-- content -->
+		<div align='center' class="error-actions">
+				<a href="user.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+		</div>
 </aside>
 <!-- right-side -->
 <?php
@@ -102,4 +104,3 @@ require_once('include/_footer.php');
     view_open.print();
   });
 </script>
-

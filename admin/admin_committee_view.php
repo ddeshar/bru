@@ -106,6 +106,9 @@ if (isset($_GET["id_committee"])) {
                 </div>
             </div>
         </div>
+				<div align='center' class="error-actions">
+						<a href="committee.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+				</div>
     </section>
     <!-- content -->
 </aside>

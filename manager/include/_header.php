@@ -1,4 +1,6 @@
-<?php require_once('session.php'); ?>
+<?php require_once('session.php');
+require_once('include/function.php');
+ ?>
 
 <!DOCTYPE html>
 <html>

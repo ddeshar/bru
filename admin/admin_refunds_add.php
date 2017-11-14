@@ -106,10 +106,10 @@ if (isset($_POST["btnsubmit"])) {
 											        <div class="col-md-3">
 											        <input type="date" id="datepicker" name="ref_date" class="form-control round-form"  placeholder="DATE"></div>
 											        </div> -->
-<?php $percentage = 6;
+<!-- <//?php $percentage = 6;
 $totalwidth = 12880;
 
-echo $new_width = ($percentage * $totalwidth) /100; ?>
+echo $new_width = ($percentage * $totalwidth) /100; ?> -->
 											        <div class="form-group">
 											        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
 											        <div class="col-md-3">

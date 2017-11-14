@@ -82,6 +82,9 @@ if (isset($_GET["id_fund"])) {
                 </div>
             </div>
         </div>
+				<div align='center' class="error-actions">
+<?php back(); ?>
+				</div>
     </section>
     <!-- content -->
 </aside>

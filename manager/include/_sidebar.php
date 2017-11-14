@@ -60,7 +60,7 @@ color: white;
         <ul class="sub-menu">
             <li <?php if($page == 'animatedicons') echo 'class="active" id="active"'; ?> >
               <h5 class="report_black"><i class ="re">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายงานข้อมูลพื้นฐาน</i></h5>
-                <a href="animatedicons.php">
+                <a href="report_history.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลประวัติการเข้าใช้งาน
                 </a>

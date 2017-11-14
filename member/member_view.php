@@ -105,12 +105,12 @@ if (isset($s_login_mem_id)) {
 													<label class="col-md-5 control-label" for="id">อีเมล</label><p><?=$mem_email?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$mem_username?></p>
 										</div>
-                    
+
                 </div>
             </div>
         </div>
     </section>
-    <!-- content -->
+
 </aside>
 <!-- right-side -->
 <?php

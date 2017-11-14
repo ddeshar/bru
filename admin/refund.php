@@ -29,7 +29,8 @@ require_once('include/_header.php');
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
                             </div>
-                            <div class="btn-group pull-right">
+
+                            <!-- <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
                                     Tools
                                     <i class="fa fa-angle-down"></i>
@@ -50,7 +51,8 @@ require_once('include/_header.php');
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
+
                         <div id="sample_editable_1_wrapper" class="">
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
@@ -99,7 +101,8 @@ require_once('include/_header.php');
                     <td align="right"><?php echo number_format($owe);?></td>
                     <td align="center"><?=$ref_date?></td>
 
-                    <td align='center'><a href='admin_refund_view.php?ref_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
+                    <td align='center'><a href='admin_refund_view.php?ref_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                    <a href='refund_pdf.php?ref_id=<?=$ref_date?>' class='btn warning btn-xs purple' target="_blank"><i class='fa fa-print'></i></a></td>
 									</tr>
                   <?php
 							}

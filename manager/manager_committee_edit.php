@@ -120,17 +120,23 @@ if (isset($_POST["btnEdit"])) {
                                         <input name="com_idcard" type="text" value="<?php echo "$com_idcard"; ?>" class="form-control"></div>
                                 </div>
                                 <!-- Message body -->
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="detail">คำนำหน้าชื่อ</label>
-                                    <div class="col-md-3">
+																<div class="form-group">
+																		<label class="col-md-3 control-label" for="gender">คำนำหน้าชื่อ</label>
+																		<div class="col-md-3">
 																			<select class="form-control" name="id_title" id="id_title">
 																				<?php
 																					$sql="SELECT * FROM title";
 																					$result = mysqli_query($link, $sql);
+
 																					while ($row=mysqli_fetch_array($result)){
-																				?>
-																				<option value="<?=$row['id_title']?>"> <?=$row['title']?></option>
-																				<?php
+																						$titleid = $row['id_title'];
+																						$titlename = $row['title'];
+
+																								if($titleid == $id_title){ // check from database and get option selceted
+																									echo "<option selected value='{$titleid}'> {$titlename}</option>";
+																								}else{ // after selecting upper then show this one for selection
+																									echo "<option value='{$titleid}'>{$titlename}</option>";
+																								}
 																					}
 																				?>
 																				</select>
@@ -144,21 +150,28 @@ if (isset($_POST["btnEdit"])) {
 																				</div>
 		                                </div>
 
-																						<div class="form-group">
-				                                    	<label class="col-md-3 control-label" for="detail">ตำแหน่ง</label>
-				                                    <div class="col-md-3">
+																		<div class="form-group">
+																				<label class="col-md-3 control-label" for="gender">ตำแหน่ง</label>
+																				<div class="col-md-3">
+																					<select class="form-control" name="id_position" id="id_position">
+																						<?php
+																							$sql="SELECT * FROM position";
+																							$result = mysqli_query($link, $sql);
 
-																						<select class="form-control" name="id_position" id="id_position">
-                                              <?php
-	                                              $sql="SELECT * FROM  position  ";
-	                                              $result = mysqli_query($link, $sql) ;
-	                                              while ($row=mysqli_fetch_array($result)){
-                                              ?>
-                                              <option value="<?=$row['id_position']?>"> <?=$row['name_position']?> </option>
-                                              <?php } ?>
-                                            </select>
-																						</div>
-																						</div>
+																							while ($row=mysqli_fetch_array($result)){
+																								$positionid = $row['id_position'];
+																								$positionname = $row['name_position'];
+
+																										if($positionid == $id_position){ // check from database and get option selceted
+																											echo "<option selected value='{$positionid}'> {$positionname}</option>";
+																										}else{ // after selecting upper then show this one for selection
+																											echo "<option value='{$positionid}'>{$positionname}</option>";
+																										}
+																							}
+																						?>
+																						</select>
+																					</div>
+																				</div>
 
 																					<div class="form-group">
 			                                    <label class="col-md-3 control-label" for="birth">วันเกิด</label>

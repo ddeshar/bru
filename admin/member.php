@@ -76,8 +76,6 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
-                                        <th>No.</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>วัน/เดือน/ปีเกิด</th>
@@ -114,8 +112,7 @@ require_once('include/_header.php');
                                       $status_mem = $row["status_mem"];
 
 
-                      								echo "<tr>
-                      										<td><?php echo $i++; ?></td>
+                      								echo "<tr>                      									
                                           <td>$mem_id</td>
                       										<td>$id_title $mem_name</td>
                       										<td>$mem_birthday</td>

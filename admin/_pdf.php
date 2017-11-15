@@ -22,7 +22,7 @@ class my_pdf extends TCPDF {
           // Page number
           $this->Cell(10, 10, 'หน้า'.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
 
-          $footer_text = '<div>เราจะแก้บั๊กตามสัญญาขอเวลาอีกไม่นาน<br>แล้วโปรแกรมที่งดงามจะคืนกลับมา</div>';
+          $footer_text = '<div></div>';
           $this->writeHTMLCell(100, 50, 50, 280, $footer_text, 0, 0, 0, true, 'C', true);
       }
 }

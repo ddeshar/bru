@@ -100,16 +100,17 @@ require_once('include/_header.php');
 								$fund_name = $row["fund_name"];
 								$fund_detail = $row["fund_detail"];
 								$fund_money = $row["fund_money"];
-
-								echo "<tr>
-										<td>$id_fund</td>
-										<td>$fund_name</td>
-										<td>$fund_detail</td>
-										<td>$fund_money</td>
-                    <td align='center'><a href='admin_fund_edit.php?id_fund=$id_fund' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_fund_view.php?id_fund=$id_fund' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='funds.php?id_fund=$id_fund' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-									</tr>";
+?>
+                  <tr>
+										<td><?=$id_fund?></td>
+										<td><?=$fund_name?></td>
+										<td><?=$fund_detail?></td>
+										<td><?php echo number_format($fund_money);?></td>
+                    <td align='center'><a href='admin_fund_edit.php?id_fund=<?=$id_fund?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <a href='admin_fund_view.php?id_fund=<?=$id_fund?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+										<a href='funds.php?id_fund=<?=$id_fund?>' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+									</tr>
+                  <?php
 							}
 						?>
 					</tbody>

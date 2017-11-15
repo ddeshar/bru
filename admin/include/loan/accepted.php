@@ -1,4 +1,4 @@
-<h2><center>สามารถกู้ได้ เพราะคุณมีจำนวนเงินคือ<?=$budget?> <center></h2>
+<h2><center>สามารถกู้ได้ เพราะคุณมีจำนวนเงินคือ<?php echo number_format($budget);?> <center></h2>
 
 <form class="form-horizontal" action="admin_submitted_add.php" method="post">
     <fieldset>

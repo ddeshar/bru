@@ -86,7 +86,7 @@ if (isset($_POST["btnEdit"])) {
 											</h3>
 										</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="admin_fund_edit.php" method="post">
+                        <form class="form-horizontal" action="manager_fund_edit.php" method="post">
                             <fieldset>
                                 <!-- Name input-->
                                 <div class="form-group">

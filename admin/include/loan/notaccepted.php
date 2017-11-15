@@ -8,10 +8,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="error-template">
-                <h1><?=$budget?></h1>
+
                 <h2>จำนวนเงินคุณคือ</h2>
+                <h1><?php echo number_format($budget);?></h1>
                 <div class="error-details">
-                  ไม่สามารถทำการกู้เงินได้ 
+                  ไม่สามารถทำการกู้เงินได้
                 </div>
                 <div class="error-actions">
                     <a href="all_member_loan.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>

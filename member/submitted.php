@@ -108,7 +108,7 @@ require_once('include/_header.php');
                                           <td>$sub_date</td>
                                           <td>$id_sapp</td>
 
-                                          <td align='center'><a href='admin_submitted_edit.php?sub_id=$sub_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a>
+                                          <td align='center'><a href='submitted.php?sub_id=$sub_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a>
 
 
                                           </tr>";

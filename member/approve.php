@@ -64,7 +64,7 @@ require_once('include/_header.php');
                       							// 	$result = mysqli_query($link, $sql);
                       							// }
                                     if(isset($s_login_mem_id)){
-                      							$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp WHERE status_app = 'อนุมัติ' AND submitted.mem_id = '$s_login_mem_id'";
+                      							$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp WHERE status_app = 'รออนุมัติ' AND submitted.mem_id = '$s_login_mem_id'";
                       							$result = mysqli_query($link, $sql);
                       							while ($row = mysqli_fetch_array($result)){
                       								$sub_id = $row["sub_id"];

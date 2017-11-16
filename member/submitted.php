@@ -77,20 +77,20 @@ require_once('include/_header.php');
                                         <th>ชื่อ-สกุล</th>
                                         <th>จำนวนเงินที่ขอกู้</th>
                                         <th>วันที่กู้ยืม</th>
-                                        <th>สถานะการอนุมัติ</th>
-                                        <th><div align ='center'>จัดการข้อมูล</div></th>
+                                        <!-- <th>สถานะการอนุมัติ</th> -->
+                                        <th><div align ='center'>ดูข้อมูล</div></th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                       						<?php
-                      							if (isset($_GET["sub_id"])) {
-                      								$sub_id = $_GET["sub_id"];
-                      								$sql = "delete from submitted where sub_id='$sub_id'";
-                      								$result = mysqli_query($link, $sql);
-                      							}
+                      							if(isset($s_login_mem_id)){
+                      							// 	$sub_id = $_GET["sub_id"];
+                      							// 	$sql = "delete from submitted where sub_id='$sub_id'";
+                      							// 	$result = mysqli_query($link, $sql);
+                      							// }
 
-                      							$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp WHERE status_app = 'รออนุมัติ'";
+                      							$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp WHERE status_app = 'รออนุมัติ'AND submitted.mem_id = '$s_login_mem_id'";
                       							$result = mysqli_query($link, $sql);
                       							while ($row = mysqli_fetch_array($result)){
                       								$sub_id = $row["sub_id"];
@@ -106,13 +106,13 @@ require_once('include/_header.php');
                       										<td>$mem_name</td>
                       										<td>$sub_moneyloan</td>
                                           <td>$sub_date</td>
-                                          <td>$id_sapp</td>
-
-                                          <td align='center'><a href='submitted.php?sub_id=$sub_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a>
 
 
+                                          <td align='center'>
+                                          <a href='submitted_view.php?sub_id=$sub_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
                                           </tr>";
                                     }
+                                  }
                       						?>
                       					</tbody>
                             </table>

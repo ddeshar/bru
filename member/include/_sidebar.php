@@ -63,6 +63,12 @@ color: white;
             <li <?php if($page == 'loan') echo 'class="active" id="active"'; ?> >
                 <a href="member_loan.php">
                     <i class="fa fa-angle-double-right"></i>
+                    ยื่นกู้
+                </a>
+            </li>
+            <li <?php if($page == 'approve') echo 'class="active" id="active"'; ?> >
+                <a href="submitted.php">
+                    <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการยื่นกู้
                 </a>
             </li>

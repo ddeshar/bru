@@ -116,13 +116,13 @@ if (isset($_POST["submit"])) {
                                                                         <div class="form-group">
                                         <label class="col-md-3 control-label" for="name">ชื่อ-สกุล</label>
                                         <div class="col-md-3">
-                                        <input id="mem_name" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
+                                        <input id="mem_name" name="mem_name" type="text" placeholder="NAME" class="form-control" required></div>
                                         </div>
 
                                                                                     <div class="form-group">
                                                 <label class="col-md-3 control-label" for="birth">วันเกิด</label>
                                                 <div class="col-md-3">
-                                            <input type="date"name="mem_birthday" class="form-control round-form"  placeholder="DATE"></div>
+                                            <input type="date"name="mem_birthday" class="form-control round-form"  placeholder="DATE" required></div>
                                                                                     </div>
 
                                                                                     <div class="form-group">
@@ -146,13 +146,13 @@ if (isset($_POST["submit"])) {
                                                                                             <div class="form-group">
                                                                                             <label class="col-md-3 control-label" for="occupation">อาชีพ</label>
                                                                                             <div class="col-md-3">
-                                                                                            <input id="mem_occupation" name="mem_occupation" type="text" placeholder="OCCUPATION" class="form-control"></div>
+                                                                                            <input id="mem_occupation" name="mem_occupation" type="text" placeholder="OCCUPATION" class="form-control" required></div>
                                                                                             </div>
 
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="address">ที่อยู่</label>
                                 <div class="col-md-3">
-                                <input id="mem_address" name="mem_address" type="text" placeholder="ADDRESS" class="form-control"></div>
+                                <input id="mem_address" name="mem_address" type="text" placeholder="ADDRESS" class="form-control" required></div>
                                 </div>
 
                                                                 <div class="form-group">
@@ -162,7 +162,7 @@ if (isset($_POST["submit"])) {
                                                                 </div>
 
                                                                 <div class="form-group">
-                                                                <label class="col-md-3 control-label" for="email">อีเมล</label>
+                                                                <label class="col-md-3 control-label" for="email" required>อีเมล</label>
                                                                 <div class="col-md-3">
                                                                 <input id="mem_email" name="mem_email" type="email" placeholder="example@domain.com" class="form-control"></div>
                                                                 </div>
@@ -177,7 +177,7 @@ if (isset($_POST["submit"])) {
                                                                 <div class="form-group">
                                                                 <label class="col-md-3 control-label" for="pass">รหัสผ่าน</label>
                                                                 <div class="col-md-3">
-                                                                <input id="mem_password" name="mem_password" type="text" placeholder="PASSWORD" class="form-control"></div>
+                                                                <input id="mem_password" name="mem_password" type="text" placeholder="PASSWORD" class="form-control" required></div>
                                                                 <span style="color: red;">  *รหัสผ่านโปรดระบุเป็นวันเดือนปีเกิด เช่น 1 ม.ค. 2538 เป็น 01012538 </span>
                                                                 </div>
 

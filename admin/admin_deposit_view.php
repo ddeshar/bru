@@ -73,7 +73,7 @@ require_once('include/_header.php');
 																ON deposit.mem_id = member.mem_id
 																LEFT JOIN commits
 																ON deposit.id_commit = commits.id_commit WHERE deposit.mem_id = '$mem_id'
-																ORDER BY deposit.mem_id asc";
+																ORDER BY deposit.fak_id asc";
 																$result = mysqli_query($link, $sql);
 																while ($row = mysqli_fetch_array($result)) {
 																	$fak_id = $row["fak_id"];

@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
 <html>
 
 <head>
-    <title>Admin Login </title>
+    <title>FROM MEMBER </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- global level css -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" />
@@ -62,7 +62,7 @@ if (isset($_POST["submit"])) {
                 <div class="panel panel-primary" id="hidepanel1">
                                     <div class="panel-heading">
                                             <h3 class="panel-title"> <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                                                    สมัคสมาชิก
+                                                    สมัครสมาชิก
                                             </h3>
                                         </div>
                     <div class="panel-body">
@@ -186,7 +186,7 @@ if (isset($_POST["submit"])) {
                                                                 <span style="color: red;">  *รหัสผ่านโปรดระบุเป็นวันเดือนปีเกิด เช่น 1 ม.ค. 2538 เป็น 01012538 </span>
                                                                 </div>
 
-                                                               <!-- <?php if (isset($_SESSION['is_admin'])){ ?>
+                                                               <!-- <//?php if (isset($_SESSION['is_admin'])){ ?>
                                                                     <div class="form-group">
                                                                         <label class="col-lg-3 control-label" for="select">Status</label>
                                                                         <div class="col-lg-3">
@@ -197,12 +197,12 @@ if (isset($_POST["submit"])) {
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                <?php } ?>
+                                                                <//?php } ?>
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
 
-                                         <button type="submit" name="submit" value="submit" class="btn btn-primary">เพิ่มสมาชิก</button>
+                                         <button type="submit" name="submit" value="submit" class="btn btn-primary">สมัครสมาชิก</button>
                                     </div>
                                 </div>
                             </fieldset>

@@ -116,67 +116,67 @@ if (isset($_POST["btnEdit"])) {
                                 <div class="form-group">
                                     <label for="id" class="col-md-3 control-label">รหัสการยื่นกู้</label>
                                     <div class="col-md-3">
-                                    <input  name="sub_id" type="text" type="text" value="<?php echo "$sub_id"; ?>" class="form-control"></div>
+                                    <input  name="sub_id" type="text" type="text" value="<?php echo "$sub_id"; ?>" class="form-control" readonly></div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
                                     <div class="col-md-3">
-                                    <input  name="mem_id" type="text"  value="<?php echo "$mem_id"; ?>" class="form-control"></div>
+                                    <input  name="mem_id" type="text"  value="<?php echo "$mem_id"; ?>" class="form-control"readonly></div>
                                 </div>
 
 																<div class="form-group">
 																		<label class="col-md-3 control-label" for="name">ชื่อ-สกุลสมาชิก</label>
 																		<div class="col-md-3">
-																				<input  name="mem_name" type="text"  value="<?php echo "$mem_name"; ?>" class="form-control"></div>
+																				<input  name="mem_name" type="text"  value="<?php echo "$mem_name"; ?>" class="form-control"readonly></div>
 																		</div>
 
 																<div class="form-group">
 																		<label class="col-md-3 control-label" for="money">จำนวนเงินที่ขอกู้</label>
 																		<div class="col-md-3">
-																				<input  name="sub_moneyloan" type="text" value="<?php echo "$sub_moneyloan"; ?>" class="form-control">
+																				<input  name="sub_moneyloan" type="text" value="<?php echo "$sub_moneyloan"; ?>" class="form-control"readonly>
 																			</div>
 																</div>
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="name">วัตถุประสงค์ในการขอกู้</label>
                                     <div class="col-md-3">
-                                        <textarea class="form-control" name="sub_objective" rows="5"><?php echo "$sub_objective"; ?></textarea>
+                                        <textarea class="form-control" name="sub_objective" rows="5" readonly><?php echo "$sub_objective"; ?></textarea>
                                     </div>
                                 </div>
 
 																<div class="form-group">
 																		<label class="col-md-3 control-label" for="birth">วันที่ยื่นกู้</label>
 																		<div class="col-md-3">
-																				<input type="date" id="datepicker" name="sub_date" class="form-control round-form" value="<?php echo "$sub_date"; ?>" >
+																				<input type="date" id="datepicker" name="sub_date" class="form-control round-form" readonly value="<?php echo "$sub_date"; ?>" >
 																			</div>
 																	</div>
 
 																	<div class="form-group">
 																			<label class="col-md-3 control-label" for="name">เลขที่บัตรผู้ค้ำประกันคนที่ 1</label>
 																			<div class="col-md-3">
-																					<input  name="sub_idcardBM1" type="text"  value="<?php echo "$sub_idcardBM1"; ?>" class="form-control">
+																					<input  name="sub_idcardBM1" type="text"  value="<?php echo "$sub_idcardBM1"; ?>" class="form-control"readonly>
 																			</div>
 																	</div>
 
 																	<div class="form-group">
 																			<label class="col-md-3 control-label" for="name">ชื่อผู้ค้ำประกันคนที่ 1</label>
 																			<div class="col-md-3">
-																					<input  name="name1" type="text"  value="<?php echo "$name1"; ?>" class="form-control">
+																					<input  name="name1" type="text"  value="<?php echo "$name1"; ?>" class="form-control"readonly>
 																			</div>
 																	</div>
 
 																	<div class="form-group">
 																			<label class="col-md-3 control-label" for="name">เลขที่บัตรผู้ค้ำประกันคนที่ 2</label>
 																			<div class="col-md-3">
-																					<input  name="sub_idcardBM2" type="text"  value="<?php echo "$sub_idcardBM2"; ?>" class="form-control">
+																					<input  name="sub_idcardBM2" type="text"  value="<?php echo "$sub_idcardBM2"; ?>" class="form-control"readonly>
 																			</div>
 																	</div>
 
 																	<div class="form-group">
 																			<label class="col-md-3 control-label" for="name">ชื่อผู้ค้ำประกันคนที่ 2</label>
 																			<div class="col-md-3">
-																					<input  name="name2" type="text"  value="<?php echo "$name2"; ?>" class="form-control">
+																					<input  name="name2" type="text"  value="<?php echo "$name2"; ?>" class="form-control"readonly>
 																			</div>
 																	</div>
 
@@ -197,7 +197,7 @@ if (isset($_POST["btnEdit"])) {
 																				</div>
 																	</div>
 
-																	
+
 																	<div class="form-group">
 																		<label class="col-md-3 control-label" for="commit">สถานะการอนุมัติ</label>
 																		<div class="col-md-3">

@@ -4,8 +4,6 @@ $title = 'Hello admin';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
-
-
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
@@ -246,8 +244,6 @@ require_once('include/_footer.php');
   $(document).ready(function() {
     $("#datepicker").datepicker();
   });
-
-
 
 	$(document).ready(function(){
 		var maxChars = $("#sessionNum");

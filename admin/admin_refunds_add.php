@@ -132,7 +132,7 @@ echo $new_width = ($percentage * $totalwidth) /100; ?> -->
                                 <label class="col-md-3 control-label" for="id">อัตราดอกเบี้ย</label>
                                 <div class="col-md-1">
                                 <input id="percentage" name="rate" type="text" placeholder="RATE" class="form-control" value="6" readonly> </div>
-																<label class=" control-label" for="id">% ต่อปี</label>
+																<label class=" control-label" for="id">% ต่อปี (2 ปี)</label>
                                 </div>
 
 

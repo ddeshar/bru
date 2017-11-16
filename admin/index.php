@@ -44,7 +44,8 @@
                                 <button class="btn btn-lg btn-primary btn-block" value="Login" type="submit">Sign in</button>
                             </fieldset>
                         </form><br />
-                        <a href="frm_register.php">สมัครสมาชิก</a>
+                        <a href="frm_register.php">สมัครสมาชิก</a><br />
+                        <a href="../index.php">หน้าหลัก</a>
                     </div>
                 </div>
             </div>

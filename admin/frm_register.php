@@ -42,13 +42,8 @@ if (isset($_POST["submit"])) {
 <head>
     <title>FROM MEMBER </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- global level css -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- end of global level css -->
-    <!-- page level css -->
-    <link href="asset/css/pages/login2.css" rel="stylesheet" />
     <link href="asset/vendors/iCheck/skins/minimal/blue.css" rel="stylesheet" />
-    <!-- styles of the page ends-->
 </head>
 
 <body>
@@ -103,7 +98,7 @@ if (isset($_POST["submit"])) {
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="detail">คำนำหน้าชื่อ</label>
                                     <div class="col-md-3">
-                                                                            <select class="form-control" name="id_title" id="id_title">
+                                                                        <select class="form-control" name="id_title" id="id_title">
                                                                                             <option>--เลือก--</option>
                                                                                             <?php
                                                                                                 $sql="SELECT * FROM title";
@@ -212,21 +207,7 @@ if (isset($_POST["submit"])) {
 
         <!--main content ends-->
     </section>
-        <!--<form action="register.php" method="POST">
-            <label for="username">Username: </label>
-            <input type="text" name="username" required autofocus>
-            <label for="password">Password: </label>
-            <input type="password" name="password" required>
-            <label for="email">E-mail: </label>
-            <input type="email" name="email" placeholder="example@domain.com" required>
-            <br><br>
-            <input type="submit" value="ลงทะเบียน">
-        </form>
-        <br>
-        <br>
-        <a href="index.php">กลับหน้าหลัก</a>
-      </div>-->
-        <!-- global js -->
+
         <script src="asset/js/jquery-1.11.1.min.js" type="text/javascript"></script>
         <script src="asset/js/bootstrap.min.js" type="text/javascript"></script>
         <!--livicons-->
@@ -252,30 +233,24 @@ if (isset($_POST["submit"])) {
     </body>
     </html>
 
+    <script>
+      $(document).ready(function() {
+        $("#datepicker").datepicker();
+      });
 
-<!--<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <link href="style.css" rel="stylesheet">
-    </head>
-    <body>
-        <div>
-        <h1>ลงทะเบียน</h1>
-        <form action="register.php" method="POST">
-            <label for="username">Username: </label>
-            <input type="text" name="username" required autofocus>
-            <label for="password">Password: </label>
-            <input type="password" name="password" required>
-            <label for="email">E-mail: </label>
-            <input type="email" name="email" placeholder="example@domain.com" required>
-            <br><br>
-            <input type="submit" value="ลงทะเบียน">
-        </form>
-        <br>
-        <br>
-        <a href="index.php">กลับหน้าหลัก</a>
-        </div>
-    </body>
-</html>-->
+
+
+    	$(document).ready(function(){
+    		var maxChars = $("#sessionNum");
+    		var max_length = maxChars.attr('maxlength');
+    		if (max_length > 0) {
+    		    maxChars.bind('keyup', function(e){
+    		        length = new Number(maxChars.val().length);
+    		        counter = max_length-length;
+    		        $("#sessionNum_counter").text(counter);
+    		    });
+    		}
+    		});
+
+
+      </script>

@@ -36,7 +36,7 @@ if (isset($_POST["submit"])) {
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";
-			echo "window.location='member.php';";
+			echo "window.location='index.php';";
 			echo "</script>";
 			//header('location: admin_product.php');
 		}else{

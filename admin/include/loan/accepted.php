@@ -18,19 +18,19 @@
         <div class="form-group">
         <label class="col-md-3 control-label" for="name">ชื่อ-สกุลสมาชิก</label>
         <div class="col-md-3">
-        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
+        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" required></div>
         </div>
 
         <div class="form-group">
             <label class="col-md-3 control-label" for="name">จำนวนเงินที่ขอกู้</label>
             <div class="col-md-3">
-            <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"></div>
+            <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"  required></div>
         </div>
 
         <div class="form-group">
             <label class="col-md-3 control-label" for="detail">วัตถุประสงค์ในการกู้</label>
             <div class="col-md-4">
-            <textarea class="form-control" id="sub_objective" name="sub_objective" placeholder="OBJECTIVE" rows="5"></textarea>
+            <textarea class="form-control" id="sub_objective" name="sub_objective" placeholder="OBJECTIVE" rows="5"  required></textarea>
             </div>
         </div>
 
@@ -43,25 +43,25 @@
         <div class="form-group">
             <label class="col-md-3 control-label" for="money">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label>
             <div class="col-md-3">
-            <input id="sub_idcardBM1" name="sub_idcardBM1" type="text" placeholder="IDCARDBM1" class="form-control"></div>
+            <input id="sub_idcardBM1" name="sub_idcardBM1" type="text" placeholder="IDCARDBM1" class="form-control"  required></div>
         </div>
 
         <div class="form-group">
             <label class="col-md-3 control-label" for="money">ชื่อผู้ค้ำคนที่ 1</label>
             <div class="col-md-3">
-            <input id="name1" name="name1" type="text" placeholder="NAME1" class="form-control"></div>
+            <input id="name1" name="name1" type="text" placeholder="NAME1" class="form-control" required></div>
         </div>
 
         <div class="form-group">
             <label class="col-md-3 control-label" for="money">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 2</label>
             <div class="col-md-3">
-            <input id="sub_idcardBM2" name="sub_idcardBM2" type="text" placeholder="IDCARDBM2" class="form-control"></div>
+            <input id="sub_idcardBM2" name="sub_idcardBM2" type="text" placeholder="IDCARDBM2" class="form-control" required></div>
         </div>
 
         <div class="form-group">
             <label class="col-md-3 control-label" for="money">ชื่อผู้ค้ำคนที่ 2</label>
             <div class="col-md-3">
-            <input id="name2" name="name2" type="text" placeholder="NAME2" class="form-control"></div>
+            <input id="name2" name="name2" type="text" placeholder="NAME2" class="form-control" required></div>
         </div>
 
         <div class="form-group">

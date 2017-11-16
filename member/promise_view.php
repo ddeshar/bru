@@ -115,10 +115,13 @@ if (isset($s_login_mem_id)) {
 													<label class="col-md-5 control-label" for="id">ชื่อกรรมการ</label><p><?=$id_commit?></p>
 
 										</div>
-                    
+
                 </div>
             </div>
         </div>
+				<div align='center' class="error-actions">
+    				<a href="promise.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+    		</div>
     </section>
     <!-- content -->
 </aside>

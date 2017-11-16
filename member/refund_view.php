@@ -71,15 +71,17 @@ require_once('include/_header.php');
 																$sub_moneyloan = $row["sub_moneyloan"];
 																$pay = $row["pay"];
 																$owe = $row["owe"];
-																	echo "<tr>
-																	 		<td>$ref_id</td>
-                                      <td>$ref_date</td>
-																			<td>$mem_id</td>
-																			<td>$mem_name</td>
-																			<td>$sub_moneyloan</td>
-																			<td>$pay</td>
-																			<td>$owe</td>
-																	</tr>";
+                                ?>
+                                  <tr>
+																	 		<td><?=$ref_id?></td>
+                                      <td><?=$ref_date?></td>
+																			<td><?=$mem_id?></td>
+																			<td><?=$mem_name?></td>
+																			<td><?php echo number_format($sub_moneyloan);?></td>
+																			<td><?php echo number_format($pay);?></td>
+																			<td><?php echo number_format($owe);?></td>
+																	</tr>
+                                  <?php
 																}
 															}
 														 ?>
@@ -87,10 +89,12 @@ require_once('include/_header.php');
 													</tbody>
 											</table>
 										</div>
-                    
                 </div>
             </div>
         </div>
+        <div align='center' class="error-actions">
+    				<a href="refund.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+    		</div>
     </section>
     <!-- content -->
 </aside>

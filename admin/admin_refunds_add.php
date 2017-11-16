@@ -119,13 +119,13 @@ echo $new_width = ($percentage * $totalwidth) /100; ?> -->
 											        <div class="form-group">
 											        <label class="col-md-3 control-label" for="name">ชื่อสมาชิก</label>
 											        <div class="col-md-3">
-											        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
+											        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" required></div>
 											        </div>
 											        <!-- Message body -->
 															<div class="form-group">
                                 <label class="col-md-3 control-label" for="id">จำนวนเงินกู้</label>
                                 <div class="col-md-3">
-                                <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="PRICE" class="form-control" readonly></div>
+                                <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="PRICE" class="form-control" readonly required></div>
                                 </div>
 
 																<div class="form-group">
@@ -170,7 +170,7 @@ echo $new_width = ($percentage * $totalwidth) /100; ?> -->
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">จำนวนเงินที่รับมา</label>
 																<div class="col-md-3">
-																<input id="num3" name="ref_income" type="text" placeholder="INCOME" class="form-control"></div>
+																<input id="num3" name="ref_income" type="text" placeholder="INCOME" class="form-control" required></div>
 																<label class=" control-label" for="id">บาท</label>
 																</div>
 

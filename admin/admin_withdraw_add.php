@@ -102,7 +102,7 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="name">ชื่อผู้ถอน</label>
                                 <div class="col-md-3">
-                                <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" ></div>
+                                <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control"  required></div>
                                 </div>
                                 <!-- Message body -->
 																<div class="form-group">
@@ -127,7 +127,7 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="pass">จำนวนเงินที่ต้องการถอน</label>
 																<div class="col-md-3">
-																<input id="num1" name="withdraw" type="text" placeholder="RECIVER" class="form-control"></div>
+																<input id="num1" name="withdraw" type="text" placeholder="RECIVER" class="form-control" required></div>
 																</div>
 
 																<div class="form-group">

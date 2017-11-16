@@ -69,7 +69,7 @@ require_once('include/_header.php');
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="id">รหัสกองทุน</label>
                                     <div class="col-md-3">
-                                        <input id="id_fund" name="id_fund" type="text" placeholder="ID" class="form-control"></div>
+                                        <input id="id_fund" name="id_fund" type="text" placeholder="ID" class="form-control" required></div>
                                 </div>
                                 <!-- Email input-->
                                 <div class="form-group">
@@ -77,7 +77,7 @@ require_once('include/_header.php');
                                         ชื่อกองทุน
                                     </label>
                                     <div class="col-md-3">
-                                        <input id="fund_name" name="fund_name" type="text" placeholder="NAME" class="form-control"></div>
+                                        <input id="fund_name" name="fund_name" type="text" placeholder="NAME" class="form-control" required></div>
                                 </div>
                                 <!-- Message body -->
                                 <div class="form-group">
@@ -85,7 +85,7 @@ require_once('include/_header.php');
                                         รายละเอียดกองทุน
                                     </label>
                                     <div class="col-md-6">
-                                        <textarea class="form-control" id="fund_detail" name="fund_detail" placeholder="DETAIL" rows="5"></textarea>
+                                        <textarea class="form-control" id="fund_detail" name="fund_detail" placeholder="DETAIL" rows="5" required></textarea>
                                     </div>
                                 </div>
 
@@ -95,7 +95,7 @@ require_once('include/_header.php');
                                         จำนวนเงินเริ่มต้น
                                     </label>
                                     <div class="col-md-3">
-                                        <input id="fund_money" name="fund_money" type="text" placeholder="MONEY" class="form-control"></div>
+                                        <input id="fund_money" name="fund_money" type="text" placeholder="MONEY" class="form-control" required></div>
                                 </div>
                                 <!-- Form actions -->
                                 <div class="form-group">

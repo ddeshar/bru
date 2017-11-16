@@ -108,25 +108,25 @@ require_once('include/_header.php');
 	                                <div class="form-group">
 	                                    <label class="col-md-3 control-label" for="id">รหัสสัญญา</label>
 	                                    <div class="col-md-3">
-	                                    <input id="pro_id" name="pro_id" type="text" placeholder="ID" class="form-control" readonly></div>
+	                                    <input id="pro_id" name="pro_id" type="text" placeholder="ID" class="form-control" readonly required></div>
 	                                </div>
 
 																	<div class="form-group">
 													        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
 													        <div class="col-md-3">
-													        <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
+													        <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly required></div>
 													        </div>
 													        <!-- Email input-->
 													        <div class="form-group">
 													        <label class="col-md-3 control-label" for="name">ชื่อ</label>
 													        <div class="col-md-3">
-													        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
+													        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" required></div>
 													        </div>
 
 																	<div class="form-group">
 	                                    <label class="col-md-3 control-label" for="idcard">เลขที่บัตรประชาชนสมาชิก</label>
 	                                    <div class="col-md-3">
-	                                    <input id="mem_idcard" name="mem_idcard" type="text" placeholder="MEM-ID" class="form-control"></div>
+	                                    <input id="mem_idcard" name="mem_idcard" type="text" placeholder="MEM-ID" class="form-control" required></div>
 	                                </div>
 
 																	<!-- <div class="form-group">
@@ -161,7 +161,7 @@ require_once('include/_header.php');
 																	<div class="form-group">
 																			<label class="col-md-3 control-label" for="money">จำนวนเงินที่อนุมัติ</label>
 																			<div class="col-md-3">
-																			<input id="app_pice" name="app_pice" type="text" placeholder="MONEY" class="form-control"></div>
+																			<input id="app_pice" name="app_pice" type="text" placeholder="MONEY" class="form-control" required></div>
 																	</div>
 
 	                                <div class="form-group">

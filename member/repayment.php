@@ -45,7 +45,7 @@ require_once('include/_header.php');
                     <div class="portlet-body">
                         <div class="table-toolbar">
 
-                            
+
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
@@ -77,18 +77,19 @@ require_once('include/_header.php');
 								$sub_moneyloan = $row["sub_moneyloan"];
                 $pay_pice = $row["pay_pice"];
                 $pay_date = $row["pay_date"];
-
-								echo "<tr>
-										<td>$pay_id</td>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-										<td>$sub_moneyloan</td>
-                    <td>$pay_pice</td>
-                    <td>$pay_date</td>
+                ?>
+								<tr>
+										<td><?=$pay_id?></td>
+										<td><?=$mem_id?></td>
+										<td><?=$mem_name?></td>
+										<td><?php echo number_format($sub_moneyloan);?></td>
+                    <td><?php echo number_format($pay_pice);?></td>
+                    <td><?=$pay_date?></td>
                     <td align='center'>
-                    <a href='repayment_view.php?pay_id=$pay_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
+                    <a href='repayment_view.php?pay_id=<?=$pay_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
 										</td>
-                    </tr>";
+                    </tr>
+                    <?php
               }
             }
 						?>

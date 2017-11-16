@@ -44,7 +44,7 @@ require_once('include/_header.php');
                 <div class="portlet box default">
                     <div class="portlet-body">
                         <div class="table-toolbar">
-                          
+
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
@@ -82,15 +82,17 @@ require_once('include/_header.php');
                 $ref_picetotal = $row["ref_picetotal"];
                 $owe = $row["owe"];
                 $ref_date = $row["ref_date"];
-								echo "<tr>
-										<td>$ref_id</td>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-                    <td>$ref_picetotal</td>
-                    <td>$owe</td>
-                    <td>$ref_date</td>
-                    <td align='center'><a href='refund_view.php?ref_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
-									</tr>";
+                ?>
+                <tr>
+										<td><?=$ref_id?></td>
+										<td><?=$mem_id?></td>
+										<td><?=$mem_name?></td>
+                    <td><?php echo number_format($ref_picetotal);?></td>
+                    <td><?php echo number_format($owe);?></td>
+                    <td><?=$ref_date?></td>
+                    <td align='center'><a href='refund_view.php?ref_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
+									</tr>
+                  <?php
 							}
             }
 						?>

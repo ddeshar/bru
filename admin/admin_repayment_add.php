@@ -108,7 +108,7 @@ require_once('include/_header.php');
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">ชื่อ</label>
 																<div class="col-md-3">
-																<input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
+																<input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" required></div>
 																</div>
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="mem_idcard">เลขที่บัตรประชาชนสมาชิก</label>

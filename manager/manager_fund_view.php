@@ -70,7 +70,7 @@ if (isset($_GET["id_fund"])) {
 													<label class="col-md-5 control-label" for="id">รหัสกองทุน</label><p><?=$id_fund?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อกองทุน</label><p><?=$fund_name?></p>
 													<label class="col-md-5 control-label" for="id">รายละเอียด</label><p><?=$fund_detail?></p>
-													<label class="col-md-5 control-label" for="id">จำนวนเงิน</label><p><?=$fund_money?> บาท</p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงิน</label><p><?php echo number_format($fund_money);?> บาท</p>
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
 											<div class="btn-group pull-right">

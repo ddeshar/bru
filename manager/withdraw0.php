@@ -12,24 +12,7 @@ require_once('include/_header.php');
 ?>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-          ข้อมูลกองทุนหมู่บ้าน
-        </h1>
-        <ol class="breadcrumb">
-            <li>
-                <a href="index.php"> <i class="livicon" data-name="home" data-size="18" data-loop="true"></i>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="#">DataTables</a>
-            </li>
-            <li class="active">
-              ข้อมูลกองทุนหมู่บ้าน
-            </li>
-        </ol>
-    </section>
+
     <!-- Main content -->
     <section class="content">
         <!-- Second Data Table -->
@@ -37,15 +20,11 @@ require_once('include/_header.php');
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet box default">
-                    <div class="portlet-title">
-                        <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางข้อมูลกองทุนหมู่บ้าน
-                        </div>
-                    </div>
+
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                              <a href="manager_fund_add.php"   class=" btn btn-custom">
+                              <a href="admin_withdraw_add.php"   class=" btn btn-custom">
                                     เพิ่ม
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
@@ -77,39 +56,59 @@ require_once('include/_header.php');
                                 <thead>
                                     <tr role="row">
 
-                                        <th>รหัสกองทุน</th>
-                                        <th>ชื่อกองทุน</th>
-                                        <th>รายละเอียดกองทุน</th>
-                                        <th>จำนวนเงินเริ่มต้น</th>
-                                        <th><div align ='center'>จัดการข้อมูล</div></th>
-
+                                        <th>รหัสสมาชิก</th>
+                                        <th>วันทีถอน</th>
+                                        <th>ชื่อผู้ถอน</th>
+                                        <th>ชื่อผู้รับถอน</th>
+                                        <th><div align='right'>ฝาก</div></th>
+                                        <th><div align='right'>ถอน</div></th>
+                                        <th><div align='right'>ยอดเงินคงเหลือ</div></th>
+                                        <th><div align ='center'>ดูข้อมูล</div></th>
                                     </tr>
                                 </thead>
                                 <tbody>
 						<?php
-							if (isset($_GET["id_fund"])) {
-								$id_fund = $_GET["id_fund"];
-								$sql = "delete from fund where id_fund='$id_fund'";
+							if (isset($_GET["fak_id"])) {
+								$fak_id = $_GET["fak_id"];
+								$sql = "DELETE FROM deposit WHERE fak_id='$fak_id'";
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "select * from fund";
+							$sql = "SELECT DISTINCT deposit.mem_id,
+              member.mem_name,
+              deposit.fak_date,
+              deposit.fak_sum,
+              deposit.withdraw,
+              deposit.fak_total,
+              commits.name_commit
+              FROM deposit left JOIN member
+              ON deposit.mem_id = member.mem_id
+              left JOIN commits
+              ON deposit.id_commit = commits.id_commit
+              order by deposit.mem_id asc
+              ";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
-								$id_fund = $row["id_fund"];
-								$fund_name = $row["fund_name"];
-								$fund_detail = $row["fund_detail"];
-								$fund_money = $row["fund_money"];
+								$mem_id = $row["mem_id"];
+								$fak_date = $row["fak_date"];
+								$mem_name = $row["mem_name"];
+								$name_commit = $row["name_commit"];
+                $fak_sum = $row["fak_sum"];
+                $withdraw = $row["withdraw"];
+                $fak_total = $row["fak_total"];
 ?>
-                <tr>
-										<td><?=$id_fund?></td>
-										<td><?=$fund_name?></td>
-										<td><?=$fund_detail?></td>
-										<td><?php echo number_format($fund_money);?></td>
-                    <td align='center'><a href='manager_fund_edit.php?id_fund=<?=$id_fund?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='manager_fund_view.php?id_fund=<?=$id_fund?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='funds.php?id_fund=<?=$id_fund?>' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-									</tr>
+								 <tr>
+										<td><?=$mem_id?></td>
+										<td><?=$fak_date?></td>
+										<td><?=$mem_name?></td>
+										<td><?=$name_commit?></td>
+                    <td align='right'><?php echo number_format($fak_sum);?></td>
+                    <td align='right'><?php echo number_format($withdraw);?></td>
+                    <td align='right'><?php echo number_format($fak_total);?></td>
+
+                    <td align='center'><a href='admin_deposit_view.php?mem_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                    <a href='_table.php?mem_id=<?=$fak_date?>' class='btn warning btn-xs purple' target="_blank"><i class='fa fa-print'></i></a></td>
+                  </tr>
                   <?php
 							}
 						?>

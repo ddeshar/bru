@@ -13,13 +13,6 @@ require_once('include/_header.php');
 ?>
 <link rel="stylesheet" type="text/css" href="asset/css/jquery-ui.min.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="asset/js/jquery-ui.min.js"></script>
@@ -127,7 +120,7 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="pass">จำนวนเงินที่ต้องการถอน</label>
 																<div class="col-md-3">
-																<input id="num1" name="withdraw" type="text" placeholder="RECIVER" class="form-control" required></div>
+																<input id="num1" name="withdraw" type="text" placeholder="RECIVER" class="form-control"  required></div>
 																</div>
 
 																<div class="form-group">
@@ -211,3 +204,19 @@ require_once('include/_footer.php');
 		}
 	});
 </script>
+
+<!-- <script type="text/javascript">
+function Comma(Num)
+ {
+       Num += '';
+       Num = Num.replace(/,/g, '');
+
+       x = Num.split('.');
+       x1 = x[0];
+       x2 = x.length > 1 ? '.' + x[1] : '';
+       var rgx = /(\d+)(\d{3})/;
+       while (rgx.test(x1))
+       x1 = x1.replace(rgx, '$1' + ',' + '$2');
+       return x1 + x2;
+ }
+</script> -->

@@ -142,11 +142,11 @@ if (isset($_POST["submit"])) {
                                                         </div>
                                                     </div>
 
-<div class="form-group">
-<label class="col-md-3 control-label" for="occupation">อาชีพ</label>
-<div class="col-md-3">
-<input id="mem_occupation" name="mem_occupation" type="text" placeholder="OCCUPATION" class="form-control" required></div>
-</div>
+                              <div class="form-group">
+                                <label class="col-md-3 control-label" for="occupation">อาชีพ</label>
+                                <div class="col-md-3">
+                                  <input id="mem_occupation" name="mem_occupation" type="text" placeholder="OCCUPATION" class="form-control" required></div>
+                                </div>
 
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="address">ที่อยู่</label>

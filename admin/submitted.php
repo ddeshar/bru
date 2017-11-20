@@ -14,7 +14,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          ข้อมูลการยื่นกู้
+          ข้อมูลรอการอนุมัติ
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -26,7 +26,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              ข้อมูลการยื่นกู้
+              ข้อมูลรอการอนุมัติเงินกู้
             </li>
         </ol>
     </section>
@@ -39,7 +39,7 @@ require_once('include/_header.php');
                 <div class="portlet box success">
                     <div class="portlet-title">
                         <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางข้อมูลการยื่นกู้กองทุน
+                          ตารางข้อมูลรอการอนุมัติเงินกู้
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -54,16 +54,6 @@ require_once('include/_header.php');
                                     <li>
                                         <a href="#">Print</a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            Save as PDF
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Export to Excel
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -77,8 +67,11 @@ require_once('include/_header.php');
                                         <th>ชื่อ-สกุล</th>
                                         <th>จำนวนเงินที่ขอกู้</th>
                                         <th>วันที่กู้ยืม</th>
-                                        <th>สถานะการอนุมัติ</th>
-                                        <th><div align ='center'>จัดการข้อมูล</div></th>
+                                        <th><div align ='center'>ดูข้อมูล</div></th>
+                                        <th><div align ='center'>อนุมัติ</div></th>
+                                        <th><div align ='center'>ไม่อนุมัติ</div></th>
+                                        <!-- <th>สถานะการอนุมัติ</th>
+                                        <th><div align ='center'>จัดการข้อมูล</div></th> -->
 
                                     </tr>
                                 </thead>
@@ -106,8 +99,10 @@ require_once('include/_header.php');
                       										<td><?=$mem_name?></td>
                                           <td><?php echo number_format($sub_moneyloan);?></td>
                                           <td><?=$sub_date?></td>
-                                          <td><?=$id_sapp?></td>
-                                          <td align='center'><a href='admin_submitted_edit.php?sub_id=<?=$sub_id?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a>
+                                          <!-- <td><//?=$id_sapp?></td> -->
+                                          <td align='center'><a href='admin_submitted_view.php?sub_id=<?=$sub_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
+                                          <td align='center'><a href='#' class="btn btn-responsive button-alignment btn-success"><i class='fa  fa-check'></i></a>
+                                          <td align='center'><a href='#' class="btn btn-responsive button-alignment btn-danger"><i class='fa  fa-remove'></i></a>
                                           </tr>
                                           <?php
                                     }

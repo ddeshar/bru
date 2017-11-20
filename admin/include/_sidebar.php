@@ -84,7 +84,7 @@
             <li <?php if($page == 'form_examples') echo 'class="active" id="active"'; ?> >
                 <a href="all_member_loan.php">
                     <i class="fa fa-angle-double-right"></i>
-                    ชื่อสมาชิกทั้งหมด
+                    ยื่นกู้
                 </a>
             </li>
             <li <?php if($page == 'form_examples') echo 'class="active" id="active"'; ?> >

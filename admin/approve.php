@@ -47,7 +47,7 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
+                                        <th>ลำดับที่</th>
                                         <th>รหัสการอนุมัติ</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
@@ -59,7 +59,7 @@ require_once('include/_header.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <?php
+                                  <?php $i=1;
                       							if (isset($_GET["sub_id"])) {
                       								$sub_id = $_GET["sub_id"];
                       								$sql = "delete from submitted where sub_id='$sub_id'";
@@ -75,8 +75,9 @@ require_once('include/_header.php');
                       								$sub_moneyloan = $row["sub_moneyloan"];
                                       $sub_date = $row["sub_date"];
                                       $id_sapp = $row["status_app"];
-?>
+                                      ?>
                       							<tr>
+                                          <td><?php echo $i++; ?></td>
                       										<td><?=$sub_id?></td>
                       										<td><?=$mem_id?></td>
                       										<td><?=$mem_name?></td>

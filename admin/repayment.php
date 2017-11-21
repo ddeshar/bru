@@ -44,51 +44,33 @@ require_once('include/_header.php');
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
-                            <div class="btn-group">
+                            <!-- <div class="btn-group">
                               <a href="admin_repayment_add.php"   class=" btn btn-custom">
                                     เพิ่ม
                                     <i class="fa fa-plus"></i>
-                                </button> </a>
+                                </button> </a> -->
                             </div>
                             <div class="btn-group pull-right">
-                                <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
-                                    Tools
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu pull-right">
-                                    <li>
-                                        <a href="#">Print</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Save as PDF
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Export to Excel
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
 
-                                        <th>รหัสจ่ายเงินกู้</th>
+                                        <th>ลำดับที่</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>จำนวนเงินที่อนุมัติ</th>
                                         <th>จำนวนเงินที่จ่าย</th>
                                         <th>วันที่จ่ายเงิน</th>
+                                        <th>สถานะจ่ายเงิน</th>
                                         <th><div align ='center'>จัดการข้อมูล</div></th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-						<?php
+						<?php $i=1;
 							if (isset($_GET["pay_id"])) {
 								$pay_id = $_GET["pay_id"];
 								$sql = "DELETE FROM repayment WHERE pay_id='pay_id'";
@@ -106,12 +88,13 @@ require_once('include/_header.php');
                 $pay_date = $row["pay_date"];
 ?>
 			              <tr>
-										<td><?=$pay_id?></td>
+										<td><?php echo $i++;?></td>
 										<td><?=$mem_id?></td>
 										<td><?=$mem_name?></td>
 										<td><?php echo number_format($sub_moneyloan);?></td>
                     <td><?php echo number_format($pay_pice);?></td>
                     <td><?=$pay_date?></td>
+                      <td align='center'><a href='admin_repayment_add.php' class="btn btn-responsive button-alignment btn-primary"><i class='fa  fa-pencil'> จ่ายเงินกู้</i></a>
                     <td align='center'>
                     <a href='admin_repayment_edit.php?pay_id=<?=$pay_id?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
                     <a href='admin_repayment_view.php?pay_id=<?=$pay_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |

@@ -59,16 +59,7 @@ require_once('include/_header.php');
                                     <li>
                                         <a href="#">Print</a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            Save as PDF
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Export to Excel
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -76,6 +67,7 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
+                                        <th>ลำดับที่</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>วัน/เดือน/ปีเกิด</th>
@@ -86,7 +78,7 @@ require_once('include/_header.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                      						<?php
+                      						<?php $i=1;
                       							if (isset($_GET["mem_id"])) {
                       								$mem_id = $_GET["mem_id"];
                       								$sql = "delete from member where mem_id='$mem_id'";
@@ -110,19 +102,20 @@ require_once('include/_header.php');
                       								$mem_birthday = $row["mem_birthday"];
                                       $mem_tel = $row["mem_tel"];
                                       $status_mem = $row["status_mem"];
+?>
+                                      <tr>
+                                          <td><?php echo $i++;?></td>
+                                          <td><?=$mem_id?></td>
+                      										<td><?=$id_title?> <?=$mem_name?></td>
+                      										<td><?=$mem_birthday?></td>
+                                          <td><?=$mem_tel?></td>
+                                          <td><?=$status_mem?></td>
 
-
-                      								echo "<tr>                      									
-                                          <td>$mem_id</td>
-                      										<td>$id_title $mem_name</td>
-                      										<td>$mem_birthday</td>
-                                          <td>$mem_tel</td>
-                                          <td>$status_mem</td>
-
-                                          <td align='center'><a href='admin_member_edit.php?mem_id=$mem_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                                          <a href='admin_member_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-                                          <a href='member.php?mem_id=$mem_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-                                        </tr>";
+                                          <td align='center'><a href='admin_member_edit.php?mem_id=<?=$mem_id?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                                          <a href='admin_member_view.php?mem_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                                          <a href='member.php?mem_id=<?=$mem_id?>' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+                                        </tr>
+                                        <?php
                       							}
                       						?>
                       					</tbody>

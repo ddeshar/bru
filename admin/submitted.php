@@ -61,22 +61,21 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
+                                        <th>ลำดับที่</th>
                                         <th>รหัสการยื่นกู้</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>จำนวนเงินที่ขอกู้</th>
                                         <th>วันที่กู้ยืม</th>
                                         <th><div align ='center'>ดูข้อมูล</div></th>
-                                        <th><div align ='center'>อนุมัติ</div></th>
-                                        <th><div align ='center'>ไม่อนุมัติ</div></th>
+                                        <th><div align ='center'>อนุมัติ | ไม่อนุมัติ </div></th>
                                         <!-- <th>สถานะการอนุมัติ</th>
                                         <th><div align ='center'>จัดการข้อมูล</div></th> -->
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                      						<?php
+                      						<?php   $i = 1;
                       							if (isset($_GET["sub_id"])) {
                       								$sub_id = $_GET["sub_id"];
                       								$sql = "delete from submitted where sub_id='$sub_id'";
@@ -94,6 +93,7 @@ require_once('include/_header.php');
                                       $id_sapp = $row["status_app"];
 ?>
                       								<tr>
+                                          <td><?php echo $i++;?></td>
                       										<td><?=$sub_id?></td>
                       										<td><?=$mem_id?></td>
                       										<td><?=$mem_name?></td>
@@ -102,7 +102,7 @@ require_once('include/_header.php');
                                           <!-- <td><//?=$id_sapp?></td> -->
                                           <td align='center'><a href='admin_submitted_view.php?sub_id=<?=$sub_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
                                           <td align='center'><a href='#' class="btn btn-responsive button-alignment btn-success"><i class='fa  fa-check'></i></a>
-                                          <td align='center'><a href='#' class="btn btn-responsive button-alignment btn-danger"><i class='fa  fa-remove'></i></a>
+                                          | <a href='#' class="btn btn-responsive button-alignment btn-danger"><i class='fa  fa-remove'></i></a>
                                           </tr>
                                           <?php
                                     }

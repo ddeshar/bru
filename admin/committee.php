@@ -59,16 +59,7 @@ require_once('include/_header.php');
                                     <li>
                                         <a href="#">Print</a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            Save as PDF
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Export to Excel
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -76,6 +67,7 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
+                                        <th>ลำดับที่</th>
                                         <th>รหัสกรรมการ</th>
                                         <th>คำนำหน้าชื่อ</th>
                                         <th>ชื่อ-สกุล</th>
@@ -86,7 +78,7 @@ require_once('include/_header.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-						<?php
+						<?php $i=1;
 							if (isset($_GET["id_committee"])) {
 								$id_committee = $_GET["id_committee"];
 								$sql = "delete from committee where id_committee='$id_committee'";
@@ -107,19 +99,21 @@ require_once('include/_header.php');
 								$id_position = $row["name_position"];
 								$com_address = $row["com_address"];
                 $com_tel = $row["com_tel"];
+                ?>
+                <tr>
+                    <td><?=$i++;?></td>
+										<td><?=$id_committee?></td>
+                    <td><?=$id_title?></td>
+										<td><?=$com_name?></td>
+										<td><?=$id_position?></td>
+										<td><?=$com_address?></td>
+                    <td><?=$com_tel?></td>
 
-								echo "<tr>
-										<td>$id_committee</td>
-                    <td>$id_title</td>
-										<td>$com_name</td>
-										<td>$id_position</td>
-										<td>$com_address</td>
-                    <td>$com_tel</td>
-
-                    <td align='center'><a href='admin_committee_edit.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_committee_view.php?id_committee=$id_committee' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='committee.php?id_committee=$id_committee' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-									</tr>";
+                    <td align='center'><a href='admin_committee_edit.php?id_committee=<?=$id_committee?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <a href='admin_committee_view.php?id_committee=<?=$id_committee?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+										<a href='committee.php?id_committee=<?=$id_committee?>' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+									</tr>
+                  <?php
 							}
 						?>
 					</tbody>

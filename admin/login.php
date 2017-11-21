@@ -34,11 +34,15 @@
             mysqli_query($link, "INSERT INTO user_history (session,timein,timeout,user_id,action,ip ) VALUES ('$session',NOW(),'','$userid','$action','$IP')");
           header("Location: ../manager/manager.php");
 
-        }else{
+        }elseif ($row_user['status'] == 0) {
           $_SESSION['is_user'] = 0;
           $_SESSION['login_username'] = $row_user['login_username'];
             mysqli_query($link, "INSERT INTO user_history (session,timein,timeout,user_id,action,ip ) VALUES ('$session',NOW(),'','$userid','$action','$IP')");
           header("Location: ../member/mem.php");
+
+        }else{
+          $_SESSION['is_visitor'] = 999;
+          header("Location: visitor.php");
         }
     } else{
       echo "sorry ผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";

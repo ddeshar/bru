@@ -24,15 +24,15 @@ require_once('include/connect.php');
 	$mem_email = $_POST["mem_email"];
 	$mem_username = $_POST["mem_idcard"];
 	$mem_password = str_replace( '-', '', $mem_birthday);
-	$status_mem = $_POST["status_mem"];
+	// $status_mem = $_POST["status_mem"];
 
 	$salt = 'tikde78uj4ujuhlaoikiksakeidke';
 	$hash_login_password = hash_hmac('sha256', $mem_password, $salt);
 
-		$sql = "INSERT INTO member (mem_idcard,id_gender,id_title,mem_name,mem_birthday,id_status,mem_occupation,mem_address,mem_tel,mem_email,mem_username,mem_password,status_mem)VALUES('$mem_idcard','$id_gender','$id_title','$mem_name','$mem_birthday','$id_status','$mem_occupation','$mem_address','$mem_tel','$mem_email','$mem_username','$hash_login_password','$status_mem');
+		$sql = "INSERT INTO member (mem_idcard,id_gender,id_title,mem_name,mem_birthday,id_status,mem_occupation,mem_address,mem_tel,mem_email,mem_username,mem_password)VALUES('$mem_idcard','$id_gender','$id_title','$mem_name','$mem_birthday','$id_status','$mem_occupation','$mem_address','$mem_tel','$mem_email','$mem_username','$hash_login_password');
 		SET @last_mem_id = LAST_INSERT_ID();
 		INSERT INTO tbl_users (username,password,name,email,mem_id) VALUES ('$mem_username','$hash_login_password','$mem_name','$mem_email',@last_mem_id);";
-		$result = mysqli_multi_query($link, $sql);
+    $result = mysqli_multi_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";
@@ -165,19 +165,6 @@ require_once('include/connect.php');
 																<div class="col-md-3">
 																<input id="mem_email" name="mem_email" type="email" placeholder="example@domain.com" class="form-control"></div>
 																</div>
-
-																<?php if (isset($_SESSION['is_admin'])){ ?>
-																	<div class="form-group">
-																		<label class="col-lg-3 control-label" for="select">Status</label>
-																		<div class="col-lg-3">
-																			<select class="form-control" name="status_mem" id="select">
-																				<<option >--กรุณาเลือก--</option>
-																				<option value="publish" >สมาชิก</option>
-																				<option value="unpublish" >ยกเลิกเป็นสมาชิก</option>
-																			</select>
-																		</div>
-																	</div>
-																<?php } ?>
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
@@ -194,7 +181,9 @@ require_once('include/connect.php');
     </section>
     <!-- content -->
 </aside>
-
+<?php
+require_once('include/_footer.php');
+?>
 <!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 

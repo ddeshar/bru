@@ -1,5 +1,5 @@
 <?php
-$status_array = array('500' => 'ผู้ดูแลระบบ','100' => 'ผู้บริหาร','0' => 'สมาชิก' );
+$status_array = array('500' => 'ผู้ดูแลระบบ','100' => 'ผู้บริหาร','0' => 'สมาชิก','999' => 'ยังไม่เป็นสมาชิก' );
 $page = 'Admin';
 $title = 'Admin Page';
 $css = <<<EOT
@@ -91,7 +91,7 @@ require_once('include/_header.php');
 								$sql = "delete from tbl_users where user_id='$user_id'";
 								$result = mysqli_query($link, $sql);
 							}
-							$sql = "SELECT * FROM tbl_users LEFT JOIN member ON tbl_users.mem_id = member.mem_id";
+							$sql = "SELECT * FROM tbl_users LEFT JOIN member ON tbl_users.mem_id = member.mem_id ORDER BY `user_id` DESC";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$user_id = $row["user_id"];

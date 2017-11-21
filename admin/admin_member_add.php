@@ -9,7 +9,6 @@ EOT;
 require_once('include/_header.php');
 
 if (isset($_POST["submit"])) {
-	$mem_id = $_POST["mem_id"];
 	$mem_idcard = $_POST["mem_idcard"];
 	$id_gender = $_POST["id_gender"];
 	$id_title = $_POST["id_title"];
@@ -21,20 +20,20 @@ if (isset($_POST["submit"])) {
 	$mem_tel = $_POST["mem_tel"];
 	$mem_email = $_POST["mem_email"];
 	$mem_username = $_POST["mem_idcard"];
-	$mem_password = $_POST["mem_password"];
+	$mem_password = str_replace( '-', '', $mem_birthday);
 	$status_mem = $_POST["status_mem"];
 
 	$salt = 'tikde78uj4ujuhlaoikiksakeidke';
 	$hash_login_password = hash_hmac('sha256', $mem_password, $salt);
 
-		$sql = "INSERT INTO member (mem_id,mem_idcard,id_gender,id_title,mem_name,mem_birthday,id_status,mem_occupation,mem_address,mem_tel,mem_email,mem_username,mem_password,status_mem)VALUES('$mem_id','$mem_idcard','$id_gender','$id_title','$mem_name','$mem_birthday','$id_status','$mem_occupation','$mem_address','$mem_tel','$mem_email','$mem_username','$hash_login_password','$status_mem');
+		$sql = "INSERT INTO member (mem_idcard,id_gender,id_title,mem_name,mem_birthday,id_status,mem_occupation,mem_address,mem_tel,mem_email,mem_username,mem_password,status_mem)VALUES('$mem_idcard','$id_gender','$id_title','$mem_name','$mem_birthday','$id_status','$mem_occupation','$mem_address','$mem_tel','$mem_email','$mem_username','$hash_login_password','$status_mem');
 		SET @last_mem_id = LAST_INSERT_ID();
-		INSERT INTO tbl_users (username,password,name,mem_id) VALUES ('$mem_username','$hash_login_password','$mem_name',@last_mem_id);";
+		INSERT INTO tbl_users (username,password,name,email,mem_id) VALUES ('$mem_username','$hash_login_password','$mem_name','$mem_email',@last_mem_id);";
 		$result = mysqli_multi_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";
-			echo "window.location='index.php';";
+			echo "window.location='member.php';";
 			echo "</script>";
 			//header('location: admin_product.php');
 		}else{
@@ -43,8 +42,6 @@ if (isset($_POST["submit"])) {
 		}
 	}
 ?>
-
-
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -83,19 +80,16 @@ if (isset($_POST["submit"])) {
                     <div class="panel-body">
                         <form class="form-horizontal" action="#" method="post">
                             <fieldset>
-                                <!-- Name input-->
-                                <div class="form-group">
-                                <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
-                                <div class="col-md-3">
-                                <input id="mem_id" name="mem_id" type="text" placeholder="AUTO-ID" class="form-control" readonly></div>
-                                </div>
 
                                 <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">เลขประจำตัวประชาชน</label>
-                                <div class="col-md-3">
-                                <input id="sessionNum" name="mem_idcard" type="text" onkeypress="return isNumberKey(event)" maxlength="13" placeholder="IDCARD" class="form-control" required></div>
-																<span style="color: red;">	<span id="sessionNum_counter">13</span> *โปรดระบุเลขที่บัตรประชาชนให้ถูกต้องเพื่อใช้เป็น Username </span>
+	                                <label class="col-md-3 control-label" for="name">เลขประจำตัวประชาชน</label>
+	                                <div class="col-md-3">
+	                                	<input id="sessionNum" name="mem_idcard" type="text" onkeypress="return isNumberKey(event)" maxlength="13" placeholder="IDCARD" class="form-control" required>
+																	</div>
+																	<span id="user-idcard"></span>
+																	<span style="color: red;">	<span id="sessionNum_counter">13</span> *โปรดระบุเลขที่บัตรประชาชนให้ถูกต้องเพื่อใช้เป็น Username </span>
 																</div>
+
 
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="detail">เพศ</label>
@@ -143,6 +137,7 @@ if (isset($_POST["submit"])) {
 			                                    <label class="col-md-3 control-label" for="birth">วันเกิด</label>
 			                                    <div class="col-md-3">
 	                                        <input type="date"name="mem_birthday" class="form-control round-form"  placeholder="DATE"></div>
+																					<span style="color: red;">	*รหัสผ่านโปรดระบุเป็นวันเดือนปีเกิด เช่น 1 ม.ค. 2538 เป็น25380101 </span>
 																					</div>
 
 																					<div class="form-group">
@@ -187,20 +182,6 @@ if (isset($_POST["submit"])) {
 																<input id="mem_email" name="mem_email" type="email" placeholder="example@domain.com" class="form-control"></div>
 																</div>
 
-																<!-- <div class="form-group">
-																<label class="col-md-3 control-label" for="user">ชื่อผู้ใช้</label>
-																<div class="col-md-3">
-																<input id="mem_username" name="mem_username" type="text" placeholder="USERNAME" class="form-control"></div>
-																<span style="color: red;">	*ชื่อผู้ใช้โปรดระบุเป็นเลขบัตรประจำตัวประชาชน </span>
-																</div> -->
-
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="pass">รหัสผ่าน</label>
-																<div class="col-md-3">
-																<input id="mem_password" name="mem_password" type="text" placeholder="PASSWORD" class="form-control"></div>
-																<span style="color: red;">	*รหัสผ่านโปรดระบุเป็นวันเดือนปีเกิด เช่น 1 ม.ค. 2538 เป็น 01012538 </span>
-																</div>
-
 																<?php if (isset($_SESSION['is_admin'])){ ?>
 																	<div class="form-group">
 																		<label class="col-lg-3 control-label" for="select">Status</label>
@@ -239,8 +220,25 @@ require_once('include/_footer.php');
 <!-- end of page level js -->
 </body>
 </html>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    var x_timer;
+	    $("#sessionNum").keyup(function (e){
+	        clearTimeout(x_timer);
+	        var thai_idcard = $(this).val();
+	        x_timer = setTimeout(function(){
+	            check_idcard_ajax(thai_idcard);
+	        }, 1000);
+	    });
 
-<script>
+	function check_idcard_ajax(mem_idcard){
+	    $("#user-idcard").html('<img src="asset/loding/ajax-loader.gif" />');
+	    $.post('check_thaiid.php', {'mem_idcard':mem_idcard}, function(data) {
+	      $("#user-idcard").html(data);
+	    });
+	}
+	});
+
   $(document).ready(function() {
     $("#datepicker").datepicker();
   });
@@ -256,6 +254,4 @@ require_once('include/_footer.php');
 		    });
 		}
 		});
-
-
-  </script>
+</script>

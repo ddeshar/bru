@@ -43,7 +43,7 @@ if (isset($_POST["btnsubmit"])) {
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <!--section starts-->
+        <!--section starts--> 
         <h1>
             เพิ่มข้อมูลการถอน
         </h1>
@@ -78,13 +78,6 @@ if (isset($_POST["btnsubmit"])) {
                     <div class="panel-body">
                         <form class="form-horizontal" action="#" method="post">
                             <fieldset>
-                                <!-- Name input-->
-
-																<!-- <div class="form-group">
-																<label class="col-md-3 control-label" for="birth">วันที่ถอน</label>
-																<div class="col-md-3">
-																<input type="date" id="datepicker" name="fak_date" class="form-control round-form"  placeholder="DATE"></div>
-																</div> -->
 
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>

@@ -97,6 +97,7 @@ require_once('include/_header.php');
                                     $i = 1;
                       							while ($row = mysqli_fetch_array($result)){
                       								$mem_id = $row["mem_id"];
+                                      $mem_idcard = $row["mem_idcard"];
                       								$id_title = $row["title"];
                       								$mem_name = $row["mem_name"];
                       								$mem_birthday = $row["mem_birthday"];
@@ -105,7 +106,8 @@ require_once('include/_header.php');
 ?>
                                       <tr>
                                           <td><?php echo $i++;?></td>
-                                          <td><?=$mem_id?></td>
+                                          <!-- <td><//?=$mem_id?></td> -->
+                                          <td><?=$mem_idcard?></td>
                       										<td><?=$id_title?> <?=$mem_name?></td>
                       										<td><?=$mem_birthday?></td>
                                           <td><?=$mem_tel?></td>

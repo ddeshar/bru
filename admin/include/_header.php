@@ -1,4 +1,5 @@
 <?php require_once('session.php'); ?>
+<?php require_once('function.php'); ?>
 
 <!DOCTYPE html>
 <html>

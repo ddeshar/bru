@@ -1,24 +1,32 @@
 <h2><center>สามารถกู้ได้ เพราะคุณมีจำนวนเงินคือ<?php echo number_format($budget);?> <center></h2>
 
+<?php 
+    $sql2 = "SELECT * FROM `member` WHERE mem_id = '$loan'";
+    
+    $result = mysqli_query($link, $sql2);
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result);
+        $mem_ids = $row["mem_id"];
+        $mem_names = $row["mem_name"];
+    }else{
+        $mem_ids = "";
+        $mem_names = "";
+    }
+?>
+
 <form class="form-horizontal" action="admin_submitted_add.php" method="post">
     <fieldset>
-        <!-- Name input-->
-        <div class="form-group">
-            <label class="col-md-3 control-label" for="id">รหัสการยื่นกู้</label>
-            <div class="col-md-3">
-            <input id="sub_id" name="sub_id" type="text" placeholder="AUTO-ID" class="form-control" readonly></div>
-        </div>
-
+    
         <div class="form-group">
             <label class="col-md-3 control-label" for="name">รหัสสมาชิก</label>
             <div class="col-md-3">
-            <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
+            <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" value="<?=$mem_ids?>" class="form-control" readonly></div>
         </div>
 
         <div class="form-group">
         <label class="col-md-3 control-label" for="name">ชื่อ-สกุลสมาชิก</label>
         <div class="col-md-3">
-        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" required></div>
+        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" value="<?=$mem_names?>" class="form-control" required></div>
         </div>
 
         <div class="form-group">
@@ -41,43 +49,49 @@
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label" for="money">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label>
-            <div class="col-md-3">
-            <input id="sub_idcardBM1" name="sub_idcardBM1" type="text" placeholder="IDCARDBM1" class="form-control"  required></div>
-        </div>
-
-        <div class="form-group">
             <label class="col-md-3 control-label" for="money">ชื่อผู้ค้ำคนที่ 1</label>
             <div class="col-md-3">
-            <input id="name1" name="name1" type="text" placeholder="NAME1" class="form-control" required></div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-md-3 control-label" for="money">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 2</label>
-            <div class="col-md-3">
-            <input id="sub_idcardBM2" name="sub_idcardBM2" type="text" placeholder="IDCARDBM2" class="form-control" required></div>
+                <select class="form-control select2" name="name1" id="e1">
+                    <option>--เลือก--</option>
+                    <?php
+                        $membersql1 ="SELECT * FROM member";
+                        $resultmem1 = mysqli_query($link, $membersql1);
+                        while ($row=mysqli_fetch_array($resultmem1)){
+                    ?>
+                    <option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
+                    <?php } ?>
+                </select>
+            </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-3 control-label" for="money">ชื่อผู้ค้ำคนที่ 2</label>
             <div class="col-md-3">
-            <input id="name2" name="name2" type="text" placeholder="NAME2" class="form-control" required></div>
+                <select class="form-control select2" name="name2" id="e1">
+                    <option>--เลือก--</option>
+                    <?php
+                        $membersql="SELECT * FROM member";
+                        $resultmem2 = mysqli_query($link, $membersql);
+                        while ($row=mysqli_fetch_array($resultmem2)){
+                    ?>
+                    <option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
+                    <?php } ?>
+                </select>
+            </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label" for="name">ชื่อกรรมการ</label>
           <div class="col-md-3">
-        <select class="form-control" name="id_commit" id="id_commit">
-                <option>--เลือก--</option>
-                <?php
-                  $sql="SELECT * FROM commits";
-                  $result = mysqli_query($link, $sql);
-                  while ($row=mysqli_fetch_array($result)){
-                ?>
-                <option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
-                <?php
-                  }
-                ?>
+                <select class="form-control" name="id_commit" id="id_commit">
+                    <option>--เลือก--</option>
+                    <?php
+                        $sql="SELECT * FROM commits";
+                        $result = mysqli_query($link, $sql);
+                        while ($row=mysqli_fetch_array($result)){
+                    ?>
+                    <option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
+                    <?php } ?>
                 </select>
               </div>
         </div>

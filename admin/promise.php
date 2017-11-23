@@ -90,7 +90,7 @@ require_once('include/_header.php');
 							$sql = "SELECT * FROM promise LEFT JOIN member ON promise.mem_id = member.mem_id";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
-								// $pro_id = $row["pro_id"];
+								$pro_id = $row["pro_id"];
 								$mem_id = $row["mem_id"];
 								$mem_name = $row["mem_name"];
 								$app_pice = $row["app_pice"];

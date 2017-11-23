@@ -9,6 +9,25 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+
+    if(isset($_GET["approve"])){ 
+        $approve=$_GET["approve"];
+        $approvesql = "UPDATE submitted SET id_sapp = '1' WHERE sub_id = '$approve'";
+        $result=mysqli_query($link, $approvesql);
+        if($result==1){
+            header('location: approve.php');
+        }
+    }
+
+    if(isset($_GET["unapprove"])){ 
+        $unapprove=$_GET["unapprove"];
+        $unapprovesql = "UPDATE submitted SET id_sapp = '2' WHERE sub_id = '$unapprove'";
+        $result=mysqli_query($link, $unapprovesql);
+        if($result==1){
+            header('location: unapprove.php');
+        }
+    }
+
 ?>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
@@ -101,8 +120,8 @@ require_once('include/_header.php');
                                           <td><?=$sub_date?></td>
                                           <!-- <td><//?=$id_sapp?></td> -->
                                           <td align='center'><a href='admin_submitted_view.php?sub_id=<?=$sub_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
-                                          <td align='center'><a href='#' class="btn btn-responsive button-alignment btn-success"><i class='fa  fa-check'></i></a>
-                                          | <a href='#' class="btn btn-responsive button-alignment btn-danger"><i class='fa  fa-remove'></i></a>
+                                          <td align='center'><a href='submitted.php?approve=<?=$sub_id?>' class="btn btn-responsive button-alignment btn-success"><i class='fa  fa-check'></i></a>
+                                          | <a href='submitted.php?unapprove=<?=$sub_id?>' class="btn btn-responsive button-alignment btn-danger"><i class='fa  fa-remove'></i></a>
                                           </tr>
                                           <?php
                                     }

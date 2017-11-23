@@ -37,7 +37,7 @@
                             $ago1 = timeago($sub_date);
                         ?>
                         <li class="unread message">
-                            <a href="admin_submitted_view.php?sub_id=<?=$mem_id?>" class="message"> <i class="pull-right" data-toggle="tooltip" data-placement="top" title="Mark as Read"><span class="pull-right ol livicon" data-n="adjust" data-s="10" data-c="#287b0b"></span></i>
+                            <a href="admin_submitted_view.php?sub_id=<?=$sub_id?>" class="message"> <i class="pull-right" data-toggle="tooltip" data-placement="top" title="Mark as Read"><span class="pull-right ol livicon" data-n="adjust" data-s="10" data-c="#287b0b"></span></i>
                                 <img data-src="holder.js/45x45/#000:#fff" class="img-responsive message-image" alt="icon">
                                 <div class="message-body">
                                     <strong><?=$mem_name?></strong>

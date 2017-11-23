@@ -4,6 +4,9 @@ $title = 'Hello Admin';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
+<link href="asset/vendors/select2/select2.css" rel="stylesheet" />
+<link rel="stylesheet" href="asset/vendors/select2/select2-bootstrap.css" />
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -78,12 +81,14 @@ require_once('include/_header.php');
 
 										<div class="panel-body">
 											<?php
-											if (isset($_GET["loan"])) {
-													$loan = $_GET["loan"];
-													$sql = "SELECT mem_id ,fak_total, MAX(fak_date) AS fak_date FROM deposit WHERE mem_id = $loan GROUP BY fak_total  desc LIMIT 1";
-													$result = mysqli_query($link, $sql);
-													$row = mysqli_fetch_assoc($result);
-													$budget = $row["fak_total"];
+
+
+if (isset($_GET["loan"])) {
+	$loan = $_GET["loan"];
+	$sql = "SELECT mem_id,fak_total, MAX(fak_date) AS fak_date FROM deposit WHERE mem_id = $loan GROUP BY fak_total  desc LIMIT 1";
+	$result = mysqli_query($link, $sql);
+	$row = mysqli_fetch_assoc($result);
+	$budget = $row["fak_total"];
 
 														if ($budget>=2000) {
 																include 'include/loan/accepted.php';
@@ -108,6 +113,8 @@ require_once('include/_header.php');
 require_once('include/_footer.php');
 ?>
 <!-- begining of page level js -->
+<script src="asset/vendors/select2/select2.js" type="text/javascript"></script>
+<script src="asset/js/pages/formelements.js" type="text/javascript"></script>
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 <!-- end of page level js -->
 </body>

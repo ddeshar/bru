@@ -1,4 +1,6 @@
-<?php require_once('session.php'); ?>
+<?php
+ob_start();
+require_once('session.php'); ?>
 <?php require_once('function.php'); ?>
 
 <!DOCTYPE html>

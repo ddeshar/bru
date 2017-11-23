@@ -99,6 +99,12 @@
                     อนุมัติเงินกู้แล้ว
                 </a>
             </li>
+            <li <?php if($page == 'editor') echo 'class="active" id="active"'; ?> >
+                <a href="unapprove.php">
+                    <i class="fa fa-angle-double-right"></i>
+                    ไม่อนุมัติเงินกู้
+                </a>
+            </li>
             <li <?php if($page == 'promise') echo 'class="active" id="active"'; ?> >
                 <a href="promise.php">
                     <i class="fa fa-angle-double-right"></i>

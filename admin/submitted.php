@@ -12,16 +12,20 @@ require_once('include/_header.php');
 
     if(isset($_GET["approve"])){ 
         $approve=$_GET["approve"];
-        $approvesql = "UPDATE submitted SET id_sapp = '1' WHERE sub_id = '$approve'";
+        $approvesql = "UPDATE submitted SET id_sapp = '1' , sanya = '1' WHERE sub_id = '$approve'";
         $result=mysqli_query($link, $approvesql);
         if($result==1){
             header('location: approve.php');
         }
     }
+    // 0 รอการทำสัญญากู้เงิน
+    // 1 อนุมัติให้ทำสัญญาเงินกู้
+    // 2 ไม่อนุมัติกู้เงิน
+    // 3 อนุมัติกู้เงิน
 
     if(isset($_GET["unapprove"])){ 
         $unapprove=$_GET["unapprove"];
-        $unapprovesql = "UPDATE submitted SET id_sapp = '2' WHERE sub_id = '$unapprove'";
+        $unapprovesql = "UPDATE submitted SET id_sapp = '2', sanya = '2' WHERE sub_id = '$unapprove'";
         $result=mysqli_query($link, $unapprovesql);
         if($result==1){
             header('location: unapprove.php');

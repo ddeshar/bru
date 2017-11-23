@@ -78,7 +78,7 @@ require_once('include/_header.php');
                                 </thead>
                                 <tbody>
 						<?php $i=1;
-							$sql = "SELECT * FROM `submitted` WHERE id_sapp = 1";
+							$sql = "SELECT * FROM `submitted` WHERE sanya = '1'";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$sub_id = $row["sub_id"];

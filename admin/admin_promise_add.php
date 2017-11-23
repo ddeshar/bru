@@ -35,17 +35,18 @@ require_once('include/_header.php');
 
 				<?php
 					if (isset($_POST["btnsubmit"])) {
+						
 						$pro_id = $_POST["pro_id"];
 						$mem_id = $_POST["mem_id"];
 						$mem_name = $_POST["mem_name"];
 						$mem_idcard = $_POST["mem_idcard"];
 						$app_pice = $_POST["app_pice"];
 						$sub_moneyloan = $_POST["sub_moneyloan"];
-						$sub_idcardBM1 = $_POST["sub_idcardBM1"];
-						$sub_idcardBM2 = $_POST["sub_idcardBM2"];
 						$name1 = $_POST["name1"];
 						$name2 = $_POST["name2"];
 						$id_commit = $_POST["id_commit"];
+						$pro_redate = $_POST["pro_redate"];
+						$sanya = $_POST["sanya"];
 
 							if (isset($_POST['pro_Document'])) {
 								//แยกระหว่างชื่อกับนามสกุล
@@ -57,10 +58,13 @@ require_once('include/_header.php');
 							}else {
 								$newfilename = "";
 							}
+						
+						$approvesql = "UPDATE `submitted` SET `sanya`= '3' WHERE sub_id = '$sanya'";
+						$results=mysqli_query($link, $approvesql);
 
-						$sql = "INSERT INTO promise (pro_id,mem_id,mem_name,mem_idcard,app_pice,sub_date,pro_date,sub_moneyloan,sub_idcardBM1,sub_idcardBM2,name1,name2,pro_redate,pro_Document,id_commit)VALUES('$pro_id','$mem_id','$mem_name','$mem_idcard','$app_pice',NOW(),NOW(),'$sub_moneyloan', '$sub_idcardBM1','$sub_idcardBM2','$name1','$name2',NOW()+INTERVAL 24 MONTH,'$newfilename','$id_commit')";
-
+						$sql = "INSERT INTO promise (pro_id,mem_id,mem_name,mem_idcard,app_pice,sub_date,pro_date,sub_moneyloan,name1,name2,pro_redate,pro_Document,id_commit)VALUES('$pro_id','$mem_id','$mem_name','$mem_idcard','$app_pice',NOW(),NOW(),'$sub_moneyloan','$name1','$name2','$pro_redate','$newfilename','$id_commit')";
 						$result = mysqli_query($link, $sql);
+						
 						if ($result) {
 							echo "<script type='text/javascript'>";
 							echo "alert('เพิมเสร็จแล้ว');";
@@ -248,6 +252,7 @@ require_once('include/_header.php');
 									</div>
 
 	                                <div class="form-group">
+										<input type="hidden" value="<?php echo $_GET["sub_id"]; ?>" name="sanya">
 	                                    <div class="col-md-12 text-right">
 	                                         <button type="submit" name="btnsubmit" value="send" class="btn btn-success">เพิ่ม</button>
 	                                    </div>

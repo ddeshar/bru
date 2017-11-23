@@ -121,11 +121,11 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="col-md-3">
 																<input id="num2" name="fak_total" type="text" placeholder="MONEY" class="form-control" readonly></div>
 																</div>
-																<p id="result"></p>
 																<div class="form-group">
-																<label class="col-md-3 control-label" for="pass">ยอดคงเหลือ</label>
-																<div class="col-md-3">
-																<input id="sum" name="fak_total" type="text" placeholder="TOTAL" class="form-control" readonly></div>
+																	<label class="col-md-3 control-label" for="pass">ยอดคงเหลือ</label>
+																	<div class="col-md-3">
+																		<input id="sum" name="fak_total" type="text" placeholder="TOTAL" class="form-control" readonly></div>
+																		<p id="result"></p>
 																</div>
 																                      <!-- Form actions -->
                                 <div class="form-group">
@@ -195,18 +195,15 @@ require_once('include/_footer.php');
 		function sum() {
 			$("#sum").val(Number($("#num2").val()) - Number($("#num1").val()));
 
-			var first = $("#num1").val();
-			var secound = $("#num2").val();
 			var subtract = parseInt($("#sum").val());
 
-			if (secound - first) {
-				text = "Good day";
+			if (subtract < 0) {
+				text = "ไม่สามารถถอนเงินได้";
 			} else {
-				text = "Good evening";
+				text = "สามารถถอนเงินได้";
 			}
 			$("#result").html(text);
-			console.log(first);
-			console.log(subtract);
+
 		}
 
 	});

@@ -18,12 +18,12 @@
                         $datam = mysqli_fetch_assoc($processm);
                         $totalm = $datam['total'];
                     ?>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="livicon" data-name="money" data-loop="true" data-color="#42aaca" data-hovercolor="#42aaca" data-size="28"></i>
                         <span class="label label-success"><?=$totalm?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-messages pull-right">
-                        <li class="dropdown-title">คุณมีรอการอนุมัติ <?=$totalm?> คน</li>
+                        <li class="dropdown-title">คุณมีการรออนุมัติเงินกู้ <?=$totalm?> คน</li>
                         <?php
                                 $sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp WHERE status_app = 'รออนุมัติ'";
                                 $result = mysqli_query($link, $sql);
@@ -49,7 +49,7 @@
                         </li>
                         <?php } ?>
                         <li class="footer">
-                            <a href="http://localhost/suankrua14/admin/user.php">ดูทั้งหมด</a>
+                            <a href="http://localhost/suankrua14/admin/submitted.php">ดูทั้งหมด</a>
                         </li>
                     </ul>
                 </li>

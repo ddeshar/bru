@@ -5,9 +5,9 @@
         static $periods = array('year', 'month', 'day', 'hour', 'minute', 'second');
 
         // checking time format
-        if(!(strtotime($time)>0)) {
-            return trigger_error("Wrong time format: '$time'", E_USER_ERROR);
-        }
+        // if(!(strtotime($time)>0)) {
+        //     return trigger_error("Wrong time format: '$time'", E_USER_ERROR);
+        // }
 
         // getting diff between now and time
         $now  = new DateTime('now');

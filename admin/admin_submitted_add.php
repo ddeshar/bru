@@ -81,14 +81,12 @@ require_once('include/_header.php');
 
 										<div class="panel-body">
 											<?php
-
-
-if (isset($_GET["loan"])) {
-	$loan = $_GET["loan"];
-	$sql = "SELECT mem_id,fak_total, MAX(fak_date) AS fak_date FROM deposit WHERE mem_id = $loan GROUP BY fak_total  desc LIMIT 1";
-	$result = mysqli_query($link, $sql);
-	$row = mysqli_fetch_assoc($result);
-	$budget = $row["fak_total"];
+												if (isset($_GET["loan"])) {
+													$loan = $_GET["loan"];
+													$sql = "SELECT mem_id,fak_total, MAX(fak_date) AS fak_date FROM deposit WHERE mem_id = $loan GROUP BY fak_total  desc LIMIT 1";
+													$result = mysqli_query($link, $sql);
+													$row = mysqli_fetch_assoc($result);
+													$budget = $row["fak_total"];
 
 														if ($budget>=2000) {
 																include 'include/loan/accepted.php';

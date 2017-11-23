@@ -7,6 +7,8 @@ $css = <<<EOT
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/dataTables.bootstrap.css" />
 <link href="asset/css/pages/tables.css" rel="stylesheet" type="text/css" />
+<link href="asset/vendors/select2/select2.css" rel="stylesheet" />
+<link rel="stylesheet" href="asset/vendors/select2/select2-bootstrap.css" />
 
 <!--end of page level css-->
 EOT;
@@ -32,7 +34,7 @@ require_once('include/_header.php');
 	    <section class="content-header">
 
 				<?php
-				if (isset($_POST["btnsubmit"])) {
+					if (isset($_POST["btnsubmit"])) {
 						$pro_id = $_POST["pro_id"];
 						$mem_id = $_POST["mem_id"];
 						$mem_name = $_POST["mem_name"];
@@ -57,7 +59,7 @@ require_once('include/_header.php');
 							}
 
 						$sql = "INSERT INTO promise (pro_id,mem_id,mem_name,mem_idcard,app_pice,sub_date,pro_date,sub_moneyloan,sub_idcardBM1,sub_idcardBM2,name1,name2,pro_redate,pro_Document,id_commit)VALUES('$pro_id','$mem_id','$mem_name','$mem_idcard','$app_pice',NOW(),NOW(),'$sub_moneyloan', '$sub_idcardBM1','$sub_idcardBM2','$name1','$name2',NOW()+INTERVAL 24 MONTH,'$newfilename','$id_commit')";
-// echo $sql; exit;
+
 						$result = mysqli_query($link, $sql);
 						if ($result) {
 							echo "<script type='text/javascript'>";
@@ -67,7 +69,39 @@ require_once('include/_header.php');
 						}else{
 							die("Query Failed" . mysqli_error($link));
 						}
+					}else{
+
+						if (isset($_GET["sub_id"])) {
+							$sub_id = $_GET["sub_id"];
+							$sqlproid = "SELECT * FROM submitted LEFT JOIN member ON submitted.mem_id = member.mem_id WHERE submitted.sub_id = '$sub_id'"; 
+							$resultproid = mysqli_query($link, $sqlproid);
+
+							if (mysqli_num_rows($resultproid) > 0) {
+								$row = mysqli_fetch_array($resultproid);
+								$mem_id = $row["mem_id"];
+								$mem_name = $row["mem_name"];
+								$sub_date = $row["sub_date"];
+								$sub_moneyloan = $row["sub_moneyloan"];
+								$mem_idcard = $row["mem_idcard"];
+								$name1 = $row["name1"];
+								$name2 = $row["name2"];
+							}else{
+								$mem_id = "";
+								$mem_name = "";
+								$sub_date = "";
+								$sub_moneyloan = "";
+								$mem_idcard = "";
+								$name1 = "";
+								$name2 = "";
+								
+							}
+
+
+							$t2=date('Y-m-d', strtotime('+2 year', strtotime($sub_date)) );
+
+						}
 					}
+
 				 ?>
 	        <!--section starts-->
 	        <h1>
@@ -111,129 +145,110 @@ require_once('include/_header.php');
 	                                    <input id="pro_id" name="pro_id" type="text" placeholder="ID" class="form-control" readonly required></div>
 	                                </div>
 
-																	<div class="form-group">
-													        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
-													        <div class="col-md-3">
-													        <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly required></div>
-													        </div>
-													        <!-- Email input-->
-													        <div class="form-group">
-													        <label class="col-md-3 control-label" for="name">ชื่อ</label>
-													        <div class="col-md-3">
-													        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" required></div>
-													        </div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
+										<div class="col-md-3">
+										<input id="user_id_mem" value="<?=$mem_id?>" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly required></div>
+									</div>
+									<!-- Email input-->
+									<div class="form-group">
+									<label class="col-md-3 control-label" for="name">ชื่อ</label>
+									<div class="col-md-3">
+									<input id="countryname_1" value="<?=$mem_name?>" name="mem_name" type="text" placeholder="NAME" class="form-control" required></div>
+									</div>
 
-																	<div class="form-group">
+									<div class="form-group">
 	                                    <label class="col-md-3 control-label" for="idcard">เลขที่บัตรประชาชนสมาชิก</label>
 	                                    <div class="col-md-3">
-	                                    <input id="mem_idcard" name="mem_idcard" type="text" placeholder="MEM-ID" class="form-control" required></div>
+	                                    <input id="mem_idcard" value="<?=$mem_idcard?>" name="mem_idcard" type="text" placeholder="MEM-ID" class="form-control" required></div>
 	                                </div>
 
-																	<!-- <div class="form-group">
-																			<label class="col-md-3 control-label" for="id">รหัสการอนุมัติ</label>
-																			<div class="col-md-3">
-																			<input id="app_id" name="sub_id" type="text" placeholder="SUB-ID" class="form-control"></div>
-																	</div> -->
-
-																	<div class="form-group">
+									<div class="form-group">
 	                                    <label class="col-md-3 control-label" for="money">จำนวนเงินที่ขอกู้</label>
 	                                    <div class="col-md-3">
-	                                    <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"></div>
+	                                    <input id="sub_moneyloan" value="<?php echo number_format($sub_moneyloan);?>" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"></div>
 	                                </div>
 
-																	<div class="form-group">
-																	<label class="col-md-3 control-label" for="date">วันที่อนุมัติ</label>
-																	<div class="col-md-3">
-																	<input type="date" id="datepicker" name="sub_date" class="form-control round-form"  placeholder="DATE"></div>
-																	</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="date">วันที่ยื่นกู้</label>
+										<div class="col-md-3">
+										<input type="date" value="<?=$sub_date?>" id="datepicker" name="sub_date" class="form-control round-form"  placeholder="DATE"></div>
+									</div>
 
-																	<div class="form-group">
-																	<label class="col-md-3 control-label" for="date">วันที่ทำสัญญา</label>
-																	<div class="col-md-3">
-																	<input type="date" id="datepicker" name="pro_date" class="form-control round-form"  placeholder="DATE"></div>
-																	</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="money">จำนวนเงินที่อนุมัติ</label>
+										<div class="col-md-4 input-group">											
+											<input id="apppice" name="app_pice" type="text" placeholder="MONEY" class="form-control has-success" required>
+											<span id="result" class="input-group-addon"></span> 
+										</div>
+									</div>
 
-																	<!-- <div class="form-group">
-																			<label class="col-md-3 control-label" for="number">เลขที่สัญญา</label>
-																			<div class="col-md-3">
-																			<input id="pro_number" name="pro_number" type="text" placeholder="PRO-NUMBER" class="form-control" readonly></div>
-																	</div> -->
-																	<div class="form-group">
-																			<label class="col-md-3 control-label" for="money">จำนวนเงินที่อนุมัติ</label>
-																			<div class="col-md-3">
-																			<input id="app_pice" name="app_pice" type="text" placeholder="MONEY" class="form-control" required></div>
-																	</div>
-
-	                                <div class="form-group">
-	                                    <label class="col-md-3 control-label" for="idcard">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label>
-	                                    <div class="col-md-3">
-	                                    <input id="sub_idcardBM1" name="sub_idcardBM1" type="text" placeholder="IDCARDBM1" class="form-control"></div>
-	                                </div>
-
-																	<div class="form-group">
+									<div class="form-group">
 	                                    <label class="col-md-3 control-label" for="name">ชื่อ-สกุลผู้ค้ำคนที่ 1</label>
 	                                    <div class="col-md-3">
-	                                    <input id="name1" name="name1" type="text" placeholder="NAMEBM1" class="form-control"></div>
+										<select class="form-control select2" name="name1" id="e1">
+											<option value="<?=$name1?>"><?=$name1?></option>
+											<?php
+												$membersql1 ="SELECT * FROM member";
+												$resultmem1 = mysqli_query($link, $membersql1);
+												while ($row=mysqli_fetch_array($resultmem1)){
+											?>
+											<option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
+											<?php } ?>
+										</select>
+										</div>
 	                                </div>
 
-																	<div class="form-group">
-	                                    <label class="col-md-3 control-label" for="idcard">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 2</label>
-	                                    <div class="col-md-3">
-	                                    <input id="sub_idcardBM2" name="sub_idcardBM2" type="text" placeholder="IDCARDBM2" class="form-control"></div>
-	                                </div>
-
-																	<div class="form-group">
+									<div class="form-group">
 	                                    <label class="col-md-3 control-label" for="name">ชื่อ-สกุลผู้ค้ำคนที่ 2</label>
 	                                    <div class="col-md-3">
-	                                    <input id="name2" name="name2" type="text" placeholder="NAMEBM2" class="form-control"></div>
+											<select class="form-control select2" name="name2" id="e1">
+												<option value="<?=$name2?>"><?=$name2?></option>
+												<?php
+													$membersql1 ="SELECT * FROM member";
+													$resultmem1 = mysqli_query($link, $membersql1);
+													while ($row=mysqli_fetch_array($resultmem1)){
+												?>
+												<option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
+												<?php } ?>
+											</select>
+										</div>
 	                                </div>
 
-																	<div class="form-group">
-																	<label class="col-md-3 control-label" for="date">วันครบกำหนดส่ง</label>
-																	<div class="col-md-3">
-																	<input type="date" id="datepicker" name="pro_redate" class="form-control round-form"  placeholder="DATE"></div>
-																	</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="date">วันครบกำหนดส่ง</label>
+										<div class="col-md-3">
+										<input type="date" value="<?=$t2?>" id="datepicker" name="pro_redate" class="form-control round-form"  placeholder="DATE"></div>
+									</div>
 
-																	<!--อัพโหลดไฟล์-->
-																	<div class="form-group">
-																			<label class="col-md-3 control-label" for="name">หลักฐานประกอบการกู้</label>
-																			<div class="col-md-4">
-																					<!-- <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-																							<div class="form-control" data-trigger="fileinput" name="pro_Document" id="pro_Document">
-																									<i class="glyphicon glyphicon-file fileinput-exists"></i>
-																									<span class="fileinput-filename"></span>
-																							</div>
-																							<span class="input-group-addon btn btn-default btn-file">
-																									<span class="fileinput-new">เลือกไฟล์</span>
-																									<span class="fileinput-exists">เปลี่ยน</span>
-																									<input type="file" name="..."></span>
-																							<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-																					</div> -->
-																					<input type="file" name="pro_Document" value="">
-																			</div>
-																	</div>
+									<!--อัพโหลดไฟล์-->
+									<div class="form-group">
+											<label class="col-md-3 control-label" for="name">หลักฐานประกอบการกู้</label>
+											<div class="col-md-4">
+													<input type="file" name="pro_Document" value="">
+											</div>
+									</div>
 
-																	<div class="form-group">
-																		<label class="col-md-3 control-label" for="name">ชื่อกรรมการ</label>
-																		<div class="col-md-3">
-																	<select class="form-control" name="id_commit" id="id_commit">
-																					<option>--เลือก--</option>
-																					<?php
-																						$sql="SELECT * FROM commits";
-																						$result = mysqli_query($link, $sql);
-																						while ($row=mysqli_fetch_array($result)){
-																					?>
-																					<option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
-																					<?php
-																						}
-																					?>
-																					</select>
-																				</div>
-																	</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="name">ชื่อกรรมการ</label>
+										<div class="col-md-3">
+										<select class="form-control" name="id_commit" id="id_commit">
+											<option>--เลือก--</option>
+											<?php
+												$sql="SELECT * FROM commits";
+												$result = mysqli_query($link, $sql);
+												while ($row=mysqli_fetch_array($result)){
+											?>
+											<option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
+											<?php
+												}
+											?>
+											</select>
+										</div>
+									</div>
 
 	                                <div class="form-group">
 	                                    <div class="col-md-12 text-right">
-
 	                                         <button type="submit" name="btnsubmit" value="send" class="btn btn-success">เพิ่ม</button>
 	                                    </div>
 	                                </div>
@@ -253,45 +268,23 @@ require_once('include/_footer.php');
 ?>
 <!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+<script src="asset/vendors/select2/select2.js" type="text/javascript"></script>
+<script src="asset/js/pages/formelements.js" type="text/javascript"></script>
+
 <!-- end of page level js -->
 </body>
 </html>
 <script type="text/javascript">
-	$('#countryname_1').autocomplete({
-		source: function( request, response ) {
-			$.ajax({
-				url : 'ajax_promise_add.php',
-				dataType: "json",
-				method: 'post',
-			data: {
-				 name_startsWith: request.term,
-				 type: 'country_table',
-				 row_num : 1
-			},
-			success: function( data ) {
-				response( $.map( data, function( item ) {
-					var code = item.split("|");
-						return {
-							label: code[0],
-							value: code[0],
-							data : item
-						}
-				}));
-			}
-			});
-		},
-		autoFocus: true,
-		minLength: 0,
-		select: function( event, ui ) {
-		var names = ui.item.data.split("|");
-		$('#user_id_mem').val(names[1]);
-		$('#mem_idcard').val(names[2]);
-		$('#sub_moneyloan').val(names[3]);
-		$('#sub_idcardBM1').val(names[4]);
-		$('#name1').val(names[5]);
-		$('#sub_idcardBM2').val(names[6]);
-		$('#name2').val(names[7]);
-	}
-	});
 
+	$("#apppice").change(function(){
+		if(parseInt(this.value) > 30000){
+			$('input[name=app_pice]').parent().removeClass("has-success");
+            $('input[name=app_pice]').parent().addClass("has-error");
+			$('#result').html('<strong>ขออภัย</strong>คุณกรอกเกินจำนวนที่อนุมัติ');
+		} else {
+			$('input[name=app_pice]').parent().removeClass("has-error");
+            $('input[name=app_pice]').parent().addClass("has-success");
+			$('#result').html('<strong>ผ่าน</strong>');
+		}
+	});
 </script>

@@ -34,8 +34,8 @@ require_once('include/_header.php');
 	    <section class="content-header">
 
 				<?php
-					if (isset($_POST["btnsubmit"])) {
 
+					if (isset($_POST["btnsubmit"])) {
 						$pro_id = $_POST["pro_id"];
 						$mem_id = $_POST["mem_id"];
 						$mem_name = $_POST["mem_name"];
@@ -215,7 +215,7 @@ require_once('include/_header.php');
 																		<div class="form-group">
 																			<label class="col-md-3 control-label" for="name">หลักฐานประกอบการกู้</label>
 																			<div class="col-md-4">
-																				<input type="file" name="pro_Document" value="">
+																				<input type="file" name="pro_Document" class="form-control" >
 																			</div>
 																		</div>
 

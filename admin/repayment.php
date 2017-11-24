@@ -61,9 +61,8 @@ require_once('include/_header.php');
                                         <th>ลำดับที่</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
-                                        <!-- <th>จำนวนเงินที่อนุมัติ</th> -->
                                         <th>วันที่อนุมัติ</th>
-                                        <!-- <th>วันที่ิทำสัญญา</th> -->
+                                        <th>จำนวนเงินที่อนุมัติ</th>
                                         <th><div align ='center'>ดูข้อมูล</div></th>
                                         <th><div align ='center'>จ่ายเงินกู้ให้ผู้กู้</div></th>
 
@@ -71,28 +70,28 @@ require_once('include/_header.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-						<?php $i=1;
-							if (isset($_GET["pro_id"])) {
-								$pro_id = $_GET["pro_id"];
-								$sql = "DELETE FROM promise WHERE pro_id='pro_id'";
-								$result = mysqli_query($link, $sql);
-							}
-
-              $sql = "SELECT * FROM `submitted` WHERE sanya = '3'";
-							$result = mysqli_query($link, $sql);
-							while ($row = mysqli_fetch_array($result)){
-								$sub_id = $row["sub_id"];
-								$mem_id = $row["mem_id"];
-								$mem_name = $row["mem_name"];
-                $sub_date = $row["sub_date"];
-                            ?>
+              						<?php $i=1;
+                            $sql = "SELECT * FROM `submitted`
+                            LEFT JOIN promise ON submitted.mem_id = promise.mem_id
+                            WHERE submitted.sanya = '3'";
+              							$result = mysqli_query($link, $sql);
+              							while ($row = mysqli_fetch_array($result)){
+                              $sub_id = $row["sub_id"];
+              								$pro_id = $row["pro_id"];
+              								$mem_id = $row["mem_id"];
+              								$mem_name = $row["mem_name"];
+                              $sub_date = $row["sub_date"];
+                              $app_pice = $row["app_pice"];
+                              $pro_redate = $row["pro_redate"];
+                          ?>
 					              <tr>
                         <td><?php echo $i++; ?></td>
                         <td><?=$mem_id?></td>
                         <td><?=$mem_name?></td>
                         <td><?=$sub_date?></td>
-                    <td align='center'><a href='admin_promise_view.php?pro_id=<?=$sub_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
-                    <td align='center'><a href='admin_repayment_add.php?sub_id=<?=$sub_id?>' class="btn btn-responsive button-alignment btn-primary"><i class='fa  fa-pencil'> จ่ายเงินกู้</i></a>
+                        <td><?php echo number_format($app_pice);?></td>
+                    <td align='center'><a href='admin_promise_view.php?pro_id=<?=$pro_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
+                    <td align='center'><a href='admin_repayment_add.php?pro_id=<?=$pro_id?>' class="btn btn-responsive button-alignment btn-primary"><i class='fa  fa-pencil'> จ่ายเงินกู้</i></a>
                     </tr>
                     <?php
               }

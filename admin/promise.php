@@ -77,15 +77,15 @@ require_once('include/_header.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-						<?php $i=1;
-							$sql = "SELECT * FROM `submitted` WHERE sanya = '1'";
-							$result = mysqli_query($link, $sql);
-							while ($row = mysqli_fetch_array($result)){
-								$sub_id = $row["sub_id"];
-								$mem_id = $row["mem_id"];
-								$mem_name = $row["mem_name"];
-                $sub_date = $row["sub_date"];
-                            ?>
+              						<?php $i=1;
+              							$sql = "SELECT * FROM `submitted` WHERE sanya = '1'";
+              							$result = mysqli_query($link, $sql);
+              							while ($row = mysqli_fetch_array($result)){
+              								$sub_id = $row["sub_id"];
+              								$mem_id = $row["mem_id"];
+              								$mem_name = $row["mem_name"];
+                              $sub_date = $row["sub_date"];
+                          ?>
 					               <tr>
                         <td><?php echo $i++; ?></td>
                         <td><?=$mem_id?></td>

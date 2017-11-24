@@ -42,6 +42,10 @@ require_once('include/_header.php');
 			$pay_pice = $_POST["pay_pice"];
 			$id_commit = $_POST["id_commit"];
 
+			$sanya = $_POST["sanya"];
+
+			$approvesql = "UPDATE `submitted` SET `sanya`= '4' WHERE sub_id = '$sanya'";
+			$results=mysqli_query($link, $approvesql);
 
 			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,sub_moneyloan,pro_redate,pay_date,pay_pice,id_commit)VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$sub_moneyloan','$pro_redate',NOW(),'$pay_pice','$id_commit')";
 			// echo $sql; exit;
@@ -58,7 +62,10 @@ require_once('include/_header.php');
 
 				if (isset($_GET["pro_id"])) {
 					$pro_id = $_GET["pro_id"];
-					$sqlproid = "SELECT * FROM promise LEFT JOIN member ON promise.mem_id = member.mem_id WHERE promise.pro_id = '$pro_id'";
+					$sqlproid = "SELECT * FROM promise
+												LEFT JOIN member ON promise.mem_id = member.mem_id
+												LEFT JOIN submitted ON promise.mem_id = submitted.mem_id
+												WHERE promise.pro_id = '$pro_id'";
 					$resultproid = mysqli_query($link, $sqlproid);
 
 					if (mysqli_num_rows($resultproid) > 0) {
@@ -71,6 +78,9 @@ require_once('include/_header.php');
 						$name1 = $row["name1"];
 						$name2 = $row["name2"];
 						$pro_id = $row["pro_id"];
+						$pro_redate = $row["pro_redate"];
+						$app_pice = $row["app_pice"];
+						$sub_id = $row["sub_id"];
 					}else{
 						$mem_id = "";
 						$mem_name = "";
@@ -80,11 +90,11 @@ require_once('include/_header.php');
 						$name1 = "";
 						$name2 = "";
 						$pro_id = "";
+						$pro_redate = "";
+						$app_pice = "";
+						$sub_id = "";
 					}
-
-
 					$t2=date('Y-m-d', strtotime('+2 year', strtotime($sub_date)) );
-
 				}
 			}
 
@@ -155,20 +165,14 @@ require_once('include/_header.php');
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="number">จำนวนที่อนุมัติ</label>
                                     <div class="col-md-3">
-                                    <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control" readonly></div>
+                                    <input id="sub_moneyloan" value="<?=$app_pice?>" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control" readonly></div>
                                 </div>
 
 																	<div class="form-group">
 																		<label class="col-md-3 control-label" for="date">วันที่ครบกำหนดส่ง</label>
 																		<div class="col-md-3">
-																			<input type="date" id="pro_redate" name="pro_redate" class="form-control round-form"  placeholder="DATE" readonly></div>
+																			<input type="date" id="pro_redate" value="<?=$pro_redate?>" name="pro_redate" class="form-control round-form"  placeholder="DATE" readonly></div>
 																		</div>
-
-																<!-- <div class="form-group">
-																<label class="col-md-3 control-label" for="date">วันที่จ่ายเงินกู้</label>
-																<div class="col-md-3">
-																<input type="date" id="pay_date" name="pay_date" class="form-control round-form"  placeholder="DATE"></div>
-																</div> -->
 
 																<div class="form-group">
 																		<label class="col-md-3 control-label" for="money">จำนวนเงินที่จ่าย</label>
@@ -196,7 +200,7 @@ require_once('include/_header.php');
 
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
-
+																			<input type="hidden" value="<?=$sub_id?>" name="sanya">
                                          <button type="submit" name="btnsubmit" value="send" class="btn btn-success">เพิ่ม</button>
                                     </div>
                                 </div>
@@ -220,42 +224,3 @@ require_once('include/_footer.php');
 <!-- end of page level js -->
 </body>
 </html>
-
-
-<!-- <script type="text/javascript">
-	$('#countryname_1').autocomplete({
-		source: function( request, response ) {
-			$.ajax({
-				url : 'ajax_repayment_add.php',
-				dataType: "json",
-				method: 'post',
-			data: {
-				 name_startsWith: request.term,
-				 type: 'country_table',
-				 row_num : 1
-			},
-			success: function( data ) {
-				response( $.map( data, function( item ) {
-					var code = item.split("|");
-						return {
-							label: code[0],
-							value: code[0],
-							data : item
-						}
-				}));
-			}
-			});
-		},
-		autoFocus: true,
-		minLength: 0,
-		select: function( event, ui ) {
-		var names = ui.item.data.split("|");
-		$('#user_id_mem').val(names[1]);
-		$('#user_idcard_mem').val(names[2]);
-		$('#pro_id').val(names[3]);
-		$('#sub_moneyloan').val(names[4]);
-		$('#pro_redate').val(names[5]);
-	}
-	});
-
-</script> -->

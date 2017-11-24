@@ -23,6 +23,12 @@ require_once('session.php'); ?>
     <link href="asset/css/styles/black.css" rel="stylesheet" type="text/css" id="colorscheme" />
     <link href="asset/css/panel.css" rel="stylesheet" type="text/css"/>
     <link href="asset/css/metisMenu.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+        <style>
+            a, h1, h2, h3, h4, h5, h6{
+                font-family: 'Kanit', sans-serif !important;
+            }
+        </style>
 
     <!-- end of global css -->
     <?php echo isset ($css) ?  $css : '' ?>

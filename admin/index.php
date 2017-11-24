@@ -8,6 +8,13 @@
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../css/pages/login.css" />
     <link href="asset/vendors/iCheck/skins/minimal/blue.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+        <style>
+            a, h1, h2, h3, h4, h5, h6{
+                font-family: 'Kanit', sans-serif !important;
+            }
+        </style>
+
     <!-- styles of the page ends-->
 </head>
 

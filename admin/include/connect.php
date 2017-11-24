@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "";
-$db = "db_sk";
+$pass = "mysql";
+$db = "php_bru";
 
 $link = mysqli_connect($host,$user,$pass);
 mysqli_select_db($link,$db);

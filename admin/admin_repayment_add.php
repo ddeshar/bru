@@ -93,11 +93,11 @@ require_once('include/_header.php');
                         <form class="form-horizontal" action="admin_repayment_add.php" method="post">
                             <fieldset>
                                 <!-- Name input-->
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label class="col-md-3 control-label" for="id">รหัสการจ่ายเงินกู้</label>
                                     <div class="col-md-3">
                                     <input id="pay_id" name="pay_id" type="text" placeholder="ID" class="form-control" readonly></div>
-                                </div>
+                                </div> -->
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
@@ -108,7 +108,7 @@ require_once('include/_header.php');
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">ชื่อ</label>
 																<div class="col-md-3">
-																<input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" required></div>
+																<input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" readonly></div>
 																</div>
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="mem_idcard">เลขที่บัตรประชาชนสมาชิก</label>
@@ -119,7 +119,7 @@ require_once('include/_header.php');
 																<div class="form-group">
 																		<label class="col-md-3 control-label" for="id">รหัสการทำสัญญา</label>
 																		<div class="col-md-3">
-																		<input id="pro_id" name="pro_id" type="text" placeholder="PRO-ID" class="form-control"></div>
+																		<input id="pro_id" name="pro_id" type="text" placeholder="PRO-ID" class="form-control" readonly></div>
 																</div>
 
 																<!-- <div class="form-group">
@@ -129,9 +129,9 @@ require_once('include/_header.php');
                                 </div> -->
 
 																<div class="form-group">
-                                    <label class="col-md-3 control-label" for="number">จำนวนเงินกู้</label>
+                                    <label class="col-md-3 control-label" for="number">จำนวนที่อนุมัติ</label>
                                     <div class="col-md-3">
-                                    <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"></div>
+                                    <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control" readonly></div>
                                 </div>
 
 																<div class="form-group">

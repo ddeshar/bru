@@ -14,7 +14,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          ข้อมูลการอนุมัติ
+          ข้อมูลไม่อนุมัติเงินกู้
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -26,7 +26,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              ข้อมูลการอนุมัติ
+              ข้อมูลไม่อนุมัติเงินกู้
             </li>
         </ol>
     </section>
@@ -39,7 +39,7 @@ require_once('include/_header.php');
                 <div class="portlet box success">
                     <div class="portlet-title">
                         <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางรายการอนุมัติเงินกู้
+                          ตารางรายการไม่อนุมัติเงินกู้
                         </div>
                     </div>
                     <div class="portlet-body">

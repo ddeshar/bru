@@ -114,7 +114,7 @@ if (isset($_GET["sub_id"])) {
         </div>
     </section>
 		<div align='center' class="error-actions">
-				<a href="approve.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+				<a href="submitted.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
 		</div>
 </aside>
 <!-- right-side -->

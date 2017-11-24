@@ -62,43 +62,41 @@ require_once('include/_header.php');
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>จำนวนเงินที่อนุมัติ</th>
-                                        <th>จำนวนเงินที่จ่าย</th>
-                                        <th>วันที่จ่ายเงิน</th>
-                                        <th>สถานะจ่ายเงิน</th>
-                                        <th><div align ='center'>จัดการข้อมูล</div></th>
+                                        <th>วันที่อนุมัติ</th>
+                                        <th>วันที่ิทำสัญญา</th>
+                                        <th><div align ='center'>ดูข้อมูล</div></th>
+                                        <th>จ่ายเงินกู้ให้ผู้กู้</th>
+
 
                                     </tr>
                                 </thead>
                                 <tbody>
 						<?php $i=1;
-							if (isset($_GET["pay_id"])) {
-								$pay_id = $_GET["pay_id"];
-								$sql = "DELETE FROM repayment WHERE pay_id='pay_id'";
+							if (isset($_GET["pro_id"])) {
+								$pro_id = $_GET["pro_id"];
+								$sql = "DELETE FROM promise WHERE pro_id='pro_id'";
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "SELECT * FROM repayment";
+							$sql = "SELECT * FROM promise";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
-								$pay_id = $row["pay_id"];
+								$pro_id = $row["pro_id"];
 								$mem_id = $row["mem_id"];
 								$mem_name = $row["mem_name"];
-								$sub_moneyloan = $row["sub_moneyloan"];
-                $pay_pice = $row["pay_pice"];
-                $pay_date = $row["pay_date"];
+								$app_pice = $row["app_pice"];
+                $pro_date = $row["sub_date"];
+                $pro_date = $row["pro_date"];
 ?>
 			              <tr>
 										<td><?php echo $i++;?></td>
 										<td><?=$mem_id?></td>
 										<td><?=$mem_name?></td>
-										<td><?php echo number_format($sub_moneyloan);?></td>
-                    <td><?php echo number_format($pay_pice);?></td>
-                    <td><?=$pay_date?></td>
-                      <td align='center'><a href='admin_repayment_add.php' class="btn btn-responsive button-alignment btn-primary"><i class='fa  fa-pencil'> จ่ายเงินกู้</i></a>
-                    <td align='center'>
-                    <a href='admin_repayment_edit.php?pay_id=<?=$pay_id?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
-                    <a href='admin_repayment_view.php?pay_id=<?=$pay_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
-										<a href='repayment.php?pay_id=<?=$pay_id?>' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+										<td><?php echo number_format($app_pice);?></td>
+                    <td><?=$sub_date?></td>
+                    <td><?=$pro_date?></td>
+                    <td align='center'><a href='admin_promise_view.php?pay_id=<?=$pro_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
+                    <td align='center'><a href='admin_repayment_add.php' class="btn btn-responsive button-alignment btn-primary"><i class='fa  fa-pencil'> จ่ายเงินกู้</i></a>
                     </tr>
                     <?php
               }

@@ -10,7 +10,7 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-    if(isset($_GET["approve"])){ 
+    if(isset($_GET["approve"])){
         $approve=$_GET["approve"];
         $approvesql = "UPDATE submitted SET id_sapp = '1' , sanya = '1' WHERE sub_id = '$approve'";
         $result=mysqli_query($link, $approvesql);
@@ -23,7 +23,7 @@ require_once('include/_header.php');
     // 2 ไม่อนุมัติกู้เงิน
     // 3 อนุมัติกู้เงิน
 
-    if(isset($_GET["unapprove"])){ 
+    if(isset($_GET["unapprove"])){
         $unapprove=$_GET["unapprove"];
         $unapprovesql = "UPDATE submitted SET id_sapp = '2', sanya = '2' WHERE sub_id = '$unapprove'";
         $result=mysqli_query($link, $unapprovesql);
@@ -123,7 +123,7 @@ require_once('include/_header.php');
                                           <td><?php echo number_format($sub_moneyloan);?></td>
                                           <td><?=$sub_date?></td>
                                           <!-- <td><//?=$id_sapp?></td> -->
-                                          <td align='center'><a href='admin_submitted_view.php?sub_id=<?=$sub_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
+                                          <td align='center'><a href='admin_submitted_view1.php?sub_id=<?=$sub_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
                                           <td align='center'><a href='submitted.php?approve=<?=$sub_id?>' class="btn btn-responsive button-alignment btn-success"><i class='fa  fa-check'></i></a>
                                           | <a href='submitted.php?unapprove=<?=$sub_id?>' class="btn btn-responsive button-alignment btn-danger"><i class='fa  fa-remove'></i></a>
                                           </tr>

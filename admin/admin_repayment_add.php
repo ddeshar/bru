@@ -67,7 +67,7 @@ require_once('include/_header.php');
 						$mem_name = $row["mem_name"];
 						$sub_date = $row["sub_date"];
 						$sub_moneyloan = $row["sub_moneyloan"];
-						$mem_idcard = $row["mem_idcard"];
+						$mem_idcards = $row["mem_idcard"];
 						$name1 = $row["name1"];
 						$name2 = $row["name2"];
 						$pro_id = $row["pro_id"];
@@ -76,7 +76,7 @@ require_once('include/_header.php');
 						$mem_name = "";
 						$sub_date = "";
 						$sub_moneyloan = "";
-						$mem_idcard = "";
+						$mem_idcards = "";
 						$name1 = "";
 						$name2 = "";
 						$pro_id = "";
@@ -142,7 +142,7 @@ require_once('include/_header.php');
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="mem_idcard">เลขที่บัตรประชาชนสมาชิก</label>
                                     <div class="col-md-3">
-                                    <input id="user_idcard_mem" value="<?=$mem_idcard?>" name="mem_idcard" type="text" placeholder="MEM-IDCARD" class="form-control" readonly></div>
+                                    <input id="user_idcard_mem" value="<?=$mem_idcards?>" name="mem_idcard" type="text" placeholder="MEM-IDCARD" class="form-control" readonly></div>
                                 </div>
 
 																<div class="form-group">

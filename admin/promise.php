@@ -86,7 +86,7 @@ require_once('include/_header.php');
 								$mem_name = $row["mem_name"];
                 $sub_date = $row["sub_date"];
                             ?>
-					              <tr>
+					               <tr>
                         <td><?php echo $i++; ?></td>
                         <td><?=$mem_id?></td>
                         <td><?=$mem_name?></td>

@@ -7,6 +7,8 @@ $css = <<<EOT
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/dataTables.bootstrap.css" />
 <link href="asset/css/pages/tables.css" rel="stylesheet" type="text/css" />
+<link href="asset/vendors/select2/select2.css" rel="stylesheet" />
+<link rel="stylesheet" href="asset/vendors/select2/select2-bootstrap.css" />
 <!--end of page level css-->
 
 EOT;
@@ -52,8 +54,41 @@ require_once('include/_header.php');
 			}else{
 				die("Query Failed" . mysqli_error($link));
 			}
-		}
-?>
+		}else{
+
+				if (isset($_GET["pro_id"])) {
+					$pro_id = $_GET["pro_id"];
+					$sqlproid = "SELECT * FROM promise LEFT JOIN member ON promise.mem_id = member.mem_id WHERE promise.pro_id = '$pro_id'";
+					$resultproid = mysqli_query($link, $sqlproid);
+
+					if (mysqli_num_rows($resultproid) > 0) {
+						$row = mysqli_fetch_array($resultproid);
+						$mem_id = $row["mem_id"];
+						$mem_name = $row["mem_name"];
+						$sub_date = $row["sub_date"];
+						$sub_moneyloan = $row["sub_moneyloan"];
+						$mem_idcard = $row["mem_idcard"];
+						$name1 = $row["name1"];
+						$name2 = $row["name2"];
+						$pro_id = $row["pro_id"];
+					}else{
+						$mem_id = "";
+						$mem_name = "";
+						$sub_date = "";
+						$sub_moneyloan = "";
+						$mem_idcard = "";
+						$name1 = "";
+						$name2 = "";
+						$pro_id = "";
+					}
+
+
+					$t2=date('Y-m-d', strtotime('+2 year', strtotime($sub_date)) );
+
+				}
+			}
+
+		 ?>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -92,41 +127,29 @@ require_once('include/_header.php');
                     <div class="panel-body">
                         <form class="form-horizontal" action="admin_repayment_add.php" method="post">
                             <fieldset>
-                                <!-- Name input-->
-                                <!-- <div class="form-group">
-                                    <label class="col-md-3 control-label" for="id">รหัสการจ่ายเงินกู้</label>
-                                    <div class="col-md-3">
-                                    <input id="pay_id" name="pay_id" type="text" placeholder="ID" class="form-control" readonly></div>
-                                </div> -->
 
 																<div class="form-group">
-																<label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
-																<div class="col-md-3">
-																<input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
-																</div>
+																	<label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
+																	<div class="col-md-3">
+																		<input id="user_id_mem" value="<?=$mem_id?>" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
+																	</div>
 																<!-- Email input-->
 																<div class="form-group">
-																<label class="col-md-3 control-label" for="name">ชื่อ</label>
-																<div class="col-md-3">
-																<input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" readonly></div>
+																	<label class="col-md-3 control-label" for="name">ชื่อ</label>
+																	<div class="col-md-3">
+																		<input id="countryname_1" value="<?=$mem_name?>" name="mem_name" type="text" placeholder="NAME" class="form-control" readonly></div>
 																</div>
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="mem_idcard">เลขที่บัตรประชาชนสมาชิก</label>
                                     <div class="col-md-3">
-                                    <input id="user_idcard_mem" name="mem_idcard" type="text" placeholder="MEM-IDCARD" class="form-control" readonly></div>
+                                    <input id="user_idcard_mem" value="<?=$mem_idcard?>" name="mem_idcard" type="text" placeholder="MEM-IDCARD" class="form-control" readonly></div>
                                 </div>
 
 																<div class="form-group">
 																		<label class="col-md-3 control-label" for="id">รหัสการทำสัญญา</label>
 																		<div class="col-md-3">
-																		<input id="pro_id" name="pro_id" type="text" placeholder="PRO-ID" class="form-control" readonly></div>
-																</div>
-
-																<!-- <div class="form-group">
-                                    <label class="col-md-3 control-label" for="number">เลขที่สัญญา</label>
-                                    <div class="col-md-3">
-                                    <input id="pro_number" name="pro_number" type="text" placeholder="PRO-NUMBER" class="form-control"></div>
-                                </div> -->
+																			<input id="pro_id" value="<?=$pro_id?>" name="pro_id" type="text" placeholder="PRO-ID" class="form-control" readonly></div>
+																		</div>
 
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="number">จำนวนที่อนุมัติ</label>
@@ -191,12 +214,14 @@ require_once('include/_footer.php');
 ?>
 <!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+<script src="asset/vendors/select2/select2.js" type="text/javascript"></script>
+<script src="asset/js/pages/formelements.js" type="text/javascript"></script>
 <!-- end of page level js -->
 </body>
 </html>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$('#countryname_1').autocomplete({
 		source: function( request, response ) {
 			$.ajax({
@@ -232,4 +257,4 @@ require_once('include/_footer.php');
 	}
 	});
 
-</script>
+</script> -->

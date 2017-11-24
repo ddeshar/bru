@@ -9,12 +9,12 @@ EOT;
 require_once('include/_header.php');
 
 if (isset($_GET["pro_id"])) {
-		$pro_id = $_GET["pro_id"];
+		$pro_ids = $_GET["pro_id"];
 		$sql = "SELECT * FROM promise
 						LEFT JOIN member ON promise.mem_id = member.mem_id
 						LEFT JOIN statusb_app ON promise.id_sapp = statusb_app.id_sapp
 						LEFT JOIN commits ON promise.id_commit = commits.id_commit
-						WHERE pro_id='$pro_id'";
+						WHERE pro_id='$pro_ids'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
@@ -28,8 +28,8 @@ if (isset($_GET["pro_id"])) {
 			$pro_date = $row["pro_date"];
 			//$pro_number = $row["pro_number"];
 			$sub_moneyloan = $row["sub_moneyloan"];
-			$sub_idcardBM1 = $row["sub_idcardBM1"];
-			$sub_idcardBM2 = $row["sub_idcardBM2"];
+			// $sub_idcardBM1 = $row["sub_idcardBM1"];
+			// $sub_idcardBM2 = $row["sub_idcardBM2"];
 			$name1 = $row["name1"];
 			$name2 = $row["name2"];
 			$pro_redate = $row["pro_redate"];
@@ -46,8 +46,8 @@ if (isset($_GET["pro_id"])) {
 			$pro_date = "";
 			//$pro_number = "";
 			$sub_moneyloan = "";
-			$sub_idcardBM1 = "";
-			$sub_idcardBM2 = "";
+			// $sub_idcardBM1 = "";
+			// $sub_idcardBM2 = "";
 			$name1 = "";
 			$name2 = "";
 			$pro_redate = "";

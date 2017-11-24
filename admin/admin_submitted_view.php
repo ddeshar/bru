@@ -26,9 +26,7 @@ if (isset($_GET["sub_id"])) {
 			$sub_moneyloan = $row["sub_moneyloan"];
 			$sub_objective = $row["sub_objective"];
 			$sub_date = $row["sub_date"];
-			$sub_idcardBM1 = $row["sub_idcardBM1"];
 			$name1 = $row["name1"];
-			$sub_idcardBM2 = $row["sub_idcardBM2"];
 			$name2 = $row["name2"];
 			$id_commit = $row["name_commit"];
 			$id_sapp = $row["status_app"];
@@ -39,9 +37,7 @@ if (isset($_GET["sub_id"])) {
 			$sub_moneyloan = "";
 			$sub_objective = "";
 			$sub_date = "";
-			$sub_idcardBM1 = "";
 			$name1 = "";
-			$sub_idcardBM2 = "";
 			$name2 = "";
 			$id_commit = "";
 			$id_sapp = "";
@@ -95,9 +91,7 @@ if (isset($_GET["sub_id"])) {
 													<label class="col-md-5 control-label" for="id">จำนวนเงินที่ขอกู้</label><p><?php echo number_format($sub_moneyloan);?> บาท</p>
 													<label class="col-md-5 control-label" for="id">วัตถุประสงค์ในการขอกู้</label><p><?=$sub_objective?></p>
 													<label class="col-md-5 control-label" for="id">วันที่ยื่นกู้</label><p><?=$sub_date?></p>
-													<label class="col-md-5 control-label" for="id">เลขที่บัตรผู้ค้ำประกันคนที่ 1</label><p><?=$sub_idcardBM1?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อผู้ค้ำประกันคนที่ 1</label><p><?=$name1?></p>
-													<label class="col-md-5 control-label" for="id">เลขที่บัตรผู้ค้ำประกันคนที่ 2้</label><p><?=$sub_idcardBM2?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อผู้ค้ำประกันคนที่ 2</label><p><?=$name2?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อกรรมการ</label><p><?=$id_commit?></p>
 													<label class="col-md-5 control-label" for="id">สถานะการกู้เงิน</label><p><?=$id_sapp?></p>

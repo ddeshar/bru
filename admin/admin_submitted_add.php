@@ -14,23 +14,24 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 	if (isset($_POST["btnsubmit"])) {
-			$sub_id = $_POST["sub_id"];
+			//$sub_id = $_POST["sub_id"];
 			$mem_id = $_POST["mem_id"];
 			$mem_name = $_POST["mem_name"];
 			$sub_moneyloan = $_POST["sub_moneyloan"];
 			$sub_objective = $_POST["sub_objective"];
 			$sub_date = $_POST["sub_date"];
-			$sub_idcardBM1 = $_POST["sub_idcardBM1"];
+			// $sub_idcardBM1 = $_POST["sub_idcardBM1"];
 			$name1 = $_POST["name1"];
-			$sub_idcardBM2 = $_POST["sub_idcardBM2"];
+			// $sub_idcardBM2 = $_POST["sub_idcardBM2"];
 			$name2 = $_POST["name2"];
 			$id_commit = $_POST["id_commit"];
 			// $id_sapp = $_POST["id_sapp"];
 			//$com_name = $_POST["com_name"];
 
-			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,name1,sub_idcardBM2,name2,id_commit)
-							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$name1','$sub_idcardBM2','$name2','$id_commit')";
+			$sql = "INSERT INTO submitted (/*sub_id,*/mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,name1,name2,id_commit)
+							VALUES(/*'$sub_id',*/'$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$name1','$name2','$id_commit')";
 			$result = mysqli_query($link, $sql);
+
 			if ($result) {
 				echo "<script type='text/javascript'>";
 				echo "alert('เพิมเสร็จแล้ว');";

@@ -35,7 +35,7 @@ require_once('include/_header.php');
 
 				<?php
 					if (isset($_POST["btnsubmit"])) {
-						
+
 						$pro_id = $_POST["pro_id"];
 						$mem_id = $_POST["mem_id"];
 						$mem_name = $_POST["mem_name"];
@@ -58,13 +58,13 @@ require_once('include/_header.php');
 							}else {
 								$newfilename = "";
 							}
-						
+
 						$approvesql = "UPDATE `submitted` SET `sanya`= '3' WHERE sub_id = '$sanya'";
 						$results=mysqli_query($link, $approvesql);
 
 						$sql = "INSERT INTO promise (pro_id,mem_id,mem_name,mem_idcard,app_pice,sub_date,pro_date,sub_moneyloan,name1,name2,pro_redate,pro_Document,id_commit)VALUES('$pro_id','$mem_id','$mem_name','$mem_idcard','$app_pice',NOW(),NOW(),'$sub_moneyloan','$name1','$name2','$pro_redate','$newfilename','$id_commit')";
 						$result = mysqli_query($link, $sql);
-						
+
 						if ($result) {
 							echo "<script type='text/javascript'>";
 							echo "alert('เพิมเสร็จแล้ว');";
@@ -77,7 +77,7 @@ require_once('include/_header.php');
 
 						if (isset($_GET["sub_id"])) {
 							$sub_id = $_GET["sub_id"];
-							$sqlproid = "SELECT * FROM submitted LEFT JOIN member ON submitted.mem_id = member.mem_id WHERE submitted.sub_id = '$sub_id'"; 
+							$sqlproid = "SELECT * FROM submitted LEFT JOIN member ON submitted.mem_id = member.mem_id WHERE submitted.sub_id = '$sub_id'";
 							$resultproid = mysqli_query($link, $sqlproid);
 
 							if (mysqli_num_rows($resultproid) > 0) {
@@ -97,7 +97,7 @@ require_once('include/_header.php');
 								$mem_idcard = "";
 								$name1 = "";
 								$name2 = "";
-								
+
 							}
 
 
@@ -146,113 +146,113 @@ require_once('include/_header.php');
 	                                <div class="form-group">
 	                                    <label class="col-md-3 control-label" for="id">รหัสสัญญา</label>
 	                                    <div class="col-md-3">
-	                                    <input id="pro_id" name="pro_id" type="text" placeholder="ID" class="form-control" readonly required></div>
+	                                    <input id="pro_id" name="pro_id" type="text" placeholder="AUTOID" class="form-control" readonly required></div>
 	                                </div>
 
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
-										<div class="col-md-3">
-										<input id="user_id_mem" value="<?=$mem_id?>" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly required></div>
-									</div>
+																		<div class="form-group">
+																			<label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
+																			<div class="col-md-3">
+																				<input id="user_id_mem" value="<?=$mem_id?>" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly required></div>
+																			</div>
 									<!-- Email input-->
-									<div class="form-group">
-									<label class="col-md-3 control-label" for="name">ชื่อ</label>
-									<div class="col-md-3">
-									<input id="countryname_1" value="<?=$mem_name?>" name="mem_name" type="text" placeholder="NAME" class="form-control" required></div>
-									</div>
+																		<div class="form-group">
+																			<label class="col-md-3 control-label" for="name">ชื่อ</label>
+																			<div class="col-md-3">
+																				<input id="countryname_1" value="<?=$mem_name?>" name="mem_name" type="text" placeholder="NAME" class="form-control" required readonly></div>
+																			</div>
 
-									<div class="form-group">
-	                                    <label class="col-md-3 control-label" for="idcard">เลขที่บัตรประชาชนสมาชิก</label>
-	                                    <div class="col-md-3">
-	                                    <input id="mem_idcard" value="<?=$mem_idcard?>" name="mem_idcard" type="text" placeholder="MEM-ID" class="form-control" required></div>
+																				<div class="form-group">
+	                                    		<label class="col-md-3 control-label" for="idcard">เลขที่บัตรประชาชนสมาชิก</label>
+	                                    		<div class="col-md-3">
+	                                    		<input id="mem_idcard" value="<?=$mem_idcard?>" name="mem_idcard" type="text" placeholder="MEM-ID" class="form-control" required readonly></div>
+	                                		</div>
+
+																			<div class="form-group">
+																				<label class="col-md-3 control-label" for="date">วันที่ยื่นกู้</label>
+																				<div class="col-md-3">
+																					<input type="date" value="<?=$sub_date?>" id="datepicker" name="sub_date" class="form-control round-form"  placeholder="DATE" readonly></div>
+																				</div>
+
+																				<div class="form-group">
+																					<label class="col-md-3 control-label" for="date">วันครบกำหนดส่ง</label>
+																					<div class="col-md-3">
+																						<input type="date" value="<?=$t2?>" id="datepicker" name="pro_redate" class="form-control round-form"  placeholder="DATE" readonly></div>
+																					</div>
+
+																				<div class="form-group">
+	                                    	<label class="col-md-3 control-label" for="name">ชื่อ-สกุลผู้ค้ำคนที่ 1</label>
+	                                    	<div class="col-md-3">
+																					<select class="form-control select2" name="name1" id="e1">
+																						<option value="<?=$name1?>"><?=$name1?></option>
+																						<?php
+																						$membersql1 ="SELECT * FROM member";
+																						$resultmem1 = mysqli_query($link, $membersql1);
+																						while ($row=mysqli_fetch_array($resultmem1)){
+																							?>
+																							<option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
+																						<?php } ?>
+																					</select>
+																				</div>
 	                                </div>
 
-									<div class="form-group">
-	                                    <label class="col-md-3 control-label" for="money">จำนวนเงินที่ขอกู้</label>
-	                                    <div class="col-md-3">
-	                                    <input id="sub_moneyloan" value="<?php echo number_format($sub_moneyloan);?>" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"></div>
+																		<div class="form-group">
+	                                    	<label class="col-md-3 control-label" for="name">ชื่อ-สกุลผู้ค้ำคนที่ 2</label>
+	                                    	<div class="col-md-3">
+																					<select class="form-control select2" name="name2" id="e1">
+																						<option value="<?=$name2?>"><?=$name2?></option>
+																						<?php
+																						$membersql1 ="SELECT * FROM member";
+																						$resultmem1 = mysqli_query($link, $membersql1);
+																						while ($row=mysqli_fetch_array($resultmem1)){
+																							?>
+																							<option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
+																						<?php } ?>
+																					</select>
+																				</div>
 	                                </div>
 
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="date">วันที่ยื่นกู้</label>
-										<div class="col-md-3">
-										<input type="date" value="<?=$sub_date?>" id="datepicker" name="sub_date" class="form-control round-form"  placeholder="DATE"></div>
-									</div>
+																		<!--อัพโหลดไฟล์-->
+																		<div class="form-group">
+																			<label class="col-md-3 control-label" for="name">หลักฐานประกอบการกู้</label>
+																			<div class="col-md-4">
+																				<input type="file" name="pro_Document" value="">
+																			</div>
+																		</div>
 
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="money">จำนวนเงินที่อนุมัติ</label>
-										<div class="col-md-4 input-group">											
-											<input id="apppice" name="app_pice" type="text" placeholder="MONEY" class="form-control has-success" required>
-											<span id="result" class="input-group-addon"></span> 
-										</div>
-									</div>
+																		<div class="form-group">
+																			<label class="col-md-3 control-label" for="money">จำนวนเงินที่ขอกู้</label>
+																			<div class="col-md-3">
+																				<input id="sub_moneyloan" value="<?=$sub_moneyloan?>" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"readonly></div>
+																			</div>
 
-									<div class="form-group">
-	                                    <label class="col-md-3 control-label" for="name">ชื่อ-สกุลผู้ค้ำคนที่ 1</label>
-	                                    <div class="col-md-3">
-										<select class="form-control select2" name="name1" id="e1">
-											<option value="<?=$name1?>"><?=$name1?></option>
-											<?php
-												$membersql1 ="SELECT * FROM member";
-												$resultmem1 = mysqli_query($link, $membersql1);
-												while ($row=mysqli_fetch_array($resultmem1)){
-											?>
-											<option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
-											<?php } ?>
-										</select>
-										</div>
-	                                </div>
+																		<div class="form-group">
+																			<label class="col-md-3 control-label" for="money">จำนวนเงินที่อนุมัติ</label>
+																			<div class="col-md-4 input-group">
+																				<input id="apppice" name="app_pice" type="text" placeholder="MONEY" class="form-control has-success" required >
+																				<span id="result" class="input-group-addon"></span>
+																			</div>
+																		</div>
 
-									<div class="form-group">
-	                                    <label class="col-md-3 control-label" for="name">ชื่อ-สกุลผู้ค้ำคนที่ 2</label>
-	                                    <div class="col-md-3">
-											<select class="form-control select2" name="name2" id="e1">
-												<option value="<?=$name2?>"><?=$name2?></option>
-												<?php
-													$membersql1 ="SELECT * FROM member";
-													$resultmem1 = mysqli_query($link, $membersql1);
-													while ($row=mysqli_fetch_array($resultmem1)){
-												?>
-												<option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
-												<?php } ?>
-											</select>
-										</div>
-	                                </div>
-
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="date">วันครบกำหนดส่ง</label>
-										<div class="col-md-3">
-										<input type="date" value="<?=$t2?>" id="datepicker" name="pro_redate" class="form-control round-form"  placeholder="DATE"></div>
-									</div>
-
-									<!--อัพโหลดไฟล์-->
-									<div class="form-group">
-											<label class="col-md-3 control-label" for="name">หลักฐานประกอบการกู้</label>
-											<div class="col-md-4">
-													<input type="file" name="pro_Document" value="">
-											</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="name">ชื่อกรรมการ</label>
-										<div class="col-md-3">
-										<select class="form-control" name="id_commit" id="id_commit">
-											<option>--เลือก--</option>
-											<?php
-												$sql="SELECT * FROM commits";
-												$result = mysqli_query($link, $sql);
-												while ($row=mysqli_fetch_array($result)){
-											?>
-											<option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
-											<?php
-												}
-											?>
-											</select>
-										</div>
-									</div>
+																		<div class="form-group">
+																			<label class="col-md-3 control-label" for="name">ชื่อกรรมการ</label>
+																			<div class="col-md-3">
+																				<select class="form-control" name="id_commit" id="id_commit">
+																					<option>--เลือก--</option>
+																					<?php
+																					$sql="SELECT * FROM commits";
+																					$result = mysqli_query($link, $sql);
+																					while ($row=mysqli_fetch_array($result)){
+																						?>
+																						<option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
+																						<?php
+																					}
+																					?>
+																				</select>
+																			</div>
+																		</div>
 
 	                                <div class="form-group">
-										<input type="hidden" value="<?php echo $_GET["sub_id"]; ?>" name="sanya">
+																		<input type="hidden" value="<?php echo $_GET["sub_id"]; ?>" name="sanya">
 	                                    <div class="col-md-12 text-right">
 	                                         <button type="submit" name="btnsubmit" value="send" class="btn btn-success">เพิ่ม</button>
 	                                    </div>

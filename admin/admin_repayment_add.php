@@ -139,6 +139,7 @@ require_once('include/_header.php');
 																	<div class="col-md-3">
 																		<input id="countryname_1" value="<?=$mem_name?>" name="mem_name" type="text" placeholder="NAME" class="form-control" readonly></div>
 																</div>
+
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="mem_idcard">เลขที่บัตรประชาชนสมาชิก</label>
                                     <div class="col-md-3">
@@ -157,11 +158,11 @@ require_once('include/_header.php');
                                     <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control" readonly></div>
                                 </div>
 
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="date">วันที่ครบกำหนดส่ง</label>
-																<div class="col-md-3">
-																<input type="date" id="pro_redate" name="pro_redate" class="form-control round-form"  placeholder="DATE"></div>
-																</div>
+																	<div class="form-group">
+																		<label class="col-md-3 control-label" for="date">วันที่ครบกำหนดส่ง</label>
+																		<div class="col-md-3">
+																			<input type="date" id="pro_redate" name="pro_redate" class="form-control round-form"  placeholder="DATE" readonly></div>
+																		</div>
 
 																<!-- <div class="form-group">
 																<label class="col-md-3 control-label" for="date">วันที่จ่ายเงินกู้</label>

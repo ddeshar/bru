@@ -68,11 +68,11 @@ require_once('include/_header.php');
                                 <thead>
                                     <tr role="row">
                                         <th>ลำดับที่</th>
-                                        <th>รหัสสมาชิก</th>
+                                        <th>เลขที่บัตร ปปช.</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>วัน/เดือน/ปีเกิด</th>
                                         <th>เบอร์โทร</th>
-                                        <th>สถานะ</th>
+                                        <!-- <th>สถานะ</th> -->
 
                                         <th><div align ='center'>จัดการข้อมูล</div></th>
                                     </tr>
@@ -111,7 +111,7 @@ require_once('include/_header.php');
                       										<td><?=$id_title?> <?=$mem_name?></td>
                       										<td><?=$mem_birthday?></td>
                                           <td><?=$mem_tel?></td>
-                                          <td><?=$status_mem?></td>
+                                          <!-- <td><?//=$status_mem?></td> -->
 
                                           <td align='center'><a href='admin_member_edit.php?mem_id=<?=$mem_id?>' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
                                           <a href='admin_member_view.php?mem_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |

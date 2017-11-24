@@ -1,8 +1,8 @@
 <h2><center>สามารถกู้ได้ เพราะคุณมีจำนวนเงินคือ<?php echo number_format($budget);?> <center></h2>
 
-<?php 
+<?php
     $sql2 = "SELECT * FROM `member` WHERE mem_id = '$loan'";
-    
+
     $result = mysqli_query($link, $sql2);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result);
@@ -16,7 +16,7 @@
 
 <form class="form-horizontal" action="admin_submitted_add.php" method="post">
     <fieldset>
-    
+
         <div class="form-group">
             <label class="col-md-3 control-label" for="name">รหัสสมาชิก</label>
             <div class="col-md-3">
@@ -26,7 +26,7 @@
         <div class="form-group">
         <label class="col-md-3 control-label" for="name">ชื่อ-สกุลสมาชิก</label>
         <div class="col-md-3">
-        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" value="<?=$mem_names?>" class="form-control" required></div>
+        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" value="<?=$mem_names?>" class="form-control" readonly></div>
         </div>
 
         <div class="form-group">

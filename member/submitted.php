@@ -50,7 +50,7 @@ require_once('include/_header.php');
                                     Tools
                                     <i class="fa fa-angle-down"></i>
                                 </button>
-                                <ul class="dropdown-menu pull-right">
+                                <!-- <ul class="dropdown-menu pull-right">
                                     <li>
                                         <a href="#">Print</a>
                                     </li>
@@ -64,7 +64,7 @@ require_once('include/_header.php');
                                             Export to Excel
                                         </a>
                                     </li>
-                                </ul>
+                                </ul> -->
                             </div>
                         </div>
                         <div id="sample_editable_1_wrapper" class="">

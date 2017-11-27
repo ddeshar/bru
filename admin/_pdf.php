@@ -92,7 +92,7 @@ $html .= '<th>เลขบัตรปชช.</th>';
 $html .= '<th>ว/ด/ปเกิด</th>';
 $html .= '<th>ที่อยู่</th>';
 $html .= '<th>เบอร์โทร</th>';
-$html .= '<th>สถานะ</th>';
+// $html .= '<th>สถานะ</th>';
 $html .= "</tr>";
 $html .= "</thead>";
 
@@ -117,7 +117,7 @@ while ($data = mysqli_fetch_array($query)){
   $mem_birthday = $data['mem_birthday'];
   $mem_address = $data['mem_address'];
   $mem_tel = $data['mem_tel'];
-  $status_mem = $data['status_mem'];
+  // $status_mem = $data['status_mem'];
 
   // $name = iconv('tis-620','utf-8',$data['post_title']);
   // $author = iconv('tis-620','utf-8',$data['post_author']);
@@ -128,7 +128,7 @@ while ($data = mysqli_fetch_array($query)){
   $html .= "<td>$mem_birthday</td>";
   $html .= "<td>$mem_address</td>";
   $html .= "<td>$mem_tel</td>";
-  $html .= "<td>$status_mem</td>";
+  // $html .= "<td>$status_mem</td>";
   $html .= "</tr>";
 }
 $html .= "</tbody>";

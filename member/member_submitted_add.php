@@ -1,9 +1,12 @@
 <?php
-$page = 'Member';
-$title = 'Hello Member';
+$page = 'Admin';
+$title = 'Hello Admin';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
+<link href="asset/vendors/select2/select2.css" rel="stylesheet" />
+<link rel="stylesheet" href="asset/vendors/select2/select2-bootstrap.css" />
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -11,23 +14,24 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 	if (isset($_POST["btnsubmit"])) {
-			$sub_id = $_POST["sub_id"];
+			//$sub_id = $_POST["sub_id"];
 			$mem_id = $_POST["mem_id"];
 			$mem_name = $_POST["mem_name"];
 			$sub_moneyloan = $_POST["sub_moneyloan"];
 			$sub_objective = $_POST["sub_objective"];
 			$sub_date = $_POST["sub_date"];
-			$sub_idcardBM1 = $_POST["sub_idcardBM1"];
+			// $sub_idcardBM1 = $_POST["sub_idcardBM1"];
 			$name1 = $_POST["name1"];
-			$sub_idcardBM2 = $_POST["sub_idcardBM2"];
+			// $sub_idcardBM2 = $_POST["sub_idcardBM2"];
 			$name2 = $_POST["name2"];
 			$id_commit = $_POST["id_commit"];
 			// $id_sapp = $_POST["id_sapp"];
 			//$com_name = $_POST["com_name"];
 
-			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,name1,sub_idcardBM2,name2,id_commit)
-							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$name1','$sub_idcardBM2','$name2','$id_commit')";
+			$sql = "INSERT INTO submitted (/*sub_id,*/mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,name1,name2,id_commit)
+							VALUES(/*'$sub_id',*/'$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$name1','$name2','$id_commit')";
 			$result = mysqli_query($link, $sql);
+
 			if ($result) {
 				echo "<script type='text/javascript'>";
 				echo "alert('เพิมเสร็จแล้ว');";
@@ -78,9 +82,9 @@ require_once('include/_header.php');
 
 										<div class="panel-body">
 											<?php
-											if (isset($s_login_mem_id)) {
-													// $loan = $_GET["loan"];
-													$sql = "SELECT mem_id ,fak_total, MAX(fak_date) AS fak_date FROM deposit WHERE mem_id = '$s_login_mem_id' GROUP BY fak_total  desc LIMIT 1";
+												if (isset($_GET["loan"])) {
+													$loan = $_GET["loan"];
+													$sql = "SELECT mem_id,fak_total, MAX(fak_date) AS fak_date FROM deposit WHERE mem_id = $loan GROUP BY fak_total  desc LIMIT 1";
 													$result = mysqli_query($link, $sql);
 													$row = mysqli_fetch_assoc($result);
 													$budget = $row["fak_total"];
@@ -96,12 +100,22 @@ require_once('include/_header.php');
 												?>
 										</div>
 								</div>
+
+				<!--main content ends-->
 		</section>
+		<!-- content -->
+
+
 </aside>
+<!-- right-side -->
 <?php
 require_once('include/_footer.php');
 ?>
+<!-- begining of page level js -->
+<script src="asset/vendors/select2/select2.js" type="text/javascript"></script>
+<script src="asset/js/pages/formelements.js" type="text/javascript"></script>
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+<!-- end of page level js -->
 </body>
 </html>
 <script type="text/javascript">
@@ -136,8 +150,10 @@ require_once('include/_footer.php');
 		$('#num2').val(names[2]);
 	}
 	});
+
 	$(function() {
 		$("#num1, #num2").on("keydown keyup", sum);
+
 		function sum() {
 			$("#sum").val(Number($("#num2").val()) - Number($("#num1").val()));
 		}

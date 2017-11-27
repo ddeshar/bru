@@ -85,7 +85,7 @@ if (isset($_GET["pay_id"])) {
 													<label class="col-md-5 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลสมาชิก</label><p><?=$mem_name?></p>
 													<label class="col-md-5 control-label" for="id">เลขที่บัตรประจำตัวประชาชาชน</label><p><?=$mem_idcard?></p>
-													<label class="col-md-5 control-label" for="id">รหัสการทำสัญญา</label><p><?=$pro_id?></p>			
+													<label class="col-md-5 control-label" for="id">รหัสการทำสัญญา</label><p><?=$pro_id?></p>
 													<label class="col-md-5 control-label" for="id">วันที่ครบกำหนดส่ง</label><p><?=$pro_redate?></p>
 													<label class="col-md-5 control-label" for="id">วันที่จ่ายเงินกู้</label><p><?=$pay_date?></p>
 													<label class="col-md-5 control-label" for="id">จำนวนเงินที่จ่าย</label><p><?php echo number_format($pay_pice);?> บาท</p>
@@ -104,7 +104,7 @@ if (isset($_GET["pay_id"])) {
         </div>
     </section>
 		<div align='center' class="error-actions">
-				<a href="repayment.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
+				<a href="refund.php" class="btn btn-primary btn-lg"><span class="fa fa-reply"></span> ถอยกลับ </a>
 		</div>
 </aside>
 <!-- right-side -->

@@ -43,7 +43,7 @@ if (isset($_POST["btnsubmit"])) {
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <!--section starts--> 
+        <!--section starts-->
         <h1>
             เพิ่มข้อมูลการถอน
         </h1>
@@ -79,11 +79,11 @@ if (isset($_POST["btnsubmit"])) {
                         <form class="form-horizontal" action="#" method="post">
                             <fieldset>
 
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
                                 <div class="col-md-3">
                                 <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly ></div>
-                                </div> -->
+                                </div>
                                 <!-- Email input-->
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="name">ชื่อผู้ถอน</label>
@@ -198,7 +198,7 @@ require_once('include/_footer.php');
 			var subtract = parseInt($("#sum").val());
 
 			if (subtract < 0) {
-				text = "ไม่สามารถถอนเงินได้";
+				text = "ไม่สามารถถอนเงินได้"; 
 			} else {
 				text = "สามารถถอนเงินได้";
 			}

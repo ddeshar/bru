@@ -48,7 +48,7 @@ require_once('include/_header.php');
 			$results=mysqli_query($link, $approvesql);
 
 			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,sub_moneyloan,pro_redate,pay_date,pay_pice,id_commit)VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$sub_moneyloan','$pro_redate',NOW(),'$pay_pice','$id_commit')";
-			// echo $sql; exit;
+			 //echo $sql; exit;
 			$result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";

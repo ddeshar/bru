@@ -26,25 +26,22 @@ require_once('include/_header.php');
 <script type="text/javascript" src="asset/js/jquery-ui.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <?php
+
 if (isset($_POST["btnsubmit"])) {
 		$mem_id = $_POST["mem_id"];
 		$mem_name = $_POST["mem_name"];
-		$sub_moneyloan = $_POST["sub_moneyloan"];
 		$ref_moneytree = $_POST["ref_moneytree"];
 		$ref_rate = $_POST["ref_rate"];
 		$ref_picetotal = $_POST["ref_picetotal"];
-		$pay = $_POST["pay"];
-		$owe = $_POST["owe"];
 		$ref_income = $_POST["ref_income"];
-		$ref_out = $_POST["ref_out"];
+		$rate = $_POST["rate"];
 		$id_commit = $_POST["id_commit"];
-		$sql = "INSERT INTO refund (mem_id,mem_name,sub_moneyloan,ref_date,ref_moneytree,ref_rate,pay,owe,ref_picetotal,ref_income,ref_out,id_commit)
-		VALUES('$mem_id','$mem_name','$sub_moneyloan',NOW(),'$ref_moneytree','$ref_rate','$pay','$owe','$ref_picetotal','$ref_income','$ref_out','$id_commit')";
+		$sql = "INSERT INTO refund (mem_id,mem_name,pay_pice,ref_date,rate,ref_rate,ref_picetotal,ref_income,id_commit) VALUES('$mem_id','$mem_name','$ref_moneytree',NOW(),'$rate','$ref_rate','$ref_picetotal','$ref_income','$id_commit')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";
-			echo "window.location='admin_refunds_add.php';";
+			echo "window.location='rate.php';";
 			echo "</script>";
 		}else{
 			die("Query Failed" . mysqli_error($link));
@@ -111,35 +108,13 @@ if (isset($_POST["btnsubmit"])) {
 
 											<form class="form-horizontal" action="admin_refunds_add.php" method="post" name="fak" id="fak" >
 											    <fieldset>
-											        <!-- Name input-->
-
-											        <!-- <div class="form-group">
-											        <label class="col-md-3 control-label" for="birth">วันที่ชำระ</label>
-											        <div class="col-md-3">
-											        <input type="date" id="datepicker" name="ref_date" class="form-control round-form"  placeholder="DATE"></div>
-											        </div> -->
-															<!-- <//?php $percentage = 6;
-															$totalwidth = 12880;
-
-															echo $new_width = ($percentage * $totalwidth) /100; ?> -->
-											        <!-- <div class="form-group">
-											        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
-											        <div class="col-md-3">
-											        <input id="user_id_mem" value="<?//=$mem_id?>" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
-											        </div> -->
 											        <!-- Email input-->
 											        <div class="form-group">
 											        <label class="col-md-3 control-label" for="name">ชื่อสมาชิก</label>
 											        <div class="col-md-3">
+																<input value="<?=$mem_id?>" name="mem_id" type="text" hidden="">
 											        <input id="countryname_1" value="<?=$mem_name?>" name="mem_name" type="text" placeholder="NAME" class="form-control" readonly ></div>
 											        </div>
-											        <!-- Message body -->
-															<!-- <div class="form-group">
-                                <label class="col-md-3 control-label" for="id">จำนวนอนุมัติ</label>
-                                <div class="col-md-3">
-                                <input id="sub_moneyloan" value="<?//=$pay_pice?>" name="sub_moneyloan" type="text" placeholder="PRICE" class="form-control" readonly required></div>
-                                </div> -->
-
 
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">เงินต้น</label>
@@ -155,46 +130,34 @@ if (isset($_POST["btnsubmit"])) {
 																<label class=" control-label" for="id">% ต่อปี (2 ปี)</label>
 																</div>
 
-                                <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">เงินต้นและดอกเบี้ยที่ต้องชำระ</label>
-                                <div class="col-md-3">
-                    <input id="percentagepermonth" name="ref_rate" type="text" placeholder="REF-RATE" class="form-control" readonly></div>
+																<div class="form-group">
+																<label class="col-md-3 control-label" for="name">ดอกเบี้ย</label>
+																<div class="col-md-3">
+<input id="permonth" value="" name="ref_picetotal" type="text" placeholder="PRICE-TOTAL" class="form-control" ></div>
 																<label class=" control-label" for="id">บาท</label>
 																</div>
 
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="name">จ่ายต่อเดือน</label>
-																<div class="col-md-3">
-																<input id="permonth" value="" name="ref_picetotal" type="text" placeholder="PRICE-TOTAL" class="form-control" ></div>
+                                <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">เงินต้นและดอกเบี้ยที่ต้องชำระ</label>
+                                <div class="col-md-3">
+<input id="percentagepermonth" value="" name="ref_rate" type="text" placeholder="REF-RATE" class="form-control" readonly></div>
 																<label class=" control-label" for="id">บาท</label>
 																</div>
-																<!-- <div class="form-group">
-																<label class="col-md-3 control-label" for="name">จำนวนเงินที่ต้องชำระต่องวด</label>
-																<div class="col-md-3">
-																<input id="pay" name="pay" type="text" placeholder="PAY" class="form-control" ></div>
-																<label class=" control-label" for="id">บาทต่องวด</label>
-																</div> -->
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">จำนวนเงินที่รับมา</label>
 																<div class="col-md-3">
-		<input id="given" name="ref_income" type="text" placeholder="INCOME" class="form-control" required onchange="sumTotal();"></div>
+		<input id="given" name="ref_income" type="text" placeholder="INCOME" class="form-control" required onchange="subtraction();"></div>
 																<label class=" control-label" for="id">บาท</label>
 																</div>
 
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="name">เงินทอน</label>
-																<div class="col-md-3">
-<input id="toreturn" name="ref_out" type="text" placeholder="REF-OUT" class="form-control" readonly ></div>
-																<label class=" control-label" for="id">บาท</label>
-																</div>
+																<div id="input-Error" class="form-group ">
+														      <label class="col-md-3 control-label">Input</label>
+														      <div class="col-md-4">
+														        <input type="text" value="" class="form-control" id="inputError" readonly>
+														      </div>
+														    </div>
 
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="name">ค้างชำระคงเหลือ</label>
-																<div class="col-md-3">
-																<input id="remaintopay" name="owe" type="text" placeholder="OWE" class="form-control" readonly></div>
-																<label class=" control-label" for="id">บาท</label>
-																</div>
                                 <!-- Message body -->
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="detail">ผู้รับชำระ</label>
@@ -222,13 +185,6 @@ if (isset($_POST["btnsubmit"])) {
 											            </div>
 											        </div>
 											    </fieldset>
-
-<input name="subtotal" id="subtotal" type="number" maxlength="20" min="0" placeholder="00.00" onchange="vatCalculation();" />
-
-<input name="vat" id="vat" type="number" maxlength="20" min="0" placeholder="00.00" readonly="true" />
-
-<input name="total" id="total" type="number" maxlength="20" min="0" placeholder="00.00" readonly="true" />
-
 											</form>
                     </div>
                 </div>
@@ -239,17 +195,8 @@ if (isset($_POST["btnsubmit"])) {
     <!-- content -->
 </aside>
 
-
-
-
 <?php
-// require_once('payrefund.php');
-?>
-<!-- right-side -->
-
-
-<?php
-require_once('include/_footer.php');
+	require_once('include/_footer.php');
 ?>
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 <!-- end of page level js -->
@@ -258,133 +205,30 @@ require_once('include/_footer.php');
 
 <script type="text/javascript">
 
-// var subtotal = document.getElementById('subtotal').value;
-var actual = document.getElementById('actual').value;  // เงินต้น
-var permonth = document.getElementById('permonth').value;  // จ่ายต่อเดือน
 var percentage = document.getElementById('percentage').value;  // อัตราดอกเบี้ย
-var percentagepermonth = document.getElementById('percentagepermonth').value;  // ดอกเบี้ยที่ชำระต่อเดือน
-var remaintopay = document.getElementById('remaintopay').value;  // ค้างชำระคงเหลือ
-var given = document.getElementById('given').value;  // จำนวนเงินที่รับมา
-var toreturn = document.getElementById('toreturn').value;  // เงินทอน
 
 // formula for percentagepermonth
-
 	var subtotal = document.getElementById('actual').value;
-	var year = parseFloat(parseFloat(parseFloat(subtotal) * parseFloat(percentage)) / parseFloat(100));
-	var percent = parseFloat(parseFloat(year) / parseFloat(24));
-	var total = parseFloat(parseFloat(subtotal) + parseFloat(percent)).toFixed(2);
-document.getElementById("percentagepermonth").value = percent;
-// document.getElementById('total').value = total;
+	var year = parseFloat(parseFloat(parseFloat(subtotal) * parseFloat(percentage) * parseFloat(2)) / parseFloat(100));
+	var total = parseFloat(parseFloat(subtotal) + parseFloat(year));
 
-function sumTotal(){
-	var given = document.getElementById('given').value;  // จำนวนเงินที่รับมา
+	document.getElementById("permonth").value = year;
+	document.getElementById("percentagepermonth").value = total;
 
-	var subtotal = document.getElementById('actual').value;
-	var year = parseFloat(parseFloat(parseFloat(subtotal) * parseFloat(percentage)) / parseFloat(100));
-	var percent = parseFloat(parseFloat(year) / parseFloat(24));
-	var total = parseFloat(parseFloat(subtotal) + parseFloat(percent)).toFixed(2);
-	var grandtotal = parseFloat(parseFloat(total) - parseFloat(given));
-	// document.getElementById("percentagepermonth").value = percent;
 
-	document.getElementById("remaintopay").value = grandtotal;
+function subtraction(){
+	var adding = document.getElementById('percentagepermonth').value;
+	var getfromcustomer = document.getElementById('given').value;
+	var totaladded = Math.abs(parseInt(getfromcustomer) - parseInt(adding));
+
+	if (adding <= getfromcustomer) {
+		document.getElementById('input-Error').className = 'form-group has-success';
+		document.getElementById("inputError").value ="จำนวนเงินที่จะต้องทอนคือ"+ totaladded +" บาท";
+	}else{
+		document.getElementById('input-Error').className = 'form-group has-error';
+		document.getElementById("inputError").value ="ยอดเงินของคุณไม่เพียงพอ กรุณาเพิ่มเงิน"+ totaladded +" บาท ";
+	}
+
 }
 
-// End formula
-// var x = 5;
-// var y = 2;
-// var z = x + y;
-// document.getElementById("remaintopay").value = z;
-
-
-// function vatCalculation() { //ดอกเบี้ยต่อเดือน
-// 	var subtotal = document.getElementById('subtotal').value;
-// 	var year = parseFloat(parseFloat(parseFloat(subtotal) * parseFloat(6)) / parseFloat(100));
-// 	var vat = parseFloat(parseFloat(year) / parseFloat(12));
-// 	var total = parseFloat(parseFloat(subtotal) + parseFloat(vat)).toFixed(2);
-// document.getElementById('vat').value = vat;
-// document.getElementById('total').value = total;
-// }
-// function formChanged(){
-	// var income = document.getElementById("ref_income").value;
-
-// }
-
-var totalincome = $((percentage*actual)/100);
-var totalincome2 = $((totalincome)/12);
-
-
-console.log(actual);
-console.log(percentage);
-console.log(totalincome);
-console.log(totalincome2);
-
-
-	$("input").on("keyup", function(){
-
-		// เงินต้นคงเหลือ
-		// หักเงินต้นต่อเดือน
-		// ดอกเบี้ยต่อเดือน
-
-		$("#sum_out").val(parseFloat(Math.round($(this).val())-parseFloat($('#pay').val())).toFixed());
-		$("#owe").val(parseFloat($('#num1').val()) - parseFloat($('#pay').val()));
-	});
-
-	// $('#countryname_1').autocomplete({
-	// 	source: function( request, response ) {
-	// 		$.ajax({
-	// 			url : 'ajax.php',
-	// 			dataType: "json",
-	// 			method: 'post',
-	// 		data: {
-	// 			 name_startsWith: request.term,
-	// 			 type: 'country_table',
-	// 			 row_num : 1
-	// 		},
-	// 		success: function( data ) {
-	// 			response( $.map( data, function( item ) {
-	// 				var code = item.split("|");
-	// 					return {
-	// 						label: code[0],
-	// 						value: code[0],
-	// 						data : item
-	// 					}
-	// 			}));
-	// 		}
-	// 		});
-	// 	},
-	// 	autoFocus: true,
-	// 	minLength: 0,
-	// 	select: function( event, ui ) {
-	// 	var names = ui.item.data.split("|");
-	// 	$('#user_id_mem').val(names[1]);
-	// 	$('#sub_moneyloan').val(names[2]);
-	// 	$('#num1').val(names[2]);
-	// 	$("#num2").val(parseFloat($('#num1').val())*6/100);
- 	// 	$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
- 	// 	// Decimal
- 	// 	$("#pay").val(parseFloat(Math.round($('#sum').val()) / 24).toFixed());
-  //
-	// 	$("#num3").on("keyup", function(){
-	//  		$("#sum_out").val(parseFloat(Math.round($(this).val())-parseFloat($('#pay').val())).toFixed());
-	//  		$("#owe").val(parseFloat($('#num1').val()) - parseFloat($('#pay').val()));
-	// 	});
-	// }
-	// });
-
 </script>
-
-<script type="text/javascript">
- // $(function() { //เงินต้น + ดอกเบี้ย / 24
- // 	$("#num1").bind("keyup change", function(){
- // 	$("#num2").val(parseFloat($('#num1').val())*6/100);
- // 		$("#sum").val(parseFloat($('#num1').val())+parseFloat($('#num2').val()));
- // 		// Decimal
- // 		$("#pay").val(parseFloat(Math.round($('#sum').val()) / 24).toFixed());
- // 	});
- //
- // 	$("#num3").on("keyup", function(){
- // 		$("#sum_out").val(parseFloat(Math.round($(this).val())-parseFloat($('#pay').val())).toFixed());
- // 		$("#owe").val(parseFloat($('#sum').val()) - parseFloat($('#pay').val()));
- // });
- // });
- </script>

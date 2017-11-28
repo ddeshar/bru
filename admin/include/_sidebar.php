@@ -117,19 +117,19 @@
                     จ่ายเงิน ให้ผู้กู้
                 </a>
             </li>
-            <!-- <li <?//php if($page == 'refund') echo 'class="active" id="active"'; ?> >
-                <a href="refund.php">
-                    <i class="fa fa-angle-double-right"></i>
-                    แสดงรายชื่อผู้กู้เงิน
-                </a>
-            </li> -->
+
             <li <?php if($page == 'refund') echo 'class="active" id="active"'; ?> >
                 <a href="payrefund.php">
                     <i class="fa fa-angle-double-right"></i>
                     ชำระเงินกู้และดอกเบี้ย
                 </a>
             </li>
-
+            <li <?php if($page == 'refund') echo 'class="active" id="active"'; ?> >
+                <a href="rate.php">
+                    <i class="fa fa-angle-double-right"></i>
+                    แสดงสมาชิกที่ชำระเงินกู้แล้ว
+                </a>
+            </li>
         </ul>
     </li>
     <li <?php if(($page == 'animatedicons') || ($page == 'buttons') || ($page == 'advanced_buttons') || ($page == 'tabs_accordions') || ($page == 'panels') || ($page == 'icon') || ($page == 'color') || ($page == 'grid') || ($page == 'carousel') || ($page == 'advanced_modals') || ($page == 'tagsinput') || ($page == 'nestable') || ($page == 'toastr') || ($page == 'notifications') || ($page == 'session_timeout') || ($page == 'portlet_draggable')) echo 'class="active"'; ?> >

@@ -70,10 +70,9 @@ if (isset($_GET["ref_id"])) {
     $sql = "SELECT refund.ref_id,
     refund.mem_id,
     member.mem_name,
-    refund.ref_picetotal,
-    refund.pay,
-    refund.owe,
     refund.ref_date,
+    refund.ref_rate,
+    refund.ref_income,
     commits.name_commit
     FROM refund LEFT JOIN member ON refund.mem_id = member.mem_id
     LEFT JOIN commits
@@ -86,9 +85,8 @@ if (isset($_GET["ref_id"])) {
     $ref_id = $row["ref_id"];
     $mem_id1 = $row["mem_id"];
     $mem_name = $row["mem_name"];
-    $ref_picetotal = $row["ref_picetotal"];
-    $owe = number_format($row["owe"]);
-    $pay = number_format($row["pay"]);
+    $ref_income = number_format($row["ref_income"]);
+    $ref_rate = number_format($row["ref_rate"]);
     $ref_date = $row["ref_date"];
     $name_commit = $row["name_commit"];
 
@@ -102,7 +100,7 @@ $pdf->writeHTML($ft, true, false, true, false, '');
 $date = "<div style=\"text-align:right\"><b>วันที่ $ref_date <b></div><br>";
 $pdf->writeHTML($date, true, false, true, false, '');
 
-$title = '<div style="text-align:center"><b>ใบเสร็จ</b></div>';
+$title = '<div style="text-align:center"><b>ใบเสร็จชำระเงินกู้</b></div>';
 $pdf->writeHTML($title, true, false, true, false, '');
 
 // $html .= "<td>$status_mem</td>";
@@ -125,12 +123,12 @@ $tbl = <<<EOD
   </tr>
     <tr>
         <td align=\"center\">1</td>
-        <td>ชำระเงิน </td>
-        <td align="right">$pay</td>
+        <td>เงินต้นและดอกเบี้ย </td>
+        <td align="right">$ref_rate</td>
     </tr>
     <tr>
-      <td colspan="2" align="right">ค้างชำระ</td>
-      <td align="right">$owe</td>
+      <td colspan="2" align="right">ชำระ</td>
+      <td align="right">$ref_income</td>
     </tr>
 
 </table>

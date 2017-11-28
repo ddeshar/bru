@@ -66,7 +66,7 @@
                 </a>
             </li>
             <li <?php if($page == 'accordionformwizard') echo 'class="active" id="active"'; ?> >
-                <a href="stopmember.php">
+                <a href="admin_stopmember_add.php">
                     <i class="fa fa-angle-double-right"></i>
                     ยกเลิกบัญชี
                 </a>

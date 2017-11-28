@@ -155,34 +155,25 @@ if (isset($_POST["btnsubmit"])) {
 																<label class=" control-label" for="id">% ต่อปี (2 ปี)</label>
 																</div>
 
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="name">จ่ายต่อเดือน</label>
-																<div class="col-md-3">
-																<input id="permonth" value="1000" name="ref_picetotal" type="text" placeholder="PRICE-TOTAL" class="form-control" ></div>
-																<label class=" control-label" for="id">บาท</label>
-																</div>
-
-
                                 <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">ดอกเบี้ยที่ชำระต่อเดือน</label>
+                                <label class="col-md-3 control-label" for="name">เงินต้นและดอกเบี้ยที่ต้องชำระ</label>
                                 <div class="col-md-3">
                     <input id="percentagepermonth" name="ref_rate" type="text" placeholder="REF-RATE" class="form-control" readonly></div>
 																<label class=" control-label" for="id">บาท</label>
 																</div>
 
 																<div class="form-group">
+																<label class="col-md-3 control-label" for="name">จ่ายต่อเดือน</label>
+																<div class="col-md-3">
+																<input id="permonth" value="" name="ref_picetotal" type="text" placeholder="PRICE-TOTAL" class="form-control" ></div>
+																<label class=" control-label" for="id">บาท</label>
+																</div>
+																<!-- <div class="form-group">
 																<label class="col-md-3 control-label" for="name">จำนวนเงินที่ต้องชำระต่องวด</label>
 																<div class="col-md-3">
 																<input id="pay" name="pay" type="text" placeholder="PAY" class="form-control" ></div>
 																<label class=" control-label" for="id">บาทต่องวด</label>
-																</div>
-
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="name">ค้างชำระคงเหลือ</label>
-																<div class="col-md-3">
-										<input id="remaintopay" name="owe" type="text" placeholder="OWE" class="form-control" readonly></div>
-																<label class=" control-label" for="id">บาท</label>
-																</div>
+																</div> -->
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="name">จำนวนเงินที่รับมา</label>
@@ -198,6 +189,12 @@ if (isset($_POST["btnsubmit"])) {
 																<label class=" control-label" for="id">บาท</label>
 																</div>
 
+																<div class="form-group">
+																<label class="col-md-3 control-label" for="name">ค้างชำระคงเหลือ</label>
+																<div class="col-md-3">
+																<input id="remaintopay" name="owe" type="text" placeholder="OWE" class="form-control" readonly></div>
+																<label class=" control-label" for="id">บาท</label>
+																</div>
                                 <!-- Message body -->
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="detail">ผู้รับชำระ</label>
@@ -254,22 +251,6 @@ if (isset($_POST["btnsubmit"])) {
 <?php
 require_once('include/_footer.php');
 ?>
-
-<!--
-								10000  6
-								10000*6/100 = 600/12=50 หาดอกต่อเดือน
-								10000/24 =416.66 ค่างวด
-								416.66 + 50 = 466.66
-
-
-								เอา 240,000 * (5.5/100) = จะได้ดอกเบี้ยต่อปี = 13,200 แล้วก็หาร 12 ก็จะได้ดอกต่อเดือน = 1,100
-
-								ค่างวดก็เอาเงินต้นหารจำนวนงวด  = 240,000/48 = 5000
-								ส่งเดือนละกี่บาทก็เอาค่างวดบวกกับดอกเบี้ย = 5000+1,100 = 6,100 ต่อเดือน
-
-								ดอกเบี้ยทั้งหมดก็ 13200 * 4 = 52,800 ก็เสียดอกไป 17.6% -->
-
-<!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 <!-- end of page level js -->
 </body>

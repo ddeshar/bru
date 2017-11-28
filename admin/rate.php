@@ -101,7 +101,7 @@ require_once('include/_header.php');
                         <td align="right"><?php echo number_format($ref_rate);?></td>
                         <td align="right"><?php echo number_format($ref_income);?></td>
 
-                        <td align='center'><a href='admin_refund_view.php?ref_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                        <td align='center'><a href='admin_refund_view.php?ref_id=<?=$ref_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
                         <a href='refund_pdf.php?ref_id=<?=$ref_date?>' class='btn warning btn-xs purple' target="_blank"><i class='fa fa-print'></i></a></td>
     									</tr>
                       <?php

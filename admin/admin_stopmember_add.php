@@ -20,30 +20,27 @@ require_once('include/_header.php');
 <?php
 if (isset($_POST["btnsubmit"])) {
 
-		// $fak_date = $_POST["fak_date"];
-		$stopmem_id = $_POST["stopmem_id"];
 		$mem_id = $_POST["mem_id"];
 		$mem_name = $_POST["mem_name"];
 		$id_commit = $_POST["id_commit"];
 		$fak_total = $_POST["fak_total"];
 		$status = $_POST["status"];
 
+		$updatestatus = "UPDATE `tbl_users` SET `status` = '$status' WHERE `tbl_users`.`mem_id` = '$mem_id'";
+		$results=mysqli_query($link, $updatestatus);
 
-		$sql = "INSERT INTO stop_member (stop_date,stopmem_id,mem_id,mem_name,id_commit,fak_total,status)
-		VALUES(NOW(),'$stopmem_id','$mem_id','$mem_name','$id_commit','$fak_total','$status')";
+		$sql = "INSERT INTO stop_member (stop_date,mem_id,mem_name,id_commit,fak_total,status)
+		VALUES(NOW(),'$mem_id','$mem_name','$id_commit','$fak_total','$status')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";
 			echo "window.location='admin_stopmember_add.php';";
 			echo "</script>";
-			//header('location: admin_product.php');
 		}else{
 			die("Query Failed" . mysqli_error($link));
-			// echo "<font color='red'>SQL Error</font><hr>";
 		}
 	}
-
 ?>
 
 
@@ -87,13 +84,6 @@ if (isset($_POST["btnsubmit"])) {
 											<form class="form-horizontal" action="admin_stopmember_add.php" method="post" name="fak" id="fak" >
 											    <fieldset>
 											        <!-- Name input-->
-
-											        <div class="form-group">
-											        <label class="col-md-3 control-label" for="birth">วันที่</label>
-											        <div class="col-md-3">
-											        <input type="date" id="datepicker" name="fak_date" class="form-control round-form"  placeholder="DATE"></div>
-											        </div>
-
 											        <div class="form-group">
 											        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
 											        <div class="col-md-3">
@@ -111,27 +101,17 @@ if (isset($_POST["btnsubmit"])) {
 											        <div class="form-group">
 											        <label class="col-md-3 control-label" for="pass">เงินฝากคงเหลือ</label>
 											        <div class="col-md-3">
-											        <input id="num2" name="fak_total" type="text" placeholder="MONEY" class="form-control" readonly value=""></div>
-											        </div>
-
-											        <div class="form-group">
-											        <label class="col-md-3 control-label" for="pass">เงินกู้ค้างชำระ</label>
-											        <div class="col-md-3">
-											        <input id="sum" name="fak_total" type="text" placeholder="TOTAL" class="form-control" readonly value=""></div>
+											        <input id="num1" name="fak_total" type="text" placeholder="MONEY" class="form-control" readonly value=""></div>
 											        </div>
 
 															<div class="form-group">
-																					<label class="col-lg-3 control-label" for="select">สถานะ</label>
-																					<div class="col-lg-3">
-																						<select class="form-control" name="status" id="select">
-																							 <option  >---เลือก---</option>
-																							<option value="0" >สมาชิก</option>
-																							<option value="100" >ผู้บริหาร</option>
-																							<option value="500" >ผู้ดูแลระบบ</option>
-																							<option value="999" >ไม่เป็นสมาชิก</option>
-																						</select>
-																					</div>
-																				</div>
+																<label class="col-lg-3 control-label" for="select">สถานะ</label>
+																<div class="col-lg-3">
+																	<select class="form-control" name="status" id="select">
+																		<option value="999" >ยกเลิกการเป็นสมาชิก</option>
+																	</select>
+																</div>
+															</div>
 
 															<div class="form-group">
 															<label class="col-md-3 control-label" for="detail">ชื่อกรรมการ</label>
@@ -144,13 +124,19 @@ if (isset($_POST["btnsubmit"])) {
 																				while ($row=mysqli_fetch_array($result)){
 																			?>
 																			<option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
-																			<?php
-																				}
-																			?>
+																			<?php } ?>
 																			</select>
 
 																		</div>
 																	</div>
+
+																	<div class="form-group">
+																		<label class="col-md-3 control-label" id="result"></label>
+																	<div class="col-md-3">
+																	<input id="num2" name="fak_test" type="hidden" value="">
+																</div>
+																</div>
+
 											                              <!-- Form actions -->
 											        <div class="form-group">
 											            <div class="col-md-12 text-right">
@@ -171,7 +157,7 @@ if (isset($_POST["btnsubmit"])) {
 	$('#countryname_1').autocomplete({
 		source: function( request, response ) {
 			$.ajax({
-				url : 'ajax_deposit_add.php',
+				url : 'ajax_stopmem.php',
 				dataType: "json",
 				method: 'post',
 			data: {
@@ -196,21 +182,26 @@ if (isset($_POST["btnsubmit"])) {
 		select: function( event, ui ) {
 		var names = ui.item.data.split("|");
 		$('#user_id_mem').val(names[1]);
-		$('#num2').val(names[2]);
+		$('#num1').val(names[2]);
+		$('#num2').val(names[3]);
+		// var newa = parseInt($('#num').val(names[3]));
+		var newa = $('#num2').val();
+
+		if (newa == 1) {
+			$('#result').html('<strong>ขออภัย</strong>คุณไม่สามารถยกเลิกบัญชีได้ เนื่องจากคุณค้างชำระเงินกู้อยู่!!');
+		}else{
+			$('#result').html('<strong>ขอบคุณ</strong></strong>ที่ใช้บริการคะ');
+		}
+
+		// alert(msg);
+
 	}
 	});
 
-	$(function() {
-		$("#num1, #num2").on("keydown keyup", sum);
-
-		function sum() {
-			$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
-		}
-	});
 </script>
 
 <?php
-require_once('stopmember.php');
+ require_once('stopmember.php');
 ?>
 <!-- right-side -->
 <?php

@@ -36,6 +36,11 @@ if (isset($_POST["btnsubmit"])) {
 		$ref_income = $_POST["ref_income"];
 		$rate = $_POST["rate"];
 		$id_commit = $_POST["id_commit"];
+
+		$update_id = $_POST["updatevalue"];
+		$sqlupdate = "UPDATE `repayment` SET `status_pay` = '2' WHERE `repayment`.`pay_id` = '$update_id'";
+		$updateresult = mysqli_query($link,$sqlupdate);
+
 		$sql = "INSERT INTO refund (mem_id,mem_name,pay_pice,ref_date,rate,ref_rate,ref_picetotal,ref_income,id_commit) VALUES('$mem_id','$mem_name','$ref_moneytree',NOW(),'$rate','$ref_rate','$ref_picetotal','$ref_income','$id_commit')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
@@ -180,7 +185,7 @@ if (isset($_POST["btnsubmit"])) {
 											                              <!-- Form actions -->
 											        <div class="form-group">
 											            <div class="col-md-12 text-right">
-
+																				<input type="hidden" name="updatevalue" value="<?=$_GET["pay_id"]?>">
 											                 <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">บันทึก</button>
 											            </div>
 											        </div>

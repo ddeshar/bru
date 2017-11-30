@@ -138,7 +138,7 @@ require_once('include/_header.php');
 												</h3>
 											</div>
 	                    <div class="panel-body">
-						
+
 						<form class="form-horizontal" action="admin_promise_add.php" method="post" enctype="multipart/form-data">
 						<!-- <form class="form-horizontal" action="admin_promise_add.php" method="post" enctype="multipart/form-data"> -->
 						<fieldset>
@@ -183,7 +183,7 @@ require_once('include/_header.php');
 						<label class="col-md-3 control-label" for="name">ชื่อ-สกุลผู้ค้ำคนที่ 1</label>
 						<div class="col-md-3">
 						<select class="form-control select2" name="name1" id="e1">
-						<?php 
+						<?php
 							$membername1 = "SELECT member.mem_name FROM submitted INNER JOIN member ON submitted.name1 = member.mem_id WHERE member.mem_id = $name1";
 							$name_mem1 = mysqli_query($link, $membername1);
 
@@ -192,7 +192,7 @@ require_once('include/_header.php');
 								$mem_name1 = $row["mem_name"];
 							}else{
 								$mem_name1 = "";
-							}						
+							}
 						?>
 						<option value="<?=$name1?>"><?=$mem_name1?></option>
 						<?php
@@ -210,16 +210,16 @@ require_once('include/_header.php');
 						<label class="col-md-3 control-label" for="name">ชื่อ-สกุลผู้ค้ำคนที่ 2</label>
 						<div class="col-md-3">
 						<select class="form-control select2" name="name2" id="e1">
-						<?php 
-							$membername2 = "SELECT member.mem_name FROM submitted INNER JOIN member ON submitted.name1 = member.mem_id WHERE member.mem_id = $name2";
+						<?php
+							$membername2 = "SELECT member.mem_name FROM submitted INNER JOIN member ON submitted.name2 = member.mem_id WHERE member.mem_id = $name2";
 							$name_mem2 = mysqli_query($link, $membername2);
 
 							if (mysqli_num_rows($name_mem2) > 0) {
-								$row = mysqli_fetch_array($name_mem1);
+								$row = mysqli_fetch_array($name_mem2);
 								$mem_name2 = $row["mem_name"];
 							}else{
 								$mem_name2 = "";
-							}						
+							}
 						?>
 						<option value="<?=$name2?>"><?=$mem_name2?></option>
 						<?php

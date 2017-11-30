@@ -13,24 +13,7 @@ EOT;
 require_once('include/_header.php');
 ?>
 <aside class="right-side">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-          ข้อมูลการยกเลิกบัญชี
-        </h1>
-        <ol class="breadcrumb">
-            <li>
-                <a href="index.php"> <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
-                    Home
-                </a>
-            </li>
-            <li>ยกเลิกบัญชี</li>
-            <li class="active">
-              ข้อมูลยกการเลิกบัญชี
-            </li>
-        </ol>
-    </section>
-    <!-- Main content -->
+
     <section class="content paddingleft_right15">
         <div class="row">
             <div class="panel panel-warning">
@@ -44,13 +27,11 @@ require_once('include/_header.php');
                         <table class="table table-bordered" id="table">
                           <thead>
                               <tr role="row">
-
+                                  <th>ลำดับที่</th>
                                   <th>รหัสสมาชิก</th>
                                   <th>ชื่อ-สกุล</th>
-
-                                  <th>วัน/เดือน/ปีเกิด</th>
-                                  <th>เบอร์โทร</th>
-                                  <th>สถานะ</th>
+                                  <th>วันที่ปิดบัญชี</th>
+                                  <!-- <th>สถานะ</th> -->
                               </tr>
                           </thead>
                           <tbody>
@@ -61,28 +42,22 @@ require_once('include/_header.php');
           $result = mysqli_query($link, $sql);
         }
 
-        $sql = "SELECT * FROM  member
-                LEFT JOIN title ON member.id_title=title.id_title WHERE status_mem = 'unpublish' ";
+        $sql = "SELECT * FROM stop_member  ";
         $result = mysqli_query($link, $sql);
+        $i = 1;
         while ($row = mysqli_fetch_array($result)){
+          $stopmem_id = $row["stopmem_id"];
           $mem_id = $row["mem_id"];
-          $title = $row["title"];
           $mem_name = $row["mem_name"];
-          $mem_birthday = $row["mem_birthday"];
-          $mem_tel = $row["mem_tel"];
-          $status_mem = $row["status_mem"];
-
-          echo "<tr>
-              <td>$mem_id</td>
-              <td>$title $mem_name</td>
-
-              <td>$mem_birthday</td>
-              <td>$mem_tel</td>
-              <td><i class='livicon' data-name='user-remove' data-c='#f56954' data-hc='#f56954' data-size='18'</i>$status_mem</td>
-
-            </tr>";
-        }
-      ?>
+          $stop_date = $row["stop_date"];
+?>
+          <tr>
+              <td><?=$i++?></td>
+              <td><?=$mem_id?></td>
+              <td><?=$mem_name?></td>
+              <td><?=$stop_date?></td>
+            </tr>
+            <?php } ?>
     </tbody>
                       </table>
                   </div>

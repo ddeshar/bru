@@ -71,7 +71,7 @@ require_once('include/_header.php');
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "SELECT * FROM `repayment`";
+							$sql = "SELECT * FROM `repayment` WHERE status_pay = 1";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$pay_id = $row["pay_id"];

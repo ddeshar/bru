@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2017 at 04:22 PM
+-- Generation Time: Nov 30, 2017 at 04:03 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -102,7 +102,9 @@ INSERT INTO `deposit` (`fak_id`, `fak_date`, `mem_id`, `name_commit`, `id_commit
 (6, '2017-11-24 08:05:57', 4, '', 1, 2800, NULL, 2800),
 (7, '2017-11-27 04:26:13', 21, '', 1, 100, NULL, 100),
 (12, '2017-11-27 08:35:23', 21, '', 1, 2000, NULL, 2100),
-(13, '2017-11-28 07:08:42', 3, '', 1, 3000, NULL, 3000);
+(13, '2017-11-28 07:08:42', 3, '', 1, 3000, NULL, 3000),
+(14, '2017-11-30 12:18:46', 23, '', 0, 2000, NULL, 2000),
+(15, '2017-11-30 12:38:34', 23, '', 1, 100, NULL, 2100);
 
 -- --------------------------------------------------------
 
@@ -260,7 +262,10 @@ INSERT INTO `promise` (`pro_id`, `mem_id`, `mem_name`, `mem_idcard`, `sub_id`, `
 (5, '9', 'มนัสชนก มารศรี', 2147483647, '', 500, '2017-11-24', '2017-11-24', 10000, '2', '8', '2019-11-24', '', '1', 0),
 (6, '10', 'อิสรา นัยเนตร', 2147483647, '', 10000, '2017-11-27', '2017-11-27', 10000, '2', '16', '2019-11-24', '', '1', 0),
 (7, '21', 'ศิริกาญ มกชาติ', 2147483647, '', 10000, '2017-11-27', '2017-11-27', 10000, '4', '5', '2019-11-27', '', '1', 0),
-(8, '9', 'มนัสชนก มารศรี', 2147483647, '', 5000, '2017-11-27', '2017-11-27', 5000, '2', '10', '2019-11-27', '', '1', 0);
+(8, '9', 'มนัสชนก มารศรี', 2147483647, '', 5000, '2017-11-27', '2017-11-27', 5000, '2', '10', '2019-11-27', '', '1', 0),
+(9, '3', 'นวพล ชัยพรรณ', 2147483647, '', 20000, '2017-11-30', '2017-11-30', 20000, '2', '4', '2019-11-28', '1512046416.pdf', '1', 0),
+(10, '23', 'ประเสริฐ เมืองรัมย์', 2147483647, '', 10000, '2017-11-30', '2017-11-30', 10000, '5', '4', '2019-11-30', '1512046576.pdf', '1', 0),
+(11, '4', 'ไสว ชัยพรรณ', 2147483647, '', 10000, '2017-11-30', '2017-11-30', 10000, '2', '3', '2019-11-30', '1512046683.jpg', '1', 0);
 
 -- --------------------------------------------------------
 
@@ -281,15 +286,6 @@ CREATE TABLE `refund` (
   `id_commit` int(4) NOT NULL COMMENT 'รหัสกรรมการ'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `refund`
---
-
-INSERT INTO `refund` (`ref_id`, `mem_id`, `mem_name`, `pay_pice`, `ref_date`, `rate`, `ref_rate`, `ref_picetotal`, `ref_income`, `id_commit`) VALUES
-(1, '', 'นรีเมธ ชัยพรรณ', 10000, '2017-11-28 15:11:32', 6, 11200, 1200, 11200, 1),
-(2, '', 'นรีเมธ ชัยพรรณ', 10000, '2017-11-28 15:13:58', 6, 11200, 1200, 11200, 0),
-(3, '2', 'นรีเมธ ชัยพรรณ', 10000, '2017-11-28 15:16:14', 6, 11200, 1200, 11200, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -306,20 +302,21 @@ CREATE TABLE `repayment` (
   `pro_redate` date NOT NULL COMMENT 'วันที่ครบกำหนดส่ง',
   `pay_date` date NOT NULL COMMENT 'วันที่จ่ายเงินกู้',
   `pay_pice` int(11) NOT NULL COMMENT 'จำนวนเงินที่จ่าย',
-  `id_commit` int(2) NOT NULL COMMENT 'รหัสกรรมการ'
+  `id_commit` int(2) NOT NULL COMMENT 'รหัสกรรมการ',
+  `status_pay` enum('1','2') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `repayment`
 --
 
-INSERT INTO `repayment` (`pay_id`, `mem_id`, `mem_name`, `mem_idcard`, `pro_id`, `sub_moneyloan`, `pro_redate`, `pay_date`, `pay_pice`, `id_commit`) VALUES
-(1, '2', 'นรีเมธ ชัยพรรณ', 2147483647, '1', 10000, '2019-11-24', '2017-11-24', 10000, 1),
-(2, '4', 'ไสว ชัยพรรณ', 2147483647, '2', 5000, '2019-11-24', '2017-11-24', 5000, 0),
-(3, '6', 'ณัฐวัฒน์ คะรุรัมย์', 2147483647, '3', 5000, '2019-11-23', '2017-11-27', 5000, 1),
-(4, '10', 'อิสรา นัยเนตร', 2147483647, '6', 10000, '2019-11-24', '2017-11-27', 10000, 1),
-(5, '21', 'ศิริกาญ มกชาติ', 2147483647, '7', 10000, '2019-11-27', '2017-11-27', 10000, 1),
-(6, '9', 'มนัสชนก มารศรี', 2147483647, '8', 5000, '2019-11-27', '2017-11-27', 5000, 1);
+INSERT INTO `repayment` (`pay_id`, `mem_id`, `mem_name`, `mem_idcard`, `pro_id`, `sub_moneyloan`, `pro_redate`, `pay_date`, `pay_pice`, `id_commit`, `status_pay`) VALUES
+(1, '2', 'นรีเมธ ชัยพรรณ', 2147483647, '1', 10000, '2019-11-24', '2017-11-24', 10000, 1, '2'),
+(2, '4', 'ไสว ชัยพรรณ', 2147483647, '2', 5000, '2019-11-24', '2017-11-24', 5000, 0, '2'),
+(3, '6', 'ณัฐวัฒน์ คะรุรัมย์', 2147483647, '3', 5000, '2019-11-23', '2017-11-27', 5000, 1, '1'),
+(4, '10', 'อิสรา นัยเนตร', 2147483647, '6', 10000, '2019-11-24', '2017-11-27', 10000, 1, '1'),
+(5, '21', 'ศิริกาญ มกชาติ', 2147483647, '7', 10000, '2019-11-27', '2017-11-27', 10000, 1, '2'),
+(6, '9', 'มนัสชนก มารศรี', 2147483647, '8', 5000, '2019-11-27', '2017-11-27', 5000, 1, '2');
 
 -- --------------------------------------------------------
 
@@ -369,14 +366,21 @@ INSERT INTO `statusb_app` (`id_sapp`, `status_app`) VALUES
 --
 
 CREATE TABLE `stop_member` (
-  `stopmem_id` int(11) NOT NULL,
+  `stopmem_id` int(4) NOT NULL,
   `mem_id` int(15) DEFAULT NULL,
   `mem_name` varchar(100) DEFAULT NULL,
   `fak_total` int(15) DEFAULT NULL,
-  `id_s` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL DEFAULT '1',
-  `stop_date` date NOT NULL
+  `stop_date` date NOT NULL,
+  `id_commit` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `stop_member`
+--
+
+INSERT INTO `stop_member` (`stopmem_id`, `mem_id`, `mem_name`, `fak_total`, `status`, `stop_date`, `id_commit`) VALUES
+(2, 23, 'ประเสริฐ เมืองรัมย์', 2100, '999', '2017-11-30', 1);
 
 -- --------------------------------------------------------
 
@@ -410,7 +414,12 @@ INSERT INTO `submitted` (`sub_id`, `mem_id`, `mem_name`, `sub_moneyloan`, `sub_o
 (6, '21', 'ศิริกาญ มกชาติ', 10000, 'พัฒนาอาชีพ', '2017-11-27', '4', '5', '1', 1, 4),
 (7, '9', 'มนัสชนก มารศรี', 5000, 'เพื่อการศึกษา', '2017-11-27', '2', '10', '1', 1, 4),
 (8, '9', 'มนัสชนก มารศรี', 5000, 'ซื้อหวย', '2017-11-26', '2', '8', '1', 2, 2),
-(9, '3', 'นวพล ชัยพรรณ', 20000, 'พัฒนาอาชีพ', '2017-11-28', '2', '4', '1', 1, 1);
+(9, '3', 'นวพล ชัยพรรณ', 20000, 'พัฒนาอาชีพ', '2017-11-28', '2', '4', '1', 1, 3),
+(10, '23', 'ประเสริฐ เมืองรัมย์', 10000, 'dddd', '2017-11-30', '5', '12', '1', 1, 3),
+(11, '4', 'ไสว ชัยพรรณ', 10000, 'ffff', '2017-11-30', '2', '3', '1', 1, 3),
+(12, '10', 'อิสรา นัยเนตร', 5000, 'ddd', '2017-11-30', '2', '6', '1', 1, 1),
+(13, '10', 'อิสรา นัยเนตร', 20000, 'ddddd', '2017-11-30', '2', '4', '1', 0, 0),
+(14, '3', 'นวพล ชัยพรรณ', 20000, 'dddd', '2017-11-30', '5', '4', '1', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -434,7 +443,7 @@ CREATE TABLE `tbl_users` (
 
 INSERT INTO `tbl_users` (`user_id`, `username`, `password`, `email`, `status`, `name`, `mem_id`) VALUES
 (1, 'admin', 'e342d72a6abe84354e164344aa7109742e91aacc79739b8c7d1da412d5f9400e', 'ampare444@hotmail.com', '500', 'แนน แอดมิน', 1),
-(2, '1319900395871', 'e342d72a6abe84354e164344aa7109742e91aacc79739b8c7d1da412d5f9400e', 'nareemet@hotmail.com', '0', 'นรีเมธ ชัยพรรณ', 2),
+(2, '1319900395871', 'e342d72a6abe84354e164344aa7109742e91aacc79739b8c7d1da412d5f9400e', 'nareemet@hotmail.com', '999', 'นรีเมธ ชัยพรรณ', 2),
 (3, '1319900229431', '1d5d987a95101db0c5c53da527d9359123d912a72db01679d36a5469b01dfd24', 'nawapon@hotmail.com', '0', 'นวพล ชัยพรรณ', 3),
 (4, '3310101707268', 'ff75d050b435ee9dce18aaf9b4b87b1c3bea6f2c4b3164950f751c5811be6384', 'sawai@hotmail.com', '0', 'ไสว ชัยพรรณ', 4),
 (5, '3310100429744', '6ef3216ead35d42f9a06c83733991f0a45acdd4e290b5072e362953e90bdc8f1', 'tanom@hotmail.com', '0', 'ถนอม ชัยพรรณ', 5),
@@ -455,7 +464,7 @@ INSERT INTO `tbl_users` (`user_id`, `username`, `password`, `email`, `status`, `
 (20, '1319900092100', '6e7219e1c4fe6206ca8c521c7f01a87abcc1cd36bee63be40f9ede7bb02b88a3', 'singha@hotmail.com', '0', 'สิงหา จิตรรัมย์', 20),
 (21, '4310100003486', '02f6a801629222425e8e28becf4973612e8b03ba17cf51934686699631f72b54', 'sirikan@hotmail.com', '0', 'ศิริกาญ มกชาติ', 21),
 (22, '3310100246038', '6f00a71b380a49af101684a7a6b1e5de77cd395fa51789e89fd1b5813bc53db0', 'thong@hotmail.com', '0', 'ตุ้มทอง  เมืองรัมย์', 22),
-(23, '3310100429817', '6b725d68a22e678ae316041ec2b99ec3bab637e5c4437139222cd77ec097e3c3', 'prasert@hotmail.com', '0', 'ประเสริฐ เมืองรัมย์', 23),
+(23, '3310100429817', '6b725d68a22e678ae316041ec2b99ec3bab637e5c4437139222cd77ec097e3c3', 'prasert@hotmail.com', '999', 'ประเสริฐ เมืองรัมย์', 23),
 (24, '3310100429884', '8a8ef663857d730b73506a3b30b56936d2f74437f507f17f715c1bf1e7d92d70', 'saranya@hotmai.com', '0', 'ศรันยา เมืองรัมย์', 24),
 (25, '3210100429761', '10195cc83ed27e0961e40fe4712d80ba53b265816afeebdd7c3bffc77f780540', 'payap@hotmail.com', '0', 'พายัพ ชัยพรรณ', 25),
 (27, 'manager', 'd08f29da2bfaf4e625fd9692e6ee7c7d2c6635bb8ae424b8f54906cc6160d88e', 'manager@hotmail.com', '100', 'ผมเป็นผู้บริหารคับ', 26);
@@ -522,7 +531,9 @@ INSERT INTO `user_history` (`id_history`, `session`, `timein`, `timeout`, `user_
 (17, 'pskea29u1qc49vhmm2rchjvb27', '2017-11-28 03:09:21', '0000-00-00 00:00:00', 1, '1', '10.133.0.145'),
 (18, 'pskea29u1qc49vhmm2rchjvb27', '2017-11-28 09:13:37', '0000-00-00 00:00:00', 1, '1', '10.133.0.145'),
 (19, '7vsj9aobg0vmrq32k09hn7f7j5', '2017-11-28 11:16:00', '0000-00-00 00:00:00', 1, '1', '172.20.10.3'),
-(20, '9apqlhkgnhr57bc1tk9vt93sq0', '2017-11-28 12:26:23', '0000-00-00 00:00:00', 1, '1', '172.20.10.3');
+(20, '9apqlhkgnhr57bc1tk9vt93sq0', '2017-11-28 12:26:23', '0000-00-00 00:00:00', 1, '1', '172.20.10.3'),
+(21, 'pvkhnjos1s0s0b659092h2qok7', '2017-11-30 11:40:50', '0000-00-00 00:00:00', 1, '1', '127.0.0.1'),
+(22, 'pvkhnjos1s0s0b659092h2qok7', '2017-11-30 15:01:44', '0000-00-00 00:00:00', 1, '1', '172.20.10.3');
 
 --
 -- Indexes for dumped tables
@@ -638,7 +649,7 @@ ALTER TABLE `committee`
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `fak_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `fak_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `member`
 --
@@ -648,22 +659,27 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT for table `promise`
 --
 ALTER TABLE `promise`
-  MODIFY `pro_id` int(4) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการทำสัญญา', AUTO_INCREMENT=9;
+  MODIFY `pro_id` int(4) NOT NULL AUTO_INCREMENT COMMENT 'รหัสการทำสัญญา', AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `refund`
 --
 ALTER TABLE `refund`
-  MODIFY `ref_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ref_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `repayment`
 --
 ALTER TABLE `repayment`
   MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT for table `stop_member`
+--
+ALTER TABLE `stop_member`
+  MODIFY `stopmem_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `submitted`
 --
 ALTER TABLE `submitted`
-  MODIFY `sub_id` int(4) NOT NULL AUTO_INCREMENT COMMENT 'รหัสยื่นกู้', AUTO_INCREMENT=10;
+  MODIFY `sub_id` int(4) NOT NULL AUTO_INCREMENT COMMENT 'รหัสยื่นกู้', AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
@@ -673,7 +689,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `user_history`
 --
 ALTER TABLE `user_history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- Constraints for dumped tables
 --

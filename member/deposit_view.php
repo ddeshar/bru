@@ -1,12 +1,13 @@
 <?php
-$page = 'Admin';
-$title = 'Hello admin';
+$page = 'Member';
+$title = 'Hello Member';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+require_once('include/_date.php');
 ?>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
@@ -59,7 +60,7 @@ require_once('include/_header.php');
 													<tbody>
 														<?php
 														if (isset($s_login_mem_id)) {
-                                $mem_id = @$_GET["mem_id"];
+                               		 $mem_id = @$_GET["mem_id"];
 																$sql = "SELECT DISTINCT deposit.mem_id,
 																member.mem_name,
 																deposit.fak_id,
@@ -74,22 +75,24 @@ require_once('include/_header.php');
 																while ($row = mysqli_fetch_array($result)) {
 																	$fak_id = $row["fak_id"];
 																	$fak_date = $row["fak_date"];
-																	$mem_id1 = $row["mem_id"];
+																	$mem_id = $row["mem_id"];
 																	$name_commit = $row["name_commit"];
 																	$fak_sum = $row["fak_sum"];
 																	$withdraw = $row["withdraw"];
 																	$fak_total = $row["fak_total"];
 																	$mem_name = $row["mem_name"];
-																	echo "<tr>
-																	 		<td>$fak_id</td>
-																			<td>$fak_date</td>
-																			<td>$mem_id</td>
-																			<td>$mem_name</td>
-																			<td>$name_commit</td>
-																			<td>$fak_sum</td>
-																			<td>$withdraw</td>
-																			<td>$fak_total</td>
-																	</tr>";
+																	?>
+																	<tr>
+																	 		<td><?=$fak_id?></td>
+																			<td><?php $strDate = "$fak_date";	echo DateThai($strDate);?></td>
+																			<td><?=$mem_id?></td>
+																			<td><?=$mem_name?></td>
+																			<td><?=$name_commit?></td>
+																			<td align='center'><?php echo number_format($fak_sum);?></td>
+																			<td align='center'><?php echo number_format($withdraw);?></td>
+																			<td align='center'><?php echo number_format($fak_total);?></td>
+																	</tr>
+																	<?php
 																}
 															}
 														 ?>

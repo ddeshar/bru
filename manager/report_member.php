@@ -1,6 +1,6 @@
 <?php
-$page = 'Admin';
-$title = 'Admin Page';
+$page = 'manager';
+$title = 'manager Page';
 $css = <<<EOT
 <!--page level css -->
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
@@ -9,123 +9,193 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+require_once('include/_sdate.php');
+
+ include ("include/fcdate.php");
+$startdate= (isset($_REQUEST['startdate'])) ? $_REQUEST['startdate']: '';
+$enddate= (isset($_REQUEST['enddate'])) ? $_REQUEST['enddate']: '';
+
 ?>
-<aside class="right-side">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-        รายงานข้อมูลสมาชิก
-        </h1>
-        <ol class="breadcrumb">
-            <li>
-                <a href="index.php"> <i class="livicon" data-name="home" data-size="18" data-loop="true"></i>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="#">DataTables</a>
-            </li>
-            <li class="active">
-              รายงานข้อมูลสมาชิก
-            </li>
-        </ol>
-    </section>
-    <!-- Main content -->
-    <section class="content">
-        <!-- Second Data Table -->
-        <div class="row">
-            <div class="col-md-12">
-                <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet box default">
-                    <div class="portlet-title">
-                        <div class="caption"> <i class="livicon" data-name="table" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางรายงานข้อมูลสมาชิก
+
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"><!-- InstanceBegin template="/Templates/admintemplate.dwt" codeOutsideHTMLIsLocked="false" --> <!--<![endif]-->
+
+ <!-- BEGIN HEAD -->
+
+
+
+
+ <aside class="right-side">
+     <!-- Content Header (Page header) -->
+
+ <section class="content">
+     <!-- Second Data Table -->
+     <div class="row">
+         <div class="col-md-12">
+             <!-- BEGIN EXAMPLE TABLE PORTLET-->
+             <div class="portlet box default">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="background:#fff">
+                        <h3 style="color:black"><i class="fa fa-book"></i> <!-- InstanceBeginEditable name="หัวตาราง" --><center>รายงานข้อมูลสมาชิก</center><!-- InstanceEndEditable --></h3>
+                        </div>
+
+
+                       <!-- InstanceBeginEditable name="เนื้อหา" -->
+
+                       <div class="row">
+    <div class="col-lg-12">
+        <div class="box">
+            <header>
+                <div class="icons">
+                    <i class="icon-calendar"></i>
+                </div>
+                <h5></h5>
+
+                <div class="toolbar">
+                    <ul class="nav pull-right">
+                        <li>
+                            <a href="#dateRangePickerBlock" data-toggle="collapse"
+                               class="accordion-toggle minimize-box">
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="close-box">
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <br>
+          <!--<form method="get">
+            <div class="form-group">
+              <label class="control-label col-lg-1">เริ่มต้น</label>
+			<div class="col-lg-3">
+            <input type="date"  name="startdate" class="form-control col-lg-6" value="<//?php echo $startdate; ?>" />
+                </div>
+           <div class="form-group">
+              <label class="control-label col-lg-1">สิ้นสุด</label>
+			<div class="col-lg-3">
+            <input type="date" name="enddate" class="form-control col-lg-6" value="<//?php echo $enddate; ?>" />
+             </div>
+               <div class="form-actions no-margin-bottom">
+          <input type="submit" value="ตกลง" class="btn btn-success"/>
+                                 </div>
+             </div>
+             </div>
+           </form>-->
+
+
+			<div class="panel-body">
+        <div id="sample_editable_1_wrapper" class="">
+            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
+                                    <thead bgcolor="#fff" class="style3">
+                                        <tr>
+                                              <th><center>No.</center></th>
+                                              <th>รหัสสมาชิก</th>
+                                              <th>ชื่อ-สกุล</th>
+                                              <th>วัน/เดือน/ปีเกิด</th>
+                                              <th>เบอร์โทร</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+<?php
+$i=1;
+if (isset($_GET["mem_id"])) {
+  $mem_id = $_GET["mem_id"];
+  $sql = "delete from member where mem_id='$mem_id'";
+  $result = mysqli_query($link, $sql);
+							}
+
+                  $sql = "SELECT * FROM member
+                          LEFT JOIN gender
+                          ON member.id_gender = gender.id_gender
+                          LEFT JOIN title
+                          ON member.id_title = title.id_title
+                          LEFT JOIN status
+                          ON member.id_status = status.id_status
+                          ORDER BY mem_id ASC	";
+
+                          $result = mysqli_query($link, $sql);
+                          while ($row = mysqli_fetch_array($result)){
+                            $mem_id = $row["mem_id"];
+                            $id_title = $row["title"];
+                            $mem_name = $row["mem_name"];
+                            $mem_idcard = $row["mem_idcard"];
+                            $mem_birthday = $row["mem_birthday"];
+                            $mem_address = $row["mem_address"];
+                            $mem_tel = $row["mem_tel"];
+                            $status_mem = $row["status_mem"];
+?>
+  									<tr>
+                      <td><?=$i?></td>
+                      <td><?=$mem_id?></td>
+                      <td><?=$id_title, $mem_name?></td>
+                      <td><?=$mem_birthday?></td>
+                      <td><?=$mem_tel?></td>
+
+  							</tr>
+        	 <?php
+			 $i++; }
+
+			 ?>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<center>
+<a href="report_member_print.php?"><img src="asset/img/printer.png" width="100"></a>  <?php //code ปริ้น   ?>
+</center>
+</div>
+</div>
+</div>
+</div><!-- InstanceEndEditable --> </div>
+
                         </div>
                     </div>
-                    <div class="portlet-body">
-                        <div class="table-toolbar">
-                            <!--<div class="btn-group">
-                              <a href="admin_member_add.php"   class=" btn btn-custom">
-                                    เพิ่ม
-                                    <i class="fa fa-plus"></i>
-                                </button> </a>
-                            </div>-->
-                            <div class="btn-group pull-right">
-                              <button id="test_print" class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
-                                                        Print
-                                </button>
-                            </div>
-                        </div>
-                        <div id="sample_editable_1_wrapper" class="">
-                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
-                                <thead>
-                                    <tr role="row">
-
-                                        <th>รหัสสมาชิก</th>
-                                        <th>ชื่อ-สกุล</th>
-                                        <th>วัน/เดือน/ปีเกิด</th>
-                                        <th>เบอร์โทร</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                      						<?php
-                      							if (isset($_GET["mem_id"])) {
-                      								$mem_id = $_GET["mem_id"];
-                      								$sql = "delete from member where mem_id='$mem_id'";
-                      								$result = mysqli_query($link, $sql);
-                      							}
-
-                      							$sql = "SELECT * FROM member
-                      		                  LEFT JOIN gender
-                      		                  ON member.id_gender = gender.id_gender
-                      		                  LEFT JOIN title
-                      		                  ON member.id_title = title.id_title
-                      		                  LEFT JOIN status
-                      		                  ON member.id_status = status.id_status
-                      			                ORDER BY mem_id ASC	";
-                      							$result = mysqli_query($link, $sql);
-                      							while ($row = mysqli_fetch_array($result)){
-                      								$mem_id = $row["mem_id"];
-                      								$id_title = $row["title"];
-                      								$mem_name = $row["mem_name"];
-                      								$mem_birthday = $row["mem_birthday"];
-                                      $mem_tel = $row["mem_tel"];
-                                      $status_mem = $row["status_mem"];
-
-
-                      								echo "<tr>
-                      										<td>$mem_id</td>
-                      										<td>$id_title $mem_name</td>
-        										              <td>$mem_birthday</td>
-                                          <td>$mem_tel</td>
-                                        </tr>";
-                      							}
-                      						?>
-                      					</tbody>
-                            </table>
-                        </div>
-                        <!-- END EXAMPLE TABLE PORTLET--> </div>
                 </div>
             </div>
+
+            <div class="row">
+
+
+            </div>
+            <div class="row">
+
+
+            </div>
+
+            </div>
+
+
+
+
         </div>
-    </section>
-    <!-- content -->
+       <!--END PAGE CONTENT -->
+
+
+    </div>
+
+  </section>
+  <!-- content -->
 </aside>
 <!-- right-side -->
 <?php
 require_once('include/_footer.php');
 ?>
+
+
 <script type="text/javascript" src="asset/vendors/datatables/select2.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/dataTables.bootstrap.js"></script>
 <script type="text/javascript" src="asset/js/pages/table-editable.js"></script>
 </body>
 </html>
-
-
-<script type="text/javascript">
-  $('#test_print').click(function(){
-    var view_open = window.open('report_member_print.php','Print-Window','width=1024,height=768,top=100,left=100');
-    view_open.print();
-  });
-</script>

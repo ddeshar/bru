@@ -72,14 +72,14 @@ color: white;
                 </a>
             </li>
             <li <?php if($page == 'report_committee') echo 'class="active" id="active"'; ?> >
-                <a href="report_committee.php">
+                <a href="report_committes.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลกรรมการ
                 </a>
             </li>
-            <li <?php if($page == 'report_tori2') echo 'class="active" id="active"'; ?> >
+            <li <?php if($page == 'report_deposit') echo 'class="active" id="active"'; ?> >
               <h5 class="report_black"> <i class ="re">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายงานข้อมูลสัจจะออมทรัพย์</i> </h5>
-                <a href="report_tori2.php">
+                <a href="report_deposit.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการฝาก - ถอน
                 </a>
@@ -91,27 +91,27 @@ color: white;
                     ข้อมูลการยกเลิกบัญชี
                 </a>
             </li>
-            <li <?php if($page == 'report_fund') echo 'class="active" id="active"'; ?> >
+            <li <?php if($page == 'report_submitted.php') echo 'class="active" id="active"'; ?> >
             <h5 class="report_black">  <i class ="re" class="report_black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายงานข้อมูลกองทุนหมู่บ้าน</i> </h5>
-                <a href="report_fund.php">
+                <a href="report_submitted.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการยื่นกู้
                 </a>
             </li>
             <li <?php if($page == 'report_approve') echo 'class="active" id="active"'; ?> >
-                <a href="report_approve.php">
+                <a href="report_approves.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลอนุมัติเงินกู้
                 </a>
             </li>
             <li <?php if($page == 'report_promise') echo 'class="active" id="active"'; ?> >
-                <a href="report_promise.php">
+                <a href="report_promises.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการทำสัญญากู้ยืมเงิน
                 </a>
             </li>
             <li <?php if($page == 'report_repayment') echo 'class="active" id="active"'; ?> >
-                <a href="report_repayment.php">
+                <a href="report_repayments.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการจ่ายเงินกู้ให้ผู้กู้
                 </a>

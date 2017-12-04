@@ -1,62 +1,107 @@
 <?php
+$page = 'manager';
+$title = 'manager Page';
+$css = <<<EOT
+<!--page level css -->
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/dataTables.bootstrap.css" />
+<link href="asset/css/pages/tables.css" rel="stylesheet" type="text/css" />
+<!--end of page level css-->
+EOT;
 require_once('include/connect.php');
+require_once('include/_sdate.php');
+
+ include ("include/fcdate.php");
+$startdate= (isset($_REQUEST['startdate'])) ? $_REQUEST['startdate']: '';
+$enddate= (isset($_REQUEST['enddate'])) ? $_REQUEST['enddate']: '';
+
 ?>
 
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="1;url=report_stopmember.php"> <?php //code ปริ้น   ?>
+<title>ระบบบริหารจัดการกองทุนหมู่บ้านและสัจจะออมทรัพย์</title>
+</head>
+<body  onload="window.print()"> <?php //code ปริ้น   ?>
+<form  class="form-horizontal">
+<center><img src="asset/img/logos.png" width="90" /></center>
+</form> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<center><font face = "TH SarabunPSK", size="6"><b>รายงานข้อมูลการยกเลิกบัญชี</b></font></center>
+                <center><font face = "TH SarabunPSK", size="5">หมู่บ้านสวนครัว<br>
+                																			73  ม.14  ตำบลอิสาณ  อำเภอเมือง  จังหวัดบุรีรัมย์ 31000 </font></center><br>
 
-<table width="100%" border="0" cellspacing="1" cellpadding="1" bordercolor="#000" style=" border-collapse: collapse;">
-          <tr>
-             <td width="50" align="center" style="padding:10px"> <img src="asset/img/logos.png"  width="88" height="88" alt=""> </td>
+            <table align="center">
+                                <tr>
+                                <td>ระหว่างวันที่</td>
+                                    <td><?php $strDate = "$startdate";	echo DateThai($strDate);?></td>
+                                    <td>&nbsp;ถึงวันที่&nbsp;</td>
+                                    <td><?php $strDate = "$enddate";	echo DateThai($strDate);?></td>
+									     </tr>
+										</table>   <br>
+        <table border="1" align="center" width="1000"  cellpadding="0"   cellspacing="0">
+                                    <thead>
+                                        <tr>
 
-               <td style="padding:10px;">  <b>กองทุนหมู่บ้านและสัจจะออมทรัพย์หมู่บ้านสวนครัว</b> <br>
 
-                <b> รายงานข้อมูลการยกเลิกบัญชี</b>
-</table>
 
-<hr width="n" align="center" size="1" noshade color="black">
-<table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
-  <thead>
-      <tr role="row">
+                                          <th align="center">No.</th>
+                                          <th align="center">ชื่อสกุล</th>
+                                          <th align="center">ยอดสัจจะคงเหลือ</th>
+                                          <th align="center">วันที่ยกเลิกบัญชี</th>
 
-          <th width="15%" align="left">รหัสสมาชิก</th>
-          <th width="30%" align="left">ชื่อ-สกุล</th>
-          <th width="20%" align="left">วัน/เดือน/ปีเกิด</th>
-          <th width="20%" align="left">เบอร์โทร</th>
-          <th width="20%" align="left">สถานะ</th>
-      </tr>
-  </thead>
-    <tbody>
-      <?php
 
-      if (isset($_GET["mem_id"])) {
-        $mem_id = $_GET["mem_id"];
-        $sql = "delete from member where mem_id='$mem_id'";
-        $result = mysqli_query($link, $sql);
-      }
+                                        </tr>
+                                    </thead>
 
-      $sql = "SELECT * FROM  member
-              LEFT JOIN title ON member.id_title=title.id_title WHERE status_mem = 'unpublish' ";
-      $result = mysqli_query($link, $sql);
-      while ($row = mysqli_fetch_array($result)){
-        $mem_id = $row["mem_id"];
-        $title = $row["title"];
-        $mem_name = $row["mem_name"];
-        $mem_birthday = $row["mem_birthday"];
-        $mem_tel = $row["mem_tel"];
-        $status_mem = $row["status_mem"];
+                                    <?php
 
-        echo "<tr>
-            <td>$mem_id</td>
-            <td>$title $mem_name</td>
+                                    $i=1;
+                                    if (isset($_GET["mem_id"])) {
+                                              $mem_id = $_GET["mem_id"];
+                                              $sql = "delete from member where mem_id='$mem_id'";
+                                              $result = mysqli_query($link, $sql);
+                                    							}
 
-            <td>$mem_birthday</td>
-            <td>$mem_tel</td>
-            <td><i class='livicon' data-name='user-remove' data-c='#f56954' data-hc='#f56954' data-size='18'</i>$status_mem</td>
+                                    $sql = "SELECT * FROM stop_member
+                                    WHERE  stop_member.stop_date BETWEEN '$startdate' AND '$enddate'
+                                    GROUP BY
+                                    stop_member.stopmem_id";
+                                    $result = mysqli_query($link, $sql);
+                                    while ($row = mysqli_fetch_array($result)){
+                                    $stopmem_id = $row["stopmem_id"];
+                                    $mem_id = $row["mem_id"];
+                                    $mem_name = $row["mem_name"];
+                                    $fak_total = $row['fak_total'];
+                                    $stop_date = $row["stop_date"];
+                                    ?>
+                                      									<tr>
+                                                          <td><?=$i?></td>
+                                                          <td><?=$mem_name?></td>
+                                                          <td><?php echo number_format($fak_total);?></td>
+                                                          <td><?php $strDate = "$stop_date";	echo DateThai($strDate);?></td>
 
-          </tr>";
+
+                                      							</tr>
+
+                                            	 <?php
+                                    			 $i++; }
+
+                                    			 ?>
+
+
+
+</body>
+</html>
+<?php //code ปริ้น   ?>
+<script type="text/javascript">
+function printDiv(divName) {
+var printContents = document.getElementById(divName).innerHTML;
+var originalContents = document.body.innerHTML;
+
+document.body.innerHTML = printContents;
+window.print();
+
+document.body.innerHTML = originalContents;
 }
-
-?>
-    </tbody>
-</table>
-<br /><br />
-<p>หมายเหตุ : publish = เป็นสมาชิก, unpublish = ไม่เป็นสมาชิก</P>
+</script>

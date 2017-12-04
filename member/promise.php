@@ -9,6 +9,7 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+require_once('include/_sdate.php');
 ?>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
@@ -45,7 +46,7 @@ require_once('include/_header.php');
                     <div class="portlet-body">
                         <div class="table-toolbar">
 
-                            
+
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
@@ -79,17 +80,19 @@ require_once('include/_header.php');
 								$app_pice = $row["app_pice"];
                 $sub_date = $row["sub_date"];
                 $pro_date = $row["pro_date"];
-								echo "<tr>
-										<td>$pro_id</td>
-										<td>$mem_id</td>
-										<td>$mem_name</td>
-										<td>$app_pice</td>
-                    <td>$sub_date</td>
-                    <td>$pro_date</td>
+								?>
+                <tr>
+										<td><?=$pro_id?></td>
+										<td><?=$mem_id?></td>
+										<td><?=$mem_name?></td>
+										<td><?php echo number_format($app_pice);?></td>
+                    <td><?php $strDate = "$sub_date";	echo DateThai($strDate);?></td>
+                    <td><?php $strDate = "$pro_date";	echo DateThai($strDate);?></td>
                     <td align='center'>
-                    <a href='promise_view.php?pro_id=$pro_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
+                    <a href='promise_view.php?pro_id=<?=$pro_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
 										</td>
-                    </tr>";
+                  </tr>
+                  <?php
                   }
               }
 						?>

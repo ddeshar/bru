@@ -1,7 +1,15 @@
 <?php
 require_once('include/connect.php');
+require_once('include/_date.php');
 ?>
-
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="1;url=report_history.php"> <?php //code ปริ้น   ?>
+<title>ระบบบริหารจัดการกองทุนหมู่บ้านและสัจจะออมทรัพย์</title>
+</head>
+<body  onload="window.print()"> <?php //code ปริ้น   ?>
+<form  class="form-horizontal">
 
 <table width="100%" border="0" cellspacing="1" cellpadding="1" bordercolor="#000" style=" border-collapse: collapse;">
           <tr>
@@ -46,14 +54,16 @@ require_once('include/connect.php');
           $ip = $row["ip"];
 
 
-          echo "<tr>
+          ?>
+          <tr>
 
-          <td>$user_id</td>
-          <td>$timein</td>
-          <td>$ip</td>
+          <td><?=$user_id?></td>
+          <td><?php $strDate = "$timein";	echo DateThai($strDate);?></td>
+          <td><?=$ip?></td>
 
 
-            </tr>";
+            </tr>
+            <?php
         }
       ?>
     </tbody>

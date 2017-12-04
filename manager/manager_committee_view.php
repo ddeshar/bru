@@ -8,6 +8,7 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
+
 if (isset($_GET["id_committee"])) {
 		$id_committee = $_GET["id_committee"];
 		$sql = "SELECT * FROM committee

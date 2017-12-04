@@ -7,6 +7,7 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+require_once('include/_sdate.php');
 
 if (isset($s_login_mem_id)) {
 		// $pro_id = $_GET["pro_id"];
@@ -102,16 +103,14 @@ if (isset($s_login_mem_id)) {
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลสมาชิก</label><p><?=$mem_name?></p>
 													<label class="col-md-5 control-label" for="id">เลขที่บัตรประจำตัวประชาชาชน</label><p><?=$mem_idcard?></p>
 													<!-- <label class="col-md-5 control-label" for="id">รหัสการอนุมัติ</label><p><?//=$sub_id?></p> -->
-													<label class="col-md-5 control-label" for="id">จำนวนเงินที่อนุมัติ</label><p><?=$app_pice?></p>
-													<label class="col-md-5 control-label" for="id">วันที่อนุมัติ</label><p><?=$sub_date?></p>
-													<label class="col-md-5 control-label" for="id">วันที่ทำสัญญา</label><p><?=$pro_date?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินที่อนุมัติ</label><p><?php echo number_format($app_pice);?> บาท</p>
+													<label class="col-md-5 control-label" for="id">วันที่อนุมัติ</label><p><?php $strDate = "$sub_date";	echo DateThai($strDate);?></p>
+													<label class="col-md-5 control-label" for="id">วันที่ทำสัญญา</label><p><?php $strDate = "$pro_date";	echo DateThai($strDate);?></p>
 													<!-- <label class="col-md-5 control-label" for="id">เลขทีสัญญา</label><p><?//=$pro_number?></p> -->
-													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?=$sub_moneyloan?></p>
-													<label class="col-md-5 control-label" for="id">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label><p><?=$sub_idcardBM1?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินกู้</label><p><?php echo number_format($sub_moneyloan);?> บาท</p>
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลผู้ค้ำคนที่ 1</label><p><?=$name1?></p>
-													<label class="col-md-5 control-label" for="id">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label><p><?=$sub_idcardBM2?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อ-สกุลผู้ค้ำคนที่ 2</label><p><?=$name2?></p>
-													<label class="col-md-5 control-label" for="id">วันครบกำหนดส่ง</label><p><?=$pro_redate?></p>
+													<label class="col-md-5 control-label" for="id">วันครบกำหนดส่ง</label><p><?php $strDate = "$pro_redate";	echo DateThai($strDate);?></p>
 													<label class="col-md-5 control-label" for="id">ชื่อกรรมการ</label><p><?=$id_commit?></p>
 
 										</div>

@@ -1,32 +1,74 @@
-<h2><center>สามารถกู้ได้ เพราะคุณมีจำนวนเงินคือ<?php echo number_format($budget);?> <center></h2>
 
 <?php
-    $sql2 = "SELECT * FROM `member` WHERE mem_id = '$loan'";
+error_reporting( error_reporting() & ~E_NOTICE );
+require_once('include/connect.php');
 
-    $result = mysqli_query($link, $sql2);
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_array($result);
-        $mem_ids = $row["mem_id"];
-        $mem_names = $row["mem_name"];
-    }else{
-        $mem_ids = "";
-        $mem_names = "";
-    }
-?>
 
-<form class="form-horizontal" action="admin_submitted_add.php" method="post">
+if (isset($s_login_mem_id)) {
+  $sql = "SELECT * FROM member
+      LEFT JOIN gender
+      ON member.id_gender = gender.id_gender
+      LEFT JOIN title
+      ON member.id_title = title.id_title
+      LEFT JOIN status
+      ON member.id_status = status.id_status WHERE member.mem_id = '$s_login_mem_id'
+      ORDER BY mem_id ASC";
+  $result = mysqli_query($link, $sql);
+  if (mysqli_num_rows($result) > 0) {
+  $row = mysqli_fetch_array($result);
+  $mem_id = $row["mem_id"];
+  $mem_idcard = $row["mem_idcard"];
+  $id_gender = $row["gender_name"];
+  $id_title = $row["title"];
+  $mem_name = $row["mem_name"];
+
+  }else{
+  $mem_id = "";
+  $mem_idcard = "";
+  $id_gender = "";
+  $id_title = "";
+  $mem_name = "";
+
+
+  }
+  $sql2 = "SELECT * FROM `member` WHERE mem_id = '$loan'";
+
+   $result = mysqli_query($link, $sql2);
+   if (mysqli_num_rows($result) > 0) {
+       $row = mysqli_fetch_array($result);
+       $mem_ids = $row["mem_id"];
+       $mem_names = $row["mem_name"];
+   }else{
+       $mem_ids = "";
+       $mem_names = "";
+   }
+  }
+  ?>
+
+
+
+
+<h2><center>สามารถกู้ได้ เพราะคุณมีจำนวนเงินคือ<?=$budget?> <center></h2>
+
+<form class="form-horizontal" action="member_submitted_add.php" method="post">
     <fieldset>
-
+        <!-- Name input-->
         <div class="form-group">
-            <label class="col-md-3 control-label" for="name">รหัสสมาชิก</label>
+            <label class="col-md-3 control-label" for="id">รหัสการยื่นกู้</label>
             <div class="col-md-3">
-            <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" value="<?=$mem_ids?>" class="form-control" readonly></div>
+            <input id="sub_id" name="sub_id" type="text" placeholder="AUTO-ID" class="form-control" readonly></div>
         </div>
 
         <div class="form-group">
-        <label class="col-md-3 control-label" for="name">ชื่อ-สกุลสมาชิก</label>
+        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
         <div class="col-md-3">
-        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" value="<?=$mem_names?>" class="form-control" readonly></div>
+        <input  name="mem_id" type="text" value="<?php echo "$mem_id"; ?>" class="form-control"readonly></div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-md-3 control-label" for="name">ชื่อ-สกุล</label>
+        <div class="col-md-3">
+        <input  name="mem_name" type="text" value="<?php echo "$mem_name"; ?>" class="form-control" readonly></div>
         </div>
 
         <div class="form-group">
@@ -58,7 +100,7 @@
                         $resultmem1 = mysqli_query($link, $membersql1);
                         while ($row=mysqli_fetch_array($resultmem1)){
                     ?>
-                    <option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
+                    <option value="<?=$row['mem_name']?>"> <?=$row['mem_name']?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -74,7 +116,7 @@
                         $resultmem2 = mysqli_query($link, $membersql);
                         while ($row=mysqli_fetch_array($resultmem2)){
                     ?>
-                    <option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
+                    <option value="<?=$row['mem_name']?>"> <?=$row['mem_name']?></option>
                     <?php } ?>
                 </select>
             </div>

@@ -54,7 +54,6 @@ require_once('include/_header.php');
                                         <th>รหัสสมาชิก</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>รวมเงินที่คืนทั้งหมด</th>
-                                        <th>ค้างชำระ</th>
                                         <th>วันที่รับชำระ</th>
                                         <th><center>ดูข้อมูล</center></th>
                                     </tr>
@@ -70,8 +69,7 @@ require_once('include/_header.php');
 							$sql = "SELECT refund.ref_id,
               refund.mem_id,
               member.mem_name,
-              refund.ref_picetotal,
-              refund.owe,
+              refund.ref_rate,
               refund.ref_date
               FROM refund LEFT JOIN member ON refund.mem_id = member.mem_id WHERE member.mem_id = '$s_login_mem_id'";
 							$result = mysqli_query($link, $sql);
@@ -79,16 +77,14 @@ require_once('include/_header.php');
 								$ref_id = $row["ref_id"];
 								$mem_id = $row["mem_id"];
 								$mem_name = $row["mem_name"];
-                $ref_picetotal = $row["ref_picetotal"];
-                $owe = $row["owe"];
+                $ref_rate = $row["ref_rate"];
                 $ref_date = $row["ref_date"];
                 ?>
                 <tr>
 										<td><?=$ref_id?></td>
 										<td><?=$mem_id?></td>
 										<td><?=$mem_name?></td>
-                    <td><?php echo number_format($ref_picetotal);?></td>
-                    <td><?php echo number_format($owe);?></td>
+                    <td><?php echo number_format($ref_rate);?></td>
                     <td><?=$ref_date?></td>
                     <td align='center'><a href='refund_view.php?ref_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
 									</tr>

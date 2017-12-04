@@ -8,6 +8,7 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
+
 if (isset($s_login_mem_id)) {
 				$sql = "SELECT * FROM member
 						LEFT JOIN gender

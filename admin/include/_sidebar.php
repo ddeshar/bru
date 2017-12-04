@@ -160,7 +160,7 @@
             </li>
             <li <?php if($page == 'report_deposit') echo 'class="active" id="active"'; ?> >
               <i class ="re">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายงานข้อมูลสัจจะออมทรัพย์</i>
-                <a href="report_tori2.php">
+                <a href="report_depsit.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการฝาก-ถอน
                 </a>
@@ -179,25 +179,25 @@
             </li>
             <li <?php if($page == 'report_fund') echo 'class="active" id="active"'; ?> >
               <i class ="re">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายงานข้อมูลกองทุนหมู่บ้าน</i>
-                <a href="report_fund.php">
+                <a href="report_submitted.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการยื่นกู้
                 </a>
             </li>
             <li <?php if($page == 'report_approve') echo 'class="active" id="active"'; ?> >
-                <a href="report_approve.php">
+                <a href="report_approves.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลอนุมัติเงินกู้
                 </a>
             </li>
             <li <?php if($page == 'report_promise') echo 'class="active" id="active"'; ?> >
-                <a href="report_promise.php">
+                <a href="report_promises.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการทำสัญญากู้ยืมเงิน
                 </a>
             </li>
             <li <?php if($page == 'report_repayment') echo 'class="active" id="active"'; ?> >
-                <a href="report_repayment.php">
+                <a href="report_repayments.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการจ่ายเงินกู้ให้ผู้กู้
                 </a>

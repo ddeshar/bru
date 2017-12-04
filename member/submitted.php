@@ -9,6 +9,7 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+require_once('include/_date.php')
 ?>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
@@ -50,7 +51,7 @@ require_once('include/_header.php');
                                     Tools
                                     <i class="fa fa-angle-down"></i>
                                 </button>
-                                <!-- <ul class="dropdown-menu pull-right">
+                                <ul class="dropdown-menu pull-right">
                                     <li>
                                         <a href="#">Print</a>
                                     </li>
@@ -64,7 +65,7 @@ require_once('include/_header.php');
                                             Export to Excel
                                         </a>
                                     </li>
-                                </ul> -->
+                                </ul>
                             </div>
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
@@ -105,7 +106,7 @@ require_once('include/_header.php');
                       										<td><?=$mem_id?></td>
                       										<td><?=$mem_name?></td>
                       										<td><?php echo number_format($sub_moneyloan);?></td>
-                                          <td><?=$sub_date?></td>
+                                          <td><?php $strDate = "$sub_date";	echo DateThai($strDate);?></td>
 
 
                                           <td align='center'>

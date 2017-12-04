@@ -27,7 +27,6 @@
             }
         </style>
 
-
     <!-- end of global css -->
     <?php echo isset ($css) ?  $css : '' ?>
 </head>

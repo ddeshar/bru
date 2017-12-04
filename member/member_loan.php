@@ -9,6 +9,7 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+require_once('include/_bdate.php');
 ?>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
@@ -90,14 +91,16 @@ require_once('include/_header.php');
                         								$mem_birthday = $row["mem_birthday"];
                                         $mem_tel = $row["mem_tel"];
                                         $status_mem = $row["status_mem"];
-                        								echo "<tr>
-                        										<td>$mem_id</td>
-                        										<td>$id_title $mem_name</td>
-                        										<td>$mem_birthday</td>
-                                            <td>$mem_tel</td>
-                                            <td>$status_mem</td>
+                        								?>
+                                        <tr>
+                        										<td><?=$mem_id?></td>
+                        										<td><?=$id_title,$mem_name?></td>
+                        										<td><?php $strDate = "$mem_birthday"; echo DateThai($strDate);?></td>
+                                            <td><?=$mem_tel?></td>
+                                            <td><?=$status_mem?></td>
                                             <td align='center'><a href='member_submitted_add.php?loan=$mem_id' class='btn default btn-xs purple'><i class='fa fa-money'></i></a> </td>
-                                          </tr>";
+                                          </tr>
+                                          <?php
                         							}
                         						?>
                         					</tbody>

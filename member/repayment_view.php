@@ -21,7 +21,6 @@ require_once('include/_header.php');
 			$mem_name = $row["mem_name"];
 			$mem_idcard = $row["mem_idcard"];
 			$pro_id = $row["pro_id"];
-			$pro_number = $row["pro_number"];
 			$sub_moneyloan = $row["sub_moneyloan"];
 			$pro_redate = $row["pro_redate"];
 			$pay_date = $row["pay_date"];

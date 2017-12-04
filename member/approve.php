@@ -9,6 +9,7 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+require_once('include/_sdate.php');
 ?>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
@@ -75,17 +76,19 @@ require_once('include/_header.php');
                                       $sub_date = $row["sub_date"];
                                       $id_sapp = $row["status_app"];
 
-                      								echo "<tr>
-                      										<td>$sub_id</td>
-                      										<td>$mem_id</td>
-                      										<td>$mem_name</td>
-                      										<td>$sub_moneyloan</td>
-                                          <td>$sub_date</td>
-                                          <td>$id_sapp</td>
+                      								?>
+                                      <tr>
+                      										<td><?=$sub_id?></td>
+                      										<td><?=$mem_id?></td>
+                      										<td><?=$mem_name?></td>
+                      										<td><?=$sub_moneyloan?></td>
+                                          <td><?php $strDate = "$sub_date";	echo DateThai($strDate);?></td>
+                                          <td><?=$id_sapp?></td>
 
                                           <td align='center'>
-                                          <a href='submitted_view.php?sub_id=$sub_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
-                                          </tr>";
+                                          <a href='submitted_view.php?sub_id=<?=$sub_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
+                                          </tr>
+                                          <?php
                                     }
                                   }
                       						?>

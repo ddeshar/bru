@@ -22,7 +22,7 @@ require_once('include/_header.php');
             <li>Pages</li>
             <li class="active">Blank page</li>
         </ol>
-        <h1>ยินดีต้อนรับคุณ <?=$s_login_username?></h1>
+        <h1>ยินดีต้อนรับคุณ <?=$s_login_name?></h1>
         อีเมล์<?=$s_login_email?>
     </section>
     <section class="content"></section>

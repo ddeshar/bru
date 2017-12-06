@@ -42,20 +42,26 @@ require_once('include/_header.php');
           $result = mysqli_query($link, $sql);
         }
 
-        $sql = "SELECT * FROM stop_member  ";
+        $sql = "SELECT member.mem_id, title.title, member.mem_name, member.mem_birthday, member.mem_tel, member.status_mem FROM member
+        LEFT JOIN title
+        ON member.id_title = title.id_title
+        LEFT JOIN status
+        ON member.id_status = status.id_status
+        WHERE member.status_mem = 'unpublish'
+        ORDER BY mem_id ASC	";
         $result = mysqli_query($link, $sql);
         $i = 1;
         while ($row = mysqli_fetch_array($result)){
-          $stopmem_id = $row["stopmem_id"];
           $mem_id = $row["mem_id"];
+          $id_title = $row["title"];
           $mem_name = $row["mem_name"];
-          $stop_date = $row["stop_date"];
+          $status_mem = $row["status_mem"];
 ?>
           <tr>
               <td><?=$i++?></td>
               <td><?=$mem_id?></td>
-              <td><?=$mem_name?></td>
-              <td><?=$stop_date?></td>
+              <td><?=$id_title?> <?=$mem_name?></td>
+              <td><?=$status_mem?></td>
             </tr>
             <?php } ?>
     </tbody>

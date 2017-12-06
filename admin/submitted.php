@@ -10,8 +10,13 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-    if(isset($_GET["approve"])){
+    if(isset($_GET["approve"]) && isset($_GET["request"]) ){
         $approve=$_GET["approve"];
+        $request=$_GET["request"];
+
+        $sqlupdatemem = "UPDATE `member` SET `fund_status` = '1' WHERE `member`.`mem_id` = '$request'";
+        $updateresultmem = mysqli_query($link,$sqlupdatemem);
+
         $approvesql = "UPDATE submitted SET id_sapp = '1' , sanya = '1' WHERE sub_id = '$approve'";
         $result=mysqli_query($link, $approvesql);
         if($result==1){
@@ -22,6 +27,7 @@ require_once('include/_header.php');
     // 1 อนุมัติให้ทำสัญญาเงินกู้
     // 2 ไม่อนุมัติกู้เงิน
     // 3 อนุมัติกู้เงิน
+    // 4 จ่ายเงินกู้ให้ผู้กู้
 
     if(isset($_GET["unapprove"])){
         $unapprove=$_GET["unapprove"];
@@ -124,7 +130,7 @@ require_once('include/_header.php');
                                           <td><?=$sub_date?></td>
                                           <!-- <td><//?=$id_sapp?></td> -->
                                           <td align='center'><a href='admin_submitted_view1.php?sub_id=<?=$sub_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
-                                          <td align='center'><a href='submitted.php?approve=<?=$sub_id?>' class="btn btn-responsive button-alignment btn-success"><i class='fa  fa-check'></i></a>
+                                          <td align='center'><a href='submitted.php?approve=<?=$sub_id?>&request=<?=$mem_id?>' class="btn btn-responsive button-alignment btn-success"><i class='fa  fa-check'></i></a>
                                           | <a href='submitted.php?unapprove=<?=$sub_id?>' class="btn btn-responsive button-alignment btn-danger"><i class='fa  fa-remove'></i></a>
                                           </tr>
                                           <?php

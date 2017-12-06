@@ -41,6 +41,9 @@ if (isset($_POST["btnsubmit"])) {
 		$sqlupdate = "UPDATE `repayment` SET `status_pay` = '2' WHERE `repayment`.`pay_id` = '$update_id'";
 		$updateresult = mysqli_query($link,$sqlupdate);
 
+		$sqlupdatemem = "UPDATE `member` SET `fund_status` = '0' WHERE `member`.`mem_id` = '$mem_id'";
+		$updateresultmem = mysqli_query($link,$sqlupdatemem);
+
 		$sql = "INSERT INTO refund (mem_id,mem_name,pay_pice,ref_date,rate,ref_rate,ref_picetotal,ref_income,id_commit) VALUES('$mem_id','$mem_name','$ref_moneytree',NOW(),'$rate','$ref_rate','$ref_picetotal','$ref_income','$id_commit')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {

@@ -96,14 +96,14 @@ require_once('include/_header.php');
                         								$result = mysqli_query($link, $sql);
                         							}
 
-                        							$sql = "SELECT * FROM member
-                        		                  LEFT JOIN gender
-                        		                  ON member.id_gender = gender.id_gender
-                        		                  LEFT JOIN title
-                        		                  ON member.id_title = title.id_title
-                        		                  LEFT JOIN status
-                        		                  ON member.id_status = status.id_status
-                        			                ORDER BY mem_id ASC	";
+                                      $sql = "SELECT member.mem_id, title.title, member.mem_name, member.mem_birthday, member.mem_tel, member.status_mem FROM member
+                                      LEFT JOIN title
+                                      ON member.id_title = title.id_title
+                                      LEFT JOIN status
+                                      ON member.id_status = status.id_status
+                                      WHERE member.fund_status ='0' AND member.status_mem = 'publish'
+                                      ORDER BY mem_id ASC	";
+
                         							$result = mysqli_query($link, $sql);
                         							while ($row = mysqli_fetch_array($result)){
                         								$mem_id = $row["mem_id"];

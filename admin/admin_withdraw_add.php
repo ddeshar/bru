@@ -36,6 +36,10 @@ if (isset($_POST["btnsubmit"])) {
 		}else{
 			die("Query Failed" . mysqli_error($link));
 		}
+	}elseif (isset($_POST["sorry"])){
+		echo "<script type='text/javascript'>";
+		echo "alert('ไม่สามารถถอนเงินได้');";
+		echo "</script>";
 	}
 ?>
 
@@ -199,6 +203,10 @@ require_once('include/_footer.php');
 
 			if (subtract < 0) {
 				text = "ไม่สามารถถอนเงินได้";
+
+				$('button.btn').text("ไม่สามารถถอนเงินได้");
+				$('button.btn').prop("name", "sorry");
+
 			} else {
 				text = "สามารถถอนเงินได้";
 			}

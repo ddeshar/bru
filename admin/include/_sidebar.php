@@ -111,6 +111,12 @@
                     ทำสัญญากู้ยืมเงิน
                 </a>
             </li>
+            <li <?php if($page == 'promise') echo 'class="active" id="active"'; ?> >
+                <a href="repayment2.php">
+                    <i class="fa fa-angle-double-right"></i>
+                    ข้อมูลการทำสัญญากู้ยืมเงิน
+                </a>
+            </li>
             <li <?php if($page == 'repayment') echo 'class="active" id="active"'; ?> >
                 <a href="repayment.php">
                     <i class="fa fa-angle-double-right"></i>
@@ -160,7 +166,7 @@
             </li>
             <li <?php if($page == 'report_deposit') echo 'class="active" id="active"'; ?> >
               <i class ="re">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายงานข้อมูลสัจจะออมทรัพย์</i>
-                <a href="report_depsit.php">
+                <a href="report_deposit.php">
                     <i class="fa fa-angle-double-right"></i>
                     ข้อมูลการฝาก-ถอน
                 </a>

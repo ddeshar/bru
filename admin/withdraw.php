@@ -55,7 +55,7 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
+                                        <th>No.</th>
                                         <th>รหัสสมาชิก</th>
                                         <th>วันทีถอน</th>
                                         <th>ชื่อผู้ถอน</th>
@@ -67,7 +67,7 @@ require_once('include/_header.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-						<?php
+						<?php $i=1;
 							if (isset($_GET["fak_id"])) {
 								$fak_id = $_GET["fak_id"];
 								$sql = "DELETE FROM deposit WHERE fak_id='$fak_id'";
@@ -98,6 +98,7 @@ require_once('include/_header.php');
                 $fak_total = $row["fak_total"];
 ?>
 								 <tr>
+                    <td><?php echo $i++;?></td>
 										<td><?=$mem_id?></td>
 										<td><?=$fak_date?></td>
 										<td><?=$mem_name?></td>

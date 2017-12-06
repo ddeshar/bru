@@ -17,6 +17,13 @@
     <!-- Custom styles for this template -->
     <link href="index_page/css/half-slider.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/half-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="index_page/css/grop_body.css">
         <style>
             a, h1, h2, h3, h4, h5, h6{
                 font-family: 'Kanit', sans-serif !important;
@@ -33,6 +40,16 @@
     border-radius:10px;
     background:white;
     }
+    #knowledges{
+    border:solid 1px black;
+    width:500px;
+    height:400px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    background:white;
+    }
+
     </style>
     </head>
 
@@ -115,13 +132,14 @@
           <!-- Page Content -->
           <section class="py-5">
           <div class="container">
-          <h1>ข่าวประชาสัมพันธ์</h1>
-          <p>แบบฟอร์มสมัครสมาชิก</p>
-          <p>   <a href="index_page/file/memberadd.pdf" target="_blank">CLICK! </a></P>
-          <p>แบบฟอร์มการขอกู้เงินกองทุน</p>
-          <p>   <a href="index_page/file/frm_submitted.pdf" target="_blank">CLICK! </a></P>
-
+            <h1>ข่าวประชาสัมพันธ์</h1>
+            <p>แบบฟอร์มสมัครสมาชิก</p>
+            <p><a href="index_page/file/memberadd.pdf" target="_blank">CLICK! </a></p>
+            <p>แบบฟอร์มการขอกู้เงินกองทุน</p>
+            <p> <a href="index_page/file/frm_submitted.pdf" target="_blank">CLICK! </a></p>
           </div>
+          <section class="py-5"></section>
+
           </section>
 
             <!-- Footer -->

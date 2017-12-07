@@ -30,7 +30,7 @@ require_once('include/_header.php');
                                   <th>ลำดับที่</th>
                                   <th>รหัสสมาชิก</th>
                                   <th>ชื่อ-สกุล</th>
-                                  <th>วันที่ปิดบัญชี</th>
+                                  <th>สถานะ</th>
                                   <th><div align ='center'>ดูข้อมูล</div></th>
                                   <th><div align ='center'>อนุมัติให้เป็นสมาชิกอีกครั้ง </div></th>
                               </tr>

@@ -91,7 +91,8 @@ require_once('include/_header.php');
                       		                  LEFT JOIN title
                       		                  ON member.id_title = title.id_title
                       		                  LEFT JOIN status
-                      		                  ON member.id_status = status.id_status
+                                            ON member.id_status = status.id_status
+                                            WHERE member.status_mem = 'publish'
                       			                ORDER BY mem_id ASC	";
                       							$result = mysqli_query($link, $sql);
                                     $i = 1;

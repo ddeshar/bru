@@ -28,8 +28,8 @@ if (isset($_GET["id_committee"])) {
 			$com_birthday = $row["com_birthday"];
 			$com_address = $row["com_address"];
 			$com_tel = $row["com_tel"];
-			$com_username = $row["com_username"];
-			$com_password = $row["com_password"];
+			// $com_username = $row["com_username"];
+			// $com_password = $row["com_password"];
 		}else{
 			$id_committee = "";
 			$com_idcard = "";
@@ -39,8 +39,8 @@ if (isset($_GET["id_committee"])) {
 			$com_birthday = "";
 			$com_address = "";
 			$com_tel = "";
-			$com_username = "";
-			$com_password = "";
+			// $com_username = "";
+			// $com_password = "";
 		}
 	}
 ?>
@@ -93,8 +93,8 @@ if (isset($_GET["id_committee"])) {
 													<label class="col-md-5 control-label" for="id">วันเกิด</label><p><?=$com_birthday?></p>
 													<label class="col-md-5 control-label" for="id">ที่อยู่</label><p><?=$com_address?></p>
 													<label class="col-md-5 control-label" for="id">เบอร์โทร</label><p><?=$com_tel?></p>
-													<label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$com_username?></p>
-													<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$com_password?></p>
+													<!-- <label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?//=$com_username?></p>
+													<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?//=$com_password?></p> -->
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
                         <div class="btn-group pull-right">

@@ -31,7 +31,8 @@ require_once('include/_header.php');
                                   <th>รหัสสมาชิก</th>
                                   <th>ชื่อ-สกุล</th>
                                   <th>วันที่ปิดบัญชี</th>
-                                  <!-- <th>สถานะ</th> -->
+                                  <th><div align ='center'>ดูข้อมูล</div></th>
+                                  <th><div align ='center'>อนุมัติให้เป็นสมาชิกอีกครั้ง </div></th>
                               </tr>
                           </thead>
                           <tbody>
@@ -62,6 +63,10 @@ require_once('include/_header.php');
               <td><?=$mem_id?></td>
               <td><?=$id_title?> <?=$mem_name?></td>
               <td><?=$status_mem?></td>
+              <td align='center'><a href='admin_stopmem_view.php?mem_id=<?=$mem_id?>' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a>
+              <td align='center'><a href='admin_stopmember_add.php?approve=<?=$mem_id?>' class="btn btn-responsive button-alignment btn-success"><i class='fa  fa-check'></i></a>
+
+              </tr>
             </tr>
             <?php } ?>
     </tbody>

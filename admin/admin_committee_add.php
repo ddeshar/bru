@@ -19,13 +19,13 @@ if (isset($_POST["btnsubmit"])) {
 		$com_birthday = $_POST["com_birthday"];
 		$com_address = $_POST["com_address"];
 		$com_tel = $_POST["com_tel"];
-		$com_username = $_POST["com_username"];
-		$com_password = $_POST["com_password"];
+ // echo $sql;exit;
 
-
-		$sql = "INSERT INTO committee (id_committee,com_idcard,id_title,com_name,id_position,com_birthday,com_address,com_tel,com_username,com_password)
-						VALUES('$id_committee','$com_idcard','$id_title','$com_name','$id_position','$com_birthday','$com_address','$com_tel','$com_username','$com_password')";
+		$sql = "INSERT INTO committee (id_committee,com_idcard,id_title,com_name,id_position,com_birthday,com_address,com_tel)
+						VALUES('$id_committee','$com_idcard','$id_title','$com_name','$id_position','$com_birthday','$com_address','$com_tel')";
 		$result = mysqli_query($link, $sql);
+
+
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";
@@ -87,7 +87,7 @@ if (isset($_POST["btnsubmit"])) {
 																<label class="col-md-3 control-label" for="name">เลขประจำตัวประชาชน</label>
 																<div class="col-md-3">
 																<input id="sessionNum" name="com_idcard" type="text" onkeypress="return isNumberKey(event)" maxlength="13" placeholder="IDCARD" class="form-control" required></div>
-																<span style="color: red;">	<span id="sessionNum_counter">13</span> *โปรดระบุเลขที่บัตรประชาชนให้ถูกต้องเพื่อใช้เป็น Username </span>
+																<span style="color: red;">	<span id="sessionNum_counter">13</span> หลัก </span>
 																</div>
 
                                 <div class="form-group">
@@ -136,7 +136,7 @@ if (isset($_POST["btnsubmit"])) {
 																					<div class="form-group">
 			                                    <label class="col-md-3 control-label" for="birth">วันเกิด</label>
 			                                    <div class="col-md-3">
-	                                        <input type="date" id="datepicker" name="com_birthday" class="form-control round-form"     placeholder="DATE"></div>
+	                                        <input type="date" name="com_birthday" class="form-control round-form"     placeholder="DATE"></div>
 																					</div>
 
 
@@ -152,7 +152,7 @@ if (isset($_POST["btnsubmit"])) {
 																<input id="com_tel" name="com_tel" type="text" placeholder="TEL" class="form-control"></div>
 																</div>
 
-																<div class="form-group">
+																<!-- <div class="form-group">
 																<label class="col-md-3 control-label" for="name">ชื่อผู้ใช้</label>
 																<div class="col-md-3">
 																<input id="com_username" name="com_username" type="text" placeholder="USERNAME" class="form-control" required></div>
@@ -164,7 +164,7 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="col-md-3">
 																<input id="com_password" name="com_password" type="text" placeholder="PASSWORD" class="form-control" required></div>
 																<span style="color: red;">	*รหัสผ่านโปรดระบุเป็นวันเดือนปีเกิด เช่น 1 ม.ค. 2538 เป็น 01012538 </span>
-																</div>
+																</div> -->
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
@@ -193,9 +193,9 @@ require_once('include/_footer.php');
 </html>
 
 <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
+  // $(document).ready(function() {
+  //   $("#datepicker").datepicker();
+  // });
 
 
 

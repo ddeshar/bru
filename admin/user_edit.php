@@ -8,11 +8,18 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 if (isset($_POST["btnEdit"])) {
+	// var_dump($_POST); exit;
+	$mem_id= $_POST["memid"];
 		$user_id = $_POST["user_id"];
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 		$email = $_POST["email"];
 		$status = $_POST["status"];
+
+		$sqlupdatemem = "UPDATE `member` SET `status_mem` = 'publish' WHERE `member`.`mem_id` = '$mem_id'";
+		$updateresultmem = mysqli_query($link,$sqlupdatemem);
+
+
 		$sql = "UPDATE tbl_users SET user_id='$user_id', username='$username', password='$password', email='$email', status='$status' where user_id='$user_id'";
 		//echo $sql;exit;
 		$result = mysqli_query($link, $sql);
@@ -31,12 +38,14 @@ if (isset($_POST["btnEdit"])) {
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
+			$mem_id = $row["mem_id"];
 			$user_id = $row["user_id"];
 			$username = $row["username"];
 			$password = $row["password"];
 			$email = $row["email"];
 			$status = $row["status"];
 		}else{
+			$mem_id = "";
 			$user_id = "";
 			$username = "";
 			$password = "";
@@ -137,7 +146,7 @@ if (isset($_POST["btnEdit"])) {
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
 
-
+<input type="hidden" name="memid" value="<?=$mem_id?>">
                                       <button name="btnEdit" type="submit" value="แก้ไขข้อมูลผู้ดูแลระบบ" class="btn btn-primary">บันทึก</button>
                                     </div>
                                 </div>

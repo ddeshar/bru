@@ -51,7 +51,7 @@ require_once('include/_bdate.php');
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
                             </div> -->
-                            
+
                         </div>
                         <div id="sample_editable_1_wrapper" class="">
                           <div id="sample_editable_1_wrapper" class="">
@@ -74,15 +74,13 @@ require_once('include/_bdate.php');
                         								$result = mysqli_query($link, $sql);
                         							}
 
-                        							$sql = "SELECT * FROM member
-                        		                  LEFT JOIN gender
-                        		                  ON member.id_gender = gender.id_gender
-                        		                  LEFT JOIN title
-                        		                  ON member.id_title = title.id_title
-                        		                  LEFT JOIN status
-                        		                  ON member.id_status = status.id_status
-                                              WHERE member.mem_id = '$s_login_mem_id'
-                        			                ORDER BY mem_id ASC	";
+                                      $sql = "SELECT member.mem_id, title.title, member.mem_name, member.mem_birthday, member.mem_tel, member.status_mem FROM member
+                                      LEFT JOIN title
+                                      ON member.id_title = title.id_title
+                                      LEFT JOIN status
+                                      ON member.id_status = status.id_status
+                                      WHERE member.fund_status ='0' AND  member.mem_id = '$s_login_mem_id'
+                                      ORDER BY mem_id ASC	";
                         							$result = mysqli_query($link, $sql);
                         							while ($row = mysqli_fetch_array($result)){
                         								$mem_id = $row["mem_id"];

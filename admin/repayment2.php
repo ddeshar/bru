@@ -71,7 +71,7 @@ require_once('include/_header.php');
                             $sql = "SELECT * FROM `submitted`
                             LEFT JOIN promise ON submitted.mem_id = promise.mem_id
                             LEFT JOIN repayment ON submitted.mem_id = repayment.mem_id
-                            WHERE repayment.status_pay = '2'";
+                            WHERE repayment.status_pay = '1'";
               							$result = mysqli_query($link, $sql);
               							while ($row = mysqli_fetch_array($result)){
                               $sub_id = $row["sub_id"];

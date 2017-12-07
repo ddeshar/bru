@@ -100,7 +100,7 @@ if (isset($s_login_mem_id)) {
                         $resultmem1 = mysqli_query($link, $membersql1);
                         while ($row=mysqli_fetch_array($resultmem1)){
                     ?>
-                    <option value="<?=$row['mem_name']?>"> <?=$row['mem_name']?></option>
+                    <option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -116,13 +116,12 @@ if (isset($s_login_mem_id)) {
                         $resultmem2 = mysqli_query($link, $membersql);
                         while ($row=mysqli_fetch_array($resultmem2)){
                     ?>
-                    <option value="<?=$row['mem_name']?>"> <?=$row['mem_name']?></option>
+                    <option value="<?=$row['mem_id']?>"> <?=$row['mem_name']?></option>
                     <?php } ?>
                 </select>
             </div>
         </div>
-
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label class="col-md-3 control-label" for="name">ชื่อกรรมการ</label>
           <div class="col-md-3">
                 <select class="form-control" name="id_commit" id="id_commit">
@@ -136,7 +135,7 @@ if (isset($s_login_mem_id)) {
                     <?php } ?>
                 </select>
               </div>
-        </div>
+        </div> -->
 
         <div class="form-group">
             <div class="col-md-12 text-right">

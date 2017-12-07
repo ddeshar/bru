@@ -100,7 +100,7 @@ require_once('include/_date.php');
 													</tbody>
 											</table>
 										</div>
-                    
+
                 </div>
             </div>
         </div>
@@ -109,5 +109,9 @@ require_once('include/_date.php');
 <?php
 require_once('include/_footer.php');
 ?>
+<script type="text/javascript" src="asset/vendors/datatables/select2.min.js"></script>
+<script type="text/javascript" src="asset/vendors/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="asset/vendors/datatables/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="asset/js/pages/table-editable.js"></script>
 </body>
 </html>

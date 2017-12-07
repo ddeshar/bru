@@ -17,13 +17,13 @@ if (isset($_POST["btnEdit"])) {
 		$com_birthday = $_POST["com_birthday"];
 		$com_address = $_POST["com_address"];
 		$com_tel = $_POST["com_tel"];
-		$com_username = $_POST["com_username"];
-		$com_password = $_POST["com_password"];
+		// $com_username = $_POST["com_username"];
+		// $com_password = $_POST["com_password"];
 
 
 		$sql = "update committee set id_committee='$id_committee', com_idcard='$com_idcard', id_title='$id_title',
 		com_name='$com_name', id_position='$id_position', com_birthday='$com_birthday', com_address='$com_address',
-		com_tel='$com_tel', com_username='$com_username', com_password='$com_password'
+		com_tel='$com_tel'
 		where id_committee='$id_committee'";
 
 		$result = mysqli_query($link, $sql);
@@ -50,8 +50,8 @@ if (isset($_POST["btnEdit"])) {
 			$com_birthday = $row["com_birthday"];
 			$com_address = $row["com_address"];
 			$com_tel = $row["com_tel"];
-			$com_username = $row["com_username"];
-			$com_password = $row["com_password"];
+			// $com_username = $row["com_username"];
+			// $com_password = $row["com_password"];
 		}else{
 			$id_committee = "";
 			$com_idcard = "";
@@ -61,8 +61,8 @@ if (isset($_POST["btnEdit"])) {
 			$com_birthday = "";
 			$com_address = "";
 			$com_tel = "";
-			$com_username = "";
-			$com_password = "";
+			// $com_username = "";
+			// $com_password = "";
 		}
 	}
 ?>
@@ -193,7 +193,7 @@ if (isset($_POST["btnEdit"])) {
 																				<input  name="com_tel" type="text" value="<?php echo "$com_tel"; ?>" class="form-control"></div>
 																</div>
 
-																<div class="form-group">
+																<!-- <div class="form-group">
 																		<label class="col-md-3 control-label" for="name">ชื่อผู้ใช้</label>
 																		<div class="col-md-3">
 																				<input  name="com_username" type="text" value="<?php echo "$com_username"; ?>" class="form-control" readonly></div>
@@ -203,7 +203,7 @@ if (isset($_POST["btnEdit"])) {
 																		<label class="col-md-3 control-label" for="name">รหัสผ่าน</label>
 																		<div class="col-md-3">
 																				<input  name="com_password" type="text" value="<?php echo "$com_password"; ?>" class="form-control" readonly></div>
-																</div>
+																</div> -->
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">

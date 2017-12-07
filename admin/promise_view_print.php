@@ -31,15 +31,13 @@ if (isset($_GET["pro_id"])) {
 			$pro_id = $row["pro_id"];
 			$mem_id = $row["mem_id"];
 			$mem_name = $row["mem_name"];
-			$mem_idcard = $row["mem_idcard"];
-			//$sub_id = $row["sub_id"];
+      $mem_idcard = $row["mem_idcard"];
 			$app_pice = $row["app_pice"];
 			$sub_date = $row["sub_date"];
 			$pro_date = $row["pro_date"];
 			//$pro_number = $row["pro_number"];
 			$sub_moneyloan = $row["sub_moneyloan"];
-			$sub_idcardBM1 = $row["sub_idcardBM1"];
-			$sub_idcardBM2 = $row["sub_idcardBM2"];
+
 			$name1 = $row["name1"];
 			$name2 = $row["name2"];
 			$pro_redate = $row["pro_redate"];
@@ -56,8 +54,7 @@ if (isset($_GET["pro_id"])) {
 			$pro_date = "";
 			//$pro_number = "";
 			$sub_moneyloan = "";
-			$sub_idcardBM1 = "";
-			$sub_idcardBM2 = "";
+
 			$name1 = "";
 			$name2 = "";
 			$pro_redate = "";
@@ -80,9 +77,9 @@ if (isset($_GET["pro_id"])) {
 						<label for="id"><b>วันที่ทำสัญญา</b> : <?=$pro_date?></label><br>
 													<!-- <label class="col-md-5 control-label" for="id">เลขทีสัญญา</label><p><?//=$pro_number?></p> -->
 						<label for="id"><b>จำนวนเงินกู้</b> : <?php echo number_format($sub_moneyloan);?> บาท</label><br>
-						<label for="id"><b>เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</b> : <?=$sub_idcardBM1?></label><br>
+
 						<label for="id"><b>ชื่อ-สกุลผู้ค้ำคนที่ 1</b> : <?=$name1?></label><br>
-						<label for="id"><b>เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</b> : <?=$sub_idcardBM2?></label><br>
+
 						<label for="id"><b>ชื่อ-สกุลผู้ค้ำคนที่ 2</b> : <?=$name2?></label><br>
 						<label for="id"><b>วันครบกำหนดส่ง</b> : <?=$pro_redate?></label><br>
 						<label for="id"><b>ชื่อกรรมการ</b> : <?=$id_commit?></label><br>

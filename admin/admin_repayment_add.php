@@ -30,7 +30,7 @@ require_once('include/_header.php');
 
 <?php
 	if (isset($_POST["btnsubmit"])) {
-			$pay_id = $_POST["pay_id"];
+			// $pay_id = $_POST["pay_id"];
 			$mem_id = $_POST["mem_id"];
 			$mem_name = $_POST["mem_name"];
 			$mem_idcard = $_POST["mem_idcard"];
@@ -47,7 +47,7 @@ require_once('include/_header.php');
 			$approvesql = "UPDATE `submitted` SET `sanya`= '4' WHERE sub_id = '$sanya'";
 			$results=mysqli_query($link, $approvesql);
 
-			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,sub_moneyloan,pro_redate,pay_date,pay_pice,id_commit)VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$sub_moneyloan','$pro_redate',NOW(),'$pay_pice','$id_commit')";
+			$sql = "INSERT INTO repayment (/*pay_id,*/mem_id,mem_name,mem_idcard,pro_id,sub_moneyloan,pro_redate,pay_date,pay_pice,id_commit)VALUES(/*'$pay_id',*/'$mem_id','$mem_name','$mem_idcard','$pro_id','$sub_moneyloan','$pro_redate',NOW(),'$pay_pice','$id_commit')";
 			 //echo $sql; exit;
 			$result = mysqli_query($link, $sql);
 			if ($result) {

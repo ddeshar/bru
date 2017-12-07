@@ -18,6 +18,21 @@ require_once('include/_header.php');
 <script type="text/javascript" src="asset/js/jquery-ui.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <?php
+
+if(isset($_GET["approve"])){
+	$mem_id=$_GET["approve"];
+
+	$updatestatus = "UPDATE `tbl_users` SET `status` = '0' WHERE `tbl_users`.`mem_id` = '$mem_id'";
+	$results=mysqli_query($link, $updatestatus);
+
+	$sqlupdatemem = "UPDATE `member` SET `status_mem` = 'publish' WHERE `member`.`mem_id` = '$mem_id'";
+	$updateresultmem = mysqli_query($link,$sqlupdatemem);
+	if($result==1){
+			header('location: admin_stopmember_add.php');
+	}
+
+}
+
 if (isset($_POST["btnsubmit"])) {
 
 		$mem_id = $_POST["mem_id"];
@@ -28,6 +43,9 @@ if (isset($_POST["btnsubmit"])) {
 
 		$updatestatus = "UPDATE `tbl_users` SET `status` = '$status' WHERE `tbl_users`.`mem_id` = '$mem_id'";
 		$results=mysqli_query($link, $updatestatus);
+
+		$sqlupdatemem = "UPDATE `member` SET `status_mem` = 'unpublish' WHERE `member`.`mem_id` = '$mem_id'";
+		$updateresultmem = mysqli_query($link,$sqlupdatemem);
 
 		$sql = "INSERT INTO stop_member (stop_date,mem_id,mem_name,id_commit,fak_total,status)
 		VALUES(NOW(),'$mem_id','$mem_name','$id_commit','$fak_total','$status')";
@@ -40,6 +58,10 @@ if (isset($_POST["btnsubmit"])) {
 		}else{
 			die("Query Failed" . mysqli_error($link));
 		}
+	}elseif (isset($_POST["sorry"])){
+		echo "<script type='text/javascript'>";
+		echo "alert('ถ้าจะยกเลิกคุณต้องชำระหนี้ก่อน');";
+		echo "</script>";
 	}
 ?>
 
@@ -189,6 +211,8 @@ if (isset($_POST["btnsubmit"])) {
 
 		if (newa == 1) {
 			$('#result').html('<strong>ขออภัย</strong>คุณไม่สามารถยกเลิกบัญชีได้ เนื่องจากคุณค้างชำระเงินกู้อยู่!!');
+			$('button.btn').text("ไม่สามารถยกเลิกบัญชีได้");
+			$('button.btn').prop("name", "sorry");
 		}else{
 			$('#result').html('<strong>ขอบคุณ</strong></strong>ที่ใช้บริการคะ');
 		}

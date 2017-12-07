@@ -42,7 +42,7 @@ require_once('include/connect.php');
 		<label for="id"> <b>รหัสกองทุน</b> : <?=$id_fund?></label> <br>
 		<label for="id"> <b>ชื่อกองทุน</b> : <?=$fund_name?></label> <br>
 		<label for="id"> <b>รายละเอียด</b> : <?=$fund_detail?></label> <br>
-		<label for="id"> <b>จำนวนเงิน</b> : <?=$fund_money?> บาท</label> <br>
+		<label for="id"> <b>จำนวนเงิน</b> : <?php echo number_format($fund_money);?> บาท</label> <br>
 
 
     </tbody>

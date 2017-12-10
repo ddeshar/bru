@@ -49,7 +49,7 @@
                         </li>
                         <?php } ?>
                         <li class="footer">
-                            <a href="http://localhost/suankrua14/admin/submitted.php">ดูทั้งหมด</a>
+                            <a href="submitted.php">ดูทั้งหมด</a>
                         </li>
                     </ul>
                 </li>
@@ -91,7 +91,43 @@
                         </li>
                         <?php } ?>
                         <li class="footer">
-                            <a href="http://localhost/suankrua14/admin/user.php">ดูทั้งหมด</a>
+                            <a href="user.php">ดูทั้งหมด</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown messages-menu">
+                    <?php
+                        $paydate = "SELECT count(*) as total FROM repayment WHERE MONTH(pro_redate) = MONTH(CURRENT_DATE()) AND YEAR(pro_redate) = YEAR(CURRENT_DATE()) AND status_pay = '1'";
+                        $datepay = mysqli_query($link, $paydate);
+                        $data = mysqli_fetch_assoc($datepay);
+                        $paytotal = $data['total'];
+                    ?>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="livicon" data-name="alarm" data-loop="true" data-color="#42aaca" data-hovercolor="#42aaca" data-size="28"></i>
+                        <span class="label label-success"><?=$paytotal?></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages pull-right">
+                        <li class="dropdown-title">คุณมีสมาชิกใหม่ <?=$paytotal?> คน</li>
+                        <?php
+                            $sql = "SELECT * FROM repayment WHERE MONTH(pro_redate) = MONTH(CURRENT_DATE()) AND YEAR(pro_redate) = YEAR(CURRENT_DATE()) AND status_pay = '1' ORDER BY `pay_id` DESC";
+                            $result = mysqli_query($link, $sql);
+                            while ($row = mysqli_fetch_array($result)){
+                            $payid = $row["pay_id"];
+                            $proname = $row["mem_name"];
+                            $loan = $row["sub_moneyloan"];
+                        ?>
+<li class="unread message">
+  <a href="admin_refunds_add.php?pay_id=<?=$payid?>" class="message">
+    <div class="message-body">
+      <strong><?=$proname?></strong>
+      <br><?=$loan?>
+    </div>
+  </a>
+  <p><a href="admin_refunds_add.php?pay_id=<?=$payid?>">form</a> | <a href="payment_pdf.php?pay_id=<?=$payid?>" target="_blank">pdf</a></p>
+</li>
+                        <?php } ?>
+                        <li class="footer">
+                            <a href="payrefund.php">ดูทั้งหมด</a>
                         </li>
                     </ul>
                 </li>

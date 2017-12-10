@@ -31,8 +31,10 @@
 
         <div class="form-group">
             <label class="col-md-3 control-label" for="name">จำนวนเงินที่ขอกู้</label>
-            <div class="col-md-3">
-            <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"  required></div>
+            <div class="col-md-3 input-group">
+            <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control has-success" required>
+            <span id="result" class="input-group-addon"></span>
+            </div>
         </div>
 
         <div class="form-group">
@@ -99,8 +101,25 @@
         <div class="form-group">
             <div class="col-md-12 text-right">
 
-                 <button type="submit" name="btnsubmit" value="send" class="btn btn-success">เพิ่ม</button>
+                 <button type="submit" id="test" name="btnsubmit" value="send" class="btn btn-success">เพิ่ม</button>
             </div>
         </div>
     </fieldset>
 </form>
+
+<script type="text/javascript">
+
+	$("#sub_moneyloan").change(function(){
+		if(parseInt(this.value) > 50000){
+			$('input[name=sub_moneyloan]').parent().removeClass("has-success");
+            $('input[name=sub_moneyloan]').parent().addClass("has-error");
+			$('#result').html('<strong>ขออภัย</strong>วงเงินกู้เกินจำนวน');
+      $("#test").prop('disabled', true);
+		} else {
+			$('input[name=sub_moneyloan]').parent().removeClass("has-error");
+            $('input[name=sub_moneyloan]').parent().addClass("has-success");
+			$('#result').html('<strong>รอการอนุมัติ</strong>');
+      $("#test").prop('disabled', false);
+		}
+	});
+</script>

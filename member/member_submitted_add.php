@@ -13,22 +13,20 @@ $css = <<<EOT
 EOT;
 error_reporting( error_reporting() & ~E_NOTICE );
 require_once('include/_header.php');
-	if (isset($_POST["btnsubmit"])) {
-			$sub_id = $_POST["sub_id"];
-			$mem_id = $_POST["mem_id"];
-			$mem_name = $_POST["mem_name"];
-			$sub_moneyloan = $_POST["sub_moneyloan"];
-			$sub_objective = $_POST["sub_objective"];
-			$sub_date = $_POST["sub_date"];
-			$name1 = $_POST["name1"];
-			$name2 = $_POST["name2"];
-			$id_commit = $_POST["id_commit"];
-			// $id_sapp = $_POST["id_sapp"];
-			//$com_name = $_POST["com_name"];
+if (isset($_POST["btnsubmit"])) {
+    $mem_id = $_POST["mem_id"];
+    $mem_name = $_POST["mem_name"];
+    $sub_moneyloan = $_POST["sub_moneyloan"];
+    $sub_objective = $_POST["sub_objective"];
+    $sub_date = $_POST["sub_date"];
+    $name1 = $_POST["name1"];
+    $name2 = $_POST["name2"];
+    $id_commit = $_POST["id_commit"];
 
-			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,name1,name2,id_commit)
-							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$name1','$name2','$id_commit')";
-			$result = mysqli_query($link, $sql);
+
+    $sql = "INSERT INTO submitted (mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,name1,name2,id_commit)VALUES('$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$name1','$name2','$id_commit')";
+    // echo $sql; exit;
+    $result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";
 				echo "alert('เพิมเสร็จแล้ว');";
@@ -78,23 +76,23 @@ require_once('include/_header.php');
 										</div>
 
 										<div class="panel-body">
-										<?php
-											if (isset($s_login_mem_id)) {
-													// $loan = $_GET["loan"];
-													$sql = "SELECT mem_id ,fak_total, MAX(fak_date) AS fak_date FROM deposit WHERE mem_id = '$s_login_mem_id' GROUP BY fak_total  desc LIMIT 1";
-													$result = mysqli_query($link, $sql);
-													$row = mysqli_fetch_assoc($result);
-													$budget = $row["fak_total"];
+                      <?php
+  											if (isset($s_login_mem_id)) {
+  													// $loan = $_GET["loan"];
+  													$sql = "SELECT mem_id,fak_total,withdraw, MAX(fak_date) AS fak_date FROM deposit WHERE mem_id = '$s_login_mem_id' GROUP BY fak_id  desc LIMIT 1";
+  													$result = mysqli_query($link, $sql);
+  													$row = mysqli_fetch_assoc($result);
+  													$budget = $row["fak_total"];
 
-														if ($budget>=2000) {
-																include 'include/loan/accepted.php';
-														}else {
-															include 'include/loan/notaccepted.php';
-														}
-													}else {
-														include 'include/loan/select_users.php';
-													}
-												?>
+  														if ($budget>=2000) {
+  																include 'include/loan/accepted.php';
+  														}else {
+  															include 'include/loan/notaccepted.php';
+  														}
+  													}else {
+  														include 'include/loan/select_users.php';
+  													}
+  												?>
 										</div>
 								</div>
 

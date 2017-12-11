@@ -86,10 +86,6 @@ require_once('include/_date.php')
                                 <tbody>
                       						<?php
                       							if(isset($s_login_mem_id)){
-                      							// 	$sub_id = $_GET["sub_id"];
-                      							// 	$sql = "delete from submitted where sub_id='$sub_id'";
-                      							// 	$result = mysqli_query($link, $sql);
-                      							// }
 
                       							$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp WHERE status_app = 'รออนุมัติ'AND submitted.mem_id = '$s_login_mem_id'";
                       							$result = mysqli_query($link, $sql);

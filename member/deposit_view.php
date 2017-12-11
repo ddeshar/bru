@@ -70,7 +70,7 @@ require_once('include/_date.php');
 																deposit.fak_total,
 																commits.name_commit
 																FROM deposit LEFT JOIN member ON deposit.mem_id = member.mem_id
-																LEFT JOIN commits ON deposit.id_commit = commits.id_commit WHERE deposit.mem_id = '$s_login_mem_id'";
+																LEFT JOIN commits ON deposit.id_commit = commits.id_commit WHERE deposit.mem_id = '$s_login_mem_id' ORDER BY fak_id asc";
 																$result = mysqli_query($link, $sql);
 																while ($row = mysqli_fetch_array($result)) {
 																	$fak_id = $row["fak_id"];

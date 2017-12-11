@@ -124,3 +124,10 @@ color: white;
             </li>
         </ul>
     </li>
+    <li <?php if($page == 'accordionformwizard') echo 'class="active" id="active"'; ?> >
+        <a href="history.php">
+            <i class="livicon" data-name="list" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
+            <span class="title">ประวัติการเข้าใช้งาน</span>
+            <span class="fa arrow"></span>
+        </a>
+      </li>

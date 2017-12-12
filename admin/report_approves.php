@@ -1,6 +1,6 @@
 <?php
-$page = 'manager';
-$title = 'manager Page';
+$page = 'Admin';
+$title = 'Admin Page';
 $css = <<<EOT
 <!--page level css -->
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
@@ -115,7 +115,9 @@ if (isset($_GET["sub_id"])) {
   $result = mysqli_query($link, $sql);
 }
 
-$sql = "SELECT * FROM submitted left JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp
+$sql = "SELECT * FROM submitted
+LEFT JOIN statusb_app ON submitted.id_sapp = statusb_app.id_sapp
+LEFT JOIN repayment ON submitted.mem_id = repayment.mem_id
 WHERE status_app = 'อนุมัติ' AND submitted.sub_date BETWEEN '$startdate' AND '$enddate'
 GROUP BY
 submitted.sub_id order by submitted.sub_date asc
@@ -125,14 +127,14 @@ while ($row = mysqli_fetch_array($result)){
   $sub_id = $row["sub_id"];
   $mem_id = $row["mem_id"];
   $mem_name = $row["mem_name"];
-  $sub_moneyloan = $row["sub_moneyloan"];
+  $pay_pice = $row["pay_pice"];
   $sub_date = $row["sub_date"];
   $id_sapp = $row["status_app"];
 ?>
   									<tr>
                       <td><?=$i?></td>
                       <td><?=$mem_name?></td>
-                      <td><?php echo number_format($sub_moneyloan);?></td>
+                      <td><?php echo number_format($pay_pice);?></td>
                       <td><?php $strDate = "$sub_date";	echo DateThai($strDate);?></td>
                       <td><?=$id_sapp?></td>
 

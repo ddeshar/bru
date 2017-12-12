@@ -28,7 +28,7 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Dipendra Deshar');
-$pdf->SetTitle('ใบเสร็จชำระเงินกู้');
+$pdf->SetTitle('หนังสือทวงหนี้');
 $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
@@ -89,7 +89,8 @@ $pdf->writeHTML($someinfo, true, false, true, false, '');
 $pdf->SetFont('thsarabun', '', 18, '', true);
 
 // print a line of text
-$text = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'เนื่องจาก <b color="#FF0000">คุณ ' . $mem_name . '</b>  ได้ทำการกู้ยืมเงินกองทุนหมู่บ้าน และยังไม่ได้ชำระหนึ้ที่กู้ยืมไป ซึ่งมีหนี้ที่ต้องชำระจำนวนเงิน <b color="#FF0000"> ' .$sub_moneyloan. ' บาท </b>  ขอให้ไปชำระหนี้ให้เร็วที่สุด';
+$text = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'เนื่องจาก <b color="#FF0000">คุณ ' . $mem_name . '</b>  ได้ทำการกู้ยืมเงินกองทุนหมู่บ้าน และยังไม่ได้ชำระหนึ้ที่กู้ยืมไป ซึ่งมีหนี้ที่ต้องชำระจำนวนเงิน <b color="#FF0000"> ' .$sub_moneyloan. ' บาท </b>  ซึ่งครบกำหนดชำระแล้ว กองทุนฯยังไม่ได้รับชำระเงินจากท่าน <br />'.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'จึงเรียนมาเพื่อทราบและโปรดชำระเงินโดยเร็วจะขอบคุณยิ่ง';
+
 $pdf->writeHTML($text, true, 0, true, 0);
 
 $reciver = "<div style=\"text-align:center\"><br/><br/><b>ขอแสดงความนับถือ</b></div><br>";

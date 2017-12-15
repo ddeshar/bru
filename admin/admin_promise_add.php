@@ -272,16 +272,11 @@ require_once('include/_header.php');
 						</select>
 						</div>
 						</div>
-	<!-- MAX_FILE_SIZE must precede the file input field -->
-    <!-- <input type="hidden" name="MAX_FILE_SIZE" value="30000" /> -->
-    <!-- Name of input element determines name in $_FILES array -->
-    <!-- Send this file: <input name="userfile" type="file" /> -->
-    <!-- <input type="submit" value="Send File" /> -->
 
 						<div class="form-group">
 						<input type="hidden" value="<?php echo $_GET["sub_id"]; ?>" name="sanya">
 						<div class="col-md-12 text-right">
-						<button type="submit" name="btnsubmit" value="send" class="btn btn-success">เพิ่ม</button>
+						<button type="submit" id="woc" name="btnsubmit" value="send" class="btn btn-success">เพิ่ม</button>
 						</div>
 						</div>
 
@@ -312,14 +307,19 @@ require_once('include/_footer.php');
 <script type="text/javascript">
 
 	$("#apppice").change(function(){
-		if(parseInt(this.value) > 50000){
+		var test = $('#sub_moneyloan').val();
+		if((parseInt(this.value) >= 50000) || (parseInt(this.value) > test)){
 			$('input[name=app_pice]').parent().removeClass("has-success");
             $('input[name=app_pice]').parent().addClass("has-error");
 			$('#result').html('<strong>ขออภัย</strong>คุณกรอกเกินจำนวนที่อนุมัติ');
+			$("#woc").prop('disabled', true);
+
 		} else {
 			$('input[name=app_pice]').parent().removeClass("has-error");
             $('input[name=app_pice]').parent().addClass("has-success");
 			$('#result').html('<strong>ผ่าน</strong>');
+			$("#woc").prop('disabled', false);
+
 		}
 	});
 </script>

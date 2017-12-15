@@ -78,6 +78,7 @@ require_once('include/_header.php');
                                 <thead>
                                     <tr role="row">
                                         <th>รหัส</th>
+                                        <th>ชื่อสมาชิก</th>
                                         <th>username</th>
                                         <th>E-mai</th>
                                         <th>status</th>
@@ -98,8 +99,10 @@ require_once('include/_header.php');
 								$username = $row["username"];
                 $email = $row["email"];
 								$status = $row["status"];
+                $mem_name =$row["mem_name"];
               ?>
                   <td><?=$user_id?></td>
+                  <td><?=$mem_name?></td>
                   <td><?=$username?></td>
                   <td><?=$email?></td>
                   <!-- แสดงเป็น array จะได้ไม่ต้อง if else ให้ยาว -->

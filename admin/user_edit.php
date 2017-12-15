@@ -16,11 +16,14 @@ if (isset($_POST["btnEdit"])) {
 		$email = $_POST["email"];
 		$status = $_POST["status"];
 
+		$salt = 'tikde78uj4ujuhlaoikiksakeidke';
+		$hash_login_password = hash_hmac('sha256', $password, $salt);
+
 		$sqlupdatemem = "UPDATE `member` SET `status_mem` = 'publish' WHERE `member`.`mem_id` = '$mem_id'";
 		$updateresultmem = mysqli_query($link,$sqlupdatemem);
 
 
-		$sql = "UPDATE tbl_users SET user_id='$user_id', username='$username', password='$password', email='$email', status='$status' where user_id='$user_id'";
+		$sql = "UPDATE tbl_users SET user_id='$user_id', username='$username', password='$hash_login_password', email='$email', status='$status' where user_id='$user_id'";
 		//echo $sql;exit;
 		$result = mysqli_query($link, $sql);
 		if ($result) {

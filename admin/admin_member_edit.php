@@ -24,9 +24,12 @@ if (isset($_POST["btnEdit"])) {
 		$mem_password = $_POST["mem_password"];
 		$status_mem = $_POST["status_mem"];
 
+		$salt = 'tikde78uj4ujuhlaoikiksakeidke';
+		$hash_login_password = hash_hmac('sha256', $status_mem, $salt);
+
 		$sql = "UPDATE member SET mem_id='$mem_id', mem_idcard='$mem_idcard',id_gender='$id_gender', id_title='$id_title',
 		mem_name='$mem_name',mem_birthday='$mem_birthday',id_status='$id_status',mem_occupation='$mem_occupation', mem_address='$mem_address',
-		mem_tel='$mem_tel',mem_email='$mem_email', mem_username='$mem_username', mem_password='$mem_password',status_mem='$status_mem'
+		mem_tel='$mem_tel',mem_email='$mem_email', mem_username='$mem_username', mem_password='$hash_login_password',status_mem='$status_mem'
 		WHERE mem_id='$mem_id'";
 
 		$result = mysqli_query($link, $sql);
@@ -236,7 +239,7 @@ if (isset($_POST["btnEdit"])) {
 																<div class="form-group">
 															  	<label class="col-md-3 control-label" for="pass">รหัสผ่าน</label>
 																	<div class="col-md-3">
-																		<input  name="mem_password" type="text" value="<?php echo "$mem_password"; ?>" class="form-control" readonly>
+																		<input  name="mem_password" type="password" value="<?php echo "$mem_password"; ?>" class="form-control">
 																	</div>
 																</div>
 

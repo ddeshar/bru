@@ -29,8 +29,8 @@ if (isset($s_login_mem_id)) {
 			$pro_date = $row["pro_date"];
 			//$pro_number = $row["pro_number"];
 			$sub_moneyloan = $row["sub_moneyloan"];
-			$sub_idcardBM1 = $row["sub_idcardBM1"];
-			$sub_idcardBM2 = $row["sub_idcardBM2"];
+			// $sub_idcardBM1 = $row["sub_idcardBM1"];
+			// $sub_idcardBM2 = $row["sub_idcardBM2"];
 			$name1 = $row["name1"];
 			$name2 = $row["name2"];
 			$pro_redate = $row["pro_redate"];
@@ -47,8 +47,8 @@ if (isset($s_login_mem_id)) {
 			$pro_date = "";
 			//$pro_number = "";
 			$sub_moneyloan = "";
-			$sub_idcardBM1 = "";
-			$sub_idcardBM2 = "";
+			// $sub_idcardBM1 = "";
+			// $sub_idcardBM2 = "";
 			$name1 = "";
 			$name2 = "";
 			$pro_redate = "";

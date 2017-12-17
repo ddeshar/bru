@@ -21,14 +21,19 @@ if (isset($_POST["btnEdit"])) {
 		$mem_address = $_POST["mem_address"];
 		$mem_tel = $_POST["mem_tel"];
 		$mem_email = $_POST["mem_email"];
-		// $mem_username = $_POST["mem_username"];
+		$mem_username = $_POST["mem_username"];
 		$mem_password = $_POST["mem_password"];
 		// //$status_mem = $_POST["status_mem"];
 
+		$salt = 'tikde78uj4ujuhlaoikiksakeidke';
+		$hash_login_password = hash_hmac('sha256', $mem_password, $salt);
+
+		$sqlpass = "UPDATE tbl_users SET password='$hash_login_password' WHERE mem_id='$mem_id'";
+		$resultpass = mysqli_query($link, $sqlpass);
+
 		$sql = "UPDATE member SET mem_id='$mem_id', mem_idcard='$mem_idcard',id_gender='$id_gender', id_title='$id_title',
 		mem_name='$mem_name',mem_birthday='$mem_birthday',id_status='$id_status',mem_occupation='$mem_occupation', mem_address='$mem_address',
-		mem_tel='$mem_tel',mem_email='$mem_email',mem_password='$mem_password'
-		WHERE mem_id='$mem_id'";
+		mem_tel='$mem_tel',mem_email='$mem_email' WHERE mem_id='$mem_id'";
 
 		$result = mysqli_query($link, $sql);
 		if ($result) {
@@ -41,7 +46,9 @@ if (isset($_POST["btnEdit"])) {
 			echo "<font color='red'>SQL Error</font><hr>";
 		}
 	}else{
-		$sql = "SELECT * FROM member WHERE mem_id='$s_login_mem_id'";
+		$sql = "SELECT * FROM member
+		INNER JOIN tbl_users ON tbl_users.mem_id = member.mem_id
+		WHERE member.mem_id ='$s_login_mem_id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
@@ -56,8 +63,8 @@ if (isset($_POST["btnEdit"])) {
 			$mem_address = $row["mem_address"];
 			$mem_tel = $row["mem_tel"];
 			$mem_email = $row["mem_email"];
-			// $mem_username = $row["mem_username"];
-		  $mem_password = $row["mem_password"];
+			$mem_username = $row["username"];
+		  $mem_password = $row["password"];
 			// $status_mem = $row["status_mem"];
 		}else{
 			$mem_id = "";
@@ -228,11 +235,11 @@ if (isset($_POST["btnEdit"])) {
 																<input  name="mem_email" type="text" value="<?php echo "$mem_email"; ?>" class="form-control"></div>
 																</div>
 
-																<!-- <div class="form-group">
+																<div class="form-group">
 																<label class="col-md-3 control-label" for="user">ชื่อผู้ใช้</label>
 																<div class="col-md-3">
-																<input  name="mem_username" type="text" value="<?//php echo "$mem_username"; ?>" class="form-control" readonly></div>
-																</div> -->
+																<input  name="mem_username" type="text" value="<?=$mem_username?>" class="form-control" readonly></div>
+																</div>
 
 																<div class="form-group">
 															  	<label class="col-md-3 control-label" for="pass">เปลี่ยนรหัสผ่าน</label>

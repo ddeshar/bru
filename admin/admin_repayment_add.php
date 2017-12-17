@@ -35,10 +35,7 @@ require_once('include/_header.php');
 			$mem_name = $_POST["mem_name"];
 			$mem_idcard = $_POST["mem_idcard"];
 			$pro_id = $_POST["pro_id"];
-			//$pro_number = $_POST["pro_number"];
-			//$sub_moneyloan = $_POST["sub_moneyloan"];
 			$pro_redate = $_POST["pro_redate"];
-			// $pay_date = $_POST["pay_date"];
 			$pay_pice = $_POST["pay_pice"];
 			$id_commit = $_POST["id_commit"];
 
@@ -46,12 +43,12 @@ require_once('include/_header.php');
 
 			$approvesql = "UPDATE `submitted` SET `sanya`= '4' WHERE sub_id = '$subid'";
 			$results=mysqli_query($link, $approvesql);
-
-			if ($results) {
-				echo "string";
-			}else{
-				die("Query Failed" . mysqli_error($link));
-			}
+			// echo $approvesql; exit;
+			// if ($results) {
+			// 	echo "string";
+			// }else{
+			// 	die("Query Failed" . mysqli_error($link));
+			// }
 
 			$sql = "INSERT INTO repayment (mem_id,mem_name,mem_idcard,pro_id,pro_redate,pay_date,pay_pice,id_commit)VALUES('$mem_id','$mem_name','$mem_idcard','$pro_id','$pro_redate',NOW(),'$pay_pice','$id_commit')";
 			 //echo $sql; exit;
@@ -68,10 +65,27 @@ require_once('include/_header.php');
 
 				if (isset($_GET["pro_id"])) {
 					$pro_id = $_GET["pro_id"];
-					$sqlproid = "SELECT * FROM promise
-												LEFT JOIN member ON promise.mem_id = member.mem_id
-												LEFT JOIN submitted ON promise.mem_id = submitted.mem_id
-												WHERE promise.pro_id = '$pro_id'";
+					$sqlproid = "SELECT
+												promise.mem_id,
+												promise.mem_name,
+												promise.sub_date,
+												promise.sub_moneyloan,
+												promise.mem_idcard,
+												promise.name1,
+												promise.name2,
+												promise.pro_id,
+												promise.pro_redate,
+												promise.app_pice,
+												submitted.sub_id AS newa
+											FROM
+												promise
+											JOIN submitted ON promise.mem_id = submitted.mem_id
+											WHERE
+												promise.pro_id = '$pro_id'
+											AND submitted.sanya = '3'
+											GROUP BY
+												promise.pro_id,
+												submitted.mem_id";
 					$resultproid = mysqli_query($link, $sqlproid);
 
 					if (mysqli_num_rows($resultproid) > 0) {
@@ -86,7 +100,7 @@ require_once('include/_header.php');
 						$pro_id = $row["pro_id"];
 						$pro_redate = $row["pro_redate"];
 						$app_pice = $row["app_pice"];
-						$sub_id = $row["sub_id"];
+						$te = $row["newa"];
 					}else{
 						$mem_id = "";
 						$mem_name = "";
@@ -98,7 +112,7 @@ require_once('include/_header.php');
 						$pro_id = "";
 						$pro_redate = "";
 						$app_pice = "";
-						$sub_id = "";
+						$te = "";
 					}
 					$t2=date('Y-m-d', strtotime('+2 year', strtotime($sub_date)) );
 				}
@@ -110,7 +124,7 @@ require_once('include/_header.php');
     <section class="content-header">
         <!--section starts-->
         <h1>
-            เพิ่มข้อมูลการจ่ายเงินกู้ให้ผู้กู้
+            เพิ่มข้อมูลการจ่ายเงินกู้ให้ผู้กู้ <?=$te?>
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -168,12 +182,6 @@ require_once('include/_header.php');
 																			<input id="pro_id" value="<?=$pro_id?>" name="pro_id" type="text" placeholder="PRO-ID" class="form-control" readonly></div>
 																		</div>
 
-																<!-- <div class="form-group">
-                                    <label class="col-md-3 control-label" for="number">จำนวนที่อนุมัติ</label>
-                                    <div class="col-md-3">
-                                    <input id="sub_moneyloan" value="<?//=$app_pice?>" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control" readonly></div>
-                                </div> -->
-
 																	<div class="form-group">
 																		<label class="col-md-3 control-label" for="date">วันที่ครบกำหนดส่ง</label>
 																		<div class="col-md-3">
@@ -206,7 +214,7 @@ require_once('include/_header.php');
 
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
-																			<input type="hidden" name="subid" value="<?=$sub_id?>">
+																			<input type="hidden" name="subid" value="<?=$te?>">
                                          <button type="submit" name="btnsubmit" value="send" class="btn btn-success">เพิ่ม</button>
                                     </div>
                                 </div>

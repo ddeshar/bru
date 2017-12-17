@@ -23,7 +23,8 @@ if (isset($_POST["btnEdit"])) {
 		$updateresultmem = mysqli_query($link,$sqlupdatemem);
 
 
-		$sql = "UPDATE tbl_users SET user_id='$user_id', username='$username', password='$hash_login_password', email='$email', status='$status' where user_id='$user_id'";
+		$sql = "UPDATE tbl_users SET user_id='$user_id', username='$username', password='$hash_login_password',
+		email='$email', status='$status' where user_id='$user_id'";
 		//echo $sql;exit;
 		$result = mysqli_query($link, $sql);
 		if ($result) {

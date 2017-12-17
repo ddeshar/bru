@@ -22,12 +22,12 @@ if (isset($_POST["btnEdit"])) {
 		$mem_tel = $_POST["mem_tel"];
 		$mem_email = $_POST["mem_email"];
 		// $mem_username = $_POST["mem_username"];
-		// $mem_password = $_POST["mem_password"];
+		$mem_password = $_POST["mem_password"];
 		// //$status_mem = $_POST["status_mem"];
 
 		$sql = "UPDATE member SET mem_id='$mem_id', mem_idcard='$mem_idcard',id_gender='$id_gender', id_title='$id_title',
 		mem_name='$mem_name',mem_birthday='$mem_birthday',id_status='$id_status',mem_occupation='$mem_occupation', mem_address='$mem_address',
-		mem_tel='$mem_tel',mem_email='$mem_email'
+		mem_tel='$mem_tel',mem_email='$mem_email',mem_password='$mem_password'
 		WHERE mem_id='$mem_id'";
 
 		$result = mysqli_query($link, $sql);
@@ -57,7 +57,7 @@ if (isset($_POST["btnEdit"])) {
 			$mem_tel = $row["mem_tel"];
 			$mem_email = $row["mem_email"];
 			// $mem_username = $row["mem_username"];
-			// $mem_password = $row["mem_password"];
+		  $mem_password = $row["mem_password"];
 			// $status_mem = $row["status_mem"];
 		}else{
 			$mem_id = "";
@@ -72,7 +72,7 @@ if (isset($_POST["btnEdit"])) {
 			$mem_tel = "";
 			$mem_email = "";
 			// $mem_username = "";
-			// $mem_password = "";
+			$mem_password = "";
 			// $status_mem = "";
 		}
 	}
@@ -232,14 +232,14 @@ if (isset($_POST["btnEdit"])) {
 																<label class="col-md-3 control-label" for="user">ชื่อผู้ใช้</label>
 																<div class="col-md-3">
 																<input  name="mem_username" type="text" value="<?//php echo "$mem_username"; ?>" class="form-control" readonly></div>
-																</div>
+																</div> -->
 
 																<div class="form-group">
-															  	<label class="col-md-3 control-label" for="pass">รหัสผ่าน</label>
+															  	<label class="col-md-3 control-label" for="pass">เปลี่ยนรหัสผ่าน</label>
 																	<div class="col-md-3">
-																		<input  name="mem_password" type="password" value="<?//php echo "$mem_password"; ?>" class="form-control" readonly>
+																		<input  name="mem_password" type="password" value="<?php echo "$mem_password"; ?>" class="form-control" >
 																	</div>
-																</div> -->
+																</div>
 
 																<!-- <div class="form-group">
 																	<label class="col-lg-3 control-label" for="select">Status</label>
@@ -250,7 +250,7 @@ if (isset($_POST["btnEdit"])) {
 																			<option value="unpublish" >ยกเลิกเป็นสมาชิก</option>
 																		</select>
 																	</div>
-																</div> -->
+																</div>
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">

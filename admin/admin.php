@@ -29,7 +29,7 @@ require_once('include/_header.php');
                             <div class="row">
                                 <div class="square_box col-xs-7 text-right">
                                     <span>
-                                        เงินกองทุน
+                                        เงินกองทุน (เงินต้น)
                                     </span>
                                     <div class="number">
                                       <?php
@@ -39,9 +39,9 @@ require_once('include/_header.php');
                                           $thoonmoney = $row["sum(fund_money)"];
                                         }
                                       ?>
-                                      <?=$thoonmoney?>
+                                      <?php echo number_format($thoonmoney);?>
                                     </div>
-                                </div> <i class="livicon  pull-right" data-name="eye-open" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                </div> <i class="livicon  pull-right" data-name="briefcase" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
                             </div>
                             <!-- <div class="row">
                                 <div class="col-xs-6">
@@ -75,10 +75,10 @@ require_once('include/_header.php');
                                           $pice = $row["sum(app_pice)"];
                                         }
                                       ?>
-                                      <?=$pice?>
+                                      <?php echo number_format($pice);?>
                                     </div>
                                 </div>
-                                <i class="livicon pull-right" data-name="piggybank" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                <i class="livicon pull-right" data-name="check" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
                             </div>
                             <!-- <div class="row">
                                 <div class="col-xs-6">
@@ -109,12 +109,12 @@ require_once('include/_header.php');
                                     <?php
                                       $percentage = ($pice * 6 * 2) / 100;
 
-                                      $performat = number_format($percentage, 2, '.', ',');
+                                      $performat = number_format($percentage, 0, '.', ',');
 
                                       echo $performat;
                                     ?></div>
                                 </div>
-                                <i class="livicon pull-right" data-name="archive-add" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                <i class="livicon pull-right" data-name="piggybank" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
                             </div>
                             <!-- <div class="row">
                                 <div class="col-xs-6">
@@ -150,7 +150,7 @@ require_once('include/_header.php');
                                       ?>
                                     </div>
                                 </div>
-                                <i class="livicon pull-right" data-name="users" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                <i class="livicon pull-right" data-name="money" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
                             </div>
                             <!-- <div class="row">
                                 <div class="col-xs-6">

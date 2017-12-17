@@ -71,7 +71,7 @@ require_once('include/_header.php');
                                 </thead>
                                 <tbody>
               						<?php $i=1;
-                            $sql = "SELECT promise.pro_id , promise.app_pice , promise.pro_redate ,submitted.mem_id, submitted.mem_name ,submitted.sub_date ,promise.app_pice , submitted.sub_id FROM `submitted` LEFT JOIN promise ON submitted.mem_id = promise.mem_id WHERE submitted.sanya = '3'";
+                            $sql = "SELECT promise.pro_id , submitted.sanya, promise.app_pice , promise.pro_redate ,submitted.mem_id, submitted.mem_name ,submitted.sub_date ,promise.app_pice , submitted.sub_id FROM `submitted` LEFT JOIN promise ON submitted.mem_id = promise.mem_id WHERE submitted.sanya = '3'";
               							$result = mysqli_query($link, $sql);
               							while ($row = mysqli_fetch_array($result)){
                               $sub_id = $row["sub_id"];
